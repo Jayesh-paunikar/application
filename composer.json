@@ -1,0 +1,23 @@
+{
+    "name": "mvc5/application",
+    "description": "Event Driven PHP MVC Application",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.5.9",
+        "zendframework/zendframework": "2.2.*",
+        "mvc5/Framework": "*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\Framework\\": "./vendor/mvc5/framework/test"
+        }
+    }
+}
