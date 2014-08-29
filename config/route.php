@@ -69,7 +69,7 @@ return [
             'tokens'     => [['literal', '/error']]
         ])
     ]),
-    'listeners' => new Events([
+    'events' => new Events([
         'Route\Match\Event' => [
             [
                 'Route\Match\Scheme',

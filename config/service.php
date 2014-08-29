@@ -111,7 +111,7 @@ return [
         'Framework\Response\Manager\Manager',
         [
             'configuration' => new ConfigLink,
-            'events'        => new Param('listeners'),
+            'events'        => new Param('events'),
             'services'      => new Param('services')
         ]
     ),
@@ -147,7 +147,7 @@ return [
         'Framework\Route\Manager\Manager',
         [
             'configuration' => new ConfigLink,
-            'events'        => new Param('routes.listeners'),
+            'events'        => new Param('routes.events'),
             'services'      => new Param('services')
         ]
     ),
@@ -185,7 +185,7 @@ return [
         'Framework\View\Manager\Manager',
         [
             'aliases'       => new Param('view.aliases'),
-            'events'        => new Param('listeners'),
+            'events'        => new Param('events'),
             'configuration' => new ConfigLink,
             'services'      => new Param('services')
         ]
