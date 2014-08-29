@@ -1,6 +1,7 @@
+This framework is an event management system that implements the architectual MVC pattern using events, listeners and dependency injection. It does not need to be boot strapped. Listeners closely follow the Single Responsibility Principle, they are SOLID and `callable`. Events manage their own state by signaling each listener and managing the response, this allows them to have different types of behaviors.
+
 Usage
 --
-
 ```php
 include __DIR__ . '/../vendor/autoload.php';
 ```
@@ -11,7 +12,7 @@ use Framework\Event\Config\Config as Events;
 
 $config = new Config([
     'controllers' => new Events(include __DIR__ . '/controller.php'),
-    'listeners'   => new Events(include __DIR__ . '/event.php'),
+    'events'      => new Events(include __DIR__ . '/event.php'),
     'services'    => new Container(include __DIR__ . '/service.php'),
     'routes'      => new Config(include __DIR__ . '/route.php'),
     'translator'  => new Config(include __DIR__ . '/i18n.php'),
@@ -24,17 +25,17 @@ $config = new Config([
 ##Benchmark
 *Current*
 ```
-HTML transferred: 422918 bytes
-Requests per second: 1262.95 [#/sec] (mean)
-Time per request: 7.918 [ms] (mean)
-Time per request: 0.792 [ms] (mean, across all concurrent requests)
+HTML transferred:       4229135 bytes
+Requests per second:    1290.86 [#/sec] (mean)
+Time per request:       7.747 [ms] (mean)
+Time per request:       0.775 [ms] (mean, across all concurrent requests)
 ```
 *Other/Previous*
 ```
-HTML transferred: 550200 bytes
-Requests per second: 313.41 [#/sec] (mean)
-Time per request: 31.907 [ms] (mean)
-Time per request: 3.191 [ms] (mean, across all concurrent requests)
+HTML transferred:       5502000 bytes
+Requests per second:    315.78 [#/sec] (mean)
+Time per request:       31.667 [ms] (mean)
+Time per request:       3.167 [ms] (mean, across all concurrent requests)
 ```
 ##Dependency Injection
 ```php
