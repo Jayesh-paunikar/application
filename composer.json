@@ -5,19 +5,11 @@
     "require": {
         "php": ">=5.5.9",
         "zendframework/zendframework": "2.2.*",
-        "mvc5/Framework": "*@dev"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "*"
+        "mvc5/framework": "1.0.*"
     },
     "autoload": {
         "psr-4": {
             "Application\\": "./src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Test\\Framework\\": "./vendor/mvc5/framework/test"
         }
     }
 }
