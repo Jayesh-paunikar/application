@@ -5,7 +5,7 @@
     "require": {
         "php": ">=5.5.9",
         "zendframework/zendframework": "2.2.*",
-        "mvc5/framework": "1.0.*"
+        "mvc5/framework": "@dev"
     },
     "autoload": {
         "psr-4": {
