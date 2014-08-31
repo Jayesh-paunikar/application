@@ -14,12 +14,12 @@ use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 return [
-    'Controller\Error' => 'Framework\Controller\Error\Event',
+    'Controller\Error' => Framework\Controller\Error\Event::class,
     'Controller\Error\Listener' => new Hydrator(
-        'Framework\Controller\Error\Listener',
+        Framework\Controller\Error\Listener::class,
         [
             'setViewModel' => new Hydrator(
-                'Framework\Controller\Error\ViewModel',
+                Framework\Controller\Error\ViewModel::class,
                 [
                     'setTemplate'    => new Param('view.templates.error/404'),
                     'setViewManager' => new Dependency('View\Manager')
@@ -27,25 +27,25 @@ return [
             )
         ]
     ),
-    'Controller\Exception' => 'Framework\Controller\Exception\Event',
+    'Controller\Exception' => Framework\Controller\Exception\Event::class,
     'Controller\Exception\Listener' => new Hydrator(
-        'Framework\Controller\Exception\Listener',
+        Framework\Controller\Exception\Listener::class,
         ['setViewModel' => new Dependency('View\Exception\ViewModel')]
     ),
     'Controller\Manager' => new Hydrator(
-        'Framework\Controller\Manager\Manager',
+        Framework\Controller\Manager\Manager::class,
         [
             'configuration' => new ConfigLink,
             'events'        => new Param('controllers'),
             'services'      => new Param('services')
         ]
     ),
-    'Home' => 'Framework\Controller\Controller\Event',
+    'Home' => Framework\Controller\Controller\Event::class,
     'Home\Controller' => new Hydrator(
-        'Application\Home\Controller',
+        Application\Home\Controller::class,
         [
             'setViewModel' => new Hydrator(
-                'Application\Home\ViewModel',
+                Application\Home\ViewModel::class,
                 [
                     'setTemplate'    => new Param('view.templates.home'),
                     'setViewManager' => new Dependency('View\Manager')
@@ -54,31 +54,31 @@ return [
         ]
     ),
     'Layout' => new Hydrator(
-        'Framework\View\Layout\ViewModel',
+        Framework\View\Layout\ViewModel::class,
         [
             'setTemplate'    => new Param('view.templates.layout'),
             'setViewManager' => new Dependency('View\Manager')
         ]
     ),
     'Mvc\Dispatch' => new Hydrator(
-        'Framework\Mvc\Dispatch\Listener',
+        Framework\Mvc\Dispatch\Listener::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
     ),
-    'Mvc\Event' => new Service('Framework\Mvc\Event', [new ServiceManagerLink]),
+    'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
     'Mvc\Layout' => new Hydrator(
-        'Framework\Mvc\Layout\Listener',
+        Framework\Mvc\Layout\Listener::class,
         ['setViewModel' => new Dependency('Layout')]
     ),
     'Mvc\Render' => new Hydrator(
-        'Framework\Mvc\Render\Listener',
+        Framework\Mvc\Render\Listener::class,
         ['setViewManager' => new Dependency('View\Manager')]
     ),
     'Mvc\Response' => new Hydrator(
-        'Framework\Mvc\Response\Listener',
+        Framework\Mvc\Response\Listener::class,
         ['setResponseManager' => new Dependency('Response\Manager')]
     ),
     'Mvc\Route' => new Config([
-        'name' => 'Framework\Mvc\Route\Listener',
+        'name' => Framework\Mvc\Route\Listener::class,
         'args' => [
             new Service(
                 'Route',
@@ -98,17 +98,16 @@ return [
         ],
     ]),
     'Mvc\SendResponse' => new Hydrator(
-        'Framework\Mvc\SendResponse\Listener',
+        Framework\Mvc\SendResponse\Listener::class,
         ['setResponseManager' => new Dependency('Response\Manager')]
     ),
-    'Request' => new Service('Application\Request\Request', [$_ENV, $_GET, $_POST, $_COOKIE, $_FILES, $_SERVER]),
-    'Response'            => 'Application\Response\Response',
-    'Response\Event'      => 'Framework\Response\Response\Event',
-    'Response\Send\Event' => 'Framework\Response\Send\Event',
-    'Response\Send\Http'  => 'Framework\Response\Send\Http\Listener',
-    'Response\Send\Php'   => 'Framework\Response\Send\Php\Listener',
+    'Request' => new Service(Application\Request\Request::class, [$_ENV, $_GET, $_POST, $_COOKIE, $_FILES, $_SERVER]),
+    'Response'            => Application\Response\Response::class,
+    'Response\Event'      => Framework\Response\Response\Event::class,
+    'Response\Send\Event' => Framework\Response\Send\Event::class,
+    'Response\Send\Http'  => Framework\Response\Send\Http\Listener::class,
     'Response\Manager' => new Hydrator(
-        'Framework\Response\Manager\Manager',
+        Framework\Response\Manager\Manager::class,
         [
             'configuration' => new ConfigLink,
             'events'        => new Param('events'),
@@ -116,7 +115,7 @@ return [
         ]
     ),
     'Route' => new Service(
-        'Framework\Route\Route\Route',
+        Framework\Route\Route\Route::class,
         [
             new Args([
                 'controller' => 'Controller\Error',
@@ -130,35 +129,35 @@ return [
         ]
     ),
     'Route\Dispatch' => new Hydrator(
-        'Framework\Route\Dispatch\Dispatch',
+        Framework\Route\Dispatch\Dispatch::class,
         ['setRouteManager' => new Dependency('Route\Manager')]
     ),
-    'Route\Dispatch\Event'  => 'Framework\Route\Dispatch\Event',
-    'Route\Dispatch\Filter' => 'Framework\Route\Dispatch\Filter',
-    'Route\Generator'       => new Service('Framework\Route\Generator\Generator', [new Param('routes.definitions')]),
+    'Route\Dispatch\Event'  => Framework\Route\Dispatch\Event::class,
+    'Route\Dispatch\Filter' => Framework\Route\Dispatch\Filter::class,
+    'Route\Generator'       => new Service(Framework\Route\Generator\Generator::class, [new Param('routes.definitions')]),
     'Route\Generator\Plugin' => new Hydrator(
-        'Framework\Route\Generator\Plugin',
+        Framework\Route\Generator\Plugin::class,
         [
             'setRoute'          => new Dependency('Route'),
             'setRouteGenerator' => new Dependency('Route\Generator')
         ]
     ),
     'Route\Manager' => new Hydrator(
-        'Framework\Route\Manager\Manager',
+        Framework\Route\Manager\Manager::class,
         [
             'configuration' => new ConfigLink,
             'events'        => new Param('routes.events'),
             'services'      => new Param('services')
         ]
     ),
-    'Route\Match\Event'    => 'Framework\Route\Match\Event',
-    'Route\Match\Hostname' => 'Framework\Route\Match\Hostname\Hostname',
-    'Route\Match\Method'   => 'Framework\Route\Match\Method\Method',
-    'Route\Match\Path'     => 'Framework\Route\Match\Path\Path',
-    'Route\Match\Scheme'   => 'Framework\Route\Match\Scheme\Scheme',
-    'Route\Match\Wildcard' => 'Framework\Route\Match\Wildcard\Wildcard',
+    'Route\Match\Event'    => Framework\Route\Match\Event::class,
+    'Route\Match\Hostname' => Framework\Route\Match\Hostname\Hostname::class,
+    'Route\Match\Method'   => Framework\Route\Match\Method\Method::class,
+    'Route\Match\Path'     => Framework\Route\Match\Path\Path::class,
+    'Route\Match\Scheme'   => Framework\Route\Match\Scheme\Scheme::class,
+    'Route\Match\Wildcard' => Framework\Route\Match\Wildcard\Wildcard::class,
     'Translator' => new Hydrator(
-        'Zend\I18n\Translator\Translator',
+        Zend\I18n\Translator\Translator::class,
         [
             //'addTranslationFilePattern' => []
             //'setFallbackLocale' => null,
@@ -166,23 +165,23 @@ return [
         ]
     ),
     'Translator\Plugin' => new Hydrator(
-        'Zend\I18n\View\Helper\Translate',
+        Zend\I18n\View\Helper\Translate::class,
         ['setTranslator' => new Dependency('Translator')]
     ),
-    'View\Exception\Event'    => 'Framework\View\Exception\Event',
+    'View\Exception\Event'    => Framework\View\Exception\Event::class,
     'View\Exception\Listener' => new Hydrator(
-        'Framework\View\Exception\Listener',
+        Framework\View\Exception\Listener::class,
         [
             'setViewManager' => new Dependency('View\Manager'),
             'setViewModel'   => new Dependency('View\Exception\ViewModel')
         ]
     ),
     'View\Exception\ViewModel' => new Hydrator(
-        'Framework\View\Exception\ViewModel',
+        Framework\View\Exception\ViewModel::class,
         ['setTemplate' => new Param('view.templates.error/exception')]
     ),
     'View\Manager' => new Hydrator(
-        'Framework\View\Manager\Manager',
+        Framework\View\Manager\Manager::class,
         [
             'aliases'       => new Param('view.aliases'),
             'events'        => new Param('events'),
@@ -190,8 +189,8 @@ return [
             'services'      => new Param('services')
         ]
     ),
-    'View\Model'            => 'Framework\View\Model\Model',
-    'View\Plugin\ViewModel' => new Hydrator('Zend\View\Helper\ViewModel', ['setRoot' => new Dependency('Layout')]),
-    'View\Render'           => 'Framework\View\Render\Render',
-    'View\Render\Event'     => 'Framework\View\Render\Event'
+    'View\Model'            => Framework\View\Model\Model::class,
+    'View\Plugin\ViewModel' => new Hydrator(Zend\View\Helper\ViewModel::class, ['setRoot' => new Dependency('Layout')]),
+    'View\Render'           => Framework\View\Render\Render::class,
+    'View\Render\Event'     => Framework\View\Render\Event::class
 ];
