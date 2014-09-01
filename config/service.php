@@ -189,8 +189,7 @@ return [
             'services'      => new Param('services')
         ]
     ),
-    'View\Model'            => Framework\View\Model\Model::class,
-    'View\Plugin\ViewModel' => new Hydrator(Zend\View\Helper\ViewModel::class, ['setRoot' => new Dependency('Layout')]),
-    'View\Render'           => Framework\View\Render\Render::class,
-    'View\Render\Event'     => Framework\View\Render\Event::class
+    'View\Model'        => Framework\View\Model\Model::class,
+    'View\Render'       => Framework\View\Render\Render::class,
+    'View\Render\Event' => Framework\View\Render\Event::class
 ];
