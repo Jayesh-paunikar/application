@@ -13,7 +13,7 @@ use Framework\Service\Config\Service\Service;
 /*var_export(Builder::definition([
     'name'       => 'error',
     'route'       => '/error',
-    'controller' => 'Controller\Error\Listener',
+    'controller' => 'Controller\Error',
 ]));
 exit;*/
 return [
