@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 5.5
+  - 5.6
+
+before_script:
+  - composer install --prefer-dist --no-dev -v
+
+script:
+  - php -d opcache.enable=1 -d opcache.enable_cli=1 public/index.php >/dev/null
+  - php -d opcache.enable=0 -d opcache.enable_cli=0 public/index.php >/dev/null
+  - php -n public/index.php >/dev/null
+
+notifications:
+  email: false
