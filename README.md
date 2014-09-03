@@ -94,9 +94,3 @@ The MVC event workflow is completely <a href="https://github.com/mvc5/applicatio
     ['Mvc\SendResponse']
 ]
 ```
-##Credits
-* [Ben Scholzen 'DASPRiD'](http://github.com/DASPRiD) the [Router prototype for Zend Framework 3](https://github.com/DASPRiD/Dash)
-* [Matthew Weier O'Phinney](https://github.com/weierophinney) introducing events to the [Zend Framework](https://github.com/zendframework)
-* [Marco Pivetta](https://github.com/Ocramius) contributions and inspiration to the [Zend Framework](https://github.com/zendframework)
-* [George Cooksey](https://github.com/texdc) knowledge of events
-* [Michaël Gallego](https://github.com/bakura10) contributions and inspiration to the [Zend Framework](https://github.com/zendframework)
