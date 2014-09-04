@@ -9,6 +9,7 @@ use Framework\Service\Config\Config;
 use Framework\Service\Config\ConfigLink\ConfigLink;
 use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Hydrator\Hydrator;
+use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
@@ -60,9 +61,18 @@ return [
             'setViewManager' => new Dependency('View\Manager')
         ]
     ),
-    'Mvc\Dispatch' => new Hydrator(
+    /*'Mvc\Dispatch' => new Hydrator(
         Framework\Mvc\Dispatch\Listener::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
+    ),*/
+    //alternatively create an anonymous on the fly
+    'Mvc\Dispatch' => new Invoke(
+        [
+            new Dependency('Controller\Manager'), 'dispatch'
+        ],
+        [
+            new Dependency('Route'), [new Dependency('Request'), new Dependency('Response')]
+       ]
     ),
     'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
     'Mvc\Layout' => new Hydrator(

@@ -71,6 +71,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Service/Service.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/ParamInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/Param.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invoke/InvokeInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invoke/Invoke.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Dependency/DependencyInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Dependency/Dependency.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Args/ArgsInterface.php';
