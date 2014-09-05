@@ -110,12 +110,7 @@ return [
         Framework\Mvc\SendResponse\Listener::class,
         ['setResponseManager' => new Dependency('Response\Manager')]
     ),
-    'Request' => new Hydrator(
-        Application\Request\Request::class,
-        [
-            ['initialize', [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]]
-        ]
-    ),
+    'Request' => new service(Application\Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response'            => Application\Response\Response::class,
     'Response\Event'      => Framework\Response\Response\Event::class,
     'Response\Send\Event' => Framework\Response\Send\Event::class,

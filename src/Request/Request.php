@@ -8,10 +8,4 @@ class Request
     extends HttpRequest
     implements RequestInterface
 {
-    /**
-     *
-     */
-    public function __construct()
-    {
-    }
 }
