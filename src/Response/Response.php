@@ -2,11 +2,12 @@
 
 namespace Application\Response;
 
+use Framework\Response\ResponderInterface;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 class Response
     extends HttpResponse
-    implements ResponseInterface
+    implements ResponderInterface, ResponseInterface
 {
     /**
      * @return void
