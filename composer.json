@@ -9,8 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "./src",
-            "Symfony\\Component\\HttpFoundation\\": "./vendor/symfony/http-foundation/Symfony/Component/HttpFoundation"
+            "Application\\": "./src"
         }
     }
 }
