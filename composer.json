@@ -4,12 +4,13 @@
     "license": "MIT",
     "require": {
         "php": ">=5.5.9",
-        "zendframework/zendframework": "2.2.*",
+        "symfony/http-foundation": "2.5.*",
         "mvc5/framework": "@dev"
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "./src"
+            "Application\\": "./src",
+            "Symfony\\Component\\HttpFoundation\\": "./vendor/symfony/http-foundation/Symfony/Component/HttpFoundation"
         }
     }
 }

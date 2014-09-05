@@ -94,11 +94,10 @@ return [
                 'Route',
                 [
                     new Args([
-                        'hostname' => new Call('Request.getUri.getHost'),
+                        'hostname' => new Call('Request.getHost'),
                         'method'   => new Call('Request.getMethod'),
-                        'params'   => new Call('Request.getQuery.toArray'),
-                        'path'     => new Call('Request.getUri.getPath'),
-                        'scheme'   => new Call('Request.getUri.getScheme')
+                        'path'     => new Call('Request.getPathInfo'),
+                        'scheme'   => new Call('Request.getScheme')
                     ])
                 ]
             )
@@ -111,11 +110,16 @@ return [
         Framework\Mvc\SendResponse\Listener::class,
         ['setResponseManager' => new Dependency('Response\Manager')]
     ),
-    'Request' => new Service(Application\Request\Request::class, [$_ENV, $_GET, $_POST, $_COOKIE, $_FILES, $_SERVER]),
+    'Request' => new Hydrator(
+        Application\Request\Request::class,
+        [
+            ['initialize', [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]]
+        ]
+    ),
     'Response'            => Application\Response\Response::class,
     'Response\Event'      => Framework\Response\Response\Event::class,
     'Response\Send\Event' => Framework\Response\Send\Event::class,
-    'Response\Send\Http'  => Framework\Response\Send\Http\Listener::class,
+    'Response\Send\Http'  => Framework\Response\Send\Listener::class,
     'Response\Manager' => new Hydrator(
         Framework\Response\Manager\Manager::class,
         [
@@ -129,12 +133,11 @@ return [
         [
             new Args([
                 'controller' => new Param('routes.definitions.error.controller'),
-                'hostname'   => new Call('Request.getUri.getHost'),
+                'hostname'   => new Call('Request.getHost'),
                 'method'     => new Call('Request.getMethod'),
                 'name'       => new Param('routes.definitions.error.name'),
-                'params'     => new Call('Request.getQuery.toArray'),
-                'path'       => new Call('Request.getUri.getPath'),
-                'scheme'     => new Call('Request.getUri.getScheme')
+                'path'       => new Call('Request.getPathInfo'),
+                'scheme'     => new Call('Request.getScheme')
             ])
         ]
     ),
@@ -166,18 +169,6 @@ return [
     'Route\Match\Path'     => Framework\Route\Match\Path\Path::class,
     'Route\Match\Scheme'   => Framework\Route\Match\Scheme\Scheme::class,
     'Route\Match\Wildcard' => Framework\Route\Match\Wildcard\Wildcard::class,
-    'Translator' => new Hydrator(
-        Zend\I18n\Translator\Translator::class,
-        [
-            //'addTranslationFilePattern' => []
-            //'setFallbackLocale' => null,
-            'setLocale' => new Param('translator.locale'),
-        ]
-    ),
-    'Translator\Plugin' => new Hydrator(
-        Zend\I18n\View\Helper\Translate::class,
-        ['setTranslator' => new Dependency('Translator')]
-    ),
     'View\Exception\Event'    => Framework\View\Exception\Event::class,
     'View\Exception\Listener' => new Hydrator(
         Framework\View\Exception\Listener::class,

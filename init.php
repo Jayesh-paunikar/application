@@ -2,45 +2,9 @@
 /**
  *
  */
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/StringWrapper/StringWrapperInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/StringWrapper/AbstractStringWrapper.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/StringWrapper/Intl.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/StringUtils.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Validator/ValidatorInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Validator/Translator/TranslatorAwareInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Validator/AbstractValidator.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Validator/Ip.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Validator/Hostname.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/Header/HeaderInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/Header/GenericHeader.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/Header/Host.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Loader/ShortNameLocator.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Loader/PluginClassLocator.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Loader/PluginClassLoader.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/HeaderLoader.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Uri/UriInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Uri/Uri.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Uri/Http.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/Headers.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/ArrayObject/PhpReferenceCompatibility.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/ArrayObject.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/ParametersInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/Parameters.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/MessageInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/RequestInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/Message.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/AbstractMessage.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/Request.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/PhpEnvironment/Request.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Stdlib/ResponseInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/Response.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/Http/PhpEnvironment/Response.php';
-/*include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/View/Helper/HelperInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/View/Helper/AbstractHelper.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/I18n/Translator/TranslatorAwareInterface.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/I18n/View/Helper/AbstractTranslatorHelper.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/I18n/View/Helper/Translate.php';
-include __DIR__ . '/vendor/zendframework/zendframework/library/Zend/I18n/Translator/Translator.php';*/
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Request.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ApacheRequest.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php';
 
 /**
  *
@@ -172,9 +136,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/SendResponse/ListenerInterface
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/SendResponse/Listener.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/Http/ListenerInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/Http/HeadersTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/Http/Listener.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/ListenerInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/Listener.php';
 
 /**
  *
