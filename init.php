@@ -106,7 +106,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Plugin/PluginTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/ResponderInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/ResponseInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/ListenerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/Listener.php';
