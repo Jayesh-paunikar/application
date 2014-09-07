@@ -24,7 +24,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-(new Application(include __DIR__ . '/../config/application.php'))->run();
+call_user_func(new Application(include __DIR__ . '/../config/application.php'));
 
 /**
  *
