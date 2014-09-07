@@ -20,7 +20,7 @@ $config = new Config([
 ]);
 ```
 ```php
-(new Application($config))->run();
+call_user_func(new Application($config));
 ```
 ##Benchmark
 *Current*
