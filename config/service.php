@@ -109,10 +109,10 @@ return [
     'Request'  => new service(Application\Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Application\Response\Response::class,
     'Response\Event' => new Hydrator(
-        Framework\Response\Response\Event::class,
+        Framework\Response\Event::class,
         ['setResponse' => new Dependency('Response')]
     ),
-    'Response\Listener' => Framework\Response\Response\Listener::class,
+    'Response\Listener' => Framework\Response\Listener::class,
     'Response\Manager'  => new Hydrator(
         Framework\Response\Manager\Manager::class,
         [
