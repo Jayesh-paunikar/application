@@ -57,14 +57,6 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
     ]
 ),
 ```
-```php
-'Mvc\SendResponse' => new Hydrator(
-  Framework\Mvc\SendResponse\Listener::class,
-  [
-    'setResponseManager' => new Dependency('Response\Manager')
-  ]
-),
-```
 The Dependency Injection <a href="https://github.com/mvc5/application/blob/master/config/service.php">Container</a> is an array containing the information about the services that it provides. Service configuration values can be string class names, `callable`, or configuration objects.
 ##Routes
 Routes are pre-compiled so that they can be immediately matched against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the <a href="https://github.com/mvc5/application/blob/master/config/route.php">route config</a> for example child routes.
@@ -90,7 +82,6 @@ The MVC event workflow is completely <a href="https://github.com/mvc5/applicatio
     ['Mvc\Dispatch'],
     ['Mvc\Layout'],
     ['Mvc\Render'],
-    ['Mvc\Response'],
-    ['Mvc\SendResponse']
+    ['Mvc\Response']
 ]
 ```
