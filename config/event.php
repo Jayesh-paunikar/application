@@ -9,16 +9,13 @@ return [
         ['Mvc\Dispatch'],
         ['Mvc\Layout'],
         ['Mvc\Render'],
-        ['Mvc\Response'],
-        ['Mvc\SendResponse']
+        ['Mvc\Response']
     ],
     'Response\Event' => [
+        ['Response\Listener']
         /*[function($event) {
-            var_dump(__FILE__, $event);
+            return $event->response();
         }]*/
-    ],
-    'Response\Send\Event' => [
-        ['Response\Send\Http']
     ],
     'View\Exception\Event' => [
         ['View\Exception\Listener'],

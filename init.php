@@ -2,8 +2,13 @@
 /**
  *
  */
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ParameterBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/FileBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ServerBag.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/HeaderBag.php';
 include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Request.php';
 include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ApacheRequest.php';
+include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/ResponseHeaderBag.php';
 include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php';
 
 /**
@@ -132,12 +137,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Response/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Response/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Response/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Mvc/SendResponse/ListenerInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Mvc/SendResponse/Listener.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/EventInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/ListenerInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Send/Listener.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Response/ListenerInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Response/Listener.php';
 
 /**
  *

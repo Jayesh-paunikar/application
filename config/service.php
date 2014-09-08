@@ -106,16 +106,14 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
-    'Mvc\SendResponse' => new Hydrator(
-        Framework\Mvc\SendResponse\Listener::class,
-        ['setResponseManager' => new Dependency('Response\Manager')]
+    'Request'  => new service(Application\Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
+    'Response' => Application\Response\Response::class,
+    'Response\Event' => new Hydrator(
+        Framework\Response\Response\Event::class,
+        ['setResponse' => new Dependency('Response')]
     ),
-    'Request' => new service(Application\Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
-    'Response'            => Application\Response\Response::class,
-    'Response\Event'      => Framework\Response\Response\Event::class,
-    'Response\Send\Event' => Framework\Response\Send\Event::class,
-    'Response\Send\Http'  => Framework\Response\Send\Listener::class,
-    'Response\Manager' => new Hydrator(
+    'Response\Listener' => Framework\Response\Response\Listener::class,
+    'Response\Manager'  => new Hydrator(
         Framework\Response\Manager\Manager::class,
         [
             'configuration' => new ConfigLink,
