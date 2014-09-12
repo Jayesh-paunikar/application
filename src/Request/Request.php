@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Request;
+namespace Request;
 
 use Symfony\Component\HttpFoundation\ApacheRequest as HttpRequest;
 

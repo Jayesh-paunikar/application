@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Response;
+namespace Response;
 
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 

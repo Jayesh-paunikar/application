@@ -43,10 +43,10 @@ return [
     ),
     'Home' => Framework\Controller\Controller\Event::class,
     'Home\Controller' => new Hydrator(
-        Application\Home\Controller::class,
+        Home\Controller::class,
         [
             'setViewModel' => new Hydrator(
-                Application\Home\ViewModel::class,
+                Home\ViewModel::class,
                 [
                     'setTemplate'    => new Param('view.templates.home'),
                     'setViewManager' => new Dependency('View\Manager')
@@ -106,8 +106,8 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
-    'Request'  => new service(Application\Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
-    'Response' => Application\Response\Response::class,
+    'Request'  => new service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
+    'Response' => Response\Response::class,
     'Response\Event' => new Hydrator(
         Framework\Response\Event::class,
         ['setResponse' => new Dependency('Response')]

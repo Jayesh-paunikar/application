@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Request;
+namespace Request;
 
 use Framework\Request\RequestInterface as Request;
 

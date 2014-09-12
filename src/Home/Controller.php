@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Home;
+namespace Home;
 
 use Framework\View\Model\ServiceTrait as ViewModel;
 

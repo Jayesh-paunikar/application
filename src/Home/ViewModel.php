@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Home;
+namespace Home;
 
 use Framework\View\Model\ModelTrait;
 use Framework\View\Plugin\PluginTrait;

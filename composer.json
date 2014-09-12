@@ -9,7 +9,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "./src"
+            "Home\\":     "./src/Home",
+            "Request\\":  "./src/Request",
+            "Response\\": "./src/Response"
         }
     }
 }
