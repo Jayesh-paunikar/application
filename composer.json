@@ -8,10 +8,8 @@
         "mvc5/framework": "@dev"
     },
     "autoload": {
-        "psr-4": {
-            "Home\\":     "./src/Home",
-            "Request\\":  "./src/Request",
-            "Response\\": "./src/Response"
+        "psr-0": {
+            "":     "./src"
         }
     }
 }
