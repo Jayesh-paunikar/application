@@ -38,18 +38,18 @@ return [
             'children' => [
                 'default' => Builder::definition([
                     'name'       => 'default',
-                    'route'       => '/[:a[/:b]]',
+                    'route'       => '/[:controller[/:action]]',
                     'defaults'   => [
-                        'a' => 'jack',
-                        'b' => 'jill'
+                        'controller' => 'index',
+                        'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    'controller' => function($a, $b) {
-                        var_dump($a, $b);
+                    'controller' => function($controller, $action) {
+                        var_dump($controller, $action, $this->get('Home\Controller'));
                     },
                     'constraints' => [
-                        'a' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'b' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                        'controller' => '[a-zA-Z0-9_-]',
+                        'action'     => '[0-9]'
                     ]
                 ])
             ],
