@@ -6,6 +6,12 @@
 return [
     'Mvc\Event' => [
         ['Mvc\Route'],
+        [
+            //demo dump route params
+            function($event) {
+                //var_dump($event->route()->params());
+            }
+        ],
         ['Mvc\Dispatch'],
         ['Mvc\Layout'],
         ['Mvc\Render'],

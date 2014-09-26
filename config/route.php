@@ -9,53 +9,48 @@ use Framework\Route\Definition\Definition;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 
-//use Framework\Route\Definition\Builder\Builder;
+use Framework\Route\Definition\Builder\Builder;
 /*var_export(Builder::definition([
-    'name'       => 'error',
-    'route'       => '/error',
-    'controller' => 'Controller\Error',
+    'name'       => 'default',
+    'route'       => '/[:controller[/:action]]',
+    'controller' => 'Home',
+    'constraints' => [
+        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*'
+    ],
+    'defaults' => [
+        'controller' => 'Home',
+        'action'     => 'index'
+    ]
 ]));
 exit;*/
 return [
     'definitions' => new Config([
-        'home' => new Definition([
-            'name'       => 'home',
-            'scheme'     => null,
-            'hostname'   => null,
-            'method'     => null,
+        'home' => Builder::definition([
+            'name'       => 'default',
             'route'       => '/',
-            'defaults'   => [],
-            'controller' => 'Home',
-            'paramMap'   => [],
-            'regex'      => '/',
-            'tokens'     => [['literal', '/']]
+            'controller' => 'Home'
         ]),
-        'application' => new Definition([
+        'application' => Builder::definition([
             'name'       => 'application',
-            'scheme'     => null,
-            'hostname'   => null,
-            'method'     => null,
-            'route'       => '/application',
-            'defaults'   => [],
+            'route'      => '/application',
             'controller' => 'Home',
             'children' => [
-                'default' => new Definition([
+                'default' => Builder::definition([
                     'name'       => 'default',
-                    'scheme'     => null,
-                    'method'     => null,
                     'route'       => '/[:a[/:b]]',
-                    'defaults'   => [],
-                    'wildcard'   => true,
+                    'defaults'   => [
+                        'a' => 'jack',
+                        'b' => 'jill'
+                    ],
+                    'wildcard'   => false,
                     'controller' => 'Home',
-                    'paramMap'   => ['param1' => 'a', 'param2' => 'b'],
-                    'constraints' => ['a' => '[a-zA-Z][a-zA-Z0-9_-]*', 'b' => '[a-zA-Z][a-zA-Z0-9_-]*'],
-                    'regex'      => '/(?:(?P<param1>[^/]+)(?:/(?P<param2>[^/]+))?)?',
-                    'tokens'     => [['literal', '/'], ['optional-start'], ['parameter', 'a', null], ['optional-start'], ['literal', '/', ], ['parameter', 'b', null], ['optional-end'], ['optional-end']]
+                    'constraints' => [
+                        'a' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'b' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ]
                 ])
             ],
-            'paramMap' => [],
-            'regex'    => '/application',
-            'tokens'   => [['literal', '/application']]
         ]),
         'error' => new Definition([
             'name'       => 'error',
