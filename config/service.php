@@ -8,6 +8,7 @@ use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config;
 use Framework\Service\Config\ConfigLink\ConfigLink;
 use Framework\Service\Config\Dependency\Dependency;
+use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
@@ -96,7 +97,7 @@ return [
                     new Args([
                         'hostname' => new Call('Request.getHost'),
                         'method'   => new Call('Request.getMethod'),
-                        'path'     => new Call('Request.getPathInfo'),
+                        'path'     => new Filter(new Call('Request.getPathInfo'), 'urldecode'),
                         'scheme'   => new Call('Request.getScheme')
                     ])
                 ]
