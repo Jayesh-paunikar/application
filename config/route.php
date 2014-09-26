@@ -44,7 +44,9 @@ return [
                         'b' => 'jill'
                     ],
                     'wildcard'   => false,
-                    'controller' => 'Home',
+                    'controller' => function($a, $b) {
+                        var_dump($a, $b);
+                    },
                     'constraints' => [
                         'a' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'b' => '[a-zA-Z][a-zA-Z0-9_-]*'
