@@ -48,6 +48,7 @@ return [
                     'wildcard'   => true,
                     'controller' => 'Home',
                     'paramMap'   => ['param1' => 'a', 'param2' => 'b'],
+                    'constraints' => ['a' => '[a-zA-Z][a-zA-Z0-9_-]*', 'b' => '[a-zA-Z][a-zA-Z0-9_-]*'],
                     'regex'      => '/(?:(?P<param1>[^/]+)(?:/(?P<param2>[^/]+))?)?',
                     'tokens'     => [['literal', '/'], ['optional-start'], ['parameter', 'a', null], ['optional-start'], ['literal', '/', ], ['parameter', 'b', null], ['optional-end'], ['optional-end']]
                 ])
