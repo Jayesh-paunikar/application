@@ -146,9 +146,12 @@ return [
         Framework\Route\Dispatch\Dispatch::class,
         ['setRouteManager' => new Dependency('Route\Manager')]
     ),
-    'Route\Dispatch\Event'   => Framework\Route\Dispatch\Event::class,
-    'Route\Dispatch\Filter'  => Framework\Route\Dispatch\Filter::class,
-    'Route\Generator'        => new Service(Framework\Route\Generator\Generator::class, [new Param('routes.definitions')]),
+    'Route\Dispatch\Event'  => Framework\Route\Dispatch\Event::class,
+    'Route\Dispatch\Filter' => Framework\Route\Dispatch\Filter::class,
+    'Route\Generator' => new Service(
+        Framework\Route\Generator\Generator::class,
+        [new Param('routes.definitions')]
+    ),
     'Route\Generator\Plugin' => new Hydrator(
         Framework\Route\Generator\Plugin::class,
         [
