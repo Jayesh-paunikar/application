@@ -22,7 +22,11 @@ include __DIR__ . '/vendor/mvc5/framework/src/Application/ApplicationInterface.p
 include __DIR__ . '/vendor/mvc5/framework/src/Config/ConfigTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManagerTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Provider/ProviderInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Provider/ProviderTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Provider/Provider.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/GeneratorTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManagerTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventsTrait.php';
@@ -32,7 +36,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/ConfigTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/Application.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/Container.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/FactoryInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ResolverInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Service/ServiceInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ConfigInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ConfigTrait.php';
@@ -67,9 +71,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/ServiceTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/ServiceFactory.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Request/RequestInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/RouteInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/Route.php';
@@ -152,6 +153,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/PluginInterface.ph
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Plugin.php';
+
 /**
  *
  */
@@ -163,6 +165,10 @@ include __DIR__ . '/src/Request/RequestInterface.php';
 include __DIR__ . '/src/Request/Request.php';
 include __DIR__ . '/src/Response/ResponseInterface.php';
 include __DIR__ . '/src/Response/Response.php';
+
+/**
+ *
+ */
 //include __DIR__ . '/src/Home/ViewModelInterface.php';
 //include __DIR__ . '/src/Home/ViewModel.php';
 //include __DIR__ . '/src/Home/ControllerInterface.php';

@@ -48,7 +48,7 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    /**'controller' => function() {
+                    /*'controller' => function() {
 
                         $vm = new ViewModel;
 
