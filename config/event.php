@@ -10,9 +10,6 @@ return [
     'Controller\Exception' => [
         ['Controller\Exception\Listener'],
     ],
-    'Controller\Error' => [
-        ['Controller\Error\Listener'],
-    ],
     'Mvc\Event' => [
         ['Mvc\Route'],
         ['Mvc\Dispatch'],
