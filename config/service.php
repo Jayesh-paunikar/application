@@ -29,14 +29,14 @@ return [
             )
         ]
     ),
-    'Controller\Event'     => new Service(Framework\Controller\Controller\Event::class),
     'Controller\Exception' => Framework\Controller\Exception\Event::class,
     'Controller\Exception\Listener' => new Hydrator(
         Framework\Controller\Exception\Listener::class,
         ['setViewModel' => new Dependency('View\Exception\ViewModel')]
     ),
-    'Controller\Listener' => new Hydrator(
-        Framework\Controller\Controller\Listener::class,
+    'Dispatch\Event'    => new Service(Framework\Controller\Dispatch\Event::class),
+    'Dispatch\Listener' => new Hydrator(
+        Framework\Controller\Dispatch\Listener::class,
         [
             'setControllerManager' => new Dependency('Controller\Manager')
         ]

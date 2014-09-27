@@ -4,8 +4,8 @@
  */
 
 return [
-    'Controller\Event' => [
-        ['Controller\Listener']
+    'Dispatch\Event' => [
+        ['Dispatch\Listener']
     ],
     'Controller\Exception' => [
         ['Controller\Exception\Listener'],
