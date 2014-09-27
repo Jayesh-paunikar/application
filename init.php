@@ -112,10 +112,10 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModelInterface.php
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Plugin/PluginTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModel.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/EventInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/ListenerInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/Listener.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/EventInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Event.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/ListenerInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Listener.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ListenerInterface.php';
