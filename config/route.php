@@ -49,9 +49,8 @@ return [
                     ],
                     'wildcard'   => false,
                     'controller' => function() {
-                        /** @var Home\ViewModel $vm */
 
-                        $vm = $this->get(Home\ViewModel::class);
+                        $vm = new ViewModel;
 
                         $vm->setTemplate(__DIR__ . '/../view/home/index.phtml');
 
