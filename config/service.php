@@ -34,19 +34,19 @@ return [
         Framework\Controller\Exception\Listener::class,
         ['setViewModel' => new Dependency('View\Exception\ViewModel')]
     ),
-    'Dispatch\Event'    => new Service(Framework\Controller\Dispatch\Event::class),
-    'Dispatch\Listener' => new Hydrator(
-        Framework\Controller\Dispatch\Listener::class,
-        [
-            'setControllerManager' => new Dependency('Controller\Manager')
-        ]
-    ),
     'Controller\Manager' => new Hydrator(
         Framework\Controller\Manager\Manager::class,
         [
             'configuration' => new ConfigLink,
             'events'        => new Param('events'),
             'services'      => new Param('services')
+        ]
+    ),
+    'Dispatch\Event'    => new Service(Framework\Controller\Dispatch\Event::class),
+    'Dispatch\Listener' => new Hydrator(
+        Framework\Controller\Dispatch\Listener::class,
+        [
+            'setControllerManager' => new Dependency('Controller\Manager')
         ]
     ),
     'Home' => new Hydrator(
