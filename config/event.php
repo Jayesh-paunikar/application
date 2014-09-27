@@ -4,11 +4,11 @@
  */
 
 return [
-    'Dispatch\Event' => [
-        ['Dispatch\Listener']
-    ],
     'Controller\Exception\Event' => [
         ['Controller\Exception\Listener'],
+    ],
+    'Dispatch\Event' => [
+        ['Dispatch\Listener']
     ],
     'Mvc\Event' => [
         ['Mvc\Route'],
