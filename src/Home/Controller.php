@@ -15,8 +15,24 @@ class Controller
     /**
      * @return mixed
      */
+    public function test()
+    {
+        $vm = $this->viewModel();
+
+        $vm->args = func_get_args();
+
+        return $vm;
+    }
+
+    /**
+     * @return mixed
+     */
     public function __invoke()
     {
-        return $this->viewModel();
+        $vm = $this->viewModel();
+
+        $vm->args = func_get_args() ? : null;
+
+        return $vm;
     }
 }

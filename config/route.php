@@ -9,10 +9,10 @@ use Framework\Route\Definition\Definition;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 
-//demo route controller function
+//demo route controller
 use Framework\View\Model\Model as ViewModel;
 
-//route builder
+//demo route builder
 use Framework\Route\Definition\Builder\Builder;
 /*var_export(Builder::definition([
     'name'       => 'default',
@@ -48,7 +48,7 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    'controller' => function() {
+                    /**'controller' => function() {
 
                         $vm = new ViewModel;
 
@@ -57,10 +57,12 @@ return [
                         $vm->args = func_get_args();
 
                         return $vm;
-                    },
+                    },*/
+                    //'controller' => 'Home',
+                    'controller' => 'Home.test',
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
-                        'action'     => '[0-9]'
+                        'action'     => '[0-9]' //needs fixing?
                     ]
                 ])
             ],

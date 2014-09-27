@@ -113,7 +113,7 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
-    'Request'  => new service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
+    'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
     'Response\Event' => new Hydrator(
         Framework\Response\Event::class,
