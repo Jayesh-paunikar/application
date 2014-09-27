@@ -29,7 +29,7 @@ return [
             )
         ]
     ),
-    'Controller\Exception' => Framework\Controller\Exception\Event::class,
+    'Controller\Exception\Event'    => Framework\Controller\Exception\Event::class,
     'Controller\Exception\Listener' => new Hydrator(
         Framework\Controller\Exception\Listener::class,
         ['setViewModel' => new Dependency('View\Exception\ViewModel')]

@@ -7,7 +7,7 @@ return [
     'Dispatch\Event' => [
         ['Dispatch\Listener']
     ],
-    'Controller\Exception' => [
+    'Controller\Exception\Event' => [
         ['Controller\Exception\Listener'],
     ],
     'Mvc\Event' => [
