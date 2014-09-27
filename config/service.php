@@ -16,10 +16,10 @@ use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 return [
-    'Controller\Error' => Framework\Controller\Error\Event::class,
-    'Controller\Error\Listener' => new Hydrator(
-        Framework\Controller\Error\Listener::class,
+    'Controller\Error' => new Hydrator(
+        Framework\Controller\Error\Controller::class,
         [
+            'setResponse'  => new Dependency('Response'),
             'setViewModel' => new Hydrator(
                 Framework\Controller\Error\ViewModel::class,
                 [
@@ -29,21 +29,27 @@ return [
             )
         ]
     ),
+    'Controller\Event'     => new Service(Framework\Controller\Controller\Event::class),
     'Controller\Exception' => Framework\Controller\Exception\Event::class,
     'Controller\Exception\Listener' => new Hydrator(
         Framework\Controller\Exception\Listener::class,
         ['setViewModel' => new Dependency('View\Exception\ViewModel')]
     ),
+    'Controller\Listener' => new Hydrator(
+        Framework\Controller\Controller\Listener::class,
+        [
+            'setControllerManager' => new Dependency('Controller\Manager')
+        ]
+    ),
     'Controller\Manager' => new Hydrator(
         Framework\Controller\Manager\Manager::class,
         [
             'configuration' => new ConfigLink,
-            'events'        => new Param('controllers'),
+            'events'        => new Param('events'),
             'services'      => new Param('services')
         ]
     ),
-    'Home' => Framework\Controller\Controller\Event::class,
-    'Home\Controller' => new Hydrator(
+    'Home' => new Hydrator(
         Home\Controller::class,
         [
             'setViewModel' => new Hydrator(

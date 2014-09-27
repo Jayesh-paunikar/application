@@ -40,6 +40,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Service/Service.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/ParamInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/Param.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Filter/FilterInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Filter/Filter.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invoke/InvokeInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invoke/Invoke.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Dependency/DependencyInterface.php';
@@ -105,12 +107,19 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ModelInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ViewModelInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ModelTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/LayoutInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModelInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Plugin/PluginTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/Event.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/ListenerInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Controller/Listener.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/EventInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Event.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ListenerInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Listener.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/ResponseInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/ListenerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/Listener.php';
@@ -139,10 +148,17 @@ include __DIR__ . '/vendor/mvc5/framework/src/Response/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/ListenerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Listener.php';
-
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/PluginInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/ServiceTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/ServiceTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Plugin.php';
 /**
  *
  */
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/BuilderInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/Builder.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GeneratorInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Generator.php';
 include __DIR__ . '/src/Request/RequestInterface.php';
 include __DIR__ . '/src/Request/Request.php';
 include __DIR__ . '/src/Response/ResponseInterface.php';

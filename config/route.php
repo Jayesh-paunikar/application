@@ -9,6 +9,10 @@ use Framework\Route\Definition\Definition;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 
+//demo route controller function
+use Framework\View\Model\Model as ViewModel;
+
+//route builder
 use Framework\Route\Definition\Builder\Builder;
 /*var_export(Builder::definition([
     'name'       => 'default',
@@ -44,8 +48,16 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    'controller' => function($controller, $action) {
-                        var_dump($controller, $action, $this->get('Home\Controller'));
+                    'controller' => function() {
+                        /** @var Home\ViewModel $vm */
+
+                        $vm = $this->get(Home\ViewModel::class);
+
+                        $vm->setTemplate(__DIR__ . '/../view/home/index.phtml');
+
+                        $vm->args = func_get_args();
+
+                        return $vm;
                     },
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
