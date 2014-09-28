@@ -30,9 +30,9 @@ use Framework\Route\Definition\Builder\Builder;
 exit;*/
 
 //demo route controller
-//function home() {
-    //var_dump(__FILE__, func_get_args());
-//}
+function home2() {
+    var_dump(__FILE__, func_get_args());
+}
 return [
     'definitions' => new Config([
         'home' => Builder::definition([
@@ -65,6 +65,7 @@ return [
                     },*/
                     //'controller' => 'Home', //this will use home() if it exists !?!
                     'controller' => 'Home.test',
+                    //'controller' => new Service('Home'),
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
                         'action'     => '[0-9]' //needs fixing?
