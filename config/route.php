@@ -47,7 +47,7 @@ return [
             'children' => [
                 'default' => Builder::definition([
                     'name'       => 'default',
-                    'route'       => '/[:controller[/:action]]',
+                    'route'       => '/:controller[/:action]',
                     'defaults'   => [
                         'controller' => 'index',
                         'action'     => 'index'
