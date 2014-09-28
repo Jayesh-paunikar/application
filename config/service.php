@@ -167,12 +167,12 @@ return [
             'services'      => new Param('services')
         ]
     ),
-    'Route\Match\Event'    => Framework\Route\Match\Event::class,
-    'Route\Match\Hostname' => Framework\Route\Match\Hostname\Hostname::class,
-    'Route\Match\Method'   => Framework\Route\Match\Method\Method::class,
-    'Route\Match\Path'     => Framework\Route\Match\Path\Path::class,
-    'Route\Match\Scheme'   => Framework\Route\Match\Scheme\Scheme::class,
-    'Route\Match\Wildcard' => Framework\Route\Match\Wildcard\Wildcard::class,
+    'Route\Match\Event'       => Framework\Route\Match\Event::class,
+    'Route\Match\Hostname'    => Framework\Route\Match\Hostname\Hostname::class,
+    'Route\Match\Method'      => Framework\Route\Match\Method\Method::class,
+    'Route\Match\Path'        => Framework\Route\Match\Path\Path::class,
+    'Route\Match\Scheme'      => Framework\Route\Match\Scheme\Scheme::class,
+    'Route\Match\Wildcard'    => Framework\Route\Match\Wildcard\Wildcard::class,
     'View\Exception\Event'    => Framework\View\Exception\Event::class,
     'View\Exception\Listener' => new Hydrator(
         Framework\View\Exception\Listener::class,
