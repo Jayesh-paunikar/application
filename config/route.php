@@ -28,6 +28,11 @@ use Framework\Route\Definition\Builder\Builder;
     ]
 ]));
 exit;*/
+
+//demo route controller
+//function home() {
+    //var_dump(__FILE__, func_get_args());
+//}
 return [
     'definitions' => new Config([
         'home' => Builder::definition([
@@ -38,7 +43,7 @@ return [
         'application' => Builder::definition([
             'name'       => 'application',
             'route'      => '/application',
-            'controller' => 'Home',
+            'controller' => 'Home', //this will use home() if it exists !?!
             'children' => [
                 'default' => Builder::definition([
                     'name'       => 'default',
@@ -58,7 +63,7 @@ return [
 
                         return $vm;
                     },*/
-                    //'controller' => 'Home',
+                    //'controller' => 'Home', //this will use home() if it exists !?!
                     'controller' => 'Home.test',
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
