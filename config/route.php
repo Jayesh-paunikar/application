@@ -37,7 +37,7 @@ return [
     'definitions' => new Config([
         'home' => Builder::definition([
             'name'       => 'default',
-            'route'       => '/',
+            'route'      => '/',
             'controller' => 'Home'
         ]),
         'application' => Builder::definition([
@@ -47,7 +47,7 @@ return [
             'children' => [
                 'default' => Builder::definition([
                     'name'       => 'default',
-                    'route'       => '/:controller[/:action]',
+                    'route'      => '/:controller[/:action]',
                     'defaults'   => [
                         'controller' => 'index',
                         'action'     => 'index'
@@ -75,7 +75,7 @@ return [
         ]),
         'error' => new Definition([
             'name'       => 'error',
-            'route'       => '/error',
+            'route'      => '/error',
             'controller' => 'Controller\Error',
             'regex'      => '/error',
             'tokens'     => [['literal', '/error']]
