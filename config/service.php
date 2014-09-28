@@ -8,6 +8,7 @@ use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config;
 use Framework\Service\Config\ConfigLink\ConfigLink;
 use Framework\Service\Config\Dependency\Dependency;
+use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
@@ -49,6 +50,9 @@ return [
             'setControllerManager' => new Dependency('Controller\Manager')
         ]
     ),
+    //'Factory' => new Config([
+        //'args' => [new ServiceManagerLink]
+    //]),
     'Home' => new Hydrator(
         Home\Controller::class,
         [
@@ -61,6 +65,7 @@ return [
             )
         ]
     ),
+    //'Home' => new Factory(Home\Factory::class),
     'Layout' => new Hydrator(
         Framework\View\Layout\ViewModel::class,
         [
