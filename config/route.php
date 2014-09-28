@@ -75,13 +75,8 @@ return [
         ]),
         'error' => new Definition([
             'name'       => 'error',
-            'scheme'     => null,
-            'hostname'   => null,
-            'method'     => null,
             'route'       => '/error',
-            'defaults'   => [],
             'controller' => 'Controller\Error',
-            'paramMap'   => [],
             'regex'      => '/error',
             'tokens'     => [['literal', '/error']]
         ])
