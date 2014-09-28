@@ -81,7 +81,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Route/ListenerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Route/Listener.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/InstanceFactory.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/FilterInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Filter.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/DispatchInterface.php';
