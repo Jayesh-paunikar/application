@@ -84,7 +84,11 @@ return [
         //],
         'Controller\Manager.dispatch',
         [
-            new Dependency('Route'), new Args([new Dependency('Request'), new Dependency('Response')])
+            new Dependency('Route'),
+            new Args([
+                'Request'  => new Dependency('Request'),
+                'Response' => new Dependency('Response')
+            ])
        ]
     ),*/
     'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
