@@ -22,7 +22,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Application/ApplicationInterface.p
 include __DIR__ . '/vendor/mvc5/framework/src/Config/ConfigTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManagerTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Provider/ProviderInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Provider/ProviderTrait.php';
