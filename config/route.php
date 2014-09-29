@@ -6,6 +6,9 @@
 use Framework\Config\Config;
 use Framework\Event\Config\Config as Events;
 use Framework\Route\Definition\Definition;
+use Framework\Service\Config\Config as ServiceConfig;
+use Framework\Service\Config\Dependency\Dependency;
+use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 
@@ -66,6 +69,19 @@ return [
                     //'controller' => 'Home', //this will use home() if it exists !?!
                     'controller' => 'Home.test',
                     //'controller' => new Service('Home'), //this won't
+                    /*'controller' => new ServiceConfig([
+                        'name' => Home\Controller::class,
+                        'args' => ['test2.2'],
+                        'calls' => [
+                            'setViewModel' => new Hydrator(
+                                Home\ViewModel::class,
+                                [
+                                    'setTemplate'    => new Param('view.templates.home'),
+                                    'setViewManager' => new Dependency('View\Manager')
+                                ]
+                            )
+                        ]
+                    ]),*/
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
                         'action'     => '[0-9]' //needs fixing?
