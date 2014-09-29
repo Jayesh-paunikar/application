@@ -78,7 +78,7 @@ return [
         ['setControllerManager' => new Dependency('Controller\Manager')]
     ),
     //alternatively create an anonymous on the fly
-    'Mvc\Dispatch' => new Invoke(
+    /*'Mvc\Dispatch' => new Invoke(
         [
             new Dependency('Controller\Manager'), 'dispatch'
         ],
@@ -89,7 +89,7 @@ return [
                 'Response' => new Dependency('Response')
             ])
        ]
-    ),
+    ),*/
     'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
     'Mvc\Layout' => new Hydrator(
         Framework\Mvc\Layout\Listener::class,
