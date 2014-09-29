@@ -8,9 +8,11 @@ use Framework\Event\Config\Config as Events;
 use Framework\Route\Definition\Definition;
 use Framework\Service\Config\Config as ServiceConfig;
 use Framework\Service\Config\Dependency\Dependency;
+use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
+use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
 use Framework\View\Model\Model as ViewModel;
@@ -67,17 +69,19 @@ return [
                         return $vm;
                     },*/
                     //'controller' => 'Home', //this will use home() if it exists !?!
-                    'controller' => 'Home.test',
+                    'controller' => '@Home.test',
+                    //'controller' => new Factory(Home\Factory::class),
+                    //'controller' => Home\Factory::class,
                     //'controller' => new Service('Home'), //this won't
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
-                        'args' => ['test2.2'],
+                        'args' => ['*ServiceManager'],
                         'calls' => [
                             'setViewModel' => new Hydrator(
                                 Home\ViewModel::class,
                                 [
-                                    'setTemplate'    => new Param('view.templates.home'),
-                                    'setViewManager' => new Dependency('View\Manager')
+                                    'setTemplate'    => '%view.templates.home',
+                                    'setViewManager' => '#View\Manager'
                                 ]
                             )
                         ]
@@ -111,11 +115,11 @@ return [
             [
                 'Route\Dispatch\Filter',
 
-                new Service('Route\Dispatch', [new Param('routes.definitions.home')]),
+                new Service('Route\Dispatch', ['%routes.definitions.home']),
 
-                new Service('Route\Dispatch', [new Param('routes.definitions.application')]),
+                new Service('Route\Dispatch', ['%routes.definitions.application']),
 
-                new Service('Route\Dispatch', [new Param('routes.definitions.error')])
+                new Service('Route\Dispatch', ['%routes.definitions.error'])
             ]
         ]
     ])
