@@ -4,23 +4,28 @@
  */
 
 use Framework\Service\Config\Args\Args;
+use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config;
+use Framework\Service\Config\ConfigLink\ConfigLink;
+use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
+use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
+use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 return [
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [
-            'setResponse'  => '#Response',
+            'setResponse'  => new Dependency('Response'),
             'setViewModel' => new Hydrator(
                 Framework\Controller\Error\ViewModel::class,
                 [
-                    'setTemplate'    => '%view.templates.error/404',
-                    'setViewManager' => '#View\Manager'
+                    'setTemplate'    => new Param('view.templates.error/404'),
+                    'setViewManager' => new Dependency('View\Manager')
                 ]
             )
         ]
@@ -28,25 +33,25 @@ return [
     'Controller\Exception\Event'    => Framework\Controller\Exception\Event::class,
     'Controller\Exception\Listener' => new Hydrator(
         Framework\Controller\Exception\Listener::class,
-        ['setViewModel' => '#View\Exception\ViewModel']
+        ['setViewModel' => new Dependency('View\Exception\ViewModel')]
     ),
     'Controller\Manager' => new Hydrator(
         Framework\Controller\Manager\Manager::class,
         [
-            'configuration' => '*Config',
-            'events'        => '%events',
-            'services'      => '%services'
+            'configuration' => new ConfigLink,
+            'events'        => new Param('events'),
+            'services'      => new Param('services')
         ]
     ),
     'Dispatch\Event'    => Framework\Controller\Dispatch\Event::class,
     'Dispatch\Listener' => new Hydrator(
         Framework\Controller\Dispatch\Listener::class,
         [
-            'setControllerManager' => '#Controller\Manager'
+            'setControllerManager' => new Dependency('Controller\Manager')
         ]
     ),
     'Factory' => new Config([
-        'args' => ['*ServiceManager']
+        'args' => [new ServiceManagerLink]
     ]),
     'Home' => new Hydrator(
         Home\Controller::class,
@@ -54,8 +59,8 @@ return [
             'setViewModel' => new Hydrator(
                 Home\ViewModel::class,
                 [
-                    'setTemplate'    => '%view.templates.home',
-                    'setViewManager' => '#View\Manager'
+                    'setTemplate'    => new Param('view.templates.home'),
+                    'setViewManager' => new Dependency('View\Manager')
                 ]
             )
         ]
@@ -64,40 +69,39 @@ return [
     'Layout' => new Hydrator(
         Framework\View\Layout\ViewModel::class,
         [
-            'setTemplate'    => '%view.templates.layout',
-            'setViewManager' => '#View\Manager'
+            'setTemplate'    => new Param('view.templates.layout'),
+            'setViewManager' => new Dependency('View\Manager')
         ]
     ),
     'Mvc\Dispatch' => new Hydrator(
         Framework\Mvc\Dispatch\Listener::class,
-        ['setControllerManager' => '#Controller\Manager']
+        ['setControllerManager' => new Dependency('Controller\Manager')]
     ),
     //alternatively create an anonymous on the fly
-    /*'Mvc\Dispatch' => new Invoke(
-        //[
-            //'#Controller\Manager', 'dispatch'
-        //],
-        'Controller\Manager.dispatch',
+    'Mvc\Dispatch' => new Invoke(
         [
-            '#Route',
+            new Dependency('Controller\Manager'), 'dispatch'
+        ],
+        [
+            new Dependency('Route'),
             new Args([
-                'Request'  => '#Request',
-                'Response' => '#Response'
+                'Request'  => new Dependency('Request'),
+                'Response' => new Dependency('Response')
             ])
        ]
-    ),*/
-    'Mvc\Event' => new Service(Framework\Mvc\Event::class, ['*ServiceManager']),
+    ),
+    'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
     'Mvc\Layout' => new Hydrator(
         Framework\Mvc\Layout\Listener::class,
-        ['setViewModel' => '#Layout']
+        ['setViewModel' => new Dependency('Layout')]
     ),
     'Mvc\Render' => new Hydrator(
         Framework\Mvc\Render\Listener::class,
-        ['setViewManager' => '#View\Manager']
+        ['setViewManager' => new Dependency('View\Manager')]
     ),
     'Mvc\Response' => new Hydrator(
         Framework\Mvc\Response\Listener::class,
-        ['setResponseManager' => '#Response\Manager']
+        ['setResponseManager' => new Dependency('Response\Manager')]
     ),
     'Mvc\Route' => new Config([
         'name' => Framework\Mvc\Route\Listener::class,
@@ -106,69 +110,69 @@ return [
                 'Route',
                 [
                     new Args([
-                        'hostname' => '@Request.getHost',
-                        'method'   => '@Request.getMethod',
-                        'path'     => new Filter('@Request.getPathInfo', 'urldecode'),
-                        'scheme'   => '@Request.getScheme'
+                        'hostname' => new Call('Request.getHost'),
+                        'method'   => new Call('Request.getMethod'),
+                        'path'     => new Filter(new Call('Request.getPathInfo'), 'urldecode'),
+                        'scheme'   => new Call('Request.getScheme')
                     ])
                 ]
             )
         ],
         'calls' => [
-            'setRouteManager' => '#Route\Manager'
+            'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
     'Response\Event' => new Hydrator(
         Framework\Response\Event::class,
-        ['setResponse' => '#Response']
+        ['setResponse' => new Dependency('Response')]
     ),
     'Response\Listener' => Framework\Response\Listener::class,
     'Response\Manager'  => new Hydrator(
         Framework\Response\Manager\Manager::class,
         [
-            'configuration' => '*Config',
-            'events'        => '%events',
-            'services'      => '%services'
+            'configuration' => new ConfigLink,
+            'events'        => new Param('events'),
+            'services'      => new Param('services')
         ]
     ),
     'Route' => new Service(
         Framework\Route\Route\Route::class,
         [
             new Args([
-                'controller' => '%routes.definitions.error.controller',
-                'hostname'   => '@Request.getHost',
-                'method'     => '@Request.getMethod',
-                'name'       => '%routes.definitions.error.name',
-                'path'       => '@Request.getPathInfo',
-                'scheme'     => '@Request.getScheme'
+                'controller' => new Param('routes.definitions.error.controller'),
+                'hostname'   => new Call('Request.getHost'),
+                'method'     => new Call('Request.getMethod'),
+                'name'       => new Param('routes.definitions.error.name'),
+                'path'       => new Call('Request.getPathInfo'),
+                'scheme'     => new Call('Request.getScheme')
             ])
         ]
     ),
     'Route\Dispatch' => new Hydrator(
         Framework\Route\Dispatch\Dispatch::class,
-        ['setRouteManager' => '#Route\Manager']
+        ['setRouteManager' => new Dependency('Route\Manager')]
     ),
     'Route\Dispatch\Event'  => Framework\Route\Dispatch\Event::class,
     'Route\Dispatch\Filter' => Framework\Route\Dispatch\Filter::class,
     'Route\Generator' => new Service(
         Framework\Route\Generator\Generator::class,
-        ['%routes.definitions']
+        [new Param('routes.definitions')]
     ),
     'Route\Generator\Plugin' => new Hydrator(
         Framework\Route\Generator\Plugin::class,
         [
-            'setRoute'          => '#Route',
-            'setRouteGenerator' => '#Route\Generator'
+            'setRoute'          => new Dependency('Route'),
+            'setRouteGenerator' => new Dependency('Route\Generator')
         ]
     ),
     'Route\Manager' => new Hydrator(
         Framework\Route\Manager\Manager::class,
         [
-            'configuration' => '*Config',
-            'events'        => '%routes.events',
-            'services'      => '%services'
+            'configuration' => new ConfigLink,
+            'events'        => new Param('routes.events'),
+            'services'      => new Param('services')
         ]
     ),
     'Route\Match\Event'       => Framework\Route\Match\Event::class,
@@ -181,21 +185,21 @@ return [
     'View\Exception\Listener' => new Hydrator(
         Framework\View\Exception\Listener::class,
         [
-            'setViewManager' => '#View\Manager',
-            'setViewModel'   => '#View\Exception\ViewModel'
+            'setViewManager' => new Dependency('View\Manager'),
+            'setViewModel'   => new Dependency('View\Exception\ViewModel')
         ]
     ),
     'View\Exception\ViewModel' => new Hydrator(
         Framework\View\Exception\ViewModel::class,
-        ['setTemplate' => '%view.templates.error/exception']
+        ['setTemplate' => new Param('view.templates.error/exception')]
     ),
     'View\Manager' => new Hydrator(
         Framework\View\Manager\Manager::class,
         [
-            'aliases'       => '%view.aliases',
-            'events'        => '%events',
-            'configuration' => '*Config',
-            'services'      => '%services'
+            'aliases'       => new Param('view.aliases'),
+            'events'        => new Param('events'),
+            'configuration' => new ConfigLink,
+            'services'      => new Param('services')
         ]
     ),
     'View\Model'        => Framework\View\Model\Model::class,

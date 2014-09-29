@@ -75,13 +75,13 @@ return [
                     //'controller' => new Service('Home'), //this won't
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
-                        'args' => ['*ServiceManager'],
+                        'args' => [new ServiceManagerLink],
                         'calls' => [
                             'setViewModel' => new Hydrator(
                                 Home\ViewModel::class,
                                 [
-                                    'setTemplate'    => '%view.templates.home',
-                                    'setViewManager' => '#View\Manager'
+                                    'setTemplate'    => new Param('view.templates.home'),
+                                    'setViewManager' => new Dependency('View\Manager')
                                 ]
                             )
                         ]
@@ -115,11 +115,11 @@ return [
             [
                 'Route\Dispatch\Filter',
 
-                new Service('Route\Dispatch', ['%routes.definitions.home']),
+                new Service('Route\Dispatch', [new Param('routes.definitions.home')]),
 
-                new Service('Route\Dispatch', ['%routes.definitions.application']),
+                new Service('Route\Dispatch', [new Param('routes.definitions.application')]),
 
-                new Service('Route\Dispatch', ['%routes.definitions.error'])
+                new Service('Route\Dispatch', [new Param('routes.definitions.error')])
             ]
         ]
     ])
