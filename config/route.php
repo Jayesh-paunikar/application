@@ -73,7 +73,9 @@ return [
                         return $vm;
                     },*/
                     //'controller' => 'Home',
-                    'controller' => '@Home.test', //@Home calls home() if it exists
+                    //'controller' => '@Home', //calls home() if it exists
+                    //'controller' => '@Home.test',
+                    //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
                     //'controller' => [new Dependency('Home'), 'test'],
@@ -91,8 +93,9 @@ return [
                                 [
                                     'setTemplate'    => new Param('view.templates.home'),
                                     'setViewManager' => new Dependency('View\Manager'),
-                                    //['setTemplate', ['staticA', 'staticB']]
-                                    [['Home\Controller', 'staticCall'], ['staticA', 'staticB']]
+                                    //['setTemplate', ['staticA', 'staticB']],
+                                    [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
+                                    //['Home\Controller', 'staticCall']
                                 ]
                             )
                         ]
