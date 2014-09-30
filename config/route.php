@@ -75,9 +75,11 @@ return [
                     //'controller' => 'Home',
                     'controller' => '@Home.test', //@Home calls home() if it exists
                     //'controller' => '@Home\Controller::staticTest',
-                    //'controller' => [['Home\Controller', 'staticTest']],
+                    //'controller' => ['Home\Controller', 'staticTest'],
+                    //'controller' => 'Home\Controller::staticTest',
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
+                    //'controller' => new Invoke([new Service('Home'), 'test']),
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
                         'args' => [new ServiceManagerLink],
@@ -86,12 +88,13 @@ return [
                                 Home\ViewModel::class,
                                 [
                                     'setTemplate'    => new Param('view.templates.home'),
-                                    'setViewManager' => new Dependency('View\Manager')
+                                    'setViewManager' => new Dependency('View\Manager'),
+                                    //['setTemplate', ['staticA', 'staticB']]
+                                    [['Home\Controller', 'staticCall'], ['staticA', 'staticB']]
                                 ]
                             )
                         ]
                     ]),*/
-                    //'controller' => new Invoke([new Service('Home'), 'test']),
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
                         'action'     => '[0-9]' //needs fixing?

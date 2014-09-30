@@ -15,8 +15,18 @@ class Controller
     /**
      * @return mixed
      */
+    public static function staticCall()
+    {
+        var_dump(__FUNCTION__.':'.__FILE__,func_get_args());
+    }
+
+    /**
+     * @return mixed
+     */
     public static function staticTest()
     {
+        var_dump(__FUNCTION__.':'.__FILE__,func_get_args());
+
         $viewManager = null; //error - no di
 
         $vm = new ViewModel;
