@@ -37,9 +37,9 @@ use Framework\Route\Definition\Builder\Builder;
 exit;*/
 
 //demo route controller
-/*function home() {
-    var_dump(__FILE__, func_get_args());
-}*/
+//function home() {
+    //var_dump(__FILE__, func_get_args());
+//}
 return [
     'definitions' => new Config([
         'home' => Builder::definition([
@@ -72,11 +72,10 @@ return [
 
                         return $vm;
                     },*/
-                    //'controller' => 'Home', //if no config is found then home() will be called if it exists
-                    'controller' => '@Home.test',
+                    //'controller' => 'Home',
+                    'controller' => '@Home.test', //@Home calls home() if it exists
                     //'controller' => new Factory(Home\Factory::class),
-                    //'controller' => Home\Factory::class, //error - sm needed in constructor
-                    //'controller' => new Service('Home'), //this won't call home()
+                    //'controller' => new Service('Home'),
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
                         'args' => [new ServiceManagerLink],
