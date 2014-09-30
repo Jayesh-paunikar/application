@@ -76,7 +76,8 @@ return [
                     'controller' => '@Home.test', //@Home calls home() if it exists
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
-                    //'controller' => 'Home\Controller::staticTest',
+                    //'controller' => [new Dependency('Home'), 'test'],
+                    //'controller' => 'Home\Controller::staticTest', //error
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
                     //'controller' => new Invoke([new Service('Home'), 'test']),
