@@ -76,7 +76,7 @@ return [
                     'controller' => '@Home.test',
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => Home\Factory::class, //error - sm needed in constructor
-                    //'controller' => new Service('Home'), //this won't
+                    //'controller' => new Service('Home'), //this won't call home()
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
                         'args' => [new ServiceManagerLink],
