@@ -50,7 +50,7 @@ return [
         'application' => Builder::definition([
             'name'       => 'application',
             'route'      => '/application',
-            'controller' => 'Home', //this will use home() if it exists !?!
+            'controller' => 'Home',
             'children' => [
                 'default' => Builder::definition([
                     'name'       => 'default',
