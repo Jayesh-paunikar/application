@@ -6,10 +6,12 @@
 use Framework\Config\Config;
 use Framework\Event\Config\Config as Events;
 use Framework\Route\Definition\Definition;
+use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config as ServiceConfig;
 use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Hydrator\Hydrator;
+use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
@@ -35,9 +37,9 @@ use Framework\Route\Definition\Builder\Builder;
 exit;*/
 
 //demo route controller
-//function home() {
-    //var_dump(__FILE__, func_get_args());
-//}
+/*function home() {
+    var_dump(__FILE__, func_get_args());
+}*/
 return [
     'definitions' => new Config([
         'home' => Builder::definition([
@@ -59,10 +61,12 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function() {
+                        $config      = $this->config();
+                        $viewManager = $this->get('View\Manager');
 
-                        $vm = new ViewModel;
-
-                        $vm->setTemplate(__DIR__ . '/../view/home/index.phtml');
+                        $vm = new Home\ViewModel;
+                        $vm->setTemplate($config->get('view')->get('templates')['home']); //nicer if had $this->param()
+                        $vm->setViewManager($viewManager);
 
                         $vm->args = func_get_args();
 
@@ -71,7 +75,7 @@ return [
                     //'controller' => 'Home', //this will use home() if it exists !?!
                     'controller' => '@Home.test',
                     //'controller' => new Factory(Home\Factory::class),
-                    //'controller' => Home\Factory::class,
+                    //'controller' => Home\Factory::class, //error - sm needed in constructor
                     //'controller' => new Service('Home'), //this won't
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
@@ -86,6 +90,7 @@ return [
                             )
                         ]
                     ]),*/
+                    //'controller' => new Invoke([new Service('Home'), 'test']),
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
                         'action'     => '[0-9]' //needs fixing?
