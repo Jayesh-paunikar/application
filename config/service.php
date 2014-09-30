@@ -47,6 +47,11 @@ return [
     'Factory' => new Config([
         'args' => [new ServiceManagerLink]
     ]),
+    'Form' => new Config([
+        'calls' => [
+            'setViewManager' => new Dependency('View\Manager'),
+        ]
+    ]),
     'Home' => new Hydrator(
         Home\Controller::class,
         [
