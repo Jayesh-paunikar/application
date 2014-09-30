@@ -72,7 +72,7 @@ return [
 
                         return $vm;
                     },*/
-                    //'controller' => 'Home', //this will use home() if it exists !?!
+                    //'controller' => 'Home', //if no config is found then home() will be called if it exists
                     'controller' => '@Home.test',
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => Home\Factory::class, //error - sm needed in constructor
