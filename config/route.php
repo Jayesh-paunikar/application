@@ -73,7 +73,9 @@ return [
                         return $vm;
                     },*/
                     //'controller' => 'Home',
-                    'controller' => '@Home.test', //@Home calls home() if it exists
+                    //'controller' => '@Home.test', //@Home calls home() if it exists
+                    //'controller' => '@Home\Controller::staticTest',
+                    //'controller' => [['Home\Controller', 'staticTest']],
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
                     /*'controller' => new ServiceConfig([

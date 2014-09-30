@@ -2,7 +2,7 @@
 
 namespace Home;
 
-use Framework\View\Model\ServiceTrait as ViewModel;
+use Framework\View\Model\ServiceTrait as View;
 
 class Controller
     implements ControllerInterface
@@ -10,7 +10,23 @@ class Controller
     /**
      *
      */
-    use ViewModel;
+    use View;
+
+    /**
+     * @return mixed
+     */
+    public static function staticTest()
+    {
+        $viewManager = null; //error - no di
+
+        $vm = new ViewModel;
+        $vm->setTemplate(__DIR__ . '/../../view/home/index.phtml');
+        //$vm->setViewManager($viewManager);
+
+        $vm->args = func_get_args();
+
+        return $vm;
+    }
 
     /**
      * @return mixed
