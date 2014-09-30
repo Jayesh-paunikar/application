@@ -12,6 +12,7 @@ use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
+use Framework\Service\Config\Manager\Manager;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
@@ -35,14 +36,7 @@ return [
         Framework\Controller\Exception\Listener::class,
         ['setViewModel' => new Dependency('View\Exception\ViewModel')]
     ),
-    'Controller\Manager' => new Hydrator(
-        Framework\Controller\Manager\Manager::class,
-        [
-            'configuration' => new ConfigLink,
-            'events'        => new Param('events'),
-            'services'      => new Param('services')
-        ]
-    ),
+    'Controller\Manager' => new Manager(Framework\Controller\Manager\Manager::class),
     'Dispatch\Event'    => Framework\Controller\Dispatch\Event::class,
     'Dispatch\Listener' => new Hydrator(
         Framework\Controller\Dispatch\Listener::class,
@@ -73,6 +67,13 @@ return [
             'setViewManager' => new Dependency('View\Manager')
         ]
     ),
+    'Manager' => new Config([
+        'calls' => [
+            'configuration' => new ConfigLink,
+            'events'        => new Param('events'),
+            'services'      => new Param('services')
+        ]
+    ]),
     'Mvc\Dispatch' => new Hydrator(
         Framework\Mvc\Dispatch\Listener::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
@@ -129,14 +130,7 @@ return [
         ['setResponse' => new Dependency('Response')]
     ),
     'Response\Listener' => Framework\Response\Listener::class,
-    'Response\Manager'  => new Hydrator(
-        Framework\Response\Manager\Manager::class,
-        [
-            'configuration' => new ConfigLink,
-            'events'        => new Param('events'),
-            'services'      => new Param('services')
-        ]
-    ),
+    'Response\Manager'  => new Manager(Framework\Response\Manager\Manager::class),
     'Route' => new Service(
         Framework\Route\Route\Route::class,
         [
@@ -167,12 +161,9 @@ return [
             'setRouteGenerator' => new Dependency('Route\Generator')
         ]
     ),
-    'Route\Manager' => new Hydrator(
-        Framework\Route\Manager\Manager::class,
-        [
-            'configuration' => new ConfigLink,
-            'events'        => new Param('routes.events'),
-            'services'      => new Param('services')
+    'Route\Manager' => new Manager(
+        Framework\Route\Manager\Manager::class, [
+            'events' => new Param('routes.events')
         ]
     ),
     'Route\Match\Event'       => Framework\Route\Match\Event::class,
@@ -193,13 +184,10 @@ return [
         Framework\View\Exception\ViewModel::class,
         ['setTemplate' => new Param('view.templates.error/exception')]
     ),
-    'View\Manager' => new Hydrator(
+    'View\Manager' => new Manager(
         Framework\View\Manager\Manager::class,
         [
-            'aliases'       => new Param('view.aliases'),
-            'events'        => new Param('events'),
-            'configuration' => new ConfigLink,
-            'services'      => new Param('services')
+            'aliases' => new Param('view.aliases')
         ]
     ),
     'View\Model'        => Framework\View\Model\Model::class,

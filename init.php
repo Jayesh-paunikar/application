@@ -59,6 +59,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/ChildTrait.ph
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Child.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/HydratorInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/Hydrator.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/ManagerInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/DefinitionInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Definition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/EventInterface.php';
