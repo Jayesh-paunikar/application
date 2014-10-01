@@ -118,7 +118,7 @@ return [
                     new Args([
                         'hostname' => new Call('Request.getHost'),
                         'method'   => new Call('Request.getMethod'),
-                        'path'     => new Filter(new Call('Request.getPathInfo'), 'urldecode'),
+                        'path'     => new Call('Request.getPathInfo'),
                         'scheme'   => new Call('Request.getScheme')
                     ])
                 ]
