@@ -74,7 +74,7 @@ Routes are pre-compiled so that they can be immediately matched against the requ
 ])
 ```
 ##MVC
-The MVC event workflow is completely <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a>.
+The MVC event workflow is <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a>.
 ```php
 'Mvc\Event' => [
     ['Mvc\Route'],
