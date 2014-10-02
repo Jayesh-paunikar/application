@@ -3,12 +3,13 @@
  *
  */
 
+//demo calling specific service methods
 return [
     'Controller\Exception\Event' => [
         ['Controller\Exception\Listener'],
     ],
     'Dispatch\Event' => [
-        ['Dispatch\Listener']
+        ['@Dispatch\Listener.__invoke']
     ],
     'Mvc\Event' => [
         ['Mvc\Route'],
