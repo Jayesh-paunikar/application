@@ -65,7 +65,7 @@ return [
                         $viewManager = $this->get('View\Manager');
 
                         $vm = new Home\ViewModel;
-                        $vm->setTemplate($config->get('view')->get('templates')['home']); //nicer if had $this->param()
+                        $vm->setTemplate($config->get('view')['templates']->home); //nicer if had $this->param()
                         $vm->setViewManager($viewManager);
 
                         $vm->args = func_get_args();

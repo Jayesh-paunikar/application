@@ -21,7 +21,7 @@ class Factory
         $viewManager = $this->get('View\Manager');
 
         $vm = new ViewModel;
-        $vm->setTemplate($config->get('view')->get('templates')['home']); //nicer if had $this->param()
+        $vm->setTemplate($config->get('view')['templates']->home); //nicer if had $this->param()
         $vm->setViewManager($viewManager);
 
         $controller = new Controller;
