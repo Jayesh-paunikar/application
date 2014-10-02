@@ -9,7 +9,7 @@ return [
         ['Controller\Exception\Listener'],
     ],
     'Dispatch\Event' => [
-        ['@Dispatch\Listener.__invoke']
+        ['Dispatch\Listener']
     ],
     'Mvc\Event' => [
         ['Mvc\Route'],
@@ -19,7 +19,8 @@ return [
         ['Mvc\Response']
     ],
     'Response\Event' => [
-        ['Response\Listener']
+        ['Response\Listener'],
+        ['@Response.send']
         /*[function($event) {
             return $event->response();
         }]*/
