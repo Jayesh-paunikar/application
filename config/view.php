@@ -3,7 +3,7 @@
  *
  */
 
-//demo object property access, e.g new Param('view.template.layout')
+//demo object property access, e.g new Param('view.templates.layout')
 return [
     'templates' => (object) [
         'layout'          => __DIR__ . '/../view/layout/layout.phtml',
