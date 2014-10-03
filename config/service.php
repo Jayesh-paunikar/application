@@ -112,14 +112,17 @@ return [
     'Mvc\Route' => new Config([
         'name' => Framework\Mvc\Route\Listener::class,
         'args' => [
+
             new Service(
                 'Route',
                 [
                     new Args([
-                        'hostname' => new Call('Request.getHost'),
-                        'method'   => new Call('Request.getMethod'),
-                        'path'     => new Call('Request.getPathInfo'),
-                        'scheme'   => new Call('Request.getScheme')
+                        'controller' => new Param('routes.definitions.error.controller'),
+                        'hostname'   => new Call('Request.getHost'),
+                        'method'     => new Call('Request.getMethod'),
+                        'name'       => new Param('routes.definitions.error.name'),
+                        'path'       => new Call('Request.getPathInfo'),
+                        'scheme'     => new Call('Request.getScheme')
                     ])
                 ]
             )
@@ -140,12 +143,10 @@ return [
         Framework\Route\Route\Route::class,
         [
             new Args([
-                'controller' => new Param('routes.definitions.error.controller'),
-                'hostname'   => new Call('Request.getHost'),
-                'method'     => new Call('Request.getMethod'),
-                'name'       => new Param('routes.definitions.error.name'),
-                'path'       => new Call('Request.getPathInfo'),
-                'scheme'     => new Call('Request.getScheme')
+                'hostname' => new Call('Request.getHost'),
+                'method'   => new Call('Request.getMethod'),
+                'path'     => new Call('Request.getPathInfo'),
+                'scheme'   => new Call('Request.getScheme')
             ])
         ]
     ),

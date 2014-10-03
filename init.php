@@ -67,6 +67,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ServiceTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Event/Signal/SignalTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Request/RequestInterface.php';

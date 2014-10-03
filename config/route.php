@@ -18,6 +18,8 @@ use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
 use Framework\View\Model\Model as ViewModel;
+use Framework\Request\RequestInterface as Request;
+use Framework\Response\ResponseInterface as Response;
 
 //demo route builder
 use Framework\Route\Definition\Builder\Builder;
@@ -60,7 +62,7 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    /*'controller' => function() {
+                    'controller' => function(Response $response, Request $request, ViewModel $viewModel = null) {
                         $config      = $this->config();
                         $viewManager = $this->get('View\Manager');
 
@@ -71,10 +73,10 @@ return [
                         $vm->args = func_get_args();
 
                         return $vm;
-                    },*/
+                    },
                     //'controller' => 'Home',
                     //'controller' => '@Home', //calls home() if it exists
-                    'controller' => '@Home.test',
+                    //'controller' => '@Home.test',
                     //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
