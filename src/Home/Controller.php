@@ -3,6 +3,8 @@
 namespace Home;
 
 use Framework\View\Model\ServiceTrait as View;
+use Framework\Request\RequestInterface as Request;
+use Framework\Response\ResponseInterface as Response;
 
 class Controller
     implements ControllerInterface
@@ -55,11 +57,11 @@ class Controller
     /**
      * @return mixed
      */
-    public function __invoke()
+    public function __invoke(Response $response, Request $request, ViewModelInterface $viewModel = null)
     {
         $vm = $this->viewModel();
 
-        $vm->args = func_get_args() ? : null;
+        $vm->args = func_get_args();
 
         return $vm;
     }
