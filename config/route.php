@@ -62,7 +62,7 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    'controller' => function(Response $response, Request $request, ViewModel $viewModel = null) {
+                    /*'controller' => function(Response $response, Request $request, ViewModel $viewModel = null) {
                         $config      = $this->config();
                         $viewManager = $this->get('View\Manager');
 
@@ -73,10 +73,10 @@ return [
                         $vm->args = func_get_args();
 
                         return $vm;
-                    },
+                    },*/
                     //'controller' => 'Home',
                     //'controller' => '@Home', //calls home() if it exists
-                    //'controller' => '@Home.test',
+                    'controller' => '@Home.test',
                     //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
