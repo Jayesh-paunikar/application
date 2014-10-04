@@ -18,6 +18,9 @@ use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 return [
+    //demo blog
+    'Blog\Service' => new Manager(Blog\Service::class),
+
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [

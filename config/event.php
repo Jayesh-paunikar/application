@@ -5,6 +5,13 @@
 
 //demo calling specific service methods
 return [
+    'CreateBlog' => [
+        [
+            '@Blog\Controller.valid',
+            '@Blog\Controller.add',
+            '@Blog\Controller.response'
+        ]
+    ],
     'Controller\Exception\Event' => [
         ['Controller\Exception\Listener'],
     ],

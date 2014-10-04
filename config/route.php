@@ -62,6 +62,10 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
+                    /*'controller' => function(Request $request, Response $response) {
+                      return $this->trigger(['Blog\Create', $request, $response]);
+                    },*/
+                    //'controller' => '@Blog\Service.createBlog',
                     /*'controller' => function(Response $response, Request $request, ViewModel $viewModel = null) {
                         $config      = $this->config();
                         $viewManager = $this->get('View\Manager');
