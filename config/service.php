@@ -92,10 +92,10 @@ return [
             new Dependency('Controller\Manager'), 'dispatch'
         ],
         [
-            new Dependency('Route'),
+            new Call('Controller\Manager.controller', [new Call('Route.controller')]),
             new Args([
-                'Request'  => new Dependency('Request'),
-                'Response' => new Dependency('Response')
+                'request'  => new Dependency('Request'),
+                'response' => new Dependency('Response')
             ])
        ]
     ),*/
