@@ -37,7 +37,7 @@ class Create
     }
 
     /**
-     * @return array
+     * @return ArgsInterface
      */
     protected function args()
     {

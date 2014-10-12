@@ -75,8 +75,8 @@ return [
                         return $vm;
                     },*/
                     //'controller' => 'Home',
-                    'controller' => '@Home',
-                    //'controller' => '@Home.test',
+                    //'controller' => '@Home',
+                    'controller' => '@Home.test',
                     //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
