@@ -19,7 +19,7 @@ class Create
     use Signal;
     use View;
 
-    const EVENT = 'CreateBlog';
+    const EVENT = self::CREATE;
 
     protected $blog;
     protected $request;
@@ -41,18 +41,18 @@ class Create
      */
     protected function args()
     {
-        return [new Args([
+        return new Args([
             'blog'      => $this->blog,
             'event'     => $this,
             'request'   => $this->request,
             'response'  => $this->response,
             'viewmodel' => $this->viewModel,
-        ])];
+        ]);
     }
 
     public function __invoke(callable $listener, array $options = [])
     {
-        $response = $this->signal($listener, $this->args());
+        $response = $this->signal($listener, [$this->args()]);
 
         switch(true) {
             default:

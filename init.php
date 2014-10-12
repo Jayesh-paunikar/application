@@ -22,7 +22,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Application/ApplicationInterface.p
 include __DIR__ . '/vendor/mvc5/framework/src/Config/ConfigTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ArgsInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ArgsTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManagerTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryTrait.php';
@@ -69,8 +68,10 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ServiceTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Event/Signal/SignalInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Signal/SignalTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Args/ArgsInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Event/Args/ArgsTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/EventTrait.php';

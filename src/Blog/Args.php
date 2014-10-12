@@ -3,10 +3,11 @@
 namespace Blog;
 
 use Framework\Event\Args\ArgsInterface as EventArgsInterface;
-use Framework\Service\Resolver\ArgsTrait;
+use Framework\Event\Args\ArgsTrait;
+use Framework\Service\Resolver\ArgsInterface as ServiceArgsInterface;
 
 class Args
-    implements ArgsInterface, EventArgsInterface
+    implements ArgsInterface, EventArgsInterface, ServiceArgsInterface
 {
     /**
      *
