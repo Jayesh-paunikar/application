@@ -46,7 +46,7 @@ class Create
             'event'     => $this,
             'request'   => $this->request,
             'response'  => $this->response,
-            'viewmodel' => $this->viewModel,
+            'viewModel' => $this->viewModel,
         ]);
     }
 
