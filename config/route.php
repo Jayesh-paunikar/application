@@ -80,7 +80,7 @@ return [
                     },*/
                     //'controller' => 'Home',
                     //'controller' => '@Home', //calls home() if it exists
-                    //'controller' => '@Home.test',
+                    'controller' => '@Home.test',
                     //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
