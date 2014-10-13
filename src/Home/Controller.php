@@ -43,7 +43,7 @@ class Controller
     /**
      * @return mixed
      */
-    public function test()
+    public function test(Response $response, Request $request, ViewModelInterface $viewModel = null)
     {
         $vm = $this->viewModel();
 

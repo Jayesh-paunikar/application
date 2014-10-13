@@ -37,22 +37,27 @@ class Create
     }
 
     /**
-     * @return ArgsInterface
+     * @return array
      */
     protected function args()
     {
-        return new Args([
-            'blog'      => $this->blog,
-            'event'     => $this,
-            'request'   => $this->request,
-            'response'  => $this->response,
-            'viewModel' => $this->viewModel,
-        ]);
+        return [
+            ArgsInterface::BLOG      => $this->blog,
+            ArgsInterface::EVENT     => $this,
+            ArgsInterface::REQUEST   => $this->request,
+            ArgsInterface::RESPONSE  => $this->response,
+            ArgsInterface::VIEWMODEL => $this->viewModel,
+        ];
     }
 
+    /**
+     * @param callable $listener
+     * @param array $options
+     * @return mixed
+     */
     public function __invoke(callable $listener, array $options = [])
     {
-        $response = $this->signal($listener, [$this->args()]);
+        $response = $this->signal($listener, $this->args());
 
         switch(true) {
             default:
