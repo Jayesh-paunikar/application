@@ -37,6 +37,8 @@ class Controller
 
         $vm->args = func_get_args();
 
+        $vm->args[] = __FUNCTION__;
+
         return $vm;
     }
 
@@ -62,6 +64,8 @@ class Controller
         $vm = $this->viewModel();
 
         $vm->args = func_get_args();
+
+        $vm->args[] = __FUNCTION__;
 
         return $vm;
     }

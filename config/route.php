@@ -38,6 +38,10 @@ use Framework\Route\Definition\Builder\Builder;
 ]));
 exit;*/
 
+//demo route controller
+//function home(Request $request, Response $response) {
+    //var_dump(__FUNCTION__.'::'.__FILE__, func_get_args());exit;
+//}
 return [
     'definitions' => new Config([
         'home' => Builder::definition([
@@ -80,7 +84,7 @@ return [
                     //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
-                    //'controller' => [new Dependency('Home'), 'test'],
+                    //'controller' => [new Dependency('Home'), 'test'], //fixme!
                     //'controller' => 'Home\Controller::staticTest', //error
                     //'controller' => new Home\Controller, //works but no view model available
                     //'controller' => new Factory(Home\Factory::class),
