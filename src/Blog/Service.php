@@ -24,6 +24,7 @@ class Service
     public function createBlog(Request $request, Response $response)
     {
         return $this->trigger(['Blog\Create', $request, $response]);
+        //return $this->trigger('CreateBlog', [$request, $response]);
     }
 }
 

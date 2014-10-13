@@ -21,11 +21,13 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManagerInterfac
 include __DIR__ . '/vendor/mvc5/framework/src/Application/ApplicationInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/ConfigTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManagerTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Generator/GeneratorTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManagerTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Event/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventsTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/ConfigInterface.php';

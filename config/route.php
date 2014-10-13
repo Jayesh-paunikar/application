@@ -63,7 +63,8 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                      return $this->trigger(['Blog\Create', $request, $response]);
+                        return $this->trigger(['Blog\Create', $request, $response]);
+                        //return $this->trigger('CreateBlog', [$request, $response]);
                     },*/
                     //'controller' => '@Blog\Service.createBlog',
                     /*'controller' => function(Response $response, Request $request, ViewModel $viewModel = null) {
