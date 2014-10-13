@@ -2,18 +2,12 @@
 
 namespace Blog;
 
-use Framework\View\Model\ServiceTrait as View;
 use Framework\Request\RequestInterface as Request;
 use Framework\Response\ResponseInterface as Response;
 
 class Controller
     implements ControllerInterface
 {
-    /**
-     *
-     */
-    use View;
-
     /**
      * @param Request $request
      * @return Blog
@@ -24,11 +18,20 @@ class Controller
         return  new Blog;
     }
 
+    /**
+     * @param BlogInterface $blog
+     * @return mixed|void
+     */
     public function add(BlogInterface $blog = null)
     {
         var_dump(__FUNCTION__.' :: '.__FILE__, $blog);
     }
 
+    /**
+     * @param Response $response
+     * @param ViewModelInterface $viewModel
+     * @return mixed|void
+     */
     public function response(Response $response, ViewModelInterface $viewModel = null)
     {
         var_dump(__FUNCTION__.' :: '.__FILE__);

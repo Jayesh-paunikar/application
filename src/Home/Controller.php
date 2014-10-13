@@ -43,7 +43,10 @@ class Controller
     }
 
     /**
-     * @return mixed
+     * @param Response $response
+     * @param Request $request
+     * @param ViewModelInterface $viewModel
+     * @return ViewModelInterface
      */
     public function test(Response $response, Request $request, ViewModelInterface $viewModel = null)
     {
@@ -57,7 +60,10 @@ class Controller
     }
 
     /**
-     * @return mixed
+     * @param Response $response
+     * @param Request $request
+     * @param ViewModelInterface $viewModel
+     * @return ViewModelInterface
      */
     public function __invoke(Response $response, Request $request, ViewModelInterface $viewModel = null)
     {
