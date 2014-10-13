@@ -27,7 +27,7 @@ return [
     ],
     'Response\Event' => [
         ['Response\Listener'],
-        ['@Response.send']
+        ['@Response.send'],
         /*[function($event) {
             return $event->response();
         }]*/
