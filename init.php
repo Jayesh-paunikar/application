@@ -77,6 +77,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Request/RequestInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/RouteInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/Route.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/ManagerInterface.php';
@@ -88,6 +89,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/FilterInterface.php
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Filter.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/DispatchInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Dispatch.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/MatchInterface.php';
@@ -120,6 +122,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/EventInterface
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/ListenerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Listener.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ListenerInterface.php';
@@ -134,8 +137,10 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ManagerInterface.php'
 include __DIR__ . '/vendor/mvc5/framework/src/Service/AliasTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Render/Listener.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Render/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/Event.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ListenerInterface.php';
@@ -147,6 +152,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/ListenerInterface.php
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/Listener.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ManagerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/Manager.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/ListenerInterface.php';
