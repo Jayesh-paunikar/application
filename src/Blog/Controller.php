@@ -32,8 +32,8 @@ class Controller
      * @param ViewModelInterface $viewModel
      * @return mixed|void
      */
-    public function response(Response $response, ViewModelInterface $viewModel = null)
+    public function response(Response $response, ViewModelInterface $viewModel = null, array $args = [])
     {
-        var_dump(__FUNCTION__.' :: '.__FILE__);
+        var_dump(__FUNCTION__.' :: '.__FILE__, $args);
     }
 }
