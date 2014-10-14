@@ -61,16 +61,17 @@ The Dependency Injection <a href="https://github.com/mvc5/application/blob/maste
 Routes are pre-compiled so that they can be immediately matched against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the <a href="https://github.com/mvc5/application/blob/master/config/route.php">route config</a> for example child routes.
 ```php
 'home' => new Definition([
-  'name'       => 'home',
-  'scheme'     => null,
-  'hostname'   => null,
-  'method'     => null,
-  'route'      => '/',
-  'defaults'   => [],
-  'controller' => 'Home',
-  'paramMap'   => [],
-  'regex'      => '/',
-  'tokens'     => [['literal', '/']]
+  'name'        => 'home',
+  'scheme'      => null,
+  'hostname'    => null,
+  'method'      => null,
+  'route'       => '/',
+  'defaults'    => [],
+  'controller'  => 'Home',
+  'paramMap'    => [],
+  'regex'       => '/',
+  'tokens'      => [['literal', '/']],
+  'constraints' => []
 ])
 ```
 ##MVC
