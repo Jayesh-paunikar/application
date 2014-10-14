@@ -43,11 +43,11 @@ class Create
     protected function args()
     {
         return [
-            ArgsInterface::BLOG      => $this->blog,
-            ArgsInterface::EVENT     => $this,
-            ArgsInterface::REQUEST   => $this->request,
-            ArgsInterface::RESPONSE  => $this->response,
-            ArgsInterface::VIEWMODEL => $this->viewModel,
+            ArgsInterface::BLOG       => $this->blog,
+            ArgsInterface::EVENT      => $this,
+            ArgsInterface::REQUEST    => $this->request,
+            ArgsInterface::RESPONSE   => $this->response,
+            ArgsInterface::VIEW_MODEL => $this->viewModel,
         ];
     }
 
