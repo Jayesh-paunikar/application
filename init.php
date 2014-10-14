@@ -148,7 +148,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/Listener.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ManagerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/EventInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/ListenerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Listener.php';
