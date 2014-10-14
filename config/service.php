@@ -24,7 +24,6 @@ return [
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [
-            'setResponse'  => new Dependency('Response'),
             'setViewModel' => new Hydrator(
                 Framework\Controller\Error\ViewModel::class,
                 [
