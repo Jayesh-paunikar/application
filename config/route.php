@@ -82,14 +82,14 @@ return [
                     },*/
                     //'controller' => 'Home',
                     //'controller' => '@Home',
-                    'controller' => '@Home.test',
+                    //'controller' => '@Home.test',
                     //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
                     //'controller' => [new Dependency('Home'), 'test'], //not working/supported, calls __invoke?
                     //'controller' => 'Home\Controller::staticTest', //error
                     //'controller' => new Home\Controller, //works but no view model provided
-                    //'controller' => new Factory(Home\Factory::class),
+                    'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
                     //'controller' => new Invoke([new Service('Home'), 'test']),
                     /*'controller' => new ServiceConfig([

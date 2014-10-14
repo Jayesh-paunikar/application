@@ -24,7 +24,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceTrait.php
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManagerTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/FactoryTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Generator/GeneratorTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManagerTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventsTrait.php';
@@ -60,6 +60,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/ChildTrait.ph
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Child.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/HydratorInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/Hydrator.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/FactoryInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/Factory.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/ManagerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/DefinitionInterface.php';

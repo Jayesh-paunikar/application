@@ -2,7 +2,7 @@
 
 namespace Home;
 
-use Framework\Service\Factory\FactoryTrait;
+use Framework\Service\FactoryTrait;
 
 class Factory
     implements FactoryInterface
