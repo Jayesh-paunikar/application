@@ -136,7 +136,7 @@ return [
     ]),
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
-    'Response\Event' => new Service(Framework\Response\Event::class, [new Dependency('Response')]),
+    'Response\Event'    => Framework\Response\Event::class,
     'Response\Listener' => Framework\Response\Listener::class,
     'Response\Manager'  => new Manager(Framework\Response\Manager\Manager::class),
     'Route' => new Service(
