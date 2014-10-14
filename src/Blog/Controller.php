@@ -30,6 +30,7 @@ class Controller
     /**
      * @param Response $response
      * @param ViewModelInterface $viewModel
+     * @param array $args
      * @return mixed|void
      */
     public function response(Response $response, ViewModelInterface $viewModel = null, array $args = [])
