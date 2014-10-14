@@ -92,7 +92,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/EventInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/MatchInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Scheme/SchemeInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Scheme/Scheme.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Hostname/HostnameInterface.php';
