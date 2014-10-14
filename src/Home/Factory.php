@@ -2,11 +2,16 @@
 
 namespace Home;
 
-use Framework\Service\Factory\Factory as Base;
+use Framework\Service\Factory\FactoryTrait;
 
 class Factory
-    extends Base
+    implements FactoryInterface
 {
+    /**
+     *
+     */
+    use FactoryTrait;
+
     /**
      * @return Controller
      */
