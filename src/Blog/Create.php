@@ -47,7 +47,7 @@ class Create
             ArgsInterface::EVENT      => $this,
             ArgsInterface::REQUEST    => $this->request,
             ArgsInterface::RESPONSE   => $this->response,
-            ArgsInterface::VIEW_MODEL => $this->viewModel,
+            ArgsInterface::VIEW_MODEL => $this->viewModel
         ];
     }
 
