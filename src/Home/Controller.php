@@ -23,6 +23,7 @@ class Controller
     }
 
     /**
+     * @param array $args
      * @return mixed
      */
     public static function staticTest(array $args = [])
@@ -46,6 +47,7 @@ class Controller
      * @param Response $response
      * @param Request $request
      * @param ViewModelInterface $viewModel
+     * @param array $args
      * @return ViewModelInterface
      */
     public function test(Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
@@ -63,6 +65,7 @@ class Controller
      * @param Response $response
      * @param Request $request
      * @param ViewModelInterface $viewModel
+     * @param array $args
      * @return ViewModelInterface
      */
     public function __invoke(Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
