@@ -39,8 +39,8 @@ use Framework\Route\Definition\Builder\Builder;
 exit;*/
 
 //demo route controller
-//function home(Request $request, Response $response) {
-    //var_dump(__FUNCTION__.'::'.__FILE__, func_get_args());exit;
+//function home(Request $request, Response $response, array $args = []) {
+    //var_dump(__FUNCTION__.'::'.__FILE__, $args);exit;
 //}
 return [
     'definitions' => new Config([

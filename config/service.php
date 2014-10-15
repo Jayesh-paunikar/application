@@ -21,6 +21,8 @@ return [
     //demo blog
     'Blog\Service' => new Manager(Blog\Service::class),
 
+    'Config' => new ConfigLink,
+
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [
@@ -195,6 +197,7 @@ return [
             'aliases' => new Param('view.aliases')
         ]
     ),
+    'ViewManager'       => new Dependency('View\Manager'),
     'View\Model'        => Framework\View\Model\Model::class,
     'View\Render'       => Framework\View\Render\Render::class,
     'View\Render\Event' => Framework\View\Render\Event::class

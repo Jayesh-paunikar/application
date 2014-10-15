@@ -2,7 +2,9 @@
 
 namespace Home;
 
+use Framework\Config\ConfigInterface as Config;
 use Framework\Service\FactoryTrait;
+use Framework\View\Manager\ManagerInterface as ViewManager;
 
 class Factory
     implements FactoryInterface
@@ -13,18 +15,12 @@ class Factory
     use FactoryTrait;
 
     /**
+     * @param Config $config
+     * @param ViewManager $viewManager
      * @return Controller
      */
-    public function __invoke()
+    public function __invoke(Config $config, ViewManager $viewManager)
     {
-        /**
-         * @var \Framework\View\Manager\ManagerInterface $viewManager
-         * @var \Framework\Config\ConfigInterface $config
-         */
-
-        $config      = $this->config();
-        $viewManager = $this->get('View\Manager');
-
         $vm = new ViewModel;
         $vm->setTemplate($config->get('view')['templates']['home']); //nicer if had $this->param()
         $vm->setViewManager($viewManager);

@@ -68,7 +68,7 @@ class Controller
      * @param array $args
      * @return ViewModelInterface
      */
-    public function __invoke(Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
+    public function __invoke($route, Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
     {
         $vm = $this->viewModel();
 
