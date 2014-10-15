@@ -10,12 +10,11 @@ class Controller
 {
     /**
      * @param Request $request
-     * @param $layout
      * @return Blog
      */
-    public function valid(Request $request, $layout)
+    public function valid(Request $request)
     {
-        var_dump(__FUNCTION__.' :: '.__FILE__, $layout);
+        var_dump(__FUNCTION__.' :: '.__FILE__);
         return  new Blog;
     }
 

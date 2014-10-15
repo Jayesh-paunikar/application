@@ -63,12 +63,12 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        return $this->trigger(['Blog\Create', $request, $response]);
+                        //return $this->trigger(['Blog\Create', $request, $response]);
                         //return $this->trigger('CreateBlog', [$request, $response]);
                         //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response]);
                     },*/
                     //'controller' => '@Blog\Service.createBlog',
-                    /*'controller' => function(Response $response, Request $request, ViewModel $viewModel = null, array $args = []) {
+                    /*'controller' => function(Response $response, Request $request, $viewModel = null, array $args = []) {
                         $config      = $this->config();
                         $viewManager = $this->get('View\Manager');
 

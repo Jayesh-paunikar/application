@@ -9,10 +9,9 @@ interface ControllerInterface
 {
     /**
      * @param Request $request
-     * @param $layout
      * @return mixed
      */
-    function valid(Request $request, $layout);
+    function valid(Request $request);
 
     /**
      * @param BlogInterface $blog
