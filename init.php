@@ -175,12 +175,12 @@ include __DIR__ . '/src/Response/Response.php';
 /**
  *
  */
-include __DIR__ . '/src/Home/ViewModelInterface.php';
-include __DIR__ . '/src/Home/ViewModel.php';
-include __DIR__ . '/src/Home/ControllerInterface.php';
-include __DIR__ . '/src/Home/Controller.php';
+//include __DIR__ . '/src/Home/ViewModelInterface.php';
+//include __DIR__ . '/src/Home/ViewModel.php';
+//include __DIR__ . '/src/Home/ControllerInterface.php';
+//include __DIR__ . '/src/Home/Controller.php';
 
 /**
  *
  */
-//include __DIR__ . '/vendor/autoload.php';
+include __DIR__ . '/vendor/autoload.php';
