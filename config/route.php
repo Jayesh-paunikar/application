@@ -63,12 +63,12 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        //return $this->trigger(['Blog\Create', $request, $response]);
+                        return $this->trigger(['Blog\Create', $request, $response]);
                         //return $this->trigger('CreateBlog', [$request, $response]);
-                        return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response]);
+                        //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response]);
                     },*/
                     //'controller' => '@Blog\Service.createBlog',
-                    /*'controller' => function(Response $response, Request $request, ViewModel $viewModel = null) {
+                    /*'controller' => function(Response $response, Request $request, ViewModel $viewModel = null, array $args = []) {
                         $config      = $this->config();
                         $viewManager = $this->get('View\Manager');
 
@@ -76,22 +76,22 @@ return [
                         $vm->setTemplate($config->get('view')['templates']['home']); //nicer if had $this->param()
                         $vm->setViewManager($viewManager);
 
-                        $vm->args = func_get_args();
+                        $vm->args = $args;
 
                         return $vm;
                     },*/
                     //'controller' => 'Home',
-                    //'controller' => '@Home',
-                    //'controller' => '@Home.test',
+                    //'controller' => '@Home', //will end up trying to call above home() function if nothing created
+                    'controller' => '@Home.test',
                     //'controller' => new Call('Home.test'), //not supported, use Invoke
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
-                    //'controller' => [new Dependency('Home'), 'test'], //not working/supported, calls __invoke?
+                    //'controller' => [new Dependency('Home'), 'test'],
                     //'controller' => 'Home\Controller::staticTest', //error
                     //'controller' => new Home\Controller, //works but no view model provided
-                    'controller' => new Factory(Home\Factory::class),
+                    //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
-                    //'controller' => new Invoke([new Service('Home'), 'test']),
+                    //'controller' => new Invoke([new Service('Home'), 'test'], ['a' => '1']),
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
                         'args' => [new ServiceManagerLink],

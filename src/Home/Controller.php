@@ -17,17 +17,17 @@ class Controller
     /**
      * @return mixed
      */
-    public static function staticCall()
+    public static function staticCall(array $args = [])
     {
-        var_dump(__FUNCTION__.':'.__FILE__,func_get_args());
+        var_dump(__FUNCTION__.':'.__FILE__, $args);
     }
 
     /**
      * @return mixed
      */
-    public static function staticTest()
+    public static function staticTest(array $args = [])
     {
-        var_dump(__FUNCTION__.':'.__FILE__,func_get_args());
+        var_dump(__FUNCTION__.':'.__FILE__, $args);
 
         $viewManager = null; //error - no di
 
@@ -35,7 +35,7 @@ class Controller
         $vm->setTemplate(__DIR__ . '/../../view/home/index.phtml');
         //$vm->setViewManager($viewManager);
 
-        $vm->args = func_get_args();
+        $vm->args = $args;
 
         $vm->args[] = __FUNCTION__;
 
@@ -48,11 +48,11 @@ class Controller
      * @param ViewModelInterface $viewModel
      * @return ViewModelInterface
      */
-    public function test(Response $response, Request $request, ViewModelInterface $viewModel = null)
+    public function test(Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
     {
         $vm = $this->viewModel();
 
-        $vm->args = func_get_args();
+        $vm->args = $args;
 
         $vm->args[] = __FUNCTION__;
 
@@ -65,11 +65,11 @@ class Controller
      * @param ViewModelInterface $viewModel
      * @return ViewModelInterface
      */
-    public function __invoke(Response $response, Request $request, ViewModelInterface $viewModel = null)
+    public function __invoke(Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
     {
         $vm = $this->viewModel();
 
-        $vm->args = func_get_args();
+        $vm->args = $args;
 
         $vm->args[] = __FUNCTION__;
 
