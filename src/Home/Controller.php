@@ -17,9 +17,9 @@ class Controller
     /**
      * @return mixed
      */
-    public static function staticCall(array $args = [])
+    public static function staticCall()
     {
-        var_dump(__FUNCTION__.':'.__FILE__, $args);
+        var_dump(__FUNCTION__.':'.__FILE__, func_get_args());
     }
 
     /**
