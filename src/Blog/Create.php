@@ -4,11 +4,11 @@ namespace Blog;
 
 use Framework\Event\EventInterface;
 use Framework\Event\EventTrait as Event;
-use Framework\Event\Signal\SignalTrait as Signal;
 use Framework\View\Model\ServiceTrait as View;
 use Framework\View\Model\ModelInterface as ViewModel;
 use Framework\Request\RequestInterface as Request;
 use Framework\Response\ResponseInterface as Response;
+use Framework\Service\Resolver\SignalTrait as Signal;
 
 class Create
     implements CreateInterface, EventInterface
