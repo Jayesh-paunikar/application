@@ -78,9 +78,10 @@ return [
     ),
     'Manager' => new Config([
         'calls' => [
+            'aliases'       => new Param('alias'),
             'configuration' => new ConfigLink,
             'events'        => new Param('events'),
-            'services'      => new Param('services')
+            'services'      => new Param('services'),
         ]
     ]),
     'Mvc\Dispatch' => new Hydrator(
@@ -122,11 +123,11 @@ return [
                 [
                     new Args([
                         'controller' => new Param('routes.definitions.error.controller'),
-                        'hostname'   => new Call('Request.getHost'),
-                        'method'     => new Call('Request.getMethod'),
+                        'hostname'   => new Call('request.getHost'),
+                        'method'     => new Call('request.getMethod'),
                         'name'       => new Param('routes.definitions.error.name'),
-                        'path'       => new Call('Request.getPathInfo'),
-                        'scheme'     => new Call('Request.getScheme')
+                        'path'       => new Call('request.getPathInfo'),
+                        'scheme'     => new Call('request.getScheme')
                     ])
                 ]
             )
@@ -144,10 +145,10 @@ return [
         Framework\Route\Route\Route::class,
         [
             new Args([
-                'hostname' => new Call('Request.getHost'),
-                'method'   => new Call('Request.getMethod'),
-                'path'     => new Call('Request.getPathInfo'),
-                'scheme'   => new Call('Request.getScheme')
+                'hostname' => new Call('request.getHost'),
+                'method'   => new Call('request.getMethod'),
+                'path'     => new Call('request.getPathInfo'),
+                'scheme'   => new Call('request.getScheme')
             ])
         ]
     ),
@@ -155,24 +156,24 @@ return [
         Framework\Route\Dispatch\Dispatch::class,
         ['setRouteManager' => new Dependency('Route\Manager')]
     ),
-    'Route\Dispatch\Event'  => Framework\Route\Dispatch\Event::class,
-    'Route\Dispatch\Filter' => Framework\Route\Dispatch\Filter::class,
     'Route\Manager' => new Manager(
         Framework\Route\Manager\Manager::class, [
             'events' => new Param('routes.events')
         ]
     ),
-    'RouteGenerator' => new Service(
+    'Route\Generator' => new Service(
         Framework\Route\Generator\Generator::class,
         [new Param('routes.definitions')]
     ),
-    'RoutePlugin' => new Hydrator(
+    'Route\Generator\Plugin' => new Hydrator(
         Framework\Route\Generator\Plugin::class,
         [
             'setRoute'          => new Dependency('Route'),
-            'setRouteGenerator' => new Dependency('RouteGenerator')
+            'setRouteGenerator' => new Dependency('Route\Generator')
         ]
     ),
+    'Route\Dispatch\Event'    => Framework\Route\Dispatch\Event::class,
+    'Route\Dispatch\Filter'   => Framework\Route\Dispatch\Filter::class,
     'Route\Match\Event'       => Framework\Route\Match\Event::class,
     'Route\Match\Hostname'    => Framework\Route\Match\Hostname\Hostname::class,
     'Route\Match\Method'      => Framework\Route\Match\Method\Method::class,
@@ -191,12 +192,7 @@ return [
         Framework\View\Exception\ViewModel::class,
         ['setTemplate' => new Param('view.templates.error/exception')]
     ),
-    'View\Manager' => new Manager(
-        Framework\View\Manager\Manager::class,
-        [
-            'aliases' => new Param('view.aliases')
-        ]
-    ),
+    'View\Manager'      => new Manager(Framework\View\Manager\Manager::class),
     'ViewManager'       => new Dependency('View\Manager'),
     'View\Model'        => Framework\View\Model\Model::class,
     'View\Render'       => Framework\View\Render\Render::class,

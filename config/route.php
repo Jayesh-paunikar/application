@@ -80,9 +80,9 @@ return [
 
                         return $vm;
                     },*/
-                    //'controller' => 'Home',
+                    'controller' => 'Home',
                     //'controller' => '@Home', //will end up trying to call above home() function if nothing created
-                    'controller' => '@Home.test',
+                    //'controller' => '@Home.test',
                     /*'controller' => new Call(
                         new Service('Home\Factory', [new ServiceManagerLink]),
                         ['config' => new Dependency('Config'), 'viewManager' => new Dependency('ViewManager')]

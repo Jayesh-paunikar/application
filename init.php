@@ -24,6 +24,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceTrait.php
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/SignalTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/AliasTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManagerTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/FactoryTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Generator/GeneratorTrait.php';
@@ -132,7 +133,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/Listener.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Render/ListenerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/RenderInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ManagerInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/AliasTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Render/Listener.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/ArgsInterface.php';
