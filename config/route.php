@@ -63,7 +63,7 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        //return $this->trigger(['Blog\Create', $request, $response]);
+                        return $this->trigger(['Blog\Create', $request, $response]);
                         //return $this->trigger('CreateBlog', [$request, $response]);
                         //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response]);
                     },*/
@@ -73,7 +73,7 @@ return [
                         $viewManager = $this->get('View\Manager');
 
                         $vm = new Home\ViewModel;
-                        $vm->setTemplate($config->get('view')['templates']['home']); //nicer if had $this->param()
+                        $vm->setTemplate($this->param('view.templates.home'));
                         $vm->setViewManager($viewManager);
 
                         $vm->args = $args;
