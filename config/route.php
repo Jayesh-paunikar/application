@@ -83,7 +83,10 @@ return [
                     //'controller' => 'Home',
                     //'controller' => '@Home', //will end up trying to call above home() function if nothing created
                     'controller' => '@Home.test',
-                    //'controller' => new Call('Home.test'), //not supported, use Invoke
+                    /*'controller' => new Call(
+                        new Service('Home\Factory', [new ServiceManagerLink]),
+                        ['config' => new Dependency('Config'), 'viewManager' => new Dependency('ViewManager')]
+                    ),*/
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
                     //'controller' => [new Dependency('Home'), 'test'],
