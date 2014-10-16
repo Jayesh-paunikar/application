@@ -11,7 +11,7 @@ return [
         'home'            => __DIR__ . '/../view/home/index.phtml',
     ],
     'aliases' => [
-        'url'       => 'Route\Generator\Plugin',
-        'translate' => 'Translator\Plugin',
+        'url'       => 'RoutePlugin',
+        'translate' => 'TranslatorPlugin',
     ]
 ];
