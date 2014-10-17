@@ -7,7 +7,7 @@ use Framework\Event\EventTrait as Event;
 use Framework\View\Model\ServiceTrait as View;
 use Framework\View\Model\ModelInterface as ViewModel;
 use Request\RequestInterface as Request;
-use Framework\Response\ResponseInterface as Response;
+use Response\ResponseInterface as Response;
 use Framework\Service\Resolver\SignalTrait as Signal;
 
 class Create

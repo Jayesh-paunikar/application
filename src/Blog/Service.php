@@ -5,7 +5,7 @@ namespace Blog;
 use Framework\Event\Manager\EventManagerInterface as EventManagerInterface;
 use Framework\Event\Manager\EventsTrait as Events;
 use Request\RequestInterface as Request;
-use Framework\Response\ResponseInterface as Response;
+use Response\ResponseInterface as Response;
 use Framework\Service\Manager\ManagerInterface as ServiceManagerInterface;
 
 class Service

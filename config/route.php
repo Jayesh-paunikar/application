@@ -18,8 +18,8 @@ use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
 use Framework\View\Manager\ManagerInterface as ViewManager;
-use Framework\Request\RequestInterface as Request;
-use Framework\Response\ResponseInterface as Response;
+use Request\RequestInterface as Request;
+use Response\ResponseInterface as Response;
 
 //demo route builder
 use Framework\Route\Definition\Builder\Builder;
@@ -39,14 +39,14 @@ use Framework\Route\Definition\Builder\Builder;
 exit;*/
 
 //demo route controller
-/*function home(Request $request, Response $response, ViewManager $vm, array $args = []) {
+/*function home(Request $request, Response $response, ViewManager $vm, array $args = [])
+{
     $m = new Home\ViewModel;
+
     $m->setTemplate($vm->param('view.templates.home'));
     $m->setViewManager($vm);
 
     $m->args = $args;
-
-    $m->args[] = __FUNCTION__;
 
     return $m;
 }*/
@@ -87,9 +87,9 @@ return [
 
                         return $m;
                     },*/
-                    //'controller' => 'Home',
+                    'controller' => 'Home',
                     //'controller' => '@Home', //will end up trying to call above home() function if nothing created
-                    'controller' => '@Home.test',
+                    //'controller' => '@Home.test',
                     /*'controller' => new Call(
                         new Service('Home\Factory', [new ServiceManagerLink]),
                         ['config' => new Dependency('Config'), 'vm' => new Dependency('ViewManager')]

@@ -5,7 +5,7 @@ namespace Home;
 use Framework\View\Manager\ManagerInterface as ViewManager;
 use Framework\View\Model\ServiceTrait as View;
 use Request\RequestInterface as Request;
-use Framework\Response\ResponseInterface as Response;
+use Response\ResponseInterface as Response;
 
 class Controller
     implements ControllerInterface

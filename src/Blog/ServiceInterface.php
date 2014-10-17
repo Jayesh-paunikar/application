@@ -3,7 +3,7 @@
 namespace Blog;
 
 use Request\RequestInterface as Request;
-use Framework\Response\ResponseInterface as Response;
+use Response\ResponseInterface as Response;
 
 interface ServiceInterface
 {
