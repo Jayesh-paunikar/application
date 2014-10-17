@@ -4,7 +4,7 @@ namespace Home;
 
 use Framework\View\Manager\ManagerInterface as ViewManager;
 use Framework\View\Model\ServiceTrait as View;
-use Framework\Request\RequestInterface as Request;
+use Request\RequestInterface as Request;
 use Framework\Response\ResponseInterface as Response;
 
 class Controller

@@ -2,7 +2,7 @@
 
 namespace Blog;
 
-use Framework\Request\RequestInterface as Request;
+use Request\RequestInterface as Request;
 use Framework\Response\ResponseInterface as Response;
 
 interface ControllerInterface

@@ -75,7 +75,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/ArgsInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/EventTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Request/RequestInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/RouteInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/Route.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/ArgsInterface.php';
