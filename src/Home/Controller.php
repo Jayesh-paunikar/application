@@ -2,6 +2,7 @@
 
 namespace Home;
 
+use Framework\View\Manager\ManagerInterface as ViewManager;
 use Framework\View\Model\ServiceTrait as View;
 use Framework\Request\RequestInterface as Request;
 use Framework\Response\ResponseInterface as Response;
@@ -23,24 +24,21 @@ class Controller
     }
 
     /**
+     * @param ViewManager $vm
      * @param array $args
      * @return mixed
      */
-    public static function staticTest(array $args = [])
+    public static function staticTest(ViewManager $vm, array $args = [])
     {
-        var_dump(__FUNCTION__.':'.__FILE__, $args);
+        $m = new ViewModel;
+        $m->setTemplate($vm->param('view.templates.home'));
+        $m->setViewManager($vm);
 
-        $viewManager = null; //error - no di
+        $m->args = $args;
 
-        $vm = new ViewModel;
-        $vm->setTemplate(__DIR__ . '/../../view/home/index.phtml');
-        //$vm->setViewManager($viewManager);
+        $m->args[] = __FUNCTION__;
 
-        $vm->args = $args;
-
-        $vm->args[] = __FUNCTION__;
-
-        return $vm;
+        return $m;
     }
 
     /**

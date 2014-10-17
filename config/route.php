@@ -17,7 +17,7 @@ use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
-use Framework\View\Model\Model as ViewModel;
+use Framework\View\Manager\ManagerInterface as ViewManager;
 use Framework\Request\RequestInterface as Request;
 use Framework\Response\ResponseInterface as Response;
 
@@ -39,9 +39,17 @@ use Framework\Route\Definition\Builder\Builder;
 exit;*/
 
 //demo route controller
-//function home(Request $request, Response $response, array $args = []) {
-    //var_dump(__FUNCTION__.'::'.__FILE__, $args);exit;
-//}
+/*function home(Request $request, Response $response, ViewManager $vm, array $args = []) {
+    $m = new Home\ViewModel;
+    $m->setTemplate($vm->param('view.templates.home'));
+    $m->setViewManager($vm);
+
+    $m->args = $args;
+
+    $m->args[] = __FUNCTION__;
+
+    return $m;
+}*/
 return [
     'definitions' => new Config([
         'home' => Builder::definition([
@@ -62,30 +70,29 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    /*'controller' => function(Request $request, Response $response) {
+                    /*'controller' => function(Request $request, Response $response, ViewManager $vm) {
+                        //var_dump($vm);exit;
                         return $this->trigger(['Blog\Create', $request, $response]);
                         //return $this->trigger('CreateBlog', [$request, $response]);
                         //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response]);
                     },*/
                     //'controller' => '@Blog\Service.createBlog',
-                    /*'controller' => function(Response $response, Request $request, $viewModel = null, array $args = []) {
-                        $config      = $this->config();
-                        $viewManager = $this->get('View\Manager');
+                    /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
-                        $vm = new Home\ViewModel;
-                        $vm->setTemplate($this->param('view.templates.home'));
-                        $vm->setViewManager($viewManager);
+                        $m = new Home\ViewModel;
+                        $m->setTemplate($vm->param('view.templates.home'));
+                        $m->setViewManager($vm);
 
-                        $vm->args = $args;
+                        $m->args = $args;
 
-                        return $vm;
+                        return $m;
                     },*/
-                    'controller' => 'Home',
+                    //'controller' => 'Home',
                     //'controller' => '@Home', //will end up trying to call above home() function if nothing created
-                    //'controller' => '@Home.test',
+                    'controller' => '@Home.test',
                     /*'controller' => new Call(
                         new Service('Home\Factory', [new ServiceManagerLink]),
-                        ['config' => new Dependency('Config'), 'viewManager' => new Dependency('ViewManager')]
+                        ['config' => new Dependency('Config'), 'vm' => new Dependency('ViewManager')]
                     ),*/
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],
