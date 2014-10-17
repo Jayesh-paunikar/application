@@ -43,6 +43,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Service/Service.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/ParamInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/Param.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Plugins/PluginsInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Plugins/Plugins.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Filter/FilterInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Filter/Filter.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invoke/InvokeInterface.php';
