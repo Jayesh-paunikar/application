@@ -16,17 +16,17 @@ class Factory
 
     /**
      * @param Config $config
-     * @param ViewManager $viewManager
+     * @param ViewManager $vm
      * @return Controller
      */
-    public function __invoke(Config $config, ViewManager $viewManager)
+    public function __invoke(Config $config, ViewManager $vm)
     {
-        $vm = new ViewModel;
-        $vm->setTemplate($this->param('view.templates.home'));
-        $vm->setViewManager($viewManager);
+        $m = new ViewModel;
+        $m->setTemplate($this->param('view.templates.home'));
+        $m->setViewManager($vm);
 
         $controller = new Controller;
-        $controller->setViewModel($vm);
+        $controller->setViewModel($m);
 
         return $controller;
     }

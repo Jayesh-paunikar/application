@@ -4,10 +4,12 @@
  */
 
 return [
-    'vm'        => 'View\Manager',
-    'request'   => 'Request',
-    'response'  => 'Response',
-    'layout'    => 'Layout',
-    'url'       => 'Route\Generator\Plugin',
-    'translate' => 'Translator\Plugin',
+    'config'      => 'Config',
+    'layout'      => 'Layout',
+    'request'     => 'Request',
+    'response'    => 'Response',
+    'translate'   => 'Translator\Plugin',
+    'url'         => 'Route\Generator\Plugin',
+    'viewManager' => 'View\Manager',
+    'vm'          => 'View\Manager',
 ];
