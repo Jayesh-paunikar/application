@@ -27,9 +27,8 @@ return [
     ],
     'Response\Event' => [
         ['Response\Listener'],
-        ['@Response.send'],
-        /*[function($event) {
-            return $event->response();
+        /**[function($response) {
+            var_dump($response);
         }]*/
     ],
     'View\Exception\Event' => [
