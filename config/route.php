@@ -102,7 +102,7 @@ return [
                     //'controller' => new Home\Controller, //works but no view model provided
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
-                    //'controller' => new Invoke([new Service('Home'), 'test'], ['a' => '1']),
+                    //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
                     /*'controller' => new ServiceConfig([
                         'name' => Home\Controller::class,
                         'args' => [new ServiceManagerLink],
