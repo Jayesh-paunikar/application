@@ -13,6 +13,7 @@ use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Manager\Manager;
+use Framework\Service\Config\Plugins\Plugins;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
@@ -136,6 +137,7 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
+    'Plugins'  => new Plugins,
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
     'Response\Event'    => Framework\Response\Event::class,
@@ -180,6 +182,7 @@ return [
     'Route\Match\Path'        => Framework\Route\Match\Path\Path::class,
     'Route\Match\Scheme'      => Framework\Route\Match\Scheme\Scheme::class,
     'Route\Match\Wildcard'    => Framework\Route\Match\Wildcard\Wildcard::class,
+    'Service\Manager'         => new ServiceManagerLink,
     'View\Exception\Event'    => Framework\View\Exception\Event::class,
     'View\Exception\Listener' => new Hydrator(
         Framework\View\Exception\Listener::class,

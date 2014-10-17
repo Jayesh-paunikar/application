@@ -39,7 +39,7 @@ use Framework\Route\Definition\Builder\Builder;
 exit;*/
 
 //demo route controller
-/*function home(Request $request, Response $response, ViewManager $vm, array $args = [])
+function test(Request $request, Response $response, ViewManager $vm, array $args = [])
 {
     $m = new Home\ViewModel;
 
@@ -49,7 +49,7 @@ exit;*/
     $m->args = $args;
 
     return $m;
-}*/
+}
 return [
     'definitions' => new Config([
         'home' => Builder::definition([
@@ -88,7 +88,8 @@ return [
                         return $m;
                     },*/
                     'controller' => 'Home',
-                    //'controller' => '@Home', //will end up trying to call above home() function if nothing created
+                    //'controller' => '@test', //test() above
+                    //'controller' => '@Home',
                     //'controller' => '@Home.test',
                     /*'controller' => new Call(
                         new Service('Home\Factory', [new ServiceManagerLink]),
