@@ -70,11 +70,10 @@ return [
                         'action'     => 'index'
                     ],
                     'wildcard'   => false,
-                    /*'controller' => function(Request $request, Response $response, callable $plugin = null) {
-                        //var_dump($vm);exit;
-                        return $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $plugin);
-                        //return $this->trigger('CreateBlog', [$request, $response], $plugin);
-                        //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response], $plugin);
+                    /*'controller' => function(Request $request, Response $response) {
+                        return $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
+                        //return $this->trigger('CreateBlog', [$request, $response]);
+                        //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response], $this);
                     },*/
                     //'controller' => '@Blog\Service.createBlog',
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {

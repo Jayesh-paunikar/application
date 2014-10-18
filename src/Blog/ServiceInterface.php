@@ -10,8 +10,7 @@ interface ServiceInterface
     /**
      * @param Request $request
      * @param Response $response
-     * @param callable $callback
      * @return mixed
      */
-    function createBlog(Request $request, Response $response, callable $callback = null);
+    function createBlog(Request $request, Response $response);
 }

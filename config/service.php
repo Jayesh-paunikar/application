@@ -137,7 +137,6 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
-    'Plugin'   => new ServiceManagerLink,
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
     'Response\Event'    => Framework\Response\Event::class,
