@@ -35,6 +35,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/ConfigInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/ConfigTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/Application.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Application/WebInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Application/Web.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/Container.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Service/ServiceInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ConfigInterface.php';

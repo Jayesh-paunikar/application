@@ -2,8 +2,7 @@
 /**
  *
  */
-use Framework\Application\Application;
-use Framework\Mvc\EventInterface as Event;
+use Framework\Application\Web;
 
 /**
  *
@@ -25,7 +24,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-(new Application(include __DIR__ . '/../config/application.php'))->call('web');
+call_user_func(new Web(include __DIR__ . '/../config/application.php'));
 
 /**
  *
