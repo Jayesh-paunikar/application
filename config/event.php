@@ -20,6 +20,7 @@ return [
     ],
     'Mvc\Event' => [
         ['Mvc\Route'],
+        //[function($vm) { var_dump($vm); }],
         ['Mvc\Dispatch'],
         ['Mvc\Layout'],
         ['Mvc\Render'],

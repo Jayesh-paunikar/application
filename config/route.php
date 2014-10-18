@@ -75,7 +75,8 @@ return [
                         //return $this->trigger('CreateBlog', [$request, $response]);
                         //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response], $this);
                     },*/
-                    //'controller' => '@Blog\Service.createBlog',
+                    //'controller' => '@Blog\Manager.createBlog', //call manager
+                    //'controller' => '@Blog\Create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
                         $m = new Home\ViewModel;

@@ -5,7 +5,7 @@ namespace Blog;
 use Request\RequestInterface as Request;
 use Response\ResponseInterface as Response;
 
-interface ServiceInterface
+interface ManagerInterface
 {
     /**
      * @param Request $request

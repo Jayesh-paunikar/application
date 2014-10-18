@@ -8,8 +8,8 @@ use Request\RequestInterface as Request;
 use Response\ResponseInterface as Response;
 use Framework\Service\Manager\ManagerInterface as ServiceManagerInterface;
 
-class Service
-    implements EventManagerInterface, ServiceManagerInterface, ServiceInterface
+class Manager
+    implements EventManagerInterface, ManagerInterface, ServiceManagerInterface
 {
     /**
      *

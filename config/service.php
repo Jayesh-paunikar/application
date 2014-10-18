@@ -8,6 +8,7 @@ use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config;
 use Framework\Service\Config\ConfigLink\ConfigLink;
 use Framework\Service\Config\Dependency\Dependency;
+use Framework\Service\Config\Event\Event;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
@@ -19,7 +20,7 @@ use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 return [
     //demo blog
-    'Blog\Service' => new Manager(Blog\Service::class),
+    'Blog\Manager' => new Manager(Blog\Manager::class),
 
     'Config' => new ConfigLink,
 
