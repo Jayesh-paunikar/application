@@ -8,7 +8,6 @@ use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config;
 use Framework\Service\Config\ConfigLink\ConfigLink;
 use Framework\Service\Config\Dependency\Dependency;
-use Framework\Service\Config\Event\Event;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
@@ -103,7 +102,7 @@ return [
             new Dependency('Plugin')
        ]
     ),*/
-    'Mvc\Event' => new Event(new Service(Framework\Mvc\Event::class, [new ServiceManagerLink])),
+    'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
     'Mvc\Layout' => new Hydrator(
         Framework\Mvc\Layout\Listener::class,
         ['setViewModel' => new Dependency('Layout')]
