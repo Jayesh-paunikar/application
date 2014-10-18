@@ -13,4 +13,5 @@ return [
     'url'         => 'Route\Generator\Plugin',
     'viewManager' => 'View\Manager',
     'vm'          => 'View\Manager',
+    'web'         => 'Mvc\Event',
 ];
