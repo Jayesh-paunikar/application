@@ -13,7 +13,7 @@ use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Manager\Manager;
-use Framework\Service\Config\Plugins\Plugins;
+use Framework\Service\Config\Plugin\Plugin;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
@@ -137,7 +137,7 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
-    'Plugins'  => new Plugins,
+    'Plugin'   => new Plugin,
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
     'Response\Event'    => Framework\Response\Event::class,

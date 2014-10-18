@@ -6,7 +6,7 @@
 return [
     'config'      => 'Config',
     'layout'      => 'Layout',
-    'plugins'     => 'Plugins',
+    'plugin'      => 'Plugin',
     'request'     => 'Request',
     'sm'          => 'Service\Manager',
     'response'    => 'Response',

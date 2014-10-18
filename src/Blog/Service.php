@@ -19,14 +19,14 @@ class Service
     /**
      * @param Request $request
      * @param Response $response
-     * @param callable $plugins
+     * @param callable $plugin
      * @return mixed
      */
-    public function createBlog(Request $request, Response $response, callable $plugins = null)
+    public function createBlog(Request $request, Response $response, callable $plugin = null)
     {
-        return $this->trigger(['Blog\Create'], ['request' => $request, 'response' => $response], $plugins);
-        //return $this->trigger('CreateBlog', [$request, $response], $plugins);
-        //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response], $plugins);
+        return $this->trigger(['Blog\Create'], ['request' => $request, 'response' => $response], $plugin);
+        //return $this->trigger('CreateBlog', [$request, $response], $plugin);
+        //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response], $plugin);
     }
 }
 
