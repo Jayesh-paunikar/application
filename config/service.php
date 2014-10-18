@@ -99,7 +99,8 @@ return [
             new Args([
                 'request'  => new Dependency('Request'),
                 'response' => new Dependency('Response')
-            ])
+            ]),
+            new Dependency('Plugin')
        ]
     ),*/
     'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
