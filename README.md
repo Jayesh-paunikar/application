@@ -11,6 +11,9 @@ use Framework\Service\Container\Container;
 use Framework\Event\Config\Config as Events;
 
 $config = new Config([
+    'alias' => [
+        'web' => 'Mvc\Event',
+    ],
     'events'      => new Events(include __DIR__ . '/event.php'),
     'services'    => new Container(include __DIR__ . '/service.php'),
     'routes'      => include __DIR__ . '/route.php',
