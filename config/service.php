@@ -85,59 +85,6 @@ return [
             'services'      => new Param('services'),
         ]
     ]),
-    'Mvc\Dispatch' => new Hydrator(
-        Framework\Mvc\Dispatch\Listener::class,
-        ['setControllerManager' => new Dependency('Controller\Manager')]
-    ),
-    //alternatively create an anonymous on the fly
-    /*'Mvc\Dispatch' => new Invoke(
-        [
-            new Dependency('Controller\Manager'), 'dispatch'
-        ],
-        [
-            new Call('Controller\Manager.controller', [new Call('Route.controller')]),
-            new Args([
-                'request'  => new Dependency('Request'),
-                'response' => new Dependency('Response')
-            ]),
-            new Dependency('Plugin')
-       ]
-    ),*/
-    'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
-    'Mvc\Layout' => new Hydrator(
-        Framework\Mvc\Layout\Listener::class,
-        ['setViewModel' => new Dependency('Layout')]
-    ),
-    'Mvc\Render' => new Hydrator(
-        Framework\Mvc\Render\Listener::class,
-        ['setViewManager' => new Dependency('View\Manager')]
-    ),
-    'Mvc\Response' => new Hydrator(
-        Framework\Mvc\Response\Listener::class,
-        ['setResponseManager' => new Dependency('Response\Manager')]
-    ),
-    'Mvc\Route' => new Config([
-        'name' => Framework\Mvc\Route\Listener::class,
-        'args' => [
-
-            new Service(
-                'Route',
-                [
-                    new Args([
-                        'controller' => new Param('routes.definitions.error.controller'),
-                        'hostname'   => new Call('request.getHost'),
-                        'method'     => new Call('request.getMethod'),
-                        'name'       => new Param('routes.definitions.error.name'),
-                        'path'       => new Call('request.getPathInfo'),
-                        'scheme'     => new Call('request.getScheme')
-                    ])
-                ]
-            )
-        ],
-        'calls' => [
-            'setRouteManager' => new Dependency('Route\Manager')
-        ],
-    ]),
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
     'Response\Event'    => Framework\Response\Event::class,
@@ -199,5 +146,58 @@ return [
     'ViewManager'       => new Dependency('View\Manager'),
     'View\Model'        => Framework\View\Model\Model::class,
     'View\Render'       => Framework\View\Render\Render::class,
-    'View\Render\Event' => Framework\View\Render\Event::class
+    'View\Render\Event' => Framework\View\Render\Event::class,
+    'web' => new Service(Framework\Web\Event::class, [new ServiceManagerLink]),
+    'Web\Dispatch' => new Hydrator(
+        Framework\Web\Dispatch\Listener::class,
+        ['setControllerManager' => new Dependency('Controller\Manager')]
+    ),
+    //alternatively create an anonymous on the fly
+    /*'Web\Dispatch' => new Invoke(
+        [
+            new Dependency('Controller\Manager'), 'dispatch'
+        ],
+        [
+            new Call('Controller\Manager.controller', [new Call('Route.controller')]),
+            new Args([
+                'request'  => new Dependency('Request'),
+                'response' => new Dependency('Response')
+            ]),
+            new Dependency('Plugin')
+       ]
+    ),*/
+    'Web\Layout' => new Hydrator(
+        Framework\Web\Layout\Listener::class,
+        ['setViewModel' => new Dependency('Layout')]
+    ),
+    'Web\Render' => new Hydrator(
+        Framework\Web\Render\Listener::class,
+        ['setViewManager' => new Dependency('View\Manager')]
+    ),
+    'Web\Response' => new Hydrator(
+        Framework\Web\Response\Listener::class,
+        ['setResponseManager' => new Dependency('Response\Manager')]
+    ),
+    'Web\Route' => new Config([
+        'name' => Framework\Web\Route\Listener::class,
+        'args' => [
+
+            new Service(
+                'Route',
+                [
+                    new Args([
+                        'controller' => new Param('routes.definitions.error.controller'),
+                        'hostname'   => new Call('request.getHost'),
+                        'method'     => new Call('request.getMethod'),
+                        'name'       => new Param('routes.definitions.error.name'),
+                        'path'       => new Call('request.getPathInfo'),
+                        'scheme'     => new Call('request.getScheme')
+                    ])
+                ]
+            )
+        ],
+        'calls' => [
+            'setRouteManager' => new Dependency('Route\Manager')
+        ],
+    ]),
 ];

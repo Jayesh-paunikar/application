@@ -18,14 +18,6 @@ return [
     'Dispatch\Event' => [
         ['Dispatch\Listener']
     ],
-    'Mvc\Event' => [
-        ['Mvc\Route'],
-        //[function($vm) { var_dump($vm); }],
-        ['Mvc\Dispatch'],
-        ['Mvc\Layout'],
-        ['Mvc\Render'],
-        ['Mvc\Response']
-    ],
     'Response\Event' => [
         ['Response\Listener'],
         /**[function($response) {
@@ -37,5 +29,13 @@ return [
     ],
     'View\Render\Event' => [
         ['View\Render'],
+    ],
+    'web' => [
+        ['Web\Route'],
+        //[function($vm) { var_dump($vm); }],
+        ['Web\Dispatch'],
+        ['Web\Layout'],
+        ['Web\Render'],
+        ['Web\Response']
     ],
 ];
