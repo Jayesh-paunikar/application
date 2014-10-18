@@ -25,7 +25,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-(new Application(include __DIR__ . '/../config/application.php'))->web();
+(new Application(include __DIR__ . '/../config/application.php'))->call('web');
 
 /**
  *
