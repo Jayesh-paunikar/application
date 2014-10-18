@@ -3,6 +3,7 @@
  *
  */
 use Framework\Application\Application;
+use Framework\Mvc\EventInterface as Event;
 
 /**
  *
@@ -24,7 +25,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-call_user_func(new Application(include __DIR__ . '/../config/application.php'));
+(new Application(include __DIR__ . '/../config/application.php'))->call(Event::MVC);
 
 /**
  *

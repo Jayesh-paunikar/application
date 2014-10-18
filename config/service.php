@@ -8,12 +8,12 @@ use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config;
 use Framework\Service\Config\ConfigLink\ConfigLink;
 use Framework\Service\Config\Dependency\Dependency;
+use Framework\Service\Config\Event\Event;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Manager\Manager;
-use Framework\Service\Config\Plugin\Plugin;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
@@ -103,7 +103,7 @@ return [
             new Dependency('Plugin')
        ]
     ),*/
-    'Mvc\Event' => new Service(Framework\Mvc\Event::class, [new ServiceManagerLink]),
+    'Mvc\Event' => new Event(new Service(Framework\Mvc\Event::class, [new ServiceManagerLink])),
     'Mvc\Layout' => new Hydrator(
         Framework\Mvc\Layout\Listener::class,
         ['setViewModel' => new Dependency('Layout')]
@@ -138,7 +138,7 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
-    'Plugin'   => new Plugin,
+    'Plugin'   => new ServiceManagerLink,
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
     'Response\Event'    => Framework\Response\Event::class,
