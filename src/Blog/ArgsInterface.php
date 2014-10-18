@@ -16,16 +16,6 @@ interface ArgsInterface
 
     /**
      *
-     */
-    const REQUEST = 'request';
-
-    /**
-     *
-     */
-    const RESPONSE = 'response';
-
-    /**
-     *
      *
      */
     const VIEW_MODEL = 'viewModel';
