@@ -21,7 +21,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManagerInterfac
 include __DIR__ . '/vendor/mvc5/framework/src/Application/ApplicationInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/ConfigTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverArgs.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/SignalTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/AliasTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/ResolverTrait.php';
