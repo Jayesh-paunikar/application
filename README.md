@@ -22,7 +22,7 @@ $config = new Config([
 ]);
 ```
 ```php
-(new Application($config))->call('web');
+call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 ```
 ##Benchmark
 *Current*
