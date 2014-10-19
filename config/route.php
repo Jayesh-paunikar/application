@@ -72,10 +72,14 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        return $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
-                        //return $this->trigger('blog:create', ['request' => $request, 'response' => $response], $this);
-                        //return $this->call('blog:create', [$request, $response]);
-                        //return $this->call('blog:create', ['request' => $request, 'response' => $response], $this);
+                        //$response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
+                        //$response = $this->trigger('blog:create', ['request' => $request, 'response' => $response], $this);
+                        //$response = $this->call('blog:create', [$request, $response]);
+                        $response = $this->call('blog:create', ['request' => $request, 'response' => $response], $this);
+
+                        var_dump(__FILE__, $this->plugin('blog:create')->blog());
+
+                        return $response;
                     },*/
                     //'controller' => '@blog:create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {

@@ -31,10 +31,18 @@ class Create
     protected function args()
     {
         return [
-            ArgsInterface::BLOG       => $this->blog,
+            ArgsInterface::BLOG       => $this->blog(),
             ArgsInterface::EVENT      => $this,
             ArgsInterface::VIEW_MODEL => $this->viewModel()
         ];
+    }
+
+    /**
+     * @return BlogInterface
+     */
+    public function blog()
+    {
+        return $this->blog;
     }
 
     /**
