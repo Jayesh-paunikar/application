@@ -16,7 +16,7 @@ return [
         ['Controller\Dispatcher']
     ],
     'Controller\Exception' => [
-        ['Controller\Exception\Dispatcher'],
+        ['Controller\Exception\Controller'],
     ],
     'Exception\View' => [
         ['Exception\Renderer'],

@@ -40,8 +40,8 @@ return [
     ),
     'Controller\Manager'   => new Manager(Framework\Controller\Manager\Manager::class),
     'Controller\Exception' => Framework\Controller\Exception\Exception::class,
-    'Controller\Exception\Dispatcher' => new Hydrator(
-        Framework\Controller\Exception\Dispatcher::class,
+    'Controller\Exception\Controller' => new Hydrator(
+        Framework\Controller\Exception\Controller::class,
         ['setViewModel' => new Dependency('Exception\ViewModel')]
     ),
     'Exception\View'    => new Hydrator(
