@@ -28,7 +28,7 @@ return [
         ['Mvc\View'],
         ['Mvc\Response']
     ],
-    'Response\Dispatch' => [
+    'Response\Send' => [
         ['Response\Dispatcher'],
         /*[function($response) {
             var_dump($response);
