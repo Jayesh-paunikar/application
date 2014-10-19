@@ -71,7 +71,7 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        return $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
+                        //return $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
                         //return $this->trigger('CreateBlog', [$request, $response]);
                         //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response], $this);
                     },*/
@@ -98,7 +98,7 @@ return [
                     //'controller' => ['Home\Controller', 'staticTest'],
                     //'controller' => [new Dependency('Home'), 'test'],
                     //'controller' => 'Home\Controller::staticTest', //error
-                    //'controller' => new Home\Controller, //works but no view model provided
+                    //'controller' => new Home\Controller, //works but no view model
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
                     //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
