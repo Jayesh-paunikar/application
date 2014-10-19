@@ -5,22 +5,25 @@
 
 //demo calling specific service methods
 return [
-    'CreateBlog' => [
+    'BlogCreate' => [
         [
             '@Blog\Controller.valid',
             '@Blog\Controller.add',
             '@Blog\Controller.response'
         ]
     ],
+    'Controller\Action' => [
+        ['Controller\Dispatcher']
+    ],
     'Exception\Dispatch' => [
         ['Exception\Dispatcher'],
     ],
-    'Controller\Dispatch' => [
-        ['Controller\Dispatcher']
+    'Exception\Render' => [
+        ['Exception\Renderer'],
     ],
     'Mvc' => [
         ['Mvc\Route'],
-        ['Mvc\Dispatch'],
+        ['Mvc\Controller'],
         ['Mvc\Layout'],
         ['Mvc\View'],
         ['Mvc\Response']
@@ -30,9 +33,6 @@ return [
         /*[function($response) {
             var_dump($response);
         }]*/
-    ],
-    'Exception\Render' => [
-        ['Exception\Renderer'],
     ],
     'View\Render' => [
         ['View\Renderer'],

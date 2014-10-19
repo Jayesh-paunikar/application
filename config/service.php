@@ -19,9 +19,9 @@ use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 return [
     'Config'       => new ConfigLink,
-    'Controller\Dispatch'   => Framework\Controller\Dispatch\Dispatch::class,
+    'Controller\Action'   => Framework\Controller\Action\Action::class,
     'Controller\Dispatcher' => new Hydrator(
-        Framework\Controller\Dispatch\Dispatcher::class,
+        Framework\Controller\Action\Dispatcher::class,
         [
             'setControllerManager' => new Dependency('Controller\Manager')
         ]
@@ -93,12 +93,12 @@ return [
         ]
     ]),
     'Mvc'          => new Service(Framework\Mvc\Mvc::class, [new ServiceManagerLink]),
-    'Mvc\Dispatch' => new Hydrator(
-        Framework\Mvc\Dispatch\Dispatcher::class,
+    'Mvc\Controller' => new Hydrator(
+        Framework\Mvc\Controller\Dispatcher::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
     ),
     //alternatively create an anonymous on the fly
-    /*'Mvc\Dispatch' => new Invoke(
+    /*'Mvc\Controller' => new Invoke(
         [
             new Dependency('Controller\Manager'), 'dispatch'
         ],
