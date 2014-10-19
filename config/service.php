@@ -124,7 +124,7 @@ return [
         ['setResponseManager' => new Dependency('Response\Manager')]
     ),
     'Mvc\Route' => new Config([
-        'name' => Framework\Mvc\Route\Router::class,
+        'name' => Framework\Mvc\Route\Dispatcher::class,
         'args' => [
             new Service(
                 'Route',
