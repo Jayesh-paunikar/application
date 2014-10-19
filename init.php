@@ -89,8 +89,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Route/DispatcherInterface.php'
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Route/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/FilterInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Filter.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/DispatcherInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Dispatcher.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/MatcherInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Matcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/MatchInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Match.php';

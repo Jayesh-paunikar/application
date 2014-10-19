@@ -149,11 +149,11 @@ return [
             [
                 'Route\Dispatch\Filter',
 
-                new Service('Route\Dispatcher', [new Param('routes.definitions.home')]),
+                new Service('Route\Matcher', [new Param('routes.definitions.home')]),
 
-                new Service('Route\Dispatcher', [new Param('routes.definitions.application')]),
+                new Service('Route\Matcher', [new Param('routes.definitions.application')]),
 
-                new Service('Route\Dispatcher', [new Param('routes.definitions.error')])
+                new Service('Route\Matcher', [new Param('routes.definitions.error')])
             ]
         ]
     ])

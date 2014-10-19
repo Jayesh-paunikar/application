@@ -167,15 +167,6 @@ return [
     ),
     'Route\Dispatch'          => Framework\Route\Dispatch\Dispatch::class,
     'Route\Dispatch\Filter'   => Framework\Route\Dispatch\Filter::class,
-    'Route\Dispatcher' => new Hydrator(
-        Framework\Route\Dispatch\Dispatcher::class,
-        ['setRouteManager' => new Dependency('Route\Manager')]
-    ),
-    'Route\Manager' => new Manager(
-        Framework\Route\Manager\Manager::class, [
-            'events' => new Param('routes.events')
-        ]
-    ),
     'Route\Generator' => new Service(
         Framework\Route\Generator\Generator::class,
         [new Param('routes.definitions')]
@@ -186,6 +177,15 @@ return [
             'setRoute'          => new Dependency('Route'),
             'setRouteGenerator' => new Dependency('Route\Generator')
         ]
+    ),
+    'Route\Manager' => new Manager(
+        Framework\Route\Manager\Manager::class, [
+            'events' => new Param('routes.events')
+        ]
+    ),
+    'Route\Matcher' => new Hydrator(
+        Framework\Route\Dispatch\Matcher::class,
+        ['setRouteManager' => new Dependency('Route\Manager')]
     ),
     'Route\Match'             => Framework\Route\Match\Match::class,
     'Route\Match\Hostname'    => Framework\Route\Match\Hostname\Hostname::class,
