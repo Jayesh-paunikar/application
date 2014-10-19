@@ -75,7 +75,6 @@ return [
                         //return $this->trigger('CreateBlog', [$request, $response]);
                         //return $this->trigger('CreateBlog', ['request' => $request, 'response' => $response], $this);
                     },*/
-                    //'controller' => '@Blog\Manager.createBlog', //call manager
                     //'controller' => '@Blog\Create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
@@ -135,7 +134,7 @@ return [
         ])
     ]),
     'events' => new Events([
-        'Route\Match\Event' => [
+        'Route\Match' => [
             [
                 'Route\Match\Scheme',
                 'Route\Match\Hostname',
@@ -144,15 +143,15 @@ return [
                 'Route\Match\Method'
             ]
         ],
-        'Route\Dispatch\Event' => [
+        'Route\Dispatch' => [
             [
                 'Route\Dispatch\Filter',
 
-                new Service('Route\Dispatch', [new Param('routes.definitions.home')]),
+                new Service('Route\Dispatcher', [new Param('routes.definitions.home')]),
 
-                new Service('Route\Dispatch', [new Param('routes.definitions.application')]),
+                new Service('Route\Dispatcher', [new Param('routes.definitions.application')]),
 
-                new Service('Route\Dispatch', [new Param('routes.definitions.error')])
+                new Service('Route\Dispatcher', [new Param('routes.definitions.error')])
             ]
         ]
     ])

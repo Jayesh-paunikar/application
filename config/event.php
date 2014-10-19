@@ -12,30 +12,29 @@ return [
             '@Blog\Controller.response'
         ]
     ],
-    'Controller\Exception\Event' => [
-        ['Controller\Exception\Listener'],
+    'Exception\Dispatch' => [
+        ['Exception\Dispatcher'],
     ],
-    'Dispatch\Event' => [
-        ['Dispatch\Listener']
+    'Controller\Dispatch' => [
+        ['Controller\Dispatcher']
     ],
-    'Mvc\Event' => [
+    'Mvc' => [
         ['Mvc\Route'],
-        //[function($vm) { var_dump($vm); }],
         ['Mvc\Dispatch'],
         ['Mvc\Layout'],
-        ['Mvc\Render'],
+        ['Mvc\View'],
         ['Mvc\Response']
     ],
-    'Response\Event' => [
-        ['Response\Listener'],
-        /**[function($response) {
+    'Response\Dispatch' => [
+        ['Response\Dispatcher'],
+        /*[function($response) {
             var_dump($response);
         }]*/
     ],
-    'View\Exception\Event' => [
-        ['View\Exception\Listener'],
+    'Exception\Render' => [
+        ['Exception\Renderer'],
     ],
-    'View\Render\Event' => [
-        ['View\Render'],
+    'View\Render' => [
+        ['View\Renderer'],
     ],
 ];
