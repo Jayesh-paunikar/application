@@ -10,6 +10,7 @@ use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config as ServiceConfig;
 use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Factory\Factory;
+use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
@@ -111,9 +112,9 @@ return [
                                 [
                                     'setTemplate'    => new Param('view.templates.home'),
                                     'setViewManager' => new Dependency('View\Manager'),
-                                    //['setTemplate', ['staticA', 'staticB']],
                                     [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
-                                    //['Home\Controller', 'staticCall']
+                                    ['Home\Controller', 'staticCall'],
+                                    new Filter(new Call('request.getHost'), 'var_dump')
                                 ]
                             )
                         ]
