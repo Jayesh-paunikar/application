@@ -116,7 +116,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/LayoutInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModelInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ServiceTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Plugin/PluginTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/PluginTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/DispatchInterface.php';
