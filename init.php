@@ -147,8 +147,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/RendererInterface.p
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Renderer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/Render.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ServiceTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/ResponderInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/Responder.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/DispatcherInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ManagerInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Args.php';

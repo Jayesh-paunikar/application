@@ -120,7 +120,7 @@ return [
         ['setViewManager' => new Dependency('View\Manager')]
     ),
     'Mvc\Response' => new Hydrator(
-        Framework\Mvc\Response\Responder::class,
+        Framework\Mvc\Response\Dispatcher::class,
         ['setResponseManager' => new Dependency('Response\Manager')]
     ),
     'Mvc\Route' => new Config([
