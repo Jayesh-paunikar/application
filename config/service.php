@@ -197,6 +197,6 @@ return [
     'View\Manager'  => new Manager(Framework\View\Manager\Manager::class),
     'ViewManager'   => new Dependency('View\Manager'),
     'View\Model'    => Framework\View\Model\Model::class,
-    'View\Renderer' => Framework\View\Render\Renderer::class,
+    'View\Renderer' => Framework\View\Renderer\Renderer::class,
     'View\Render'   => Framework\View\Render\Render::class
 ];
