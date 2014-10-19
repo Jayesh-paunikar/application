@@ -44,12 +44,16 @@ return [
         Framework\Controller\Exception\Dispatcher::class,
         ['setViewModel' => new Dependency('Exception\ViewModel')]
     ),
-    'Exception\Render'    => Framework\View\Exception\Render::class,
+    'Exception\View'    => new Hydrator(
+        Framework\View\Exception\View::class,
+        [
+            'setViewModel' => new Dependency('Exception\ViewModel')
+        ]
+    ),
     'Exception\Renderer' => new Hydrator(
         Framework\View\Exception\Renderer::class,
         [
             'setViewManager' => new Dependency('View\Manager'),
-            'setViewModel'   => new Dependency('Exception\ViewModel')
         ]
     ),
     'Exception\ViewModel' => new Hydrator(

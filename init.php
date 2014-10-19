@@ -141,8 +141,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Render/RendererInterface.php'
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/RendererTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/Renderer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Args.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/RenderInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Render.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ViewInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/View.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/RendererInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Renderer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/Render.php';
