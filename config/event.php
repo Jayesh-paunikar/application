@@ -5,7 +5,7 @@
 
 //demo calling specific service methods
 return [
-    'BlogCreate' => [
+    'blog:create' => [
         [
             '@Blog\Controller.valid',
             '@Blog\Controller.add',

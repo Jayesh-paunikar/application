@@ -72,11 +72,12 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        return $this->trigger('BlogCreate', ['request' => $request, 'response' => $response], $this);
-                        //return $this->trigger('BlogCreate', [$request, $response]);
-                        //return $this->trigger('BlogCreate', ['request' => $request, 'response' => $response], $this);
+                        return $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
+                        //return $this->trigger('blog:create', ['request' => $request, 'response' => $response], $this);
+                        //return $this->call('blog:create', [$request, $response]);
+                        //return $this->call('blog:create', ['request' => $request, 'response' => $response], $this);
                     },*/
-                    'controller' => '@Blog\Create', //call event (trigger)
+                    //'controller' => '@blog:create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
                         $m = new Home\ViewModel;
@@ -87,7 +88,7 @@ return [
 
                         return $m;
                     },*/
-                    //'controller' => 'Home',
+                    'controller' => 'Home',
                     //'controller' => '@test', //test() above
                     //'controller' => '@Home',
                     //'controller' => '@Home.test',

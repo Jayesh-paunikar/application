@@ -4,6 +4,7 @@
  */
 
 return [
+    'blog:create' => 'Blog\Create',
     'config'      => 'Config',
     'layout'      => 'Layout',
     'request'     => 'Request',

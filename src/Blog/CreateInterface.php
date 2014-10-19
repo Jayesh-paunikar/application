@@ -7,7 +7,7 @@ interface CreateInterface
     /**
      *
      */
-    const CREATE = 'BlogCreate';
+    const CREATE = 'blog:create';
 
     /**
      * @param callable $listener
