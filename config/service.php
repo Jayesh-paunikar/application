@@ -39,8 +39,8 @@ return [
         ]
     ),
     'Controller\Manager'   => new Manager(Framework\Controller\Manager\Manager::class),
-    'Exception\Action'     => Framework\Controller\Exception\Action::class,
-    'Exception\Dispatcher' => new Hydrator(
+    'Controller\Exception' => Framework\Controller\Exception\Exception::class,
+    'Controller\Exception\Dispatcher' => new Hydrator(
         Framework\Controller\Exception\Dispatcher::class,
         ['setViewModel' => new Dependency('Exception\ViewModel')]
     ),
