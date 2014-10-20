@@ -79,8 +79,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Mvc.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/RouteInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/Route.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/RouteInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Route.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/DispatchInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/Dispatch.php';
@@ -160,7 +160,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Response/SenderInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Sender.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/PluginInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/ServiceTrait.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Route/ServiceTrait.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Plugin.php';
 
 /**

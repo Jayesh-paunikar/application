@@ -155,7 +155,7 @@ return [
     'Response\Sender'   => Framework\Response\Sender::class,
     'Response\Manager'  => new Manager(Framework\Response\Manager\Manager::class),
     'Route' => new Service(
-        Framework\Route\Route\Route::class,
+        Framework\Route\Route::class,
         [
             new Args([
                 'hostname' => new Call('request.getHost'),
