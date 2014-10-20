@@ -14,6 +14,7 @@ use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
+use Framework\Service\Config\Router\Router;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
@@ -153,11 +154,11 @@ return [
             [
                 'Route\Dispatch\Filter',
 
-                new Service('Route\Matcher', [new Param('routes.definitions.home')]),
+                new Router('routes.definitions.home'),
 
-                new Service('Route\Matcher', [new Param('routes.definitions.application')]),
+                new Router('routes.definitions.application'),
 
-                new Service('Route\Matcher', [new Param('routes.definitions.error')])
+                new Router('routes.definitions.error')
             ]
         ]
     ])

@@ -183,16 +183,16 @@ return [
             'events' => new Param('routes.events')
         ]
     ),
-    'Route\Matcher' => new Hydrator(
-        Framework\Route\Dispatch\Matcher::class,
-        ['setRouteManager' => new Dependency('Route\Manager')]
-    ),
     'Route\Match'             => Framework\Route\Match\Match::class,
     'Route\Match\Hostname'    => Framework\Route\Match\Hostname\Hostname::class,
     'Route\Match\Method'      => Framework\Route\Match\Method\Method::class,
     'Route\Match\Path'        => Framework\Route\Match\Path\Path::class,
     'Route\Match\Scheme'      => Framework\Route\Match\Scheme\Scheme::class,
     'Route\Match\Wildcard'    => Framework\Route\Match\Wildcard\Wildcard::class,
+    'Router'                  => new Hydrator(
+        Framework\Route\Dispatch\Router::class,
+        ['setRouteManager' => new Dependency('Route\Manager')]
+    ),
     'Service\Manager'         => new ServiceManagerLink,
     'View\Manager'  => new Manager(Framework\View\Manager\Manager::class),
     'ViewManager'   => new Dependency('View\Manager'),

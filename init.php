@@ -62,6 +62,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ConfigLink/ConfigLi
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/ChildInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/ChildTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Child.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Router/RouterInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Router/Router.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/HydratorInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/Hydrator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/FactoryInterface.php';
@@ -89,8 +91,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Route/DispatcherInterface.php'
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Route/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/FilterInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Filter.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/MatcherInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Matcher.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/RouterInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Dispatch/Router.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/MatchInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Match/Match.php';
