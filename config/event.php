@@ -12,7 +12,7 @@ return [
             '@Blog\Controller.response'
         ]
     ],
-    'Controller\Action' => [
+    'Controller\Dispatch' => [
         ['Controller\Dispatcher']
     ],
     'Controller\Exception' => [

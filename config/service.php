@@ -19,9 +19,9 @@ use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 return [
     'Config'       => new ConfigLink,
-    'Controller\Action'   => Framework\Controller\Action\Action::class,
+    'Controller\Dispatch'   => Framework\Controller\Dispatch\Dispatch::class,
     'Controller\Dispatcher' => new Hydrator(
-        Framework\Controller\Action\Dispatcher::class,
+        Framework\Controller\Dispatch\Dispatcher::class,
         [
             'setControllerManager' => new Dependency('Controller\Manager')
         ]

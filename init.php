@@ -120,11 +120,11 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModelInterface.php
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/PluginTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModel.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Action/Args.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Action/ActionInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Action/Action.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Action/DispatcherInterface.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Action/Dispatcher.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Args.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/DispatchInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Dispatch.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/DispatcherInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ExceptionInterface.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Exception.php';
