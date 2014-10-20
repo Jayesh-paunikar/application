@@ -151,8 +151,8 @@ return [
     'Plugin'   => new ServiceManagerLink,
     'Request'  => new Service(Request\Request::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Response' => Response\Response::class,
-    'Response\Send'   => Framework\Response\Send::class,
-    'Response\Dispatcher' => Framework\Response\Dispatcher::class,
+    'Response\Dispatch' => Framework\Response\Dispatch::class,
+    'Response\Sender'   => Framework\Response\Sender::class,
     'Response\Manager'  => new Manager(Framework\Response\Manager\Manager::class),
     'Route' => new Service(
         Framework\Route\Route\Route::class,

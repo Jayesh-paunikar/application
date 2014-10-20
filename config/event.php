@@ -28,8 +28,8 @@ return [
         ['Mvc\View'],
         ['Mvc\Response']
     ],
-    'Response\Send' => [
-        ['Response\Dispatcher'],
+    'Response\Dispatch' => [
+        ['Response\Sender'],
         /*[function($response) {
             var_dump($response);
         }]*/
