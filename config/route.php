@@ -154,11 +154,11 @@ return [
             [
                 'Route\Dispatch\Filter',
 
-                new Router('routes.definitions.home'),
+                new Router(new Param('routes.definitions.home')),
 
-                new Router('routes.definitions.application'),
+                new Router(new Param('routes.definitions.application')),
 
-                new Router('routes.definitions.error')
+                new Router(new Param('routes.definitions.error'))
             ]
         ]
     ])
