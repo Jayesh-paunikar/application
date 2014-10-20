@@ -44,16 +44,16 @@ return [
         Framework\Controller\Exception\Controller::class,
         ['setViewModel' => new Dependency('Exception\ViewModel')]
     ),
-    'Exception\View'    => new Hydrator(
-        Framework\View\Exception\View::class,
-        [
-            'setViewModel' => new Dependency('Exception\ViewModel')
-        ]
-    ),
     'Exception\Renderer' => new Hydrator(
         Framework\View\Exception\Renderer::class,
         [
             'setViewManager' => new Dependency('View\Manager'),
+        ]
+    ),
+    'Exception\View'    => new Hydrator(
+        Framework\View\Exception\View::class,
+        [
+            'setViewModel' => new Dependency('Exception\ViewModel')
         ]
     ),
     'Exception\ViewModel' => new Hydrator(
@@ -128,7 +128,7 @@ return [
         ['setResponseManager' => new Dependency('Response\Manager')]
     ),
     'Mvc\Route' => new Config([
-        'name' => Framework\Mvc\Route\Dispatcher::class,
+        'name' => Framework\Mvc\Route\Router::class,
         'args' => [
             new Service(
                 'Route',
@@ -165,8 +165,8 @@ return [
             ])
         ]
     ),
-    'Route\Dispatch'          => Framework\Route\Dispatch\Dispatch::class,
-    'Route\Dispatch\Filter'   => Framework\Route\Dispatch\Filter::class,
+    'Route\Dispatch'          => Framework\Route\Router\Dispatch::class,
+    'Route\Dispatch\Filter'   => Framework\Route\Router\Filter::class,
     'Route\Generator' => new Service(
         Framework\Route\Generator\Generator::class,
         [new Param('routes.definitions')]
@@ -190,7 +190,7 @@ return [
     'Route\Match\Scheme'      => Framework\Route\Match\Scheme\Scheme::class,
     'Route\Match\Wildcard'    => Framework\Route\Match\Wildcard\Wildcard::class,
     'Router'                  => new Hydrator(
-        Framework\Route\Dispatch\Router::class,
+        Framework\Route\Router\Router::class,
         ['setRouteManager' => new Dependency('Route\Manager')]
     ),
     'Service\Manager'         => new ServiceManagerLink,
