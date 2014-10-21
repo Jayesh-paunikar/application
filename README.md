@@ -61,7 +61,7 @@ $this->call('blog:create');
 //call the controller's valid method with supporting arguments
 $this->call('blog:valid');
 
-function valid(Request $request);
+function valid(Config $config, Request $request);
 ```
 Which means
 ```php
@@ -78,7 +78,10 @@ $app->call('request.getHost'); //get string hostname from the request object.
 ```
 Named arguments are also supported
 ```php
-$app->call('Blog\Controller.valid', ['config' => $config, 'request' => $request]);
+$app->call(
+    'Blog\Controller.valid', 
+    ['config' => $config, 'request' => $request]
+);
 ```
 To all of the available arguments that are not plugin arguments, add `$args` to the method signature
 ```php
