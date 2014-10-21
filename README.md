@@ -63,9 +63,9 @@ function valid(Request $request);
 ```
 Which means
 ```php
-$app = new Application($this->config);
+$app = new Application($config);
 
-$app->call('web'); //invoke web site
+$app->call('web'); //invoke web application
 
 $app->call('request.getHost'); //get string hostname from the request object.
 
