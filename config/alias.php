@@ -5,6 +5,7 @@
 
 return [
     'blog:create' => 'Blog\Create',
+    'blog:valid' => '@Blog\Controller.valid',
     'config'      => 'Config',
     'layout'      => 'Layout',
     'request'     => 'Request',
