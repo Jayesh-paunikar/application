@@ -74,6 +74,13 @@ Named arguments are also supported
 ```php
 $app->call('Blog\Controller.valid', ['request' => $request]);
 ```
+To get all of the available arguments, excluding those from the callback, add `$args` to the method signature
+```php
+public function __invoke(Config $config, ViewManager $vm, array $args = [])
+{
+    var_dump($args);
+}
+```
 Usage
 --
 The <a href="https://github.com/mvc5/application">mvc5/application</a> demonstrates its usage as an MVC web application.
