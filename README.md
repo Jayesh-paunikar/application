@@ -1,5 +1,3 @@
-Overview
---
 This event management system supports named arguments and uses dependency injection to create its listeners and their depencies just in time before they are called. The system's configuration is an array object that can contain value objects, string names, callables and there are certain configuration objects that the service manager knows how to resolve.
 
 ```php
