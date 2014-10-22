@@ -20,7 +20,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ServiceManager.php
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/Application.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Base.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/Services.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/Service.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Signal.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Alias.php';
