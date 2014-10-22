@@ -96,7 +96,7 @@ return [
             'services'      => new Param('services'),
         ]
     ]),
-    'Mvc\Event'      => new Service(Framework\Mvc\MvcEvent::class, [new ServiceManagerLink]),
+    'Mvc'      => new Service(Framework\Mvc\MvcEvent::class, [new ServiceManagerLink]),
     'Mvc\Controller' => new Hydrator(
         Framework\Mvc\Controller\Dispatcher::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
@@ -172,7 +172,7 @@ return [
         [new Param('routes.definitions')]
     ),
     'Route\Generator\Plugin' => new Hydrator(
-        Framework\Route\Generator\Plugin::class,
+        Framework\Route\Generator\RoutePlugin::class,
         [
             'setRoute'          => new Dependency('Route'),
             'setRouteGenerator' => new Dependency('Route\Generator')

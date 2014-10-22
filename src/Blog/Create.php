@@ -3,10 +3,10 @@
 namespace Blog;
 
 use Framework\Event\Event as Base;
-use Framework\Event\EventTrait as Event;
-use Framework\View\Model\ServiceTrait as View;
+use Framework\Event\BaseEvent;
+use Framework\View\Model\Service\ViewModel as Model;
 use Framework\View\Model\ViewModel;
-use Framework\Service\Resolver\SignalTrait as Signal;
+use Framework\Service\Resolver\Signal;
 
 class Create
     implements Base, BlogCreate
@@ -14,9 +14,9 @@ class Create
     /**
      *
      */
-    use Event;
+    use BaseEvent;
     use Signal;
-    use View;
+    use Model;
 
     const EVENT = self::CREATE;
 

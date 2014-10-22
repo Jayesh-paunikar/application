@@ -3,9 +3,9 @@
 namespace Home;
 
 use Framework\View\Manager\ViewManager;
-use Framework\View\Model\ServiceTrait as View;
-use Request\Request as Request;
-use Response\Response as Response;
+use Framework\View\Model\Service\ViewModel as Model;
+use Request\Request;
+use Response\Response;
 
 class Controller
     implements HomeController
@@ -13,7 +13,7 @@ class Controller
     /**
      *
      */
-    use View;
+    use Model;
 
     /**
      * @return mixed

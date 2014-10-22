@@ -3,7 +3,7 @@
 namespace Home;
 
 use Framework\Config\Configuration;
-use Framework\Service\FactoryTrait;
+use Framework\Service\Factory\FactoryService;
 use Framework\View\Manager\ViewManager;
 
 class Factory
@@ -12,7 +12,7 @@ class Factory
     /**
      *
      */
-    use FactoryTrait;
+    use FactoryService;
 
     /**
      * @param Configuration $config
