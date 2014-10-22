@@ -1,4 +1,4 @@
-This event management system supports named arguments and uses dependency injection to create its listeners and their depencies just in time before they are called. The system's configuration is an array object that can contain value objects, string names, callables and there are certain configuration objects that the service manager knows how to resolve.
+This event management system supports named arguments and uses dependency injection to create its listeners and their depencies just in time before they are called. The system's configuration is an array that contains values, string names, callables and certain configuration objects that the service manager knows how to resolve.
 
 ```php
 'Request'  => new Service(
@@ -6,13 +6,15 @@ This event management system supports named arguments and uses dependency inject
   [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]
 ),
 ```
-The above will pass the array of arguments as constructor values in that set order. This goes in hand with the service manager's get method
+The above will pass the array of arguments as constructor values in that set order. This goes in hand with the service manager's get and create methods
 ```php
 function get($name, array $args = [], callable $callback = null);
-```
-The above callback is used when a service cannot be created for a particular string name, this allows the calling service the opportunity to determine if it can provide the service instead. Otherwise the get method will try to instantiate the class even though it does not exist; and causes an error to occur. The plugin method is used when no error should occur and still supports a callback for when the string name cannot be found; in which case an empty function is used.
 
-Events can be strings or classes in which case they can manage the arguments used for the parameters of the methods being invoked for that event.
+function create($config, array $args = [], callable $callback = null);
+```
+The callback is used when a service cannot be created for a particular string name, allowing the calling service the opportunity to provide the service or to handle the impending error. Otherwise the get/create methods will still try to instantiate the class even though it does not exist; causing an error to occur. The plugin method is used when an error is not wanted while still supporting the callback for when the string name cannot be found; in which case an empty function is used.
+
+Events can be strings or classes which can manage the arguments used for the parameters of the methods being invoked for that event. For a string event it would resort to using the service manager's plugin callback for all of the arguments used.
 ```php
 class Event
 {
@@ -33,11 +35,11 @@ class Event
   }
 }
 ```
-The callback used to provide the additional parameters not in the args array is provided by the corresponding service manager as `$this`.
+The callback used to provide the additional parameters not in the args array is provided by the service manager as `$this` or alternatively any callable type.
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
-These additional arguments can be aliases or service names, if an alias is not found then its name is used as the service name. Aliases map strings of varying characters to service names or service calls.
+The parameter names of these additional arguments can be aliases or service names, and if an alias is not found then it is used as the service name. Aliases map strings of varying characters, excluding the call separator `.`, to service names or service calls. A service call is prefixed by the call symbol '@' and if the plugin object is an event is is triggered and its value is returned instead.
 ```php
 return [
     'blog:create' => 'Blog\Create',
@@ -59,22 +61,29 @@ $this->call('blog:create');
 //call the controller's valid method with supporting arguments
 $this->call('blog:valid');
 
-function valid(Request $request);
+function valid(Config $config, Request $request);
 ```
 Which means
 ```php
 $app = new Application($config);
 
 $app->call('web'); //invoke web application
+```
+And
+```php
+$app = new Application($config);
 
 $app->call('request.getHost'); //get string hostname from the request object.
 
 ```
 Named arguments are also supported
 ```php
-$app->call('Blog\Controller.valid', ['request' => $request]);
+$app->call(
+    'Blog\Controller.valid', 
+    ['config' => $config, 'request' => $request]
+);
 ```
-To get all of the available arguments, excluding those from the callback, add `$args` to the method signature
+To all of the available arguments that are not plugin arguments, add `$args` to the method signature
 ```php
 public function __invoke(Config $config, ViewManager $vm, array $args = [])
 {
