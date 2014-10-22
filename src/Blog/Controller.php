@@ -6,7 +6,7 @@ use Request\RequestInterface as Request;
 use Response\ResponseInterface as Response;
 
 class Controller
-    implements ControllerInterface
+    implements BlogController
 {
     /**
      * @param Request $request
@@ -19,21 +19,21 @@ class Controller
     }
 
     /**
-     * @param BlogInterface $blog
+     * @param BlogModel $blog
      * @return mixed|void
      */
-    public function add(BlogInterface $blog = null)
+    public function add(BlogModel $blog = null)
     {
         var_dump(__FUNCTION__.' :: '.__FILE__, $blog);
     }
 
     /**
      * @param Response $response
-     * @param ViewModelInterface $viewModel
+     * @param BlogViewModel $viewModel
      * @param array $args
      * @return mixed|void
      */
-    public function response(Response $response, ViewModelInterface $viewModel = null, array $args = [])
+    public function response(Response $response, BlogViewModel $viewModel = null, array $args = [])
     {
         var_dump(__FUNCTION__.' :: '.__FILE__, $args);
     }

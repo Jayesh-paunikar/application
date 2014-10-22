@@ -3,6 +3,6 @@
 namespace Blog;
 
 class Blog
-    implements BlogInterface
+    implements BlogModel
 {
 }

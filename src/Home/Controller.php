@@ -2,13 +2,13 @@
 
 namespace Home;
 
-use Framework\View\Manager\ManagerInterface as ViewManager;
+use Framework\View\Manager\ViewManager;
 use Framework\View\Model\ServiceTrait as View;
 use Request\RequestInterface as Request;
 use Response\ResponseInterface as Response;
 
 class Controller
-    implements ControllerInterface
+    implements HomeController
 {
     /**
      *
@@ -44,11 +44,11 @@ class Controller
     /**
      * @param Response $response
      * @param Request $request
-     * @param ViewModelInterface $viewModel
+     * @param HomeViewModel $viewModel
      * @param array $args
-     * @return ViewModelInterface
+     * @return HomeViewModel
      */
-    public function test(Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
+    public function test(Response $response, Request $request, HomeViewModel $viewModel = null, array $args = [])
     {
         $vm = $this->viewModel();
 
@@ -62,11 +62,11 @@ class Controller
     /**
      * @param Response $response
      * @param Request $request
-     * @param ViewModelInterface $viewModel
+     * @param HomeViewModel $viewModel
      * @param array $args
-     * @return ViewModelInterface
+     * @return HomeViewModel
      */
-    public function __invoke(Response $response, Request $request, ViewModelInterface $viewModel = null, array $args = [])
+    public function __invoke(Response $response, Request $request, HomeViewModel $viewModel = null, array $args = [])
     {
         $vm = $this->viewModel();
 

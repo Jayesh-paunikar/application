@@ -96,7 +96,7 @@ return [
             'services'      => new Param('services'),
         ]
     ]),
-    'Mvc'          => new Service(Framework\Mvc\Mvc::class, [new ServiceManagerLink]),
+    'Mvc\Event'      => new Service(Framework\Mvc\MvcEvent::class, [new ServiceManagerLink]),
     'Mvc\Controller' => new Hydrator(
         Framework\Mvc\Controller\Dispatcher::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
@@ -155,7 +155,7 @@ return [
     'Response\Sender'   => Framework\Response\Sender::class,
     'Response\Manager'  => new Manager(Framework\Response\Manager\Manager::class),
     'Route' => new Service(
-        Framework\Route\Route::class,
+        Framework\Route\Config::class,
         [
             new Args([
                 'hostname' => new Call('request.getHost'),

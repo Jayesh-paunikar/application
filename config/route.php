@@ -19,7 +19,7 @@ use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
-use Framework\View\Manager\ManagerInterface as ViewManager;
+use Framework\View\Manager\ViewManager;
 use Request\RequestInterface as Request;
 use Response\ResponseInterface as Response;
 

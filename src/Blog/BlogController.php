@@ -5,7 +5,7 @@ namespace Blog;
 use Request\RequestInterface as Request;
 use Response\ResponseInterface as Response;
 
-interface ControllerInterface
+interface BlogController
 {
     /**
      * @param Request $request
@@ -14,15 +14,15 @@ interface ControllerInterface
     function valid(Request $request);
 
     /**
-     * @param BlogInterface $blog
+     * @param BlogModel $blog
      * @return mixed
      */
-    function add(BlogInterface $blog = null);
+    function add(BlogModel $blog = null);
 
     /**
      * @param Response $response
-     * @param ViewModelInterface $viewModel
+     * @param BlogViewModel $viewModel
      * @return mixed
      */
-    function response(Response $response, ViewModelInterface $viewModel = null);
+    function response(Response $response, BlogViewModel $viewModel = null);
 }

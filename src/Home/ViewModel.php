@@ -4,10 +4,10 @@ namespace Home;
 
 use Framework\View\Model\ModelTrait;
 use Framework\View\PluginTrait;
-use Framework\View\Model\ModelInterface;
+use Framework\View\Model\ViewModel as Base;
 
 class ViewModel
-    implements ModelInterface, ViewModelInterface
+    implements Base, HomeViewModel
 {
     /**
      *

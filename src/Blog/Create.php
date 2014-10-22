@@ -2,14 +2,14 @@
 
 namespace Blog;
 
-use Framework\Event\EventInterface;
+use Framework\Event\Event as Base;
 use Framework\Event\EventTrait as Event;
 use Framework\View\Model\ServiceTrait as View;
-use Framework\View\Model\ModelInterface as ViewModel;
+use Framework\View\Model\ViewModel;
 use Framework\Service\Resolver\SignalTrait as Signal;
 
 class Create
-    implements CreateInterface, EventInterface
+    implements Base, BlogCreate
 {
     /**
      *
@@ -21,7 +21,7 @@ class Create
     const EVENT = self::CREATE;
 
     /**
-     * @var BlogInterface
+     * @var BlogModel
      */
     protected $blog;
 
@@ -38,7 +38,7 @@ class Create
     }
 
     /**
-     * @return BlogInterface
+     * @return BlogModel
      */
     public function blog()
     {
@@ -58,12 +58,12 @@ class Create
         switch(true) {
             default:
                 break;
-            case $response instanceof BlogInterface:
+            case $response instanceof BlogModel:
 
                 $this->blog = $response;
 
                 break;
-            case $response instanceof ViewModelInterface:
+            case $response instanceof BlogViewModel:
                 /** @var $response ViewModel */
 
                 $this->setViewModel($response);

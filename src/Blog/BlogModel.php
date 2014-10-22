@@ -2,6 +2,6 @@
 
 namespace Blog;
 
-interface BlogInterface
+interface BlogModel
 {
 }
