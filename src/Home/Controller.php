@@ -4,8 +4,8 @@ namespace Home;
 
 use Framework\View\Manager\ViewManager;
 use Framework\View\Model\ServiceTrait as View;
-use Request\RequestInterface as Request;
-use Response\ResponseInterface as Response;
+use Request\Request as Request;
+use Response\Response as Response;
 
 class Controller
     implements HomeController

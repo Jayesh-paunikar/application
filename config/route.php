@@ -20,8 +20,8 @@ use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
 use Framework\View\Manager\ViewManager;
-use Request\RequestInterface as Request;
-use Response\ResponseInterface as Response;
+use Request\Request;
+use Response\Response;
 
 //demo route builder
 use Framework\Route\Definition\Builder\Builder;

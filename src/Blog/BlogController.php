@@ -2,8 +2,8 @@
 
 namespace Blog;
 
-use Request\RequestInterface as Request;
-use Response\ResponseInterface as Response;
+use Request\Request;
+use Response\Response;
 
 interface BlogController
 {

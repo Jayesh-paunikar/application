@@ -130,7 +130,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ExceptionDisp
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ExceptionController.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Controller.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/ResponseInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Response.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/LayoutRenderer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/Renderer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/View/ViewRenderer.php';
@@ -151,12 +151,12 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Render/Render.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ServiceTrait.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/ResponseDispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/Dispatcher.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ManagerInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ResponseManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Args.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/DispatchInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/ResponseDispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Dispatch.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Response/SenderInterface.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/ResponseSender.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Sender.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/RoutePlugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/ServiceTrait.php';
@@ -170,10 +170,10 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/Definitio
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/Builder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/RouteGenerator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Generator.php';
-include __DIR__ . '/src/Request/RequestInterface.php';
 include __DIR__ . '/src/Request/Request.php';
-include __DIR__ . '/src/Response/ResponseInterface.php';
+include __DIR__ . '/src/Request/HttpRequest.php';
 include __DIR__ . '/src/Response/Response.php';
+include __DIR__ . '/src/Response/HttpResponse.php';
 
 /**
  *

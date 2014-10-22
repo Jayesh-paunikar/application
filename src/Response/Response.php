@@ -2,35 +2,9 @@
 
 namespace Response;
 
-use Symfony\Component\HttpFoundation\Response as HttpResponse;
+use Framework\Response\Response as Base;
 
-class Response
-    extends HttpResponse
-    implements ResponseInterface
+interface Response
+    extends Base
 {
-    /**
-     * @return void
-     */
-    public function send()
-    {
-        parent::send();
-    }
-
-    /**
-     * @param mixed $content
-     * @return void
-     */
-    public function setContent($content)
-    {
-        parent::setContent($content);
-    }
-
-    /**
-     * @param int $code
-     * @return void
-     */
-    public function setStatus($code)
-    {
-        parent::setStatusCode($code);
-    }
 }
