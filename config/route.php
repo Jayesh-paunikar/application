@@ -5,7 +5,7 @@
 
 use Framework\Config\Config;
 use Framework\Event\Config\Config as Events;
-use Framework\Route\Definition\Definition;
+use Framework\Route\Definition\RouteDefinition;
 use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config as ServiceConfig;
 use Framework\Service\Config\Dependency\Dependency;
@@ -132,7 +132,7 @@ return [
                 ])
             ],
         ]),
-        'error' => new Definition([
+        'error' => new RouteDefinition([
             'name'       => 'error',
             'route'      => '/error',
             'controller' => 'Controller\Error',
