@@ -2,19 +2,19 @@
 
 namespace Blog;
 
-use Framework\Event\Event as Base;
-use Framework\Event\BaseEvent;
+use Framework\Event\Base;
+use Framework\Event\Event;
 use Framework\View\Model\Service\ViewModel as Model;
 use Framework\View\Model\ViewModel;
 use Framework\Service\Resolver\Signal;
 
 class Create
-    implements Base, BlogCreate
+    implements BlogCreate, Event
 {
     /**
      *
      */
-    use BaseEvent;
+    use Base;
     use Signal;
     use Model;
 
