@@ -74,7 +74,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Definition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/RouteDefinition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Mvc.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Event/BaseEvent.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Event/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Service/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/MvcService.php';
