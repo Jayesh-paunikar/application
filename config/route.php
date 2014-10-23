@@ -73,10 +73,10 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        $response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
+                        //$response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
                         //$response = $this->trigger('blog:create', ['request' => $request, 'response' => $response], $this);
                         //$response = $this->call('blog:create', [$request, $response]);
-                        //$response = $this->call('blog:create', ['request' => $request, 'response' => $response], $this);
+                        $response = $this->call('blog:create', ['request' => $request, 'response' => $response], $this);
 
                         //var_dump(__FILE__, $this->plugin('blog:create')->blog());
 
@@ -95,6 +95,7 @@ return [
                     },*/
                     'controller' => 'Home',
                     //'controller' => '@test', //test() above
+                    //'controller' => '@phpcredits',
                     //'controller' => '@Home',
                     //'controller' => '@Home.test',
                     /*'controller' => new Call(

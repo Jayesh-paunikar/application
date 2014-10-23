@@ -149,7 +149,11 @@ return [
         ],
     ]),
     'Plugin'   => new ServiceManagerLink,
-    'Request'  => new Service(Request\HttpRequest::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
+    //'Request'  => new Service(Request\HttpRequest::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
+    'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
+    /*'Request'  => function() {
+        return new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
+    },*/
     'Response' => Response\HttpResponse::class,
     'Response\Dispatch' => Framework\Response\Dispatch::class,
     'Response\Sender'   => Framework\Response\Sender::class,
