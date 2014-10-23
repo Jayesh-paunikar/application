@@ -39,7 +39,7 @@ The callback used to provide the additional parameters not in the args array is 
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
-The parameter names of these additional arguments can be aliases or service names, and if an alias is not found then it is used as the service name. Aliases map strings of varying characters, excluding the call separator `.`, to service names or service calls. A service call is prefixed by the call symbol '@' and if the plugin object is an event is is triggered and its value is returned instead.
+The parameter names of these additional arguments can be aliases or service names, and if an alias is not found then it is used as the service name. Aliases map strings of varying characters, excluding the call separator `.`, to service names or service calls. A service call is prefixed by the call symbol '@' and if the plugin object is an event, it is triggered and its value is returned instead.
 ```php
 return [
     'blog:create' => 'Blog\Create',
@@ -83,7 +83,7 @@ $app->call(
     ['config' => $config, 'request' => $request]
 );
 ```
-To all of the available arguments that are not plugin arguments, add `$args` to the method signature
+To get all of the available arguments that are not plugin arguments, add `$args` to the method signature
 ```php
 public function __invoke(Config $config, ViewManager $vm, array $args = [])
 {
