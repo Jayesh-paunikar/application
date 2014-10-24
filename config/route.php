@@ -85,7 +85,7 @@ return [
                     //'controller' => '@blog:create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
-                        $m = new Home\ViewModel;
+                        $m = new Home\Model;
                         $m->setTemplate($vm->param('view.templates.home'));
                         $m->setViewManager($vm);
 
@@ -115,7 +115,7 @@ return [
                         'args' => [new ServiceManagerLink],
                         'calls' => [
                             'setViewModel' => new Hydrator(
-                                Home\ViewModel::class,
+                                Home\Model::class,
                                 [
                                     'setTemplate'    => new Param('view.templates.home'),
                                     'setViewManager' => new Dependency('View\Manager'),
