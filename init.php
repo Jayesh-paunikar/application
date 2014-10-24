@@ -26,7 +26,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Signal.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Alias.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Resolver.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManageService.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/FactoryService.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Generator/EventGenerator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/ManageEvent.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/Events.php';
