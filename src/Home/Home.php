@@ -2,6 +2,6 @@
 
 namespace Home;
 
-interface HomeViewModel
+interface Home
 {
 }

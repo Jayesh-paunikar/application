@@ -4,7 +4,7 @@
  */
 
 use Framework\Service\Container\Container;
-use Framework\Event\Config\Config as Events;
+use Framework\Event\Config\Events;
 
 return [
     'alias'       => include __DIR__ . '/alias.php',

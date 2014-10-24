@@ -3,17 +3,17 @@
 namespace Home;
 
 use Framework\View\Manager\ViewManager;
-use Framework\View\Model\Service\ViewModel as Model;
+use Framework\View\Model\Service\ViewModel;
 use Request\Request;
 use Response\Response;
 
 class Controller
-    implements HomeController
+    implements Home
 {
     /**
      *
      */
-    use Model;
+    use ViewModel;
 
     /**
      * @return mixed
@@ -30,43 +30,43 @@ class Controller
      */
     public static function staticTest(ViewManager $vm, array $args = [])
     {
-        $m = new ViewModel;
-        $m->setTemplate($vm->param('view.templates.home'));
-        $m->setViewManager($vm);
+        $model = new Model;
+        $model->setTemplate($vm->param('view.templates.home'));
+        $model->setViewManager($vm);
 
-        $m->args = $args;
+        $model->args = $args;
 
-        $m->args[] = __FUNCTION__;
+        $model->args[] = __FUNCTION__;
 
-        return $m;
+        return $model;
     }
 
     /**
      * @param Response $response
      * @param Request $request
-     * @param HomeViewModel $viewModel
+     * @param HomeModel $model
      * @param array $args
-     * @return HomeViewModel
+     * @return HomeModel
      */
-    public function test(Response $response, Request $request, HomeViewModel $viewModel = null, array $args = [])
+    public function test(Response $response, Request $request, HomeModel $model = null, array $args = [])
     {
-        $vm = $this->viewModel();
+        $model = $this->viewModel();
 
-        $vm->args = $args;
+        $model->args = $args;
 
-        $vm->args[] = __FUNCTION__;
+        $model->args[] = __FUNCTION__;
 
-        return $vm;
+        return $model;
     }
 
     /**
      * @param Response $response
      * @param Request $request
-     * @param HomeViewModel $viewModel
+     * @param HomeModel $model
      * @param array $args
-     * @return HomeViewModel
+     * @return HomeModel
      */
-    public function __invoke(Response $response, Request $request, HomeViewModel $viewModel = null, array $args = [])
+    public function __invoke(Response $response, Request $request, HomeModel $model = null, array $args = [])
     {
         $vm = $this->viewModel();
 

@@ -4,7 +4,7 @@
  */
 
 use Framework\Config\Config;
-use Framework\Event\Config\Config as Events;
+use Framework\Event\Config\Events;
 use Framework\Route\Definition\RouteDefinition;
 use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config as ServiceConfig;
@@ -43,7 +43,7 @@ exit;*/
 //demo route controller
 function test(Request $request, Response $response, ViewManager $vm, array $args = [])
 {
-    $m = new Home\ViewModel;
+    $m = new Home\Model;
 
     $m->setTemplate($vm->param('view.templates.home'));
     $m->setViewManager($vm);
@@ -100,7 +100,7 @@ return [
                     //'controller' => '@Home.test',
                     /*'controller' => new Call(
                         new Service('Home\Factory', [new ServiceManagerLink]),
-                        ['config' => new Dependency('Config'), 'vm' => new Dependency('ViewManager')]
+                        ['config' => new Dependency('Config'), 'vm' => new Dependency('View\Manager')]
                     ),*/
                     //'controller' => '@Home\Controller::staticTest',
                     //'controller' => ['Home\Controller', 'staticTest'],

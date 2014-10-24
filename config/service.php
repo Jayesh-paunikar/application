@@ -30,7 +30,7 @@ return [
         Framework\Controller\Error\Controller::class,
         [
             'setViewModel' => new Hydrator(
-                Framework\Controller\Error\ViewModel::class,
+                Framework\Controller\Error\Model::class,
                 [
                     'setTemplate'    => new Param('view.templates.error/404'),
                     'setViewManager' => new Dependency('View\Manager')
@@ -42,7 +42,7 @@ return [
     'Controller\Exception' => Framework\Controller\Exception\Dispatch::class,
     'Controller\Exception\Controller' => new Hydrator(
         Framework\Controller\Exception\Controller::class,
-        ['setViewModel' => new Dependency('Exception\ViewModel')]
+        ['setViewModel' => new Dependency('Exception\Model')]
     ),
     'Exception\Renderer' => new Hydrator(
         Framework\View\Exception\Renderer::class,
@@ -53,11 +53,11 @@ return [
     'Exception\View'    => new Hydrator(
         Framework\View\Exception\View::class,
         [
-            'setViewModel' => new Dependency('Exception\ViewModel')
+            'setViewModel' => new Dependency('Exception\Model')
         ]
     ),
-    'Exception\ViewModel' => new Hydrator(
-        Framework\View\Exception\ViewModel::class,
+    'Exception\Model' => new Hydrator(
+        Framework\View\Exception\Model::class,
         ['setTemplate' => new Param('view.templates.error/exception')]
     ),
     'Factory' => new Config([
@@ -72,7 +72,7 @@ return [
         Home\Controller::class,
         [
             'setViewModel' => new Hydrator(
-                Home\ViewModel::class,
+                Home\Model::class,
                 [
                     'setTemplate'    => new Param('view.templates.home'),
                     'setViewManager' => new Dependency('View\Manager')
@@ -82,7 +82,7 @@ return [
     ),
     //'Home' => new Factory(Home\Factory::class),
     'Layout' => new Hydrator(
-        Framework\View\Layout\ViewModel::class,
+        Framework\View\Layout\Model::class,
         [
             'setTemplate'    => new Param('view.templates.layout'),
             'setViewManager' => new Dependency('View\Manager')
@@ -176,7 +176,7 @@ return [
         [new Param('routes.definitions')]
     ),
     'Route\Generator\Plugin' => new Hydrator(
-        Framework\Route\Generator\RoutePlugin::class,
+        Framework\Route\Generator\GeneratorPlugin::class,
         [
             'setRoute'          => new Dependency('Route'),
             'setRouteGenerator' => new Dependency('Route\Generator')
@@ -199,7 +199,6 @@ return [
     ),
     'Service\Manager'         => new ServiceManagerLink,
     'View\Manager'  => new Manager(Framework\View\Manager\Manager::class),
-    'ViewManager'   => new Dependency('View\Manager'),
     'View\Model'    => Framework\View\Model\Model::class,
     'View\Renderer' => Framework\View\Renderer\Renderer::class,
     'View\Render'   => Framework\View\Render\Render::class

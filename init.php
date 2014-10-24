@@ -32,8 +32,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/ManageEvent.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/Events.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/Configuration.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/Events.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Event/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/App.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/WebApplication.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/Web.php';
@@ -73,16 +73,16 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/Manager.php
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Definition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/RouteDefinition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Event.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Mvc.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Service/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Args.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Mvc/MvcService.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Mvc/MvcEvent.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Base.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Mvc.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/Args.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/DispatchRouter.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/RouteDispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/RouteManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/Manager.php';
@@ -112,23 +112,23 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Controller/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/ControllerManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ViewModel.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ExceptionViewModel.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Model/BaseModel.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ExceptionModel.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/Layout.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ViewModel.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/LayoutViewModel.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Model.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/LayoutModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ManageView.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/ViewPlugin.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/ViewModel.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/Model.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Action.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/ControllerDispatch.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Controller.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/DispatchException.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Dispatch.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/ControllerException.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Exception.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Exception/Controller.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Response.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/Dispatch.php';
@@ -161,7 +161,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Response/Sender.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Plugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/RouteService.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GenerateRoute.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/RoutePlugin.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GeneratorPlugin.php';
 
 /**
  *
@@ -178,12 +178,12 @@ include __DIR__ . '/src/Response/HttpResponse.php';
 /**
  *
  */
-//include __DIR__ . '/src/Home/HomeViewModel.php';
-//include __DIR__ . '/src/Home/ViewModel.php';
-//include __DIR__ . '/src/Home/HomeController.php';
-//include __DIR__ . '/src/Home/Controller.php';
+include __DIR__ . '/src/Home/HomeModel.php';
+include __DIR__ . '/src/Home/Model.php';
+include __DIR__ . '/src/Home/Home.php';
+include __DIR__ . '/src/Home/Controller.php';
 
 /**
  *
  */
-include __DIR__ . '/vendor/autoload.php';
+//include __DIR__ . '/vendor/autoload.php';
