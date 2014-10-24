@@ -178,12 +178,12 @@ include __DIR__ . '/src/Response/HttpResponse.php';
 /**
  *
  */
-include __DIR__ . '/src/Home/HomeModel.php';
-include __DIR__ . '/src/Home/Model.php';
-include __DIR__ . '/src/Home/Home.php';
-include __DIR__ . '/src/Home/Controller.php';
+//include __DIR__ . '/src/Home/HomeModel.php';
+//include __DIR__ . '/src/Home/Model.php';
+//include __DIR__ . '/src/Home/Home.php';
+//include __DIR__ . '/src/Home/Controller.php';
 
 /**
  *
  */
-//include __DIR__ . '/vendor/autoload.php';
+include __DIR__ . '/vendor/autoload.php';
