@@ -96,7 +96,7 @@ return [
             'services'      => new Param('services'),
         ]
     ]),
-    'Mvc'      => new Service(Framework\Mvc\MvcEvent::class, [new ServiceManagerLink]),
+    'Mvc'      => new Service(Framework\Mvc\Mvc::class, [new ServiceManagerLink]),
     'Mvc\Controller' => new Hydrator(
         Framework\Mvc\Controller\Dispatcher::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
