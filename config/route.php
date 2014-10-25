@@ -96,6 +96,7 @@ return [
                         return $m;
                     },*/
                     'controller' => 'Home',
+                    //'controller' => '@blog:valid',
                     //'controller' => '@test', //test() above
                     //'controller' => '@phpcredits',
                     //'controller' => '@Home',
