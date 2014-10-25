@@ -23,7 +23,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Config/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/Service.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Signal.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Alias.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/Alias.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Resolver.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManageService.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/Base.php';
