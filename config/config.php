@@ -12,5 +12,5 @@ return [
     'services'    => new Container(include __DIR__ . '/service.php'),
     'routes'      => include __DIR__ . '/route.php',
     'translator'  => include __DIR__ . '/i18n.php',
-    'view'        => include __DIR__ . '/view.php'
+    'templates'   => include __DIR__ . '/templates.php'
 ];

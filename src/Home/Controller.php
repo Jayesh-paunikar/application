@@ -31,7 +31,7 @@ class Controller
     public static function staticTest(ViewManager $vm, array $args = [])
     {
         $model = new Model;
-        $model->setTemplate($vm->param('view.templates.home'));
+        $model->setTemplate($vm->param('templates.home'));
         $model->setViewManager($vm);
 
         $model->args = $args;

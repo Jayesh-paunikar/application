@@ -45,7 +45,7 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
 {
     $m = new Home\Model;
 
-    $m->setTemplate($vm->param('view.templates.home'));
+    $m->setTemplate($vm->param('templates.home'));
     $m->setViewManager($vm);
 
     $m->args = $args;
@@ -88,7 +88,7 @@ return [
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
                         $m = new Home\Model;
-                        $m->setTemplate($vm->param('view.templates.home'));
+                        $m->setTemplate($vm->param('templates.home'));
                         $m->setViewManager($vm);
 
                         $m->args = $args;
@@ -120,7 +120,7 @@ return [
                             'setViewModel' => new Hydrator(
                                 Home\Model::class,
                                 [
-                                    'setTemplate'    => new Param('view.templates.home'),
+                                    'setTemplate'    => new Param('templates.home'),
                                     'setViewManager' => new Dependency('View\Manager'),
                                     [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
                                     ['Home\Controller', 'staticCall'],
