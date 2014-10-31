@@ -96,7 +96,7 @@ return [
             'services'      => new Param('services'),
         ]
     ]),
-    'Mvc'      => new Service(Framework\Mvc\Mvc::class, [new ServiceManagerLink]),
+    'Mvc' => new Service(Framework\Mvc\Mvc::class, [new ServiceManagerLink]),
     'Mvc\Controller' => new Hydrator(
         Framework\Mvc\Controller\Dispatcher::class,
         ['setControllerManager' => new Dependency('Controller\Manager')]
@@ -172,6 +172,7 @@ return [
     ),
     'Route\Dispatch'          => Framework\Route\Router\Dispatch::class,
     'Route\Dispatch\Filter'   => Framework\Route\Router\Filter::class,
+    //'Route\Dispatch\Filter'   => new Filter(Framework\Route\Router\Filter::class, 'trim'),
     'Route\Generator' => new Service(
         Framework\Route\Generator\Generator::class,
         [new Param('routes.definitions')]

@@ -16,6 +16,7 @@ use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Router\Router;
 use Framework\Service\Config\Service\Service;
+use Framework\Service\Config\ServiceConfig\ServiceConfig as ServiceConfiguration;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
@@ -156,6 +157,9 @@ return [
         ],
         'Route\Dispatch' => [
             [
+
+                //new Service(new ServiceConfiguration('Route\Dispatch\Filter'), [false]),
+                //new Service('Route\Dispatch\Filter'),
                 'Route\Dispatch\Filter',
 
                 new Router(new Param('routes.definitions.home')),
