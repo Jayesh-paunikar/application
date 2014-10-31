@@ -11,7 +11,7 @@ $response = $web->call(
 
 var_dump($response instanceof Response);
 ```
-The application is instatiated and a call is made to the `valid` method of the `Controller` class with its parameters resolved either from the array of arguments explicitly passed to the call method or by the call function retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
+The application is instantiated and a call is made to the `valid` method of the `Controller` class with its parameters resolved either from the array of arguments explicitly passed to the call method or by the call function retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
 
 ```php
 class Controller
