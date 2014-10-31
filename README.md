@@ -1,19 +1,64 @@
-This event management system supports named arguments and uses dependency injection to create its listeners and their depencies just in time before they are called. The system's configuration is an array that contains values, string names, callables and certain configuration objects that the service manager knows how to resolve.
+This php framework provides an enhanced programming environment that uses events with named arguments and has an  optional configuration language that provides further inversion of control of the application. The configuration array can contain values, string names, callables and configuration objects that are resolved by the service manager.
+
+This contrived example demonstrates the functionality of using named arguments
+```php
+$web = new App(include __DIR__ . '/../config/web.php');
+
+$response = $web->call('Controller.valid.add.response', ['date_created' => time(), 'strict' => true]);
+
+var_dump($response instanceof Response);
+```
+The application is instatiated and a call is made to the `valid` method of the `Controller` class with it parameters resolved either from the array of arguments explicitly passed to the call method or by the call function retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
 
 ```php
-'Request'  => new Service(
-  Request\Request::class, 
-  [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]
-),
+class Controller
+{
+    protected $blog;
+
+    function valid(Request $request, $strict)
+    {
+        var_dump($strict);
+
+        return $this;
+    }
+
+    function add(Response $response, $date_created)
+    {
+        var_dump($date_created);
+
+        $this->blog = new Blog;
+
+        return $this;
+    }
+
+    function response(ViewManager $vm, Response $response, $args)
+    {
+        var_dump($this->blog, $args);
+        return $response;
+    }
+}
 ```
-The above will pass the array of arguments as constructor values in that set order. This goes in hand with the service manager's get and create methods
+The output of the above is
 ```php
-function get($name, array $args = [], callable $callback = null);
+boolean true
 
-function create($config, array $args = [], callable $callback = null);
+int 1414690433
+
+object(Blog\Blog)[100]
+
+array (size=2)
+  'date_created' => int 1414690433
+  'strict' => boolean true
+
+boolean true
 ```
-The callback is used when a service cannot be created for a particular string name, allowing the calling service the opportunity to provide the service or to handle the impending error. Otherwise the get/create methods will still try to instantiate the class even though it does not exist; causing an error to occur. The plugin method is used when an error is not wanted while still supporting the callback for when the string name cannot be found; in which case an empty function is used.
+`$args` is a special parameter that can be added to the method being called by the call function and it provides an array of the named arguments provided to the call function.
 
+To manage all of the parameters an optional callback can be added to call method, e.g
+```php
+$response = $web->call('Controller.valid.add.response', [], function($name) { return new $name; });
+```
+##Events
 Events can be strings or classes which can manage the arguments used for the parameters of the methods being invoked for that event. For a string event it would resort to using the service manager's plugin callback for all of the arguments used.
 ```php
 class Event
@@ -39,6 +84,7 @@ The callback used to provide the additional parameters not in the args array is 
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
+##Plugins and Aliases
 The parameter names of these additional arguments can be aliases or service names, and if an alias is not found then it is used as the service name. Aliases map strings of varying characters, excluding the call separator `.`, to service names or service calls. A service call is prefixed by the call symbol '@' and if the plugin object is an event, it is triggered and its value is returned instead.
 ```php
 return [
@@ -169,8 +215,8 @@ Routes are pre-compiled so that they can be immediately matched against the requ
   'constraints' => []
 ])
 ```
-##MVC
-The MVC event workflow is <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a>.
+##Event Configuration
+Events and listeners are <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a> and support various types of configuration that must resolve to being a callable listener.
 ```php
 'Mvc' => [
     ['Mvc\Route'],
