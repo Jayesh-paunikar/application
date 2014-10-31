@@ -173,6 +173,7 @@ return [
     'Route\Dispatch'          => Framework\Route\Router\Dispatch::class,
     'Route\Dispatch\Filter'   => Framework\Route\Router\Filter::class,
     //'Route\Dispatch\Filter'   => new Filter(Framework\Route\Router\Filter::class, 'trim'),
+    //'Route\Dispatch\Filter'   => new Service(Framework\Route\Router\Filter::class),
     'Route\Generator' => new Service(
         Framework\Route\Generator\Generator::class,
         [new Param('routes.definitions')]
