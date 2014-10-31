@@ -4,11 +4,14 @@ This contrived example demonstrates the functionality of using named arguments
 ```php
 $web = new App(include __DIR__ . '/../config/web.php');
 
-$response = $web->call('Controller.valid.add.response', ['date_created' => time(), 'strict' => true]);
+$response = $web->call(
+    'Controller.valid.add.response', 
+    ['date_created' => time(), 'strict' => true]
+);
 
 var_dump($response instanceof Response);
 ```
-The application is instatiated and a call is made to the `valid` method of the `Controller` class with it parameters resolved either from the array of arguments explicitly passed to the call method or by the call function retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
+The application is instatiated and a call is made to the `valid` method of the `Controller` class with its parameters resolved either from the array of arguments explicitly passed to the call method or by the call function retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
 
 ```php
 class Controller
@@ -52,11 +55,15 @@ array (size=2)
 
 boolean true
 ```
-`$args` is a special parameter that can be added to the method being called by the call function and it provides an array of the named arguments provided to the call function.
+`$args` is a special parameter that can be added to the method being called by the call function which provides an array of the named arguments.
 
 To manage all of the parameters an optional callback can be added to call method, e.g
 ```php
-$response = $web->call('Controller.valid.add.response', [], function($name) { return new $name; });
+$response = $web->call(
+    'Controller.valid.add.response', 
+    [], 
+    function($name) { return new $name; }
+);
 ```
 ##Events
 Events can be strings or classes which can manage the arguments used for the parameters of the methods being invoked for that event. For a string event it would resort to using the service manager's plugin callback for all of the arguments used.
