@@ -232,8 +232,8 @@ Events and listeners are <a href="https://github.com/mvc5/application/blob/maste
     ['Mvc\Dispatch'],
     ['Mvc\Layout'],
     ['Mvc\Render'],
-    [function($event) {
-        var_dump(__FILE__, $event);
+    [function($event, $vm) {
+        var_dump(__FILE__, $event, $vm);
     }],
     ['Mvc\Response']
 ]
