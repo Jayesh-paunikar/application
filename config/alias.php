@@ -11,6 +11,7 @@ return [
     'request'     => 'Request',
     'sm'          => 'Service\Manager',
     'response'    => 'Response',
+    'pathinfo'    => '@@request.getPathInfo',
     'plugin'      => 'Plugin',
     'translate'   => 'Translator\Plugin',
     'url'         => 'Route\Generator\Plugin',

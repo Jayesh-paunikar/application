@@ -63,16 +63,19 @@ class Controller
      * @param Response $response
      * @param Request $request
      * @param HomeModel $model
+     * @param $pathinfo
      * @param array $args
      * @return HomeModel
      */
-    public function __invoke(Response $response, Request $request, HomeModel $model = null, array $args = [])
+    public function __invoke(Response $response, Request $request, HomeModel $model = null, $pathinfo, array $args = [])
     {
         $vm = $this->viewModel();
 
         $vm->args = $args;
 
         $vm->args[] = __FUNCTION__;
+
+        $vm->args[] = $pathinfo;
 
         return $vm;
     }
