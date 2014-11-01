@@ -87,7 +87,7 @@ class Event
   }
 }
 ```
-The callback is used to provide the additional parameters not in the args array is provided by the service manager as `$this` or alternatively any callable type.
+The callback is used to provide the additional parameters not in the args array and is provided by the service manager as `$this` or any callable type.
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
