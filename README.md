@@ -66,7 +66,7 @@ $response = $web->call(
 );
 ```
 ##Events
-Events can be strings or classes which can manage the arguments used for the parameters of the methods being invoked for that event. For a string event it would resort to using the service manager's plugin callback for all of the arguments used.
+Events can be strings or classes which can manage the arguments used for the parameters of the methods being invoked for that event.
 ```php
 class Event
 {
@@ -87,7 +87,7 @@ class Event
   }
 }
 ```
-The callback used to provide the additional parameters not in the args array is provided by the service manager as `$this` or alternatively any callable type.
+The callback is used to provide the additional parameters not in the args array is provided by the service manager as `$this` or alternatively any callable type.
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
