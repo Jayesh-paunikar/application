@@ -1,4 +1,4 @@
-This is a php 5.5 framework that provides an enhanced programming environment by using events with named arguments and an optional configuration language that provides further inversion of control of the application. The [configuration array](/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the service manager.
+This php framework provides an enhanced programming environment by using events with named arguments and an optional configuration language that provides further inversion of control of the application. The [configuration array](/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the service manager.
 
 This contrived example demonstrates the functionality of using named arguments
 ```php
