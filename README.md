@@ -1,4 +1,4 @@
-This php framework provides an enhanced programming environment that uses events with named arguments and has an  optional configuration language that provides further inversion of control of the application. The configuration array can contain values, string names, callables and configuration objects that are resolved by the service manager.
+This php framework provides an enhanced programming environment by using events with named arguments and an optional configuration language that provides further inversion of control of the application. The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the service manager.
 
 This contrived example demonstrates the functionality of using named arguments
 ```php
@@ -11,7 +11,7 @@ $response = $web->call(
 
 var_dump($response instanceof Response);
 ```
-The application is instantiated and a call is made to the `valid` method of the `Controller` class with its parameters resolved either from the array of arguments explicitly passed to the call method or by the call function retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
+The application is instantiated and a call is made to the `valid` method of the `Controller` class with its parameters resolved from either the array of arguments explicitly passed to the [`call`](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L58) method or by the [`call`](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L58) method retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
 
 ```php
 class Controller
@@ -55,7 +55,7 @@ array (size=2)
 
 boolean true
 ```
-`$args` is a special parameter that can be added to the method being called by the call function which provides an array of the named arguments.
+The named argument `$args` is special and can be added to the method being called by the [`call`](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L58) function and it provides an array of the named arguments.
 
 To manage all of the parameters an optional callback can be added to call method, e.g
 ```php
@@ -66,7 +66,7 @@ $response = $web->call(
 );
 ```
 ##Events
-Events can be strings or classes which can manage the arguments used for the parameters of the methods being invoked for that event.
+Events can be strings or classes that can manage the arguments used for the methods being invoked for that event.
 ```php
 class Event
 {
@@ -87,14 +87,12 @@ class Event
   }
 }
 ```
-The callback is used to provide the additional parameters not in the args array and is provided by the service manager as `$this` or any callable type.
+The `$callback` is used to provide the additional parameters not in the `$args` array and is provided by the service manager as `$this` or any callable type.
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
 ##Plugins and Aliases
-The parameter names of these additional arguments can be aliases or service names. If an alias is not found, the parameter name is then assumed to be the name of a service.
-
-An alias maps a string of varying characters excluding the call separator `.` to a service name or call. A service call is prefixed by the symbol '@' and if the plugin is an event, it is triggered and its value is returned instead.
+The parameter names of these additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to a service name or call. A service call is prefixed by the symbol `@` and if the plugin is an event, it is triggered and its value is returned instead.
 ```php
 return [
     'blog:create' => 'Blog\Create',
@@ -108,7 +106,7 @@ return [
 ];
 
 ```
-The plugin method is also used when calling an object and since the [`get`](/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L59) method is used, these objects become shared services.
+The [`plugin`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L101) method is also used when calling an object and since the [`get`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L59) method is used, those objects become shared services.
 ```php
 //trigger create blog event
 $this->call('blog:create');
@@ -122,7 +120,7 @@ Which means
 ```php
 $app = new Application($config);
 
-$app->call('web'); //invoke web application
+$app->call('web'); //invoke web application (event)
 ```
 And
 ```php
@@ -131,11 +129,11 @@ $app = new Application($config);
 $app->call('request.getHost'); //get string hostname from the request object.
 
 ```
-Named arguments are also supported
+And with named arguments
 ```php
 $app->call(
-    'Blog\Controller.valid', 
-    ['config' => $config, 'request' => $request]
+  'Blog\Controller.valid', 
+  ['config' => $config, 'request' => $request]
 );
 ```
 To get all of the available arguments that are not plugin arguments, add `$args` to the method signature
@@ -170,6 +168,9 @@ $config = new Config([
 ```
 ```php
 call_user_func(new Web(include __DIR__ . '/../config/web.php'));
+
+// or 
+// (new App($config))->call('web');
 ```
 ##Benchmark
 *Current*
@@ -206,7 +207,7 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
     ]
 ),
 ```
-The Dependency Injection <a href="https://github.com/mvc5/application/blob/master/config/service.php">Container</a> is an array containing the information about the services that it provides. Service configuration values can be string class names, `callable`, or configuration objects.
+The [configuration](https://github.com/mvc5/application/blob/master/config/service.php) of the [`Service Container`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) is an array containing the information about the services that it provides. Service configuration can contain values, string names, `callable` types and configuration objects.
 ##Routes
 Routes are pre-compiled so that they can be immediately matched against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the <a href="https://github.com/mvc5/application/blob/master/config/route.php">route config</a> for example child routes.
 ```php
@@ -225,14 +226,14 @@ Routes are pre-compiled so that they can be immediately matched against the requ
 ])
 ```
 ##Event Configuration
-Events and listeners are <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a> and support various types of configuration that must resolve to being a callable listener.
+Events and listeners are <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a> and support various types of configuration that must resolve to being a `callable` type.
 ```php
 'Mvc' => [
     ['Mvc\Route'],
     ['Mvc\Dispatch'],
     ['Mvc\Layout'],
     ['Mvc\Render'],
-    [function($event, $vm) {
+    [function($event, $vm) { //named args
         var_dump(__FILE__, $event, $vm);
     }],
     ['Mvc\Response']
