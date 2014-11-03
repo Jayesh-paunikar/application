@@ -3,19 +3,24 @@
  *
  */
 
+use Framework\Service\Config\Call\Call;
+use Framework\Service\Config\Dependency\Dependency;
+use Framework\Service\Config\Invoke\Invoke;
+use Framework\Service\Config\Service\Service;
+
 return [
-    'blog:create' => 'Blog\Create',
-    'blog:valid' => '@Blog\Controller.valid',
-    'config'      => 'Config',
-    'layout'      => 'Layout',
-    'request'     => 'Request',
-    'sm'          => 'Service\Manager',
-    'response'    => 'Response',
-    'pathinfo'    => '@@request.getPathInfo',
-    'plugin'      => 'Plugin',
-    'translate'   => 'Translator\Plugin',
-    'url'         => 'Route\Generator\Plugin',
-    'viewManager' => 'View\Manager',
-    'vm'          => 'View\Manager',
-    'web'         => '@Mvc',
+    'blog:create' => new Service('Blog\Create'),
+    'blog:valid'  => new Invoke('Blog\Controller.valid'),
+    'config'      => new Dependency('Config'),
+    'layout'      => new Dependency('Layout'),
+    'request'     => new Dependency('Request'),
+    'sm'          => new Dependency('Service\Manager'),
+    'response'    => new Dependency('Response'),
+    'pathinfo'    => new Call('request.getPathInfo'),
+    'plugin'      => new Dependency('Plugin'),
+    'translate'   => new Dependency('Translator\Plugin'),
+    'url'         => new Dependency('Route\Generator\Plugin'),
+    'viewManager' => new Dependency('View\Manager'),
+    'vm'          => new Dependency('View\Manager'),
+    'web'         => new Service('Mvc'),
 ];
