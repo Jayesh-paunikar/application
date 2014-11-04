@@ -1,6 +1,6 @@
 This php framework provides an enhanced programming environment by using events with named arguments and an optional configuration language that provides further inversion of control of the application. The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the service manager.
 
-This contrived example demonstrates the functionality of using named arguments
+This contrived example demonstrates named arguments and plugins.
 ```php
 $web = new App(include __DIR__ . '/../config/web.php');
 
