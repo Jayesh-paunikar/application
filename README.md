@@ -211,7 +211,7 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
     ]
 ),
 ```
-The [configuration](https://github.com/mvc5/application/blob/master/config/service.php) of the [`Service Container`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) is an array containing the information about the services that it provides. Service configuration can contain values, string names, `callable` types and configuration objects.
+The [configuration](https://github.com/mvc5/application/blob/master/config/service.php) of the [`Service Container`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) is an array containing values, string names, `callable` types and configuration objects.
 ##Routes
 Routes are pre-compiled so that they can be immediately matched against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the <a href="https://github.com/mvc5/application/blob/master/config/route.php">route config</a> for example child routes.
 ```php
