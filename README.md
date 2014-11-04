@@ -92,21 +92,24 @@ The `$callback` is used to provide the additional parameters not in the `$args` 
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
 ##Plugins and Aliases
-The parameter names of these additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to a service name or call. A service call is prefixed by the symbol `@` and if the plugin is an event, it is triggered and its value is returned instead.
+The parameter names of these additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to any positive value. If the value is a configuration object then it will be resolved and its value returned.
+
+Plugins can be used in different ways, e.g to provide values, to trigger an event, or to call a service method. So each configuration is specific to their intended usage.
 ```php
 return [
-    'blog:create' => 'Blog\Create',
-    'blog:valid'  => '@Blog\Controller.valid',
-    'config'      => 'Config',
-    'layout'      => 'Layout',
-    'request'     => 'Request',
-    'sm'          => 'Service\Manager',
-    'response'    => 'Response',
-    'web'         => 'Mvc',
+    'blog:create' => new Service('Blog\Create'),
+    'blog:valid'  => new Invoke('Blog\Controller.valid'),
+    'config'      => new Dependency('Config'),
+    'layout'      => new Dependency('Layout'),
+    'request'     => new Dependency('Request'),
+    'sm'          => new Dependency('Service\Manager'),
+    'response'    => new Dependency('Response'),
+    'pathinfo'    => new Call('request.getPathInfo'),
+    'url'         => new Dependency('Route\Generator\Plugin'),
+    'web'         => new Service('Mvc')
 ];
-
 ```
-The [`plugin`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L101) method is also used when calling an object and since the [`get`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L59) method is used, those objects become shared services.
+The [`plugin`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L63) method is also used when calling an object.
 ```php
 //trigger create blog event
 $this->call('blog:create');
