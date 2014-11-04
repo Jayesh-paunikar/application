@@ -94,7 +94,7 @@ $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ##Plugins and Aliases
 The parameter names of these additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to any positive value. If the value is a configuration object then it will be resolved and its value returned.
 
-Plugins can be used in different ways, e.g to provide values, to trigger an event, or to call a service method. So each configuration is specific to their intended usage.
+Plugins can be used in different ways, e.g to provide values, to trigger an event, or to call a service method. So each configuration is specific to their intended use.
 ```php
 return [
     'blog:create' => new Service('Blog\Create'),
@@ -119,7 +119,7 @@ $this->call('blog:valid');
 
 function valid(Config $config, Request $request);
 ```
-Which means
+Which means invoking a web application is no different to calling any other method, e.g 
 ```php
 $app = new Application($config);
 
@@ -175,6 +175,7 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 // or 
 // (new App($config))->call('web');
 ```
+Microframeworks can be built similar to this [gist](https://gist.github.com/devosc/5b66b7080a6736d8d9d5).
 ##Benchmark
 *Current*
 ```
