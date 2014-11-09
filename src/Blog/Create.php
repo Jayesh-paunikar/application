@@ -24,10 +24,7 @@ class Create
      * @var BlogModel
      */
     protected $blog;
-public function __construct()
-{
-    //var_dump(__FILE__, $this);
-}
+
     /**
      * @return array
      */

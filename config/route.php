@@ -44,9 +44,7 @@ exit;*/
 //demo route controller
 function test(Request $request, Response $response, ViewManager $vm, array $args = [])
 {
-    $m = new Home\Model;
-
-    $m->setTemplate($vm->param('templates.home'));
+    $m = new Home\Model($vm->param('templates.home'));
     $m->setViewManager($vm);
 
     $m->args = $args;
@@ -74,7 +72,7 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        //$response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
+                        $response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
                         //$response = $this->trigger('blog:create', ['request' => $request, 'response' => $response], $this);
                         //$response = $this->call('blog:create', ['test:abc', $response]);
                         //$response = $this->call('blog:create');
@@ -88,11 +86,10 @@ return [
                     //'controller' => '@blog:create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
-                        $m = new Home\Model;
-                        $m->setTemplate($vm->param('templates.home'));
+                        $m = new Home\Model($vm->param('templates.home'));
                         $m->setViewManager($vm);
-
-                        $m->args = $args;
+                        $args['args'][] = [__FUNCTION__];
+                        $m->vars($args);
 
                         return $m;
                     },*/
@@ -101,7 +98,7 @@ return [
                     //'controller' => '@test', //test() above
                     //'controller' => '@phpcredits',
                     //'controller' => '@Home',
-                    ///'controller' => '@Home.test',
+                    //'controller' => '@Home.test',
                     /*'controller' => new Call(
                         new Service('Home\Factory', [new ServiceManagerLink]),
                         ['config' => new Dependency('Config'), 'vm' => new Dependency('View\Manager')]
@@ -121,7 +118,7 @@ return [
                             'setModel' => new Hydrator(
                                 Home\Model::class,
                                 [
-                                    'setTemplate'    => new Param('templates.home'),
+                                    'template'    => new Param('templates.home'),
                                     'setViewManager' => new Dependency('View\Manager'),
                                     [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
                                     ['Home\Controller', 'staticCall'],

@@ -30,13 +30,12 @@ class Controller
      */
     public static function staticTest(ViewManager $vm, array $args = [])
     {
-        $model = new Model;
-        $model->setTemplate($vm->param('templates.home'));
+        $model = new Model($vm->param('templates.home'));
         $model->setViewManager($vm);
 
-        $model->args = $args;
+        $args['args'][] = __FUNCTION__;
 
-        $model->args[] = __FUNCTION__;
+        $model->vars($args);
 
         return $model;
     }
@@ -50,13 +49,7 @@ class Controller
      */
     public function test(Response $response, Request $request, HomeModel $model = null, array $args = [])
     {
-        $model = $this->model();
-
-        $model->args = $args;
-
-        $model->args[] = __FUNCTION__;
-
-        return $model;
+        return $this->view(null, $args + ['args' => [__FUNCTION__]]);
     }
 
     /**
@@ -69,14 +62,6 @@ class Controller
      */
     public function __invoke(Response $response, Request $request, HomeModel $model = null, $pathinfo, array $args = [])
     {
-        $vm = $this->model();
-
-        $vm->args = $args;
-
-        $vm->args[] = __FUNCTION__;
-
-        $vm->args[] = $pathinfo;
-
-        return $vm;
+        return $this->view(null, $args + ['args' => [__FUNCTION__, $pathinfo]]);
     }
 }

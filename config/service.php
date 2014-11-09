@@ -32,7 +32,7 @@ return [
             'setModel' => new Hydrator(
                 Framework\Controller\Error\Model::class,
                 [
-                    'setTemplate'    => new Param('templates.error/404'),
+                    'template'    => new Param('templates.error/404'),
                     'setViewManager' => new Dependency('View\Manager')
                 ]
             )
@@ -56,9 +56,11 @@ return [
             'setModel' => new Dependency('Exception\Model')
         ]
     ),
-    'Exception\Model' => new Hydrator(
+    'Exception\Model' => new Service(
         Framework\View\Exception\Model::class,
-        ['setTemplate' => new Param('templates.error/exception')]
+        [
+            new Param('templates.error/exception')
+        ]
     ),
     'Factory' => new Config([
         'args' => [new ServiceManagerLink]
@@ -74,7 +76,7 @@ return [
             'setModel' => new Hydrator(
                 Home\Model::class,
                 [
-                    'setTemplate'    => new Param('templates.home'),
+                    'template'    => new Param('templates.home'),
                     'setViewManager' => new Dependency('View\Manager')
                 ]
             )
@@ -84,7 +86,7 @@ return [
     'Layout' => new Hydrator(
         Framework\View\Layout\Model::class,
         [
-            'setTemplate'    => new Param('templates.layout'),
+            'template'    => new Param('templates.layout'),
             'setViewManager' => new Dependency('View\Manager')
         ]
     ),
