@@ -34,6 +34,10 @@ return [
             var_dump($response);
         }]*/
     ],
+    'Response\Exception' => [
+        ['Response\Exception\Dispatch'],
+        ['Response\Exception\Renderer'],
+    ],
     'View\Render' => [
         ['View\Renderer'],
     ],

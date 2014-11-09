@@ -74,13 +74,13 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        $response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
+                        //$response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
                         //$response = $this->trigger('blog:create', ['request' => $request, 'response' => $response], $this);
                         //$response = $this->call('blog:create', ['test:abc', $response]);
                         //$response = $this->call('blog:create');
                         //$response = $this->call('blog:create', ['request' => $request, 'response' => $response]);
 
-                        //var_dump(__FILE__, $this->plugin('blog:create')->blog());
+                        //var_dump(__FILE__, $this->plugin('blog:create'));
                         //var_dump(__FILE__, $this->call('blog:valid', ['response' => $response, 'request' => $request]));
 
                         return $response;
@@ -101,7 +101,7 @@ return [
                     //'controller' => '@test', //test() above
                     //'controller' => '@phpcredits',
                     //'controller' => '@Home',
-                    //'controller' => '@Home.test',
+                    ///'controller' => '@Home.test',
                     /*'controller' => new Call(
                         new Service('Home\Factory', [new ServiceManagerLink]),
                         ['config' => new Dependency('Config'), 'vm' => new Dependency('View\Manager')]
@@ -118,7 +118,7 @@ return [
                         'name' => Home\Controller::class,
                         'args' => [new ServiceManagerLink],
                         'calls' => [
-                            'setViewModel' => new Hydrator(
+                            'setModel' => new Hydrator(
                                 Home\Model::class,
                                 [
                                     'setTemplate'    => new Param('templates.home'),

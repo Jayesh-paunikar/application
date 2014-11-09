@@ -26,7 +26,7 @@ class Factory
         $model->setViewManager($vm);
 
         $controller = new Controller;
-        $controller->setViewModel($model);
+        $controller->setModel($model);
 
         return $controller;
     }

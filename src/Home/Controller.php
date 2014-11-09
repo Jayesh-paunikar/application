@@ -50,7 +50,7 @@ class Controller
      */
     public function test(Response $response, Request $request, HomeModel $model = null, array $args = [])
     {
-        $model = $this->viewModel();
+        $model = $this->model();
 
         $model->args = $args;
 
@@ -69,7 +69,7 @@ class Controller
      */
     public function __invoke(Response $response, Request $request, HomeModel $model = null, $pathinfo, array $args = [])
     {
-        $vm = $this->viewModel();
+        $vm = $this->model();
 
         $vm->args = $args;
 

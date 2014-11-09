@@ -29,7 +29,7 @@ return [
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [
-            'setViewModel' => new Hydrator(
+            'setModel' => new Hydrator(
                 Framework\Controller\Error\Model::class,
                 [
                     'setTemplate'    => new Param('templates.error/404'),
@@ -42,7 +42,7 @@ return [
     'Controller\Exception' => Framework\Controller\Exception\Dispatch::class,
     'Controller\Exception\Controller' => new Hydrator(
         Framework\Controller\Exception\Controller::class,
-        ['setViewModel' => new Dependency('Exception\Model')]
+        ['setModel' => new Dependency('Exception\Model')]
     ),
     'Exception\Renderer' => new Hydrator(
         Framework\View\Exception\Renderer::class,
@@ -53,7 +53,7 @@ return [
     'Exception\View'    => new Hydrator(
         Framework\View\Exception\View::class,
         [
-            'setViewModel' => new Dependency('Exception\Model')
+            'setModel' => new Dependency('Exception\Model')
         ]
     ),
     'Exception\Model' => new Hydrator(
@@ -71,7 +71,7 @@ return [
     'Home' => new Hydrator(
         Home\Controller::class,
         [
-            'setViewModel' => new Hydrator(
+            'setModel' => new Hydrator(
                 Home\Model::class,
                 [
                     'setTemplate'    => new Param('templates.home'),
@@ -115,14 +115,7 @@ return [
             new Dependency('Plugin')
        ]
     ),*/
-    'Mvc\Layout' => new Hydrator(
-        Framework\Mvc\Layout\Renderer::class,
-        ['setViewModel' => new Dependency('Layout')]
-    ),
-    'Mvc\View' => new Hydrator(
-        Framework\Mvc\View\Renderer::class,
-        ['setViewManager' => new Dependency('View\Manager')]
-    ),
+    'Mvc\Layout' => Framework\Mvc\Layout\Renderer::class,
     'Mvc\Response' => new Hydrator(
         Framework\Mvc\Response\Dispatcher::class,
         ['setResponseManager' => new Dependency('Response\Manager')]
@@ -148,6 +141,10 @@ return [
             'setRouteManager' => new Dependency('Route\Manager')
         ],
     ]),
+    'Mvc\View' => new Hydrator(
+        Framework\Mvc\View\Renderer::class,
+        ['setViewManager' => new Dependency('View\Manager')]
+    ),
     'Plugin'   => new ServiceManagerLink,
     //'Request'  => new Service(Request\HttpRequest::class, [$_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER]),
     'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
@@ -157,8 +154,21 @@ return [
     },*/
     'Response' => Response\HttpResponse::class,
     'Response\Dispatch' => Framework\Response\Dispatch::class,
-    'Response\Sender'   => Framework\Response\Sender::class,
-    'Response\Manager'  => new Manager(Framework\Response\Manager\Manager::class),
+    'Response\Exception' => Framework\Response\Exception\Exception::class,
+    'Response\Exception\Dispatch' => new Service(
+        Framework\Response\Exception\Dispatcher::class,
+        [
+            new Hydrator(
+                'Response',
+                [
+                    'setStatus' => 500
+                ]
+            )
+        ]
+    ),
+    'Response\Exception\Renderer' => Framework\Response\Exception\Renderer::class,
+    'Response\Sender'             => Framework\Response\Sender::class,
+    'Response\Manager'            => new Manager(Framework\Response\Manager\Manager::class),
     'Route' => new Service(
         Framework\Route\Config::class,
         [
@@ -203,6 +213,6 @@ return [
     'Service\Manager'         => new ServiceManagerLink,
     'View\Manager'  => new Manager(Framework\View\Manager\Manager::class),
     'View\Model'    => Framework\View\Model\Model::class,
+    'View\Render'   => Framework\View\Render\Render::class,
     'View\Renderer' => Framework\View\Renderer\Renderer::class,
-    'View\Render'   => Framework\View\Render\Render::class
 ];

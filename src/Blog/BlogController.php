@@ -21,8 +21,8 @@ interface BlogController
 
     /**
      * @param Response $response
-     * @param BlogViewModel $viewModel
+     * @param BlogViewModel $model
      * @return mixed
      */
-    function response(Response $response, BlogViewModel $viewModel = null);
+    function response(Response $response, BlogViewModel $model = null);
 }

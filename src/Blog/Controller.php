@@ -15,7 +15,7 @@ class Controller
     public function valid(Request $request)
     {
         var_dump(__FUNCTION__.' :: '.__FILE__);
-        return  new Blog;
+        return new Blog;
     }
 
     /**
@@ -29,11 +29,11 @@ class Controller
 
     /**
      * @param Response $response
-     * @param BlogViewModel $viewModel
+     * @param BlogViewModel $model
      * @param array $args
      * @return mixed|void
      */
-    public function response(Response $response, BlogViewModel $viewModel = null, array $args = [])
+    public function response(Response $response, BlogViewModel $model = null, array $args = [])
     {
         var_dump(__FUNCTION__.' :: '.__FILE__, $args);
     }

@@ -24,16 +24,19 @@ class Create
      * @var BlogModel
      */
     protected $blog;
-
+public function __construct()
+{
+    //var_dump(__FILE__, $this);
+}
     /**
      * @return array
      */
     protected function args()
     {
         return [
-            ArgsInterface::BLOG       => $this->blog(),
-            ArgsInterface::EVENT      => $this,
-            ArgsInterface::VIEW_MODEL => $this->viewModel()
+            ArgsInterface::BLOG  => $this->blog(),
+            ArgsInterface::EVENT => $this,
+            ArgsInterface::MODEL => $this->model()
         ];
     }
 
@@ -46,14 +49,14 @@ class Create
     }
 
     /**
-     * @param callable $listener
+     * @param callable $callable
      * @param array $args
      * @param callable $callback
      * @return mixed
      */
-    public function __invoke(callable $listener, array $args = [], callable $callback = null)
+    public function __invoke(callable $callable, array $args = [], callable $callback = null)
     {
-        $response = $this->signal($listener, $this->args() + $args, $callback);
+        $response = $this->signal($callable, $this->args() + $args, $callback);
 
         switch(true) {
             default:
@@ -66,7 +69,7 @@ class Create
             case $response instanceof BlogViewModel:
                 /** @var $response ViewModel */
 
-                $this->setViewModel($response);
+                $this->setModel($response);
 
                 break;
         }
