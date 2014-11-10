@@ -7,9 +7,9 @@
 return [
     'blog:create' => [
         [
-            '@Blog\Controller.valid',
-            '@Blog\Controller.add',
-            '@Blog\Controller.response'
+            '@Blog\Controller\Validate',
+            '@Blog\Controller\Add',
+            '@Blog\Controller\Respond'
         ]
     ],
     'Controller\Dispatch' => [

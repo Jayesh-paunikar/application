@@ -2,12 +2,14 @@
 
 namespace Home;
 
+use ArrayAccess;
 use Framework\View\Model\Base;
 use Framework\View\ViewPlugin;
 use Framework\View\Model\ViewModel;
+use Framework\View\Model\Plugin;
 
 class Model
-    implements ViewModel, HomeModel
+    implements ArrayAccess, HomeModel, Plugin, ViewModel
 {
     /**
      *

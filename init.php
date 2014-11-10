@@ -115,6 +115,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Controller/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Controller/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/ControllerManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/Manager.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Plugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ExceptionModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Base.php';

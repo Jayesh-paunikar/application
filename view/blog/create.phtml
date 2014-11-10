@@ -1,0 +1,8 @@
+<div class="jumbotron">
+    <h1><a href="<?= $this->url('application/default', ['controller' => 'a', 'action' => 'b']) ?>">Blog Create</a></h1>
+</div>
+<?php
+
+if (isset($args)) {
+    var_dump($this->config());
+}

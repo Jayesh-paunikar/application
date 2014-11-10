@@ -47,7 +47,7 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
     $args['args'][] = __FUNCTION__;
 
     $m = new Home\Model($vm->param('templates.home'), $args);
-    $m->setViewManager($vm);
+    //$m->setViewManager($vm);
 
     return $m;
 }
@@ -72,30 +72,26 @@ return [
                     ],
                     'wildcard'   => false,
                     /*'controller' => function(Request $request, Response $response) {
-                        $response = $this->trigger('Blog\Create', ['request' => $request, 'response' => $response], $this);
-                        //$response = $this->trigger('blog:create', ['request' => $request, 'response' => $response], $this);
-                        //$response = $this->call('blog:create', ['test:abc', $response]);
-                        //$response = $this->call('blog:create');
-                        //$response = $this->call('blog:create', ['request' => $request, 'response' => $response]);
+                        $response = $this->trigger('Blog\Create');
 
+                        //var_dump(__FILE__, $this->call('blog:valid'));
+
+                        //$model = new Blog\Model\Model('../view/blog/create.phtml');
+                        //$response = $this->trigger('blog:create', ['model' => $model, 'request' => $request]);
                         //var_dump(__FILE__, $this->plugin('blog:create'));
-                        //var_dump(__FILE__, $this->call('blog:valid', ['response' => $response, 'request' => $request]));
+
 
                         return $response;
                     },*/
                     //'controller' => '@blog:create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
-
                         $args['args'][] = [__FUNCTION__];
 
-                        $m = new Home\Model($vm->param('templates.home'), $args);
-                        $m->setViewManager($vm);
-
-                        return $m;
+                        return new Home\Model($vm->param('templates.home'), $args);
                     },*/
-                    'controller' => 'Home',
+                    //'controller' => 'Home',
                     //'controller' => '@blog:valid',
-                    //'controller' => '@test', //test() above
+                    'controller' => '@test', //test() above
                     //'controller' => '@phpcredits',
                     //'controller' => '@Home',
                     //'controller' => '@Home.test',
@@ -107,26 +103,24 @@ return [
                     //'controller' => ['Home\Controller', 'staticTest'],
                     //'controller' => [new Dependency('Home'), 'test'],
                     //'controller' => 'Home\Controller::staticTest', //error
-                    //'controller' => new Home\Controller, //works but no view model
+                    //'controller' => new Home\Controller(new Blog\Model\Model('../view/blog/create.phtml')),
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
                     //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
-                    /*'controller' => new ServiceConfig([
-                        'name' => Home\Controller::class,
-                        'args' => [new ServiceManagerLink],
-                        'calls' => [
+                    /*'controller' => new Hydrator(
+                        Home\Controller::class,
+                        [
                             'setModel' => new Hydrator(
                                 Home\Model::class,
                                 [
                                     'template'    => new Param('templates.home'),
-                                    'setViewManager' => new Dependency('View\Manager'),
                                     [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
                                     ['Home\Controller', 'staticCall'],
                                     new Filter(new Call('request.getHost'), 'var_dump')
                                 ]
                             )
                         ]
-                    ]),*/
+                    ),*/
                     'constraints' => [
                         'controller' => '[a-zA-Z0-9_-]',
                         'action'     => '[0-9]' //needs fixing?

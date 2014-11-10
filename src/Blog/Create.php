@@ -4,26 +4,30 @@ namespace Blog;
 
 use Framework\Event\Base;
 use Framework\Event\Event;
-use Framework\View\Model\Service\ViewModel as Model;
-use Framework\View\Model\ViewModel;
+use Framework\View\Model\Service\ViewModel;
+use Blog\Model\Blog;
+use Blog\Model\Model;
 use Framework\Service\Resolver\Signal;
 
 class Create
-    implements BlogCreate, Event
+    implements Creator, Event
 {
     /**
      *
      */
     use Base;
     use Signal;
-    use Model;
+    use ViewModel;
 
     const EVENT = self::CREATE;
 
     /**
-     * @var BlogModel
+     *
      */
-    protected $blog;
+    public function __construct()
+    {
+        $this->model = new Model('../view/blog/create.phtml');
+    }
 
     /**
      * @return array
@@ -31,18 +35,9 @@ class Create
     protected function args()
     {
         return [
-            ArgsInterface::BLOG  => $this->blog(),
-            ArgsInterface::EVENT => $this,
-            ArgsInterface::MODEL => $this->model()
+            Args::EVENT => $this,
+            Args::MODEL => $this->model()
         ];
-    }
-
-    /**
-     * @return BlogModel
-     */
-    public function blog()
-    {
-        return $this->blog;
     }
 
     /**
@@ -55,21 +50,7 @@ class Create
     {
         $response = $this->signal($callable, $this->args() + $args, $callback);
 
-        switch(true) {
-            default:
-                break;
-            case $response instanceof BlogModel:
-
-                $this->blog = $response;
-
-                break;
-            case $response instanceof BlogViewModel:
-                /** @var $response ViewModel */
-
-                $this->setModel($response);
-
-                break;
-        }
+        $response && $response instanceof Blog && $this->setModel($response);
 
         return $response;
     }

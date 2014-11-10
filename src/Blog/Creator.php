@@ -2,7 +2,7 @@
 
 namespace Blog;
 
-interface BlogCreate
+interface Creator
 {
     /**
      *

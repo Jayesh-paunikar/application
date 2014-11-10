@@ -2,6 +2,7 @@
 
 namespace Home;
 
+use Blog\Model\Model;
 use Framework\View\Manager\ViewManager;
 use Framework\View\Model\Service\ViewModel;
 use Request\Request;
@@ -14,6 +15,14 @@ class Controller
      *
      */
     use ViewModel;
+
+    /**
+     * @param Model $model
+     */
+    public function __construct(Model $model = null)
+    {
+        $this->model = $model;
+    }
 
     /**
      * @return mixed
@@ -32,10 +41,7 @@ class Controller
     {
         $args['args'][] = __FUNCTION__;
 
-        $model = new Model($vm->param('templates.home'), $args);
-        $model->setViewManager($vm);
-
-        return $model;
+        return new Model($vm->param('templates.home'), $args);
     }
 
     /**

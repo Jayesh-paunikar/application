@@ -10,7 +10,7 @@ use Framework\Service\Config\Service\Service;
 
 return [
     'blog:create' => new Service('Blog\Create'),
-    'blog:valid'  => new Invoke('Blog\Controller.valid'),
+    'blog:valid'  => new Invoke('Blog\Controller\Validate', ['model' => new Blog\Model\Model('../view/blog/create.phtml')]),
     'config'      => new Dependency('Config'),
     'layout'      => new Dependency('Layout'),
     'request'     => new Dependency('Request'),

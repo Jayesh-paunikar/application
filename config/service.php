@@ -29,11 +29,10 @@ return [
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [
-            'setModel' => new Hydrator(
+            'setModel' => new Service(
                 Framework\Controller\Error\Model::class,
                 [
-                    'template'    => new Param('templates.error/404'),
-                    'setViewManager' => new Dependency('View\Manager')
+                    new Param('templates.error/404')
                 ]
             )
         ]
@@ -73,22 +72,18 @@ return [
     'Home' => new Hydrator(
         Home\Controller::class,
         [
-            'setModel' => new Hydrator(
+            'setModel' => new Service(
                 Home\Model::class,
                 [
-                    'template'    => new Param('templates.home'),
-                    'setViewManager' => new Dependency('View\Manager')
+                    new Param('templates.home'),
                 ]
             )
         ]
     ),
     //'Home' => new Factory(Home\Factory::class),
-    'Layout' => new Hydrator(
+    'Layout' => new Service(
         Framework\View\Layout\Model::class,
-        [
-            'template'    => new Param('templates.layout'),
-            'setViewManager' => new Dependency('View\Manager')
-        ]
+        [new Param('templates.layout')]
     ),
     'Manager' => new Config([
         'calls' => [
