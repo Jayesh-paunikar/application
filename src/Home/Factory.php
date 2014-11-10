@@ -21,11 +21,8 @@ class Factory
      */
     public function __invoke(Configuration $config, ViewManager $vm)
     {
-        $model = new Model($this->param('templates.home'));
-        //$model->setViewManager($vm);
-
         $controller = new Controller;
-        $controller->setModel($model);
+        $controller->setModel(new Model('home'));
 
         return $controller;
     }

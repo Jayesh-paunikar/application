@@ -41,7 +41,7 @@ class Controller
     {
         $args['args'][] = __FUNCTION__;
 
-        return new Model($vm->param('templates.home'), $args);
+        return new Model('home', $args);
     }
 
     /**

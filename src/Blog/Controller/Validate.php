@@ -15,11 +15,10 @@ class Validate
      */
     public function __invoke(Request $request, Model $model = null)
     {
-        $args = $model['args'];
-
+        $args   = $model['args'];
         $args[] = __CLASS__;
 
-        $model->args = $args;
+        $model->set('args', $args);
 
         return $model;
     }

@@ -12,11 +12,10 @@ class Add
      */
     public function __invoke(Model $model = null)
     {
-        $args = $model['args'];
-
+        $args   = $model['args'];
         $args[] = __CLASS__;
 
-        $model->args = $args;
+        $model->set('args', $args);
 
         return $model;
     }
