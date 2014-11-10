@@ -193,5 +193,11 @@ return [
     'View\Manager'    => new Manager(Framework\View\Manager\Manager::class),
     'View\Model'      => Framework\View\Model\Model::class,
     'View\Render'     => Framework\View\Render\Render::class,
-    'View\Renderer'   => new Hydrator(Framework\View\Renderer\Renderer::class, ['templates' => new Param('templates')]),
+    'View\Renderer'   => new Hydrator(
+        Framework\View\Renderer\Renderer::class,
+        [
+            'templates'      => new Param('templates'),
+            'setViewManager' => new Dependency('View\Manager')
+        ]
+    ),
 ];
