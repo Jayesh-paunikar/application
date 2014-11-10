@@ -46,7 +46,7 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
 {
     $args['args'][] = __FUNCTION__;
 
-    $m = new Home\Model($vm->param('templates.home'), $args);
+    $m = new Home\Model('home', $args);
     //$m->setViewManager($vm);
 
     return $m;
@@ -76,7 +76,7 @@ return [
 
                         //var_dump(__FILE__, $this->call('blog:valid'));
 
-                        //$model = new Blog\Model\Model('../view/blog/create.phtml');
+                        //$model = new Blog\Model\Model('blog:create');
                         //$response = $this->trigger('blog:create', ['model' => $model, 'request' => $request]);
                         //var_dump(__FILE__, $this->plugin('blog:create'));
 
@@ -87,11 +87,11 @@ return [
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
                         $args['args'][] = [__FUNCTION__];
 
-                        return new Home\Model($vm->param('templates.home'), $args);
+                        return new Home\Model('home', $args);
                     },*/
-                    //'controller' => 'Home',
+                    'controller' => 'Home',
                     //'controller' => '@blog:valid',
-                    'controller' => '@test', //test() above
+                    //'controller' => '@test', //test() above
                     //'controller' => '@phpcredits',
                     //'controller' => '@Home',
                     //'controller' => '@Home.test',
@@ -103,7 +103,7 @@ return [
                     //'controller' => ['Home\Controller', 'staticTest'],
                     //'controller' => [new Dependency('Home'), 'test'],
                     //'controller' => 'Home\Controller::staticTest', //error
-                    //'controller' => new Home\Controller(new Blog\Model\Model('../view/blog/create.phtml')),
+                    //'controller' => new Home\Controller(new Blog\Model\Model('blog:create')),
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
                     //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
@@ -113,7 +113,7 @@ return [
                             'setModel' => new Hydrator(
                                 Home\Model::class,
                                 [
-                                    'template'    => new Param('templates.home'),
+                                    'template'    => 'home',
                                     [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
                                     ['Home\Controller', 'staticCall'],
                                     new Filter(new Call('request.getHost'), 'var_dump')

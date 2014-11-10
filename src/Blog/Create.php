@@ -26,7 +26,7 @@ class Create
      */
     public function __construct()
     {
-        $this->model = new Model('../view/blog/create.phtml');
+        $this->model = new Model('blog:create');
     }
 
     /**

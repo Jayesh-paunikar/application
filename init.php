@@ -124,6 +124,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Model.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/LayoutModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ManageView.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/ViewPlugin.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/ViewTemplates.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/Model.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Dispatch/Action.php';

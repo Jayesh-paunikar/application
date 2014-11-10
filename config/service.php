@@ -29,12 +29,7 @@ return [
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [
-            'setModel' => new Service(
-                Framework\Controller\Error\Model::class,
-                [
-                    new Param('templates.error/404')
-                ]
-            )
+            'setModel' => new Service(Framework\Controller\Error\Model::class, ['error/404'])
         ]
     ),
     'Controller\Manager'   => new Manager(Framework\Controller\Manager\Manager::class),
@@ -55,12 +50,7 @@ return [
             'setModel' => new Dependency('Exception\Model')
         ]
     ),
-    'Exception\Model' => new Service(
-        Framework\View\Exception\Model::class,
-        [
-            new Param('templates.error/exception')
-        ]
-    ),
+    'Exception\Model' => new Service(Framework\View\Exception\Model::class, ['error/exception']),
     'Factory' => new Config([
         'args' => [new ServiceManagerLink]
     ]),
@@ -72,19 +62,11 @@ return [
     'Home' => new Hydrator(
         Home\Controller::class,
         [
-            'setModel' => new Service(
-                Home\Model::class,
-                [
-                    new Param('templates.home'),
-                ]
-            )
+            'setModel' => new Service(Home\Model::class, ['home'])
         ]
     ),
-    //'Home' => new Factory(Home\Factory::class),
-    'Layout' => new Service(
-        Framework\View\Layout\Model::class,
-        [new Param('templates.layout')]
-    ),
+    //'Home'    => new Factory(Home\Factory::class),
+    'Layout'  => new Service(Framework\View\Layout\Model::class, ['layout']),
     'Manager' => new Config([
         'calls' => [
             'aliases'       => new Param('alias'),
@@ -197,19 +179,19 @@ return [
             'events' => new Param('routes.events')
         ]
     ),
-    'Route\Match'             => Framework\Route\Match\Match::class,
-    'Route\Match\Hostname'    => Framework\Route\Match\Hostname\Hostname::class,
-    'Route\Match\Method'      => Framework\Route\Match\Method\Method::class,
-    'Route\Match\Path'        => Framework\Route\Match\Path\Path::class,
-    'Route\Match\Scheme'      => Framework\Route\Match\Scheme\Scheme::class,
-    'Route\Match\Wildcard'    => Framework\Route\Match\Wildcard\Wildcard::class,
-    'Router'                  => new Hydrator(
+    'Route\Match'          => Framework\Route\Match\Match::class,
+    'Route\Match\Hostname' => Framework\Route\Match\Hostname\Hostname::class,
+    'Route\Match\Method'   => Framework\Route\Match\Method\Method::class,
+    'Route\Match\Path'     => Framework\Route\Match\Path\Path::class,
+    'Route\Match\Scheme'   => Framework\Route\Match\Scheme\Scheme::class,
+    'Route\Match\Wildcard' => Framework\Route\Match\Wildcard\Wildcard::class,
+    'Router' => new Hydrator(
         Framework\Route\Router\Router::class,
         ['setRouteManager' => new Dependency('Route\Manager')]
     ),
-    'Service\Manager'         => new ServiceManagerLink,
-    'View\Manager'  => new Manager(Framework\View\Manager\Manager::class),
-    'View\Model'    => Framework\View\Model\Model::class,
-    'View\Render'   => Framework\View\Render\Render::class,
-    'View\Renderer' => Framework\View\Renderer\Renderer::class,
+    'Service\Manager' => new ServiceManagerLink,
+    'View\Manager'    => new Manager(Framework\View\Manager\Manager::class),
+    'View\Model'      => Framework\View\Model\Model::class,
+    'View\Render'     => Framework\View\Render\Render::class,
+    'View\Renderer'   => new Hydrator(Framework\View\Renderer\Renderer::class, ['templates' => new Param('templates')]),
 ];
