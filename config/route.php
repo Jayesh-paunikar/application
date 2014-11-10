@@ -44,10 +44,10 @@ exit;*/
 //demo route controller
 function test(Request $request, Response $response, ViewManager $vm, array $args = [])
 {
-    $m = new Home\Model($vm->param('templates.home'));
-    $m->setViewManager($vm);
+    $args['args'][] = __FUNCTION__;
 
-    $m->args = $args;
+    $m = new Home\Model($vm->param('templates.home'), $args);
+    $m->setViewManager($vm);
 
     return $m;
 }
@@ -86,10 +86,10 @@ return [
                     //'controller' => '@blog:create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
 
-                        $m = new Home\Model($vm->param('templates.home'));
-                        $m->setViewManager($vm);
                         $args['args'][] = [__FUNCTION__];
-                        $m->vars($args);
+
+                        $m = new Home\Model($vm->param('templates.home'), $args);
+                        $m->setViewManager($vm);
 
                         return $m;
                     },*/
