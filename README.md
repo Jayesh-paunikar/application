@@ -259,7 +259,7 @@ class Controller
     {
         $model = $this->model(['message' => 'Hello World']);
 
-        //$model = $this->view('../view/home/index.phtml', ['message' => 'Hello World']);
+        $model = $this->view('home', ['message' => 'Hello World']);
 
         return $model
     }
