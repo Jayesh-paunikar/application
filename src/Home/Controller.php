@@ -2,9 +2,10 @@
 
 namespace Home;
 
-use Blog\Model\Model;
 use Framework\View\Manager\ViewManager;
-use Framework\View\Model\Service\ViewModel;
+use Framework\View\Model\Service\ViewModel as View;
+use Framework\View\Model\ViewModel;
+use Framework\View\Model\Model;
 use Request\Request;
 use Response\Response;
 
@@ -14,12 +15,12 @@ class Controller
     /**
      *
      */
-    use ViewModel;
+    use View;
 
     /**
-     * @param Model $model
+     * @param ViewModel $model
      */
-    public function __construct(Model $model = null)
+    public function __construct(ViewModel $model = null)
     {
         $this->model = $model;
     }
@@ -48,7 +49,7 @@ class Controller
      * @param Response $response
      * @param Request $request
      * @param array $args
-     * @return HomeModel
+     * @return ViewModel
      */
     public function test(Response $response, Request $request, array $args = [])
     {
@@ -60,7 +61,7 @@ class Controller
      * @param Request $request
      * @param $pathinfo
      * @param array $args
-     * @return HomeModel
+     * @return ViewModel
      */
     public function __invoke(Response $response, Request $request, $pathinfo, array $args = [])
     {

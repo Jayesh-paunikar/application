@@ -5,8 +5,6 @@ namespace Blog;
 use Framework\Event\Base;
 use Framework\Event\Event;
 use Framework\View\Model\Service\ViewModel;
-use Blog\Model\Blog;
-use Blog\Model\Model;
 use Framework\Service\Resolver\Signal;
 
 class Create
@@ -20,14 +18,6 @@ class Create
     use ViewModel;
 
     const EVENT = self::CREATE;
-
-    /**
-     *
-     */
-    public function __construct()
-    {
-        $this->model = new Model('blog:create');
-    }
 
     /**
      * @return array
@@ -50,7 +40,7 @@ class Create
     {
         $response = $this->signal($callable, $this->args() + $args, $callback);
 
-        $response && $response instanceof Blog && $this->setModel($response);
+        $response && $this->setModel($response);
 
         return $response;
     }

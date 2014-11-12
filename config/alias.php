@@ -7,10 +7,11 @@ use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Service\Service;
+use Framework\View\Model\Model;
 
 return [
     'blog:create' => new Service('Blog\Create'),
-    'blog:valid'  => new Invoke('Blog\Controller\Validate', ['model' => new Blog\Model\Model('blog:create')]),
+    'blog:valid'  => new Invoke('Blog\Controller\Validate', ['model' => new Model('blog:create')]),
     'config'      => new Dependency('Config'),
     'layout'      => new Dependency('Layout'),
     'request'     => new Dependency('Request'),

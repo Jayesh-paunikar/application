@@ -16,6 +16,7 @@ use Framework\Service\Config\Manager\Manager;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
+use Framework\View\Model\Model;
 
 return [
     'Config'       => new ConfigLink,
@@ -62,7 +63,7 @@ return [
     'Home' => new Hydrator(
         Home\Controller::class,
         [
-            'setModel' => new Service(Home\Model::class, ['home'])
+            'setModel' => new Service(Model::class, ['home'])
         ]
     ),
     //'Home'    => new Factory(Home\Factory::class),

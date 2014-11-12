@@ -20,6 +20,7 @@ use Framework\Service\Config\ServiceConfig\ServiceConfig as ServiceConfiguration
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
 
 //demo route controller
+use Framework\View\Model\Model;
 use Framework\View\Manager\ViewManager;
 use Request\Request;
 use Response\Response;
@@ -46,7 +47,7 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
 {
     $args['args'][] = __FUNCTION__;
 
-    $m = new Home\Model('home', $args);
+    $m = new Model('home', $args);
     //$m->setViewManager($vm);
 
     return $m;
@@ -76,7 +77,7 @@ return [
 
                         //var_dump(__FILE__, $this->call('blog:valid'));
 
-                        //$model = new Blog\Model\Model('blog:create');
+                        //$model = new Model('blog:create');
                         //$response = $this->trigger('blog:create', ['model' => $model, 'request' => $request]);
                         //var_dump(__FILE__, $this->plugin('blog:create'));
 
@@ -87,7 +88,7 @@ return [
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
                         $args['args'][] = [__FUNCTION__];
 
-                        return new Home\Model('home', $args);
+                        return new Model('home', $args);
                     },*/
                     'controller' => 'Home',
                     //'controller' => '@blog:valid',
@@ -103,7 +104,7 @@ return [
                     //'controller' => ['Home\Controller', 'staticTest'],
                     //'controller' => [new Dependency('Home'), 'test'],
                     //'controller' => 'Home\Controller::staticTest', //error
-                    //'controller' => new Home\Controller(new Blog\Model\Model('blog:create')),
+                    //'controller' => new Home\Controller(new Model('blog:create')),
                     //'controller' => new Factory(Home\Factory::class),
                     //'controller' => new Service('Home'),
                     //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
@@ -111,7 +112,7 @@ return [
                         Home\Controller::class,
                         [
                             'setModel' => new Hydrator(
-                                Home\Model::class,
+                                Model::class,
                                 [
                                     'template'    => 'home',
                                     [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],

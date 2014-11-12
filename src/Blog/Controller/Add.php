@@ -2,15 +2,15 @@
 
 namespace Blog\Controller;
 
-use Blog\Model\Model;
+use Framework\View\Model\ViewModel;
 
 class Add
 {
     /**
-     * @param Model $model
+     * @param ViewModel $model
      * @return mixed|void
      */
-    public function __invoke(Model $model = null)
+    public function __invoke(ViewModel $model = null)
     {
         $args   = $model['args'];
         $args[] = __CLASS__;

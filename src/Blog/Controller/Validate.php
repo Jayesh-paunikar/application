@@ -2,24 +2,23 @@
 
 namespace Blog\Controller;
 
-use Blog\Model\Blog;
-use Blog\Model\Model;
+use Framework\View\Model\Service\ViewModel;
+use Framework\View\Model\ViewModel as Model;
 use Request\Request;
 
 class Validate
 {
     /**
-     * @param Request $request
-     * @param Model $model
-     * @return Blog
+     *
      */
-    public function __invoke(Request $request, Model $model = null)
+    use ViewModel;
+
+    /**
+     * @param Request $request
+     * @return Model
+     */
+    public function __invoke(Request $request)
     {
-        $args   = $model['args'];
-        $args[] = __CLASS__;
-
-        $model->set('args', $args);
-
-        return $model;
+        return $this->view('blog:create', ['args' => [__CLASS__]]);
     }
 }

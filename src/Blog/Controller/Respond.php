@@ -2,12 +2,17 @@
 
 namespace Blog\Controller;
 
-use Blog\Model\Model;
+use Framework\View\Model\ViewModel;
 use Response\Response;
 
 class Respond
 {
-    public function __invoke(Response $response, Model $model = null)
+    /**
+     * @param Response $response
+     * @param ViewModel $model
+     * @return ViewModel
+     */
+    public function __invoke(Response $response, ViewModel $model = null)
     {
         $args   = $model['args'];
         $args[] = __CLASS__;
