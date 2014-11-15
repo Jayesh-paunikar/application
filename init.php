@@ -117,11 +117,10 @@ include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/ControllerManag
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Plugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ViewModel.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/LayoutModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/ExceptionModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Base.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/Layout.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Exception/Model.php';
-include __DIR__ . '/vendor/mvc5/framework/src/View/Layout/LayoutModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ManageView.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/ViewPlugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/ViewTemplates.php';
