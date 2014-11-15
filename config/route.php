@@ -53,89 +53,91 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
     return $m;
 }
 return [
-    'definitions' => new Config([
-        'home' => Builder::definition([
-            'name'       => 'default',
-            'route'      => '/',
-            'controller' => 'Home'
-        ]),
-        'application' => Builder::definition([
-            'name'       => 'application',
-            'route'      => '/application',
-            'controller' => 'Home',
-            'children' => [
-                'default' => Builder::definition([
-                    'name'       => 'default',
-                    'route'      => '/:controller[/:action]',
-                    'defaults'   => [
-                        'controller' => 'index',
-                        'action'     => 'index'
-                    ],
-                    'wildcard'   => false,
-                    /*'controller' => function(Request $request, Response $response) {
-                        $response = $this->trigger('Blog\Create');
+    'definitions' => new RouteDefinition([
+        'children' => [
+            'home' => Builder::definition([
+                'name'       => 'default',
+                'route'      => '/',
+                'controller' => 'Home'
+            ]),
+            'application' => Builder::definition([
+                'name'       => 'application',
+                'route'      => '/application',
+                'controller' => 'Home',
+                'children' => [
+                    'default' => Builder::definition([
+                        'name'       => 'default',
+                        'route'      => '/:controller[/:action]',
+                        'defaults'   => [
+                            'controller' => 'index',
+                            'action'     => 'index'
+                        ],
+                        'wildcard'   => false,
+                        /*'controller' => function(Request $request, Response $response) {
+                            $response = $this->trigger('Blog\Create');
 
-                        //var_dump(__FILE__, $this->call('blog:valid'));
+                            //var_dump(__FILE__, $this->call('blog:valid'));
 
-                        //$model = new Model('blog:create');
-                        //$response = $this->trigger('blog:create', ['model' => $model, 'request' => $request]);
-                        //var_dump(__FILE__, $this->plugin('blog:create'));
+                            //$model = new Model('blog:create');
+                            //$response = $this->trigger('blog:create', ['model' => $model, 'request' => $request]);
+                            //var_dump(__FILE__, $this->plugin('blog:create'));
 
 
-                        return $response;
-                    },*/
-                    //'controller' => '@blog:create', //call event (trigger)
-                    /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
-                        $args['args'][] = [__FUNCTION__];
+                            return $response;
+                        },*/
+                        //'controller' => '@blog:create', //call event (trigger)
+                        /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
+                            $args['args'][] = [__FUNCTION__];
 
-                        return new Model('home', $args);
-                    },*/
-                    'controller' => 'Home',
-                    //'controller' => '@blog:valid',
-                    //'controller' => '@test', //test() above
-                    //'controller' => '@phpcredits',
-                    //'controller' => '@Home',
-                    //'controller' => '@Home.test',
-                    /*'controller' => new Call(
-                        new Service('Home\Factory', [new ServiceManagerLink]),
-                        ['config' => new Dependency('Config'), 'vm' => new Dependency('View\Manager')]
-                    ),*/
-                    //'controller' => '@Home\Controller::staticTest',
-                    //'controller' => ['Home\Controller', 'staticTest'],
-                    //'controller' => [new Dependency('Home'), 'test'],
-                    //'controller' => 'Home\Controller::staticTest', //error
-                    //'controller' => new Home\Controller(new Model('blog:create')),
-                    //'controller' => new Factory(Home\Factory::class),
-                    //'controller' => new Service('Home'),
-                    //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
-                    /*'controller' => new Hydrator(
-                        Home\Controller::class,
-                        [
-                            'setModel' => new Hydrator(
-                                Model::class,
-                                [
-                                    'template'    => 'home',
-                                    [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
-                                    ['Home\Controller', 'staticCall'],
-                                    new Filter(new Call('request.getHost'), 'var_dump')
-                                ]
-                            )
+                            return new Model('home', $args);
+                        },*/
+                        'controller' => 'Home',
+                        //'controller' => '@blog:valid',
+                        //'controller' => '@test', //test() above
+                        //'controller' => '@phpcredits',
+                        //'controller' => '@Home',
+                        //'controller' => '@Home.test',
+                        /*'controller' => new Call(
+                            new Service('Home\Factory', [new ServiceManagerLink]),
+                            ['config' => new Dependency('Config'), 'vm' => new Dependency('View\Manager')]
+                        ),*/
+                        //'controller' => '@Home\Controller::staticTest',
+                        //'controller' => ['Home\Controller', 'staticTest'],
+                        //'controller' => [new Dependency('Home'), 'test'],
+                        //'controller' => 'Home\Controller::staticTest', //error
+                        //'controller' => new Home\Controller(new Model('blog:create')),
+                        //'controller' => new Factory(Home\Factory::class),
+                        //'controller' => new Service('Home'),
+                        //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
+                        /*'controller' => new Hydrator(
+                            Home\Controller::class,
+                            [
+                                'setModel' => new Hydrator(
+                                    Model::class,
+                                    [
+                                        'template'    => 'home',
+                                        [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
+                                        ['Home\Controller', 'staticCall'],
+                                        new Filter(new Call('request.getHost'), 'var_dump')
+                                    ]
+                                )
+                            ]
+                        ),*/
+                        'constraints' => [
+                            'controller' => '[a-zA-Z0-9_-]',
+                            'action'     => '[0-9]' //needs fixing?
                         ]
-                    ),*/
-                    'constraints' => [
-                        'controller' => '[a-zA-Z0-9_-]',
-                        'action'     => '[0-9]' //needs fixing?
-                    ]
-                ])
-            ],
-        ]),
-        'error' => new RouteDefinition([
-            'name'       => 'error',
-            'route'      => '/error',
-            'controller' => 'Controller\Error',
-            'regex'      => '/error',
-            'tokens'     => [['literal', '/error']]
-        ])
+                    ])
+                ],
+            ]),
+            'error' => new RouteDefinition([
+                'name'       => 'error',
+                'route'      => '/error',
+                'controller' => 'Controller\Error',
+                'regex'      => '/error',
+                'tokens'     => [['literal', '/error']]
+            ])
+        ]
     ]),
     'events' => new Events([
         'Route\Match' => [
@@ -154,11 +156,11 @@ return [
                 //new Service('Route\Dispatch\Filter'),
                 'Route\Dispatch\Filter',
 
-                new Router(new Param('routes.definitions.home')),
+                new Router(new Param('routes.definitions.children.home')),
 
-                new Router(new Param('routes.definitions.application')),
+                new Router(new Param('routes.definitions.children.application')),
 
-                new Router(new Param('routes.definitions.error'))
+                new Router(new Param('routes.definitions.children.error'))
             ]
         ]
     ])
