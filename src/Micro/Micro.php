@@ -2,6 +2,7 @@
 
 namespace Micro;
 
+use Exception;
 use Framework\Application\App;
 use Framework\Config\Config;
 use Framework\Route\Definition\Builder\Builder;
@@ -25,6 +26,12 @@ class Micro
         $this->sm = new App($config);
     }
 
+    /**
+     * @param Definition $parent
+     * @param Definition $definition
+     * @param $path
+     * @throws Exception
+     */
     protected function addRoute(Definition $parent, Definition $definition, $path)
     {
         $paths = explode('/', $path, 2);
@@ -33,7 +40,7 @@ class Micro
 
         if (!$root) {
             if (isset($paths[1])) {
-                throw new \Exception('Parent definition not found2: ' . $paths[1]);
+                throw new Exception('Parent definition not found2: ' . $paths[1]);
             }
 
             $parent->add($paths[0], $definition);
@@ -48,10 +55,15 @@ class Micro
      * @param string $name
      * @param string $route
      * @param callable|string $controller
-     * @throws \Exception
+     * @throws Exception
      */
     public function route($name, $route, $controller)
     {
+        /**
+         * @var Definition $definitions
+         * @var \Framework\Event\Config\Configuration $events
+         */
+
         $definition = Builder::definition([
             self::NAME       => $name,
             self::ROUTE      => $route,
@@ -68,7 +80,7 @@ class Micro
 
         if (!$root) {
             if (isset($paths[1])) {
-                throw new \Exception('Parent definition not found: ' . $paths[1]);
+                throw new Exception('Parent definition not found: ' . $paths[1]);
             } else {
                 $definitions->add($paths[0], $definition);
                 $events->add(self::ROUTE_DISPATCH, new Router($definition));
