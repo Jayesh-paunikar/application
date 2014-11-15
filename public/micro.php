@@ -41,7 +41,7 @@ $app->route('application', '/application', function(array $args = []) {
 /**
  *
  */
-$app->route('application:default', '/application/default', function(array $args = [], $vm) {
+$app->route('application:default', '/application/default[/:controller[/:action]]', function(array $args = [], $vm) {
 
     $args['micro_route'] = 'micro:application:default';
 
