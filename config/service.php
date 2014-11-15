@@ -30,7 +30,13 @@ return [
     'Controller\Error' => new Hydrator(
         Framework\Controller\Error\Controller::class,
         [
-            'setModel' => new Service(Framework\Controller\Error\Model::class, ['error/404'])
+            'setModel' => new Service(
+                Framework\Controller\Error\Model::class,
+                [
+                    'error/404',
+                    ['message' => 'A 404 error occurred']
+                ]
+            )
         ]
     ),
     'Controller\Manager'   => new Manager(Framework\Controller\Manager\Manager::class),
