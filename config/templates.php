@@ -9,4 +9,6 @@ return [
     'error/404'       => __DIR__ . '/../view/error/404.phtml',
     'home'            => __DIR__ . '/../view/home/index.phtml',
     'blog:create'     => __DIR__ . '/../view/blog/create.phtml',
+    'micro:layout'    => __DIR__ . '/../view/micro/layout.phtml',
+    'micro:home'      => __DIR__ . '/../view/micro/index.phtml',
 ];

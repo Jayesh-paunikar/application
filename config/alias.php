@@ -24,4 +24,5 @@ return [
     'viewManager' => new Dependency('View\Manager'),
     'vm'          => new Dependency('View\Manager'),
     'web'         => new Service('Mvc'),
+    'micro'       => new Service('Mvc'),
 ];
