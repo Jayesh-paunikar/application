@@ -1,4 +1,4 @@
-This php framework is an enhanced programming environment that uses events, named arguments and an optional configuration that provides further inversion of control of the application. The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the service manager.
+This php framework is an enhanced programming environment that uses events, named arguments and an optional configuration that provides further inversion of control of the application. The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 
 This contrived example demonstrates named arguments and plugins.
 ```php
@@ -93,8 +93,7 @@ $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
 ##Plugins and Aliases
 The parameter names of the additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to any positive value. If the value is a configuration object then it will be resolved and its value returned.
-
-Plugins can be used in variety of ways and for different purposes, e.g to provide a value or to trigger an event or to call a particular service method. So each configuration is specific to its own use.
+Each plugin has its own configuration specific to its own use. This enables them to be used in various ways for different purposes, e.g to provide a value or to trigger an event or to call a particular service method.
 ```php
 return [
     'blog:create' => new Service('Blog\Create'),
@@ -148,7 +147,7 @@ public function __invoke(Config $config, ViewManager $vm, array $args = [])
 ```
 Usage
 --
-The <a href="https://github.com/mvc5/application">mvc5/application</a> demonstrates its usage as an MVC web application.
+The <a href="https://github.com/mvc5/application">mvc5/application</a> demonstrates its usage as a web application.
 
 ```php
 include __DIR__ . '/../vendor/autoload.php';
@@ -175,7 +174,6 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 // or 
 // (new App($config))->call('web');
 ```
-Microframeworks can be built similar to this [gist](https://gist.github.com/devosc/5b66b7080a6736d8d9d5).
 ##Benchmark
 *Current*
 ```
@@ -267,3 +265,22 @@ class Controller
 }
 ```
 
+##Micro Framework
+Instead of configuring a standard [Application](https://github.com/mvc5/framework/blob/master/src/Application/Application.php), a [micro](https://github.com/mvc5/micro) application can used with a default configuration.
+```php
+$app = new Micro();
+
+//services via ArrayAccess
+//var_dump($app['Request']);
+
+//configuration via property access
+//$app->templates['layout'] = '../view/layout.phtml';
+
+$app->route([
+    'name'       => 'home',
+    'route'      => '/',
+    'controller' => function() {
+        return new Model('home');
+    }
+]);
+```
