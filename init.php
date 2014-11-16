@@ -19,6 +19,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceContainer
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ServiceManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/Application.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Config/ArrayAccess.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/Service.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Args.php';
