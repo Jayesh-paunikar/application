@@ -166,13 +166,14 @@ return [
             ])
         ]
     ),
+    'Route\Builder'           => Framework\Route\Definition\Builder\Builder::class,
     'Route\Dispatch'          => Framework\Route\Router\Dispatch::class,
     'Route\Dispatch\Filter'   => Framework\Route\Router\Filter::class,
     //'Route\Dispatch\Filter'   => new Filter(Framework\Route\Router\Filter::class, 'trim'),
     //'Route\Dispatch\Filter'   => new Service(Framework\Route\Router\Filter::class),
     'Route\Generator' => new Service(
         Framework\Route\Generator\Generator::class,
-        [new Param('routes.definitions')]
+        [new Param('routes.definitions'), new Invoke('Route\Builder')]
     ),
     'Route\Generator\Plugin' => new Hydrator(
         Framework\Route\Generator\GeneratorPlugin::class,

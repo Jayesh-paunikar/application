@@ -55,17 +55,17 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
 return [
     'definitions' => new RouteDefinition([
         'children' => [
-            'home' => Builder::definition([
+            'home' => [
                 'name'       => 'default',
                 'route'      => '/',
                 'controller' => 'Home'
-            ]),
-            'application' => Builder::definition([
+            ],
+            'application' => [
                 'name'       => 'application',
                 'route'      => '/application',
                 'controller' => 'Home',
                 'children' => [
-                    'default' => Builder::definition([
+                    'default' => [
                         'name'       => 'default',
                         'route'      => '/:controller[/:action]',
                         'defaults'   => [
@@ -127,9 +127,9 @@ return [
                             'controller' => '[a-zA-Z0-9_-]',
                             'action'     => '[0-9]' //needs fixing?
                         ]
-                    ])
+                    ]
                 ],
-            ]),
+            ],
             'error' => new RouteDefinition([
                 'name'       => 'error',
                 'route'      => '/error',
