@@ -92,6 +92,30 @@ return [
                             return new Model('home', $args);
                         },*/
                         'controller' => 'Home',
+                        /*'controller' => function() {
+                            return $this->trigger(
+                                new Blog\Post\Post(
+                                    [
+                                        [
+                                            function($response, array $args = []) {
+                                                var_dump('model');
+                                                return new Model('home', ['args' => $args]);
+                                            },
+                                            function($response, $model) {
+                                                var_dump($model, 'controller');
+                                                return $model;
+                                            },
+                                            function($response, $model) {
+                                                var_dump($model, 'view');
+                                                return $response;
+                                            },
+                                        ]
+                                    ]
+                                ),
+                                [],
+                                $this
+                            );
+                        },*/
                         //'controller' => '@blog:valid',
                         //'controller' => '@test', //test() above
                         //'controller' => '@phpcredits',
