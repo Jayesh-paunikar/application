@@ -95,19 +95,17 @@ return [
                         'controller' => 'Home',
                         /*'controller' => new ControllerAction(
                             [
-                                [
-                                    function(array $args = []) {
-                                        return new Model(null, ['args' => $args]);
-                                    },
-                                    function(Model $model) {
-                                        $model['__CONTROLLER__'] = __FUNCTION__;
-                                        return $model;
-                                    },
-                                    function(Model $model) {
-                                        $model[$model::TEMPLATE] = 'home';
-                                        return $model;
-                                    },
-                                ]
+                                function(array $args = []) {
+                                    return new Model(null, ['args' => $args]);
+                                },
+                                function(Model $model) {
+                                    $model['__CONTROLLER__'] = __FUNCTION__;
+                                    return $model;
+                                },
+                                function(Model $model) {
+                                    $model[$model::TEMPLATE] = 'home';
+                                    return $model;
+                                },
                             ]
                         ),*/
                         //'controller' => '@blog:valid',
