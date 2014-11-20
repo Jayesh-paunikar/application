@@ -264,23 +264,25 @@ class Controller
     }
 }
 ```
-
-##Micro Framework
-Instead of configuring a standard [Application](https://github.com/mvc5/framework/blob/master/src/Application/Application.php), a [micro](https://github.com/mvc5/micro) application can used with a default configuration.
+##Controller Action
+The `ControllerAction` configuration is for an [`Action Controller Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) which accepts an event array configuration and will call each function with named argument support and if the response from the function is a `ViewModel` it will be stored and available to subsequent functions. If the function returns a `Response` object then the [`Action Controller Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) is stopped and the `Response` object is returned.
 ```php
-$app = new Micro();
-
-//services via ArrayAccess
-//var_dump($app['Request']);
-
-//configuration via property access
-//$app->templates['layout'] = '../view/layout.phtml';
-
-$app->route([
-    'name'       => 'home',
-    'route'      => '/',
-    'controller' => function() {
-        return new Model('home');
-    }
-]);
+'controller' => new ControllerAction(
+    [
+        [
+            function(array $args = []) {
+                return new Model(null, ['args' => $args]);
+            },
+            function(Model $model) {
+                $model['__CONTROLLER__'] = __FUNCTION__;
+                return $model;
+            },
+            function(Model $model) {
+                $model[$model::TEMPLATE] = 'home';
+                return $model;
+            },
+        ]
+    ]
+),
 ```
+
