@@ -265,7 +265,7 @@ class Controller
 }
 ```
 ##Controller Action
-The `ControllerAction` configuration is for an [`Action Controller Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) which accepts an event array configuration and will call each function with named argument support and if the response from the function is a `ViewModel` it will be stored and available to subsequent functions. If the function returns a `Response` object then the [`Action Controller Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) is stopped and the `Response` object is returned.
+The `ControllerAction` configuration is for an [`Action Controller Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) which accepts an event array configuration and will call each function with named argument support and if the response from the function is a `ViewModel` it will be stored and available to subsequent functions. If the function returns a `Response` object then the event is stopped and the `Response` object is returned.
 ```php
 'controller' => new ControllerAction([
         function(array $args = []) {
