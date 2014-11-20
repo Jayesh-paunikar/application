@@ -20,6 +20,7 @@ use Framework\View\Model\Model;
 
 return [
     'Config'       => new ConfigLink,
+    'Controller\Action'     => Framework\Controller\Action\Action::class,
     'Controller\Dispatch'   => Framework\Controller\Dispatch\Dispatch::class,
     'Controller\Dispatcher' => new Hydrator(
         Framework\Controller\Dispatch\Dispatcher::class,

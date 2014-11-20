@@ -8,7 +8,7 @@ use Framework\Event\Config\Events;
 use Framework\Route\Definition\RouteDefinition;
 use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config as ServiceConfig;
-use Framework\Service\Config\Event\Event;
+use Framework\Service\Config\ControllerAction\ControllerAction;
 use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
@@ -93,8 +93,7 @@ return [
                             return new Model('home', $args);
                         },*/
                         'controller' => 'Home',
-                        /*'controller' => new Event(
-                            Blog\Post\Post::class,
+                        /*'controller' => new ControllerAction(
                             [
                                 [
                                     function(array $args = []) {
