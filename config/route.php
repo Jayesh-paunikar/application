@@ -93,8 +93,7 @@ return [
                             return new Model('home', $args);
                         },*/
                         'controller' => 'Home',
-                        /*'controller' => new ControllerAction(
-                            [
+                        /*'controller' => new ControllerAction([
                                 function(array $args = []) {
                                     return new Model(null, ['args' => $args]);
                                 },
@@ -106,8 +105,7 @@ return [
                                     $model[$model::TEMPLATE] = 'home';
                                     return $model;
                                 },
-                            ]
-                        ),*/
+                        ]),*/
                         //'controller' => '@blog:valid',
                         //'controller' => '@test', //test() above
                         //'controller' => '@phpcredits',
