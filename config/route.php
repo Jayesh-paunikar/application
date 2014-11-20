@@ -8,6 +8,7 @@ use Framework\Event\Config\Events;
 use Framework\Route\Definition\RouteDefinition;
 use Framework\Service\Config\Call\Call;
 use Framework\Service\Config\Config as ServiceConfig;
+use Framework\Service\Config\Event\Event;
 use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
@@ -92,30 +93,24 @@ return [
                             return new Model('home', $args);
                         },*/
                         'controller' => 'Home',
-                        /*'controller' => function() {
-                            return $this->trigger(
-                                new Blog\Post\Post(
-                                    [
-                                        [
-                                            function($response, array $args = []) {
-                                                var_dump('model');
-                                                return new Model('home', ['args' => $args]);
-                                            },
-                                            function($response, $model) {
-                                                var_dump($model, 'controller');
-                                                return $model;
-                                            },
-                                            function($response, $model) {
-                                                var_dump($model, 'view');
-                                                return $response;
-                                            },
-                                        ]
-                                    ]
-                                ),
-                                [],
-                                $this
-                            );
-                        },*/
+                        /*'controller' => new Event(
+                            Blog\Post\Post::class,
+                            [
+                                [
+                                    function(array $args = []) {
+                                        return new Model(null, ['args' => $args]);
+                                    },
+                                    function($model) {
+                                        $model['__CONTROLLER__'] = __FUNCTION__;
+                                        return $model;
+                                    },
+                                    function($model) {
+                                        $model[$model::TEMPLATE] = 'home';
+                                        return $model;
+                                    },
+                                ]
+                            ]
+                        ),*/
                         //'controller' => '@blog:valid',
                         //'controller' => '@test', //test() above
                         //'controller' => '@phpcredits',

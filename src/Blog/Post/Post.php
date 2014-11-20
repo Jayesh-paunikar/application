@@ -6,9 +6,10 @@ use Framework\Config\Configuration;
 use Framework\Config\Base as Config;
 use Framework\Event\Base;
 use Framework\Event\Event;
-use Framework\View\Model\Service\ViewModel;
 use Framework\Response\Response;
 use Framework\Service\Resolver\Signal;
+use Framework\View\Model\Service\ViewModel as Model;
+use Framework\View\Model\ViewModel;
 use Iterator;
 
 class Post
@@ -19,8 +20,8 @@ class Post
      */
     use Base;
     use Config;
+    use Model;
     use Signal;
-    use ViewModel;
 
     /**
      * @return array
@@ -48,7 +49,7 @@ class Post
             return $response;
         }
 
-        $response && $this->setModel($response);
+        $response instanceof ViewModel && $this->setModel($response);
 
         return $response;
     }
