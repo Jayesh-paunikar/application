@@ -138,8 +138,8 @@ return [
                             ]
                         ),*/
                         'constraints' => [
-                            'controller' => '[a-zA-Z0-9_-]',
-                            'action'     => '[0-9]' //needs fixing?
+                            'controller' => '^[a-zA-Z0-9_-]$',
+                            'action'     => '^[a-zA-Z0-9_-]$'
                         ]
                     ]
                 ],
