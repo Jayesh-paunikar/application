@@ -33,8 +33,8 @@ use Framework\Route\Definition\Builder\Builder;
     'route'       => '/[:controller[/:action]]',
     'controller' => 'Home',
     'constraints' => [
-        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*'
+        'controller' => '[a-zA-Z0-9_-]*',
+        'action'     => '[a-zA-Z0-9_-]*'
     ],
     'defaults' => [
         'controller' => 'Home',
@@ -137,7 +137,6 @@ return [
                                 )
                             ]
                         ),*/
-                        //'regex'       => '/(?:(?P<param1>[a-zA-Z0-9_-]+)(?:/(?P<param2>[^/]+))?)?',
                         'constraints' => [
                             'controller' => '[a-zA-Z0-9_-]*',
                             'action'     => '[a-zA-Z0-9_-]*'
@@ -167,8 +166,6 @@ return [
         'Route\Dispatch' => [
             [
 
-                //new Service(new ServiceConfiguration('Route\Dispatch\Filter'), [false]),
-                //new Service('Route\Dispatch\Filter'),
                 'Route\Dispatch\Filter',
 
                 new Router(new Param('routes.definitions.children.home')),
