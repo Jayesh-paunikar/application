@@ -3,6 +3,8 @@
  *
  */
 use Framework\Application\Web;
+use Framework\View\Model\Model;
+use Framework\Service\Config\ControllerAction\ControllerAction;
 
 /**
  *
@@ -24,7 +26,78 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-call_user_func(new Web(include __DIR__ . '/../config/web.php'));
+$app = new Web(include __DIR__ . '/../config/web.php');
+
+//demo micro framework
+/*$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
+
+//services via ArrayAccess
+$app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
+$app['Response'] = new Response\HttpResponse;
+
+//configuration via property access
+$app->templates['layout'] = '../view/layout/layout.phtml';
+$app->templates['home']   = '../view/home/index.phtml';
+
+$app->route('home:/', function(array $args = []) {
+    $args['app_demo'] = 'app:home';
+
+    return new Model('home', ['args' => $args]);
+});
+
+$app->route('application', function(array $args = []) {
+    $args['app_demo'] = 'app:application';
+
+    return new Model('home', ['args' => $args]);
+});
+
+$app->route('application/default:/:controller[/:action]', function(array $args = []) {
+    $args['app_demo'] = 'app:application';
+
+    return new Model('home', ['args' => $args]);
+});
+
+$app->route('demo', function(array $args = []) {
+    $args['app_demo'] = 'app:demo';
+
+    return new Model('home', ['args' => $args]);
+});
+
+$app->route('demo/default', function(array $args = []) {
+    $args['app_demo'] = 'app:demo:default';
+
+    $args['demo_time'] = $this->call('time');
+
+    return new Model('home', ['args' => $args]);
+});
+
+$app->route('demo/default/three', function(array $args = []) {
+    $args['app_demo'] = 'app:demo:default:three';
+
+    $args['demo_time'] = $this->call('time');
+
+    return new Model('home', ['args' => $args]);
+});
+
+$app->route('demo/create:[/:controller[/:action]]', new ControllerAction([
+    function(array $args = []) {
+        return new Model(null, ['args' => $args]);
+    },
+    function(Model $model) {
+        $model['__CONTROLLER__'] = __FUNCTION__;
+        return $model;
+    },
+    function(Model $model) {
+        $model[$model::TEMPLATE] = 'home';
+        return $model;
+    },
+]));
+*/
+
+/**
+ *
+ */
+call_user_func($app);
 
 /**
  *

@@ -3,7 +3,6 @@
  *
  */
 
-use Framework\Config\Config;
 use Framework\Event\Config\Events;
 use Framework\Route\Definition\RouteDefinition;
 use Framework\Service\Config\Call\Call;
