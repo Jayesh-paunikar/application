@@ -18,6 +18,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Config/Configuration.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceContainer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ServiceManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManager.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Application/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/Application.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/ArrayAccess.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Base.php';
@@ -62,6 +63,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceManagerLink/
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceManagerLink/ServiceManagerLink.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ConfigLink/ConfigServiceLink.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ConfigLink/ConfigLink.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ControllerAction/ControllerService.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ControllerAction/ControllerAction.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/ChildService.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Child.php';
@@ -180,6 +183,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GeneratorPlugin.ph
 /**
  *
  */
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/DefinitionBuilder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/Builder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/RouteGenerator.php';
