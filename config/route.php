@@ -64,7 +64,7 @@ return [
             'application' => [
                 'name'       => 'application',
                 'route'      => '/application',
-                'controller' => 'Home',
+                'controller' => '@Home.test',
                 'children' => [
                     'default' => [
                         'name'       => 'default',
@@ -86,13 +86,13 @@ return [
 
                             return $response;
                         },*/
-                        //'controller' => '@blog:create', //call event (trigger)
+                        'controller' => '@blog:create', //call event (trigger)
                         /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
                             $args['args'][] = [__FUNCTION__];
 
                             return new Model('home', $args);
                         },*/
-                        'controller' => 'Home',
+                        //'controller' => 'Home',
                         /*'controller' => new ControllerAction([
                                 function(array $args = []) {
                                     return new Model(null, ['args' => $args]);
@@ -137,9 +137,10 @@ return [
                                 )
                             ]
                         ),*/
+                        //'regex'       => '/(?:(?P<param1>[a-zA-Z0-9_-]+)(?:/(?P<param2>[^/]+))?)?',
                         'constraints' => [
-                            'controller' => '^[a-zA-Z0-9_-]*$',
-                            'action'     => '^[a-zA-Z0-9_-]*$'
+                            'controller' => '[a-zA-Z0-9_-]*',
+                            'action'     => '[a-zA-Z0-9_-]*'
                         ]
                     ]
                 ],
