@@ -174,6 +174,26 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 // or 
 // (new App($config))->call('web');
 ```
+###Microframework Support
+```php
+$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
+
+//services via ArrayAccess
+$app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
+$app['Response'] = new Response\HttpResponse;
+
+//configuration via property access
+$app->templates['layout'] = '../view/layout/layout.phtml';
+$app->templates['home']   = '../view/home/index.phtml';
+
+$app->route(['home', '/'], function(array $args = []) {
+    $args['app_demo'] = 'app:home';
+
+    return new Model('home', ['args' => $args]);
+});
+
+call_user_func($app);
+```
 ##Benchmark
 *Current*
 ```
