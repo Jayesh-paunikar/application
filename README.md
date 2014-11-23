@@ -177,10 +177,10 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 ##Benchmark
 *Current*
 ```
-HTML transferred:       4229135 bytes
-Requests per second:    1290.86 [#/sec] (mean)
-Time per request:       7.747 [ms] (mean)
-Time per request:       0.775 [ms] (mean, across all concurrent requests)
+HTML transferred:       9475226 bytes
+Requests per second:    1043.45 [#/sec] (mean)
+Time per request:       9.584 [ms] (mean)
+Time per request:       0.958 [ms] (mean, across all concurrent requests)
 ```
 *Other/Previous*
 ```
