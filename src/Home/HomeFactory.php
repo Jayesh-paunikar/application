@@ -9,8 +9,8 @@ interface HomeFactory
 {
     /**
      * @param Configuration $config
-     * @param ViewManager $viewManager
+     * @param ViewManager $vm
      * @return Controller
      */
-    function __invoke(Configuration $config, ViewManager $viewManager);
+    function __invoke(Configuration $config, ViewManager $vm);
 }

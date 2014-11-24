@@ -12,6 +12,7 @@ use Framework\Service\Config\Dependency\Dependency;
 use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Filter\Filter;
 use Framework\Service\Config\Hydrator\Hydrator;
+use Framework\Service\Config\Invokable\Invokable;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
 use Framework\Service\Config\Router\Router;
@@ -171,7 +172,7 @@ return [
 
                 new Router(new Param('routes.definitions.children.application')),
 
-                new Router(new Param('routes.definitions.children.error'))
+                new Invokable(new Service('Route\Error'))
             ]
         ]
     ])
