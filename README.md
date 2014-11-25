@@ -198,10 +198,10 @@ call_user_func($app);
 ##Benchmark
 *Current*
 ```
-HTML transferred:       9475226 bytes
-Requests per second:    1043.45 [#/sec] (mean)
-Time per request:       9.584 [ms] (mean)
-Time per request:       0.958 [ms] (mean, across all concurrent requests)
+HTML transferred:       9472167 bytes
+Requests per second:    1112.89 [#/sec] (mean)
+Time per request:       8.986 [ms] (mean)
+Time per request:       0.899 [ms] (mean, across all concurrent requests)
 ```
 *Other/Previous*
 ```
