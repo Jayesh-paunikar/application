@@ -15,7 +15,6 @@ use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Invokable\Invokable;
 use Framework\Service\Config\Invoke\Invoke;
 use Framework\Service\Config\Param\Param;
-use Framework\Service\Config\Router\Router;
 use Framework\Service\Config\Service\Service;
 use Framework\Service\Config\ServiceConfig\ServiceConfig as ServiceConfiguration;
 use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
