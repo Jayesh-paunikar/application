@@ -165,8 +165,7 @@ $config = new Config([
     ],
     'events'      => new Events(include __DIR__ . '/event.php'),
     'services'    => new Container(include __DIR__ . '/service.php'),
-    'routes'      => include __DIR__ . '/route.php',
-    'translator'  => include __DIR__ . '/i18n.php',
+    'routes'      => new RouteDefinition(['children' => include __DIR__ . '/route.php']),
     'view'        => include __DIR__ . '/view.php'
 ]);
 ```
@@ -233,21 +232,41 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
 ```
 The [configuration](https://github.com/mvc5/application/blob/master/config/service.php) of the [`Service Container`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) is an array containing values, string names, `callable` types and configuration objects.
 ##Routes
-Routes are pre-compiled so that they can be immediately matched against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the <a href="https://github.com/mvc5/application/blob/master/config/route.php">route config</a> for example child routes.
+A route can be configured as an `array` or as a pre-compiled `RouteDefinition` that can be matched immediately against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the [route config](https://github.com/mvc5/application/blob/master/config/route.php) for example child routes.
 ```php
-'home' => new Definition([
-  'name'        => 'home',
-  'scheme'      => null,
-  'hostname'    => null,
-  'method'      => null,
-  'route'       => '/',
-  'defaults'    => [],
-  'controller'  => 'Home',
-  'paramMap'    => [],
-  'regex'       => '/',
-  'tokens'      => [['literal', '/']],
-  'constraints' => []
-])
+return [
+    'home' => [
+        'name'       => 'home',
+        'route'      => '/',
+        'controller' => 'Home'
+    ],
+    'application' => [
+        'name'       => 'application',
+        'route'      => '/application',
+        'controller' => '@Home.test',
+        'children' => [
+            'default' => [
+                'name'       => 'default',
+                'route'      => '/:sort[/:order]',
+                'controller' => '@blog:create', //call event (trigger)
+                'constraints' => [
+                    'sort'  => '[a-zA-Z0-9_-]*',
+                    'order' => '[a-zA-Z0-9_-]*'
+                ]
+            ]
+        ],
+    ]
+];
+```
+The route names are used by the url `Route\Generator`, e.g
+```php
+echo $this->url('application/default', ['sort' => 'name', 'order' => 'desc']);
+```
+Below is the route configured via the microframework interface.
+```php
+$app->route(['application/default', '/:sort[/:order]'], function(array $args = []) {
+    return $this->call('blog:create');
+});
 ```
 ##Event Configuration
 Events and listeners are <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a> and support various types of configuration that must resolve to being a `callable` type.
