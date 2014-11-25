@@ -51,6 +51,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/ServiceParam.
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Param/Param.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Filter/ServiceFilter.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Filter/Filter.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invokable/ServiceInvokable.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invokable/Invokable.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invoke/ServiceInvoke.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Invoke/Invoke.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Dependency/ServiceDependency.php';
@@ -68,8 +70,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ControllerAction/Co
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/ChildService.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Child.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Router/RouterService.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Router/Router.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/ServiceHydrator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/Hydrator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/ServiceFactory.php';
