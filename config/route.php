@@ -172,7 +172,7 @@ return [
 
                 new Router(new Param('routes.definitions.children.application')),
 
-                new Invokable(new Service('Route\Error'))
+                new Invokable(new ServiceConfiguration('Route\Error'))
             ]
         ]
     ])
