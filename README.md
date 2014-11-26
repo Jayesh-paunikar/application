@@ -246,12 +246,10 @@ return [
     'controller' => 'Home',
     'children' => [
       'application' => [
-          'name'       => 'application',
           'route'      => '/application',
           'controller' => '@Home.test',
           'children' => [
               'default' => [
-                  'name'       => 'default',
                   'route'      => '/:sort[/:order]',
                   'controller' => '@blog:create', //call event (trigger)
                   'constraints' => [
