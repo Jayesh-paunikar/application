@@ -1,4 +1,4 @@
-This php framework is an enhanced programming environment that uses events, named arguments and an optional configuration that provides further inversion of control of the application. The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
+This is an enhanced php programming environment that uses events, named arguments and an optional configuration that provides further inversion of control of the application. The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 
 This contrived example demonstrates named arguments and plugins.
 ```php
@@ -198,10 +198,10 @@ call_user_func($app);
 ##Benchmark
 *Current*
 ```
-HTML transferred:       9475226 bytes
-Requests per second:    1043.45 [#/sec] (mean)
-Time per request:       9.584 [ms] (mean)
-Time per request:       0.958 [ms] (mean, across all concurrent requests)
+HTML transferred:       9472167 bytes
+Requests per second:    1112.89 [#/sec] (mean)
+Time per request:       8.986 [ms] (mean)
+Time per request:       0.899 [ms] (mean, across all concurrent requests)
 ```
 *Other/Previous*
 ```
@@ -348,4 +348,41 @@ The default [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View
 /** @var Framework\View\Model\ViewModel $this */
 
 echo $this->url('home');
+```
+###Configuration and ArrayAccess
+The [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface is used consistently throughout each component in order to provide a standard set of *concrete* configuration methods. Its [`ArrayAccess`](http://php.net/manual/en/class.arrayaccess.php) interface enables the [`ServiceManager`](/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to retrieve nested configuration values by making successive calls on the returned values. E.g
+```php
+new Param('templates.error');
+```
+Resolves to
+```php
+$config['templates']['error'];
+```
+Which makes it possible to use either an `array` or a [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) object when references are needed, e.g [templates and aliases](https://github.com/mvc5/framework/blob/master/config/config.php#L12).
+```php
+interface Configuration
+    extends ArrayAccess
+{
+    function get($name);
+    function has($name);
+    function remove($name);
+    function set($name, $config);
+}
+```
+By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time only the *immutable* interface methods is of interest and the configuration interface simply provides a consistent way of instantiating its configuration.
+```php
+interface Route
+    extends Configuration
+{
+    const CONTROLLER = 'controller';
+    const PATH = 'path';
+    function controller();
+    function path();
+}
+```
+Constants can be used by other components to update the configuration object via `ArrayAccess`
+```php
+$route[Route::PATH] = '/home';
+//or
+$route->set(Route::PATH, '/home');
 ```
