@@ -380,7 +380,7 @@ interface Route
     function path();
 }
 ```
-Constants can be used as means for other components to update the configuration object via `ArrayAccess`
+Constants can be used by other components to update the configuration object via `ArrayAccess`
 ```php
 $route[$route::PATH] = '/home';
 ```
