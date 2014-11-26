@@ -37,7 +37,7 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
 }
 
 return [
-    'name'       => 'home', //required for root
+    'name'       => 'home', //name required for url generator
     'route'      => '/',
     'controller' => 'Home',
     'children' => [
