@@ -382,5 +382,7 @@ interface Route
 ```
 Constants can be used by other components to update the configuration object via `ArrayAccess`
 ```php
-$route[$route::PATH] = '/home';
+$route[Route::PATH] = '/home';
+//or
+$route->set(Route::PATH, '/home');
 ```
