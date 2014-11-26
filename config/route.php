@@ -71,25 +71,25 @@ return [
                     'action'     => 'index'
                 ],
                 'wildcard'   => false,
-                /*'controller' => function(Request $request, Response $response) {
-                    $response = $this->trigger('Blog\Create');
+                /*'controller' => function(Request $request, Response $response, $sm) {
+                    //$response = $sm->trigger('Blog\Create');
 
-                    //var_dump(__FILE__, $this->call('blog:valid'));
+                    //var_dump(__FILE__, $sm->call('blog:valid'));
 
-                    //$model = new Model('blog:create');
-                    //$response = $this->trigger('blog:create', ['model' => $model, 'request' => $request]);
-                    //var_dump(__FILE__, $this->plugin('blog:create'));
+                    $model = new Model('blog:create');
+                    //$response = $sm->trigger('blog:create', ['model' => $model, 'request' => $request]);
+                    //var_dump(__FILE__, $sm->plugin('blog:create'));
 
 
                     return $response;
                 },*/
-                'controller' => '@blog:create', //call event (trigger)
+                //'controller' => '@blog:create', //call event (trigger)
                 /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
                     $args['args'][] = [__FUNCTION__];
 
                     return new Model('home', $args);
                 },*/
-                //'controller' => 'Home',
+                'controller' => 'Home',
                 /*'controller' => new ControllerAction([
                         function(array $args = []) {
                             return new Model(null, ['args' => $args]);
