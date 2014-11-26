@@ -374,13 +374,8 @@ By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Con
 interface Route
     extends Configuration
 {
-    /**
-     *
-     */
     const CONTROLLER = 'controller';
-
     const PATH = 'path';
-
     function controller();
     function path();
 }
