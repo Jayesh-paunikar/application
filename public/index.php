@@ -26,10 +26,10 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-$app = new Web(include __DIR__ . '/../config/web.php');
+//$app = new Web(include __DIR__ . '/../config/web.php');
 
 //demo micro framework
-/**$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
+$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
 
 //services via ArrayAccess
 $app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
@@ -39,7 +39,7 @@ $app['Response'] = new Response\HttpResponse;
 $app->templates['layout'] = '../view/layout/layout.phtml';
 $app->templates['home']   = '../view/home/index.phtml';
 
-$app->home('home', function(array $args = []) {
+$app->route('home', function(array $args = []) {
     $args['app_demo'] = 'app:home';
 
     return new Model('home', ['args' => $args]);
@@ -92,7 +92,7 @@ $app->route('demo/create', new ControllerAction([
         return $model;
     },
 ]));
-*/
+
 /**
  *
  */
