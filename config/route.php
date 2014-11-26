@@ -56,8 +56,6 @@ return [
     'name'       => 'home',
     'route'      => '/',
     'controller' => 'Home',
-    'regex'      => '/',
-    'tokens'     => [['literal', '/']],
     'children' => [
         'application' => [
             'name'       => 'application',
