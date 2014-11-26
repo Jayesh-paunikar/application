@@ -187,8 +187,14 @@ $app['Response'] = new Response\HttpResponse;
 $app->templates['layout'] = '../view/layout/layout.phtml';
 $app->templates['home']   = '../view/home/index.phtml';
 
-$app->route(['home', '/'], function(array $args = []) {
+$app->home('home', function(array $args = []) {
     $args['app_demo'] = 'app:home';
+
+    return new Model('home', ['args' => $args]);
+});
+
+$app->route('application', function(array $args = []) {
+    $args['app_demo'] = 'app:application';
 
     return new Model('home', ['args' => $args]);
 });
@@ -235,27 +241,29 @@ The [configuration](https://github.com/mvc5/application/blob/master/config/servi
 A route can be configured as an `array` or as a pre-compiled `RouteDefinition` that can be matched immediately against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the [route config](https://github.com/mvc5/application/blob/master/config/route.php) for example child routes.
 ```php
 return [
-    'home' => [
-        'name'       => 'home',
-        'route'      => '/',
-        'controller' => 'Home'
-    ],
-    'application' => [
-        'name'       => 'application',
-        'route'      => '/application',
-        'controller' => '@Home.test',
-        'children' => [
-            'default' => [
-                'name'       => 'default',
-                'route'      => '/:sort[/:order]',
-                'controller' => '@blog:create', //call event (trigger)
-                'constraints' => [
-                    'sort'  => '[a-zA-Z0-9_-]*',
-                    'order' => '[a-zA-Z0-9_-]*'
-                ]
-            ]
-        ],
-    ]
+    'name'       => 'home',
+    'route'      => '/',
+    'controller' => 'Home',
+    'regex'      => '/',
+    'tokens'     => [['literal', '/']],
+    'children' => [
+      'application' => [
+          'name'       => 'application',
+          'route'      => '/application',
+          'controller' => '@Home.test',
+          'children' => [
+              'default' => [
+                  'name'       => 'default',
+                  'route'      => '/:sort[/:order]',
+                  'controller' => '@blog:create', //call event (trigger)
+                  'constraints' => [
+                      'sort'  => '[a-zA-Z0-9_-]*',
+                      'order' => '[a-zA-Z0-9_-]*'
+                  ]
+              ]
+          ],
+      ]
+    ]  
 ];
 ```
 The route names are used by the url `Route\Generator`, e.g
