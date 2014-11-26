@@ -349,7 +349,7 @@ The default [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View
 
 echo $this->url('home');
 ```
-###ArrayAccess Configuration Interface
+###Configuration and ArrayAccess
 The [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface is used consistently throughout each component in order to provide a standard set of *concrete* configuration methods. Its [`ArrayAccess`](http://php.net/manual/en/class.arrayaccess.php) interface enables the [`ServiceManager`](/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to retrieve nested configuration values by making successive calls on the returned values. E.g
 ```php
 new Param('templates.error');
