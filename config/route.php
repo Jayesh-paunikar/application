@@ -25,23 +25,6 @@ use Framework\View\Manager\ViewManager;
 use Request\Request;
 use Response\Response;
 
-//demo route builder
-use Framework\Route\Definition\Builder\Builder;
-/*var_export(Builder::definition([
-    'name'       => 'default',
-    'route'       => '/[:controller[/:action]]',
-    'controller' => 'Home',
-    'constraints' => [
-        'controller' => '[a-zA-Z0-9_-]*',
-        'action'     => '[a-zA-Z0-9_-]*'
-    ],
-    'defaults' => [
-        'controller' => 'Home',
-        'action'     => 'index'
-    ]
-]));
-exit;*/
-
 //demo route controller
 function test(Request $request, Response $response, ViewManager $vm, array $args = [])
 {
@@ -52,6 +35,7 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
 
     return $m;
 }
+
 return [
     'name'       => 'home',
     'route'      => '/',
