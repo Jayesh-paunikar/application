@@ -64,13 +64,13 @@ return [
 
                         return $response;
                     },*/
-                    //'controller' => '@blog:create', //call event (trigger)
+                    'controller' => '@blog:create', //call event (trigger)
                     /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
                         $args['args'][] = [__FUNCTION__];
 
                         return new Model('home', $args);
                     },*/
-                    'controller' => 'Home',
+                    //'controller' => 'Home',
                     /*'controller' => new ControllerAction([
                             function(array $args = []) {
                                 return new Model(null, ['args' => $args]);
