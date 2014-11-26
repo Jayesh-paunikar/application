@@ -29,7 +29,7 @@ include __DIR__ . '/../init.php';
 $app = new Web(include __DIR__ . '/../config/web.php');
 
 //demo micro framework
-/**$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
+/*$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
 
 //services via ArrayAccess
 $app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
