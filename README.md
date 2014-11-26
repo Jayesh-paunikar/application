@@ -106,7 +106,7 @@ return [
     'sm'          => new Dependency('Service\Manager'),
     'response'    => new Dependency('Response'),
     'pathinfo'    => new Call('request.getPathInfo'),
-    'url'         => new Dependency('Route\Generator\Plugin'),
+    'url'         => new Dependency('Route\Plugin'),
     'web'         => new Service('Mvc')
 ];
 ```
