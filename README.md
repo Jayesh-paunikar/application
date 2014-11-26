@@ -349,3 +349,43 @@ The default [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View
 
 echo $this->url('home');
 ```
+###ArrayAccess Configuration Interface
+The [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface is used consistently throughout each component in order to provide a standard set of *concrete* configuration methods. Its [`ArrayAccess`](http://php.net/manual/en/class.arrayaccess.php) interface enables the [`ServiceManager`](/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to retrieve nested configuration values by making successive calls on the returned values. E.g
+```php
+new Param('templates.error');
+```
+Resolves to
+```php
+$config['templates']['error'];
+```
+Which makes it possible to use either an `array` or a [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) object when references are needed, e.g [templates and aliases](https://github.com/mvc5/framework/blob/master/config/config.php#L12).
+```php
+interface Configuration
+    extends ArrayAccess
+{
+    function get($name);
+    function has($name);
+    function remove($name);
+    function set($name, $config);
+}
+```
+By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time only the *immutable* interface methods is of interest and the configuration interface simply provides a consistent way of instantiating its configuration.
+```php
+interface Route
+    extends Configuration
+{
+    /**
+     *
+     */
+    const CONTROLLER = 'controller';
+
+    const PATH = 'path';
+
+    function controller();
+    function path();
+}
+```
+Constants can be used as means for other components to update the configuration object via `ArrayAccess`
+```php
+$route[$route::PATH] = '/home';
+```
