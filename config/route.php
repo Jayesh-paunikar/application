@@ -37,17 +37,15 @@ function test(Request $request, Response $response, ViewManager $vm, array $args
 }
 
 return [
-    'name'       => 'home',
+    'name'       => 'home', //required for root
     'route'      => '/',
     'controller' => 'Home',
     'children' => [
         'application' => [
-            'name'       => 'application',
             'route'      => 'application',
             'controller' => '@Home.test',
             'children' => [
                 'default' => [
-                    'name'       => 'default',
                     'route'      => '/:controller[/:action]',
                     'defaults'   => [
                         'controller' => 'index',
