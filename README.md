@@ -373,7 +373,7 @@ interface Configuration
     function set($name, $config);
 }
 ```
-By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time only the *immutable* interface methods is of interest and the configuration interface simply provides a consistent way of instantiating its configuration.
+By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time only the *immutable* interface methods are of interest and the configuration interface simply provides a consistent way of instantiating its configuration.
 ```php
 interface Route
     extends Configuration
