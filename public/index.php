@@ -63,18 +63,18 @@ $app->route('demo', function(array $args = []) {
     return new Model('home', ['args' => $args]);
 });
 
-$app->route('demo/default', function(array $args = []) {
+$app->route('demo/default', function($sm, array $args = []) {
     $args['app_demo'] = 'app:demo:default';
 
-    $args['demo_time'] = $this->call('time');
+    $args['demo_time'] = $sm->call('time');
 
     return new Model('home', ['args' => $args]);
 });
 
-$app->route('demo/default/three', function(array $args = []) {
+$app->route('demo/default/three', function($sm, array $args = []) {
     $args['app_demo'] = 'app:demo:default:three';
 
-    $args['demo_time'] = $this->call('time');
+    $args['demo_time'] = $sm->call('time');
 
     return new Model('home', ['args' => $args]);
 });
