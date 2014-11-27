@@ -240,10 +240,21 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
 ```
 The [configuration](https://github.com/mvc5/application/blob/master/config/service.php) of the [`Service Container`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) is an array containing values, string names, `callable` types and configuration objects.
 ##Routes
-A route can be configured as an `array` or as a pre-compiled `RouteDefinition` that can be matched immediately against the request's uri path. Other aspects of the request and route can also be matched, e.g. scheme, hostname, method, wildcard. See the [route config](https://github.com/mvc5/application/blob/master/config/route.php) for example child routes.
+A route can be configured as an `array` or as a `RouteDefinition`. If the configuration does not have a `regex` then it will be compiled before matching against the request's uri path. Each aspect of matching a route has a dedicated function, e.g. scheme, hostname, path, method, wildcard, and any other function can be configured to be called in the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
+
+The routing mechanism is based on [Ben Scholzen 'DASPRiD's Router prototype for Zend Framework 3 ](https://github.com/DASPRiD/Dash), however here currently at least, the `array` configuration is explicit and a different shorthand version is only available directly via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
+
+In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, or it can specify its own the base path, e.g `/application`. Child routes, except for first level, will automatically have their name appended to their parent route e.g `application/default`. First level routes will not have the parent route prepended to its name, which makes its name simpler to use when specifying which route to create e.g `application/default`.
+
+The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will created but the `Home` class can not depend on any constructor arguments, otherwise a `Service` configuration is required.
+
+Controllers configurations that are prefixed with an `@` will be called as plugin, so its `alias` configuration must resolve to a callable type. In the example below `@blog:create` is an `alias` to a `Blog Create Event` and is triggered as an event instead calling a single method.
+
+Constraints have named keys that match to a corresponding `regex` parameter, optional parameters are enclosed with the square brackets `[]`.
+
 ```php
 return [
-    'name'       => 'home',
+    'name'       => 'home', //name required for url generator
     'route'      => '/',
     'controller' => 'Home',
     'children' => [
