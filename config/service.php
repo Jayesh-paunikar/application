@@ -9,13 +9,10 @@ use Framework\Service\Config\Service\Service;
 return [
     'Home' => new Hydrator(
         Home\Controller::class,
-        [
-            'setModel' => new Service('View\Model', ['home'])
-        ]
+        ['setModel' => new Service('View\Model', ['home'])]
     ),
 
     'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
-
     /*'Request'  => function($sm) {
         var_dump($sm->call('time'));
         return new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);

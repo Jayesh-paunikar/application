@@ -3,121 +3,26 @@
  *
  */
 
-use Framework\Event\Config\Events;
-use Framework\Route\Definition\RouteDefinition;
-use Framework\Service\Config\Call\Call;
-use Framework\Service\Config\Config as ServiceConfig;
-use Framework\Service\Config\ControllerAction\ControllerAction;
-use Framework\Service\Config\Dependency\Dependency;
-use Framework\Service\Config\Factory\Factory;
-use Framework\Service\Config\Filter\Filter;
-use Framework\Service\Config\Hydrator\Hydrator;
-use Framework\Service\Config\Invokable\Invokable;
-use Framework\Service\Config\Invoke\Invoke;
-use Framework\Service\Config\Param\Param;
-use Framework\Service\Config\Service\Service;
-use Framework\Service\Config\ServiceConfig\ServiceConfig as ServiceConfiguration;
-use Framework\Service\Config\ServiceManagerLink\ServiceManagerLink;
-
-//demo route controller
-use Framework\View\Model\Model;
-use Framework\View\Manager\ViewManager;
-use Request\Request;
-use Response\Response;
-
-//demo route controller
-function test(Request $request, Response $response, ViewManager $vm, array $args = [])
-{
-    $args['args'][] = __FUNCTION__;
-
-    $m = new Model('home', $args);
-    //$m->setViewManager($vm);
-
-    return $m;
-}
-
 return [
-    'name'       => 'home', //name required for url generator
+    'name'       => 'home', //a name is required for the url plugin used in view templates
     'route'      => '/',
-    'controller' => 'Home',
+    'controller' => 'Home', //callable __invoke() method
     'children' => [
-        'application' => [
-            'route'      => 'application',
-            'controller' => '@Home.test',
+        'blog' => [
+            'route'      => 'blog',
+            'controller' => '@Home.test', //call specific function
             'children' => [
-                'default' => [
-                    'route'      => '/:controller[/:action]',
+                'create' => [
+                    'route'      => '/:author[/:category]',
                     'defaults'   => [
-                        'controller' => 'index',
-                        'action'     => 'index'
+                        'author'   => 'owner',
+                        'category' => 'web'
                     ],
                     'wildcard'   => false,
-                    /*'controller' => function(Request $request, Response $response, $sm) {
-                        //$response = $sm->trigger('Blog\Create');
-
-                        //var_dump(__FILE__, $sm->call('blog:valid'));
-
-                        $model = new Model('blog:create');
-                        //$response = $sm->trigger('blog:create', ['model' => $model, 'request' => $request]);
-                        //var_dump(__FILE__, $sm->plugin('blog:create'));
-
-
-                        return $response;
-                    },*/
-                    'controller' => '@blog:create', //call event (trigger)
-                    /*'controller' => function(Response $response, Request $request, ViewManager $vm, array $args = []) {
-                        $args['args'][] = [__FUNCTION__];
-
-                        return new Model('home', $args);
-                    },*/
-                    //'controller' => 'Home',
-                    /*'controller' => new ControllerAction([
-                            function(array $args = []) {
-                                return new Model(null, ['args' => $args]);
-                            },
-                            function(Model $model) {
-                                $model['__CONTROLLER__'] = __FUNCTION__;
-                                return $model;
-                            },
-                            function(Model $model) {
-                                $model[$model::TEMPLATE] = 'home';
-                                return $model;
-                            },
-                    ]),*/
-                    //'controller' => '@blog:valid',
-                    //'controller' => '@test', //test() above
-                    //'controller' => '@phpcredits',
-                    //'controller' => '@Home',
-                    //'controller' => '@Home.test',
-                    /*'controller' => new Call(
-                        new Service('Home\Factory', [new ServiceManagerLink]),
-                        ['config' => new Dependency('Config'), 'vm' => new Dependency('View\Manager')]
-                    ),*/
-                    //'controller' => '@Home\Controller::staticTest',
-                    //'controller' => ['Home\Controller', 'staticTest'],
-                    //'controller' => [new Dependency('Home'), 'test'],
-                    //'controller' => 'Home\Controller::staticTest', //error
-                    //'controller' => new Home\Controller(new Model('blog:create')),
-                    //'controller' => new Factory(Home\Factory::class),
-                    //'controller' => new Service('Home'),
-                    //'controller' => new Invoke([new Service('Home'), 'test'], ['request' => new Dependency('Request')]),
-                    /*'controller' => new Hydrator(
-                        Home\Controller::class,
-                        [
-                            'setModel' => new Hydrator(
-                                Model::class,
-                                [
-                                    'template'    => 'home',
-                                    [['Home\Controller', 'staticCall'], ['staticA', 'staticB']],
-                                    ['Home\Controller', 'staticCall'],
-                                    new Filter(new Call('request.getHost'), 'var_dump')
-                                ]
-                            )
-                        ]
-                    ),*/
+                    'controller' => '@blog:create',
                     'constraints' => [
-                        'controller' => '[a-zA-Z0-9_-]*',
-                        'action'     => '[a-zA-Z0-9_-]*'
+                        'author'   => '[a-zA-Z0-9_-]*',
+                        'category' => '[a-zA-Z0-9_-]*'
                     ]
                 ]
             ],

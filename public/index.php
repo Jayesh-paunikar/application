@@ -36,8 +36,9 @@ $app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES,
 $app['Response'] = new Response\HttpResponse;
 
 //configuration via property access
-$app->templates['layout'] = '../view/layout/layout.phtml';
-$app->templates['home']   = '../view/home/index.phtml';
+$app->templates['layout']      = '../view/layout/layout.phtml';
+$app->templates['home']        = '../view/home/index.phtml';
+$app->templates['blog:create'] = '../view/blog/create.phtml';
 
 $app->route('home', function(array $args = []) {
     $args['app_demo'] = 'app:home';
@@ -45,52 +46,26 @@ $app->route('home', function(array $args = []) {
     return new Model('home', ['args' => $args]);
 });
 
-$app->route('application', function(array $args = []) {
-    $args['app_demo'] = 'app:application';
-
-    return new Model('home', ['args' => $args]);
-});
-
-$app->route(['application/default', '/:controller[/:action]'], function(array $args = []) {
-    $args['app_demo'] = 'app:application';
-
-    return new Model('home', ['args' => $args]);
-});
-
-$app->route('demo', function(array $args = []) {
-    $args['app_demo'] = 'app:demo';
-
-    return new Model('home', ['args' => $args]);
-});
-
-$app->route('demo/default', function($sm, array $args = []) {
-    $args['app_demo'] = 'app:demo:default';
-
+$app->route('blog', function($sm, array $args = []) {
     $args['demo_time'] = $sm->call('time');
 
     return new Model('home', ['args' => $args]);
 });
 
-$app->route('demo/default/three', function($sm, array $args = []) {
-    $args['app_demo'] = 'app:demo:default:three';
-
-    $args['demo_time'] = $sm->call('time');
-
-    return new Model('home', ['args' => $args]);
-});
-
-$app->route('demo/create', new ControllerAction([
-    function(array $args = []) {
-        return new Model(null, ['args' => $args]);
-    },
-    function(Model $model) {
-        $model['__CONTROLLER__'] = __FUNCTION__;
-        return $model;
-    },
-    function(Model $model) {
-        $model[$model::TEMPLATE] = 'home';
-        return $model;
-    },
+$app->route(
+    ['blog/create', '/:author[/:category]', ['author'   => '[a-zA-Z0-9_-]*', 'category' => '[a-zA-Z0-9_-]*']],
+    new ControllerAction([
+        function(array $args = []) {
+            return new Model(null, ['args' => $args]);
+        },
+        function(Model $model, $sm) {
+            $model['demo_time'] = $sm->call('time');
+            return $model;
+        },
+        function(Model $model) {
+            $model[$model::TEMPLATE] = 'blog:create';
+            return $model;
+        },
 ]));
 */
 /**
