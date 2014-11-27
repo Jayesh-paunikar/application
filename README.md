@@ -11,7 +11,7 @@ Welcome to an enhanced php 5.5 programming environment that provides inversion o
 * Supporting calling methods using named arguments and plugins
 
 The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
-
+###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
 ```php
 $web = new App(include __DIR__ . '/../config/web.php');
