@@ -1,4 +1,4 @@
-Welcome to an enhanced php 5.5 programming environment that uses events, named arguments and an optional configuration that provides further inversion of control of the core components used in building a web application.
+Welcome to an enhanced php 5.5 programming environment that provides inversion of control of the core components used in building a web application and their behaviours.
 
 * Configuration
 * Controller Dispatch
