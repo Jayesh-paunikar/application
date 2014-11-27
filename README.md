@@ -187,12 +187,14 @@ $app['Response'] = new Response\HttpResponse;
 $app->templates['layout'] = '../view/layout/layout.phtml';
 $app->templates['home']   = '../view/home/index.phtml';
 
+//url: /
 $app->route('home', function(array $args = []) {
     $args['app_demo'] = 'app:home';
 
     return new Model('home', ['args' => $args]);
 });
 
+//url: /application
 $app->route('application', function(array $args = []) {
     $args['app_demo'] = 'app:application';
 
