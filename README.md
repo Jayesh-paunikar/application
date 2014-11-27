@@ -8,7 +8,7 @@ Welcome to an enhanced php 5.5 programming environment that uses events, named a
 * Service and Configuration Management
 * Plugins
 * Configurable events
-* Method calls with support for named arguments
+* Supporting calling methods using named arguments and plugins
 
 The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 
