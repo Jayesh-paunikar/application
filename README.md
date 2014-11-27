@@ -107,7 +107,7 @@ Similar to `$args`, adding `$event` will provide the current event.
 
 ##Plugins and Aliases
 The parameter names of the additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to any positive value. If the value is a configuration object then it will be resolved and its value returned.
-Each plugin has its own configuration specific to its own use. This enables them to be used in various ways for different purposes, e.g to provide a value or to trigger an event or to call a particular service method.
+Each plugin has a configuration specific to its own use and they are resolved each time they are used. This enables them to be used in various ways for different purposes, e.g to provide a value or to trigger an event or to call a particular service method.
 ```php
 return [
     'blog:create' => new Service('Blog\Create'),
