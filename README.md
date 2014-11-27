@@ -203,8 +203,9 @@ $app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES,
 $app['Response'] = new Response\HttpResponse;
 
 //configuration via property access
-$app->templates['layout'] = '../view/layout/layout.phtml';
-$app->templates['home']   = '../view/home/index.phtml';
+$app->templates['layout']      = '../view/layout/layout.phtml';
+$app->templates['home']        = '../view/home/index.phtml';
+$app->templates['blog:create'] = '../view/blog/create.phtml';
 
 //url: /
 $app->route('home', function(array $args = []) {
@@ -213,12 +214,27 @@ $app->route('home', function(array $args = []) {
     return new Model('home', ['args' => $args]);
 });
 
-//url: /application
-$app->route('application', function(array $args = []) {
-    $args['app_demo'] = 'app:application';
+//url: /blog
+$app->route('blog', function($sm, array $args = []) {
+    $args['demo_time'] = $sm->call('time');
 
     return new Model('home', ['args' => $args]);
 });
+
+//url: /blog/owner/web
+$app->route(
+    [
+      blog/create', 
+      '/:author[/:category]', 
+      [
+         'author'   => '[a-zA-Z0-9_-]*', 
+         'category' => '[a-zA-Z0-9_-]*'
+      ]
+    ],
+    function(array $args = []) {
+        return new Model('blog:create', ['args' => $args]);
+    }
+);
 
 call_user_func($app);
 ```
