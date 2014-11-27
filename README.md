@@ -10,7 +10,7 @@ Welcome to an enhanced php 5.5 programming environment that provides inversion o
 * Configurable events
 * Supporting calling methods using named arguments and plugins
 
-The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
+All of the components use dependency injection and use [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) objects for consistency and ease of use. For example, the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) is a [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that manages its services via the standard configuration interface and has additional [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) methods that manage the underlying configurations of the services that the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) provides. The main [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolvable by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 ###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
 ```php
