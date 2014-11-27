@@ -1,4 +1,16 @@
-This is an enhanced php programming environment that uses events, named arguments and an optional configuration that provides further inversion of control of the application. The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
+Welcome to an enhanced php 5.5 programming environment that uses events, named arguments and an optional configuration that provides further inversion of control of the core components used in building a web application.
+
+* Configuration
+* Controller Dispatch
+* Route Matching
+* Response
+* View
+* Service and Configuration Management
+* Plugins
+* Configurable events
+* Method calls with support for named arguments
+
+The [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolved by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 
 This contrived example demonstrates named arguments and plugins.
 ```php
@@ -252,6 +264,7 @@ Controllers configurations that are prefixed with an `@` will be called as plugi
 
 Constraints have named keys that match to a corresponding `regex` parameter, optional parameters are enclosed with the square brackets `[]`.
 
+Route definitions implement the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface which enables each definition to have their own set of configuration values that could then be used by any function called during the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
 ```php
 return [
     'name'       => 'home', //name required for url generator
