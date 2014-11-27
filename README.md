@@ -1,19 +1,21 @@
-Welcome to an enhanced php 5.5 programming environment that provides inversion of control of the core components used in building a web application and their behaviours.
+Welcome to an enhanced php 5.5 programming environment that provides inversion of control of the core behaviour of a web application or any *function*.
 
+### Core Behaviours
 * Configuration
 * Controller Dispatch
 * Route Matching
 * Response
 * View
-* Service and Configuration Management
+* Exceptions
+* Services and Configuration Management
 * Plugins
 * Configurable events
-* Supporting calling methods using named arguments and plugins
+* Calling methods using named arguments and plugin support
 
 All of the components require dependency injection and use [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) objects for consistency and ease of use. For example, the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) is a [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that manages its services via the standard configuration interface and has additional [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) methods that manage the underlying configurations of the services that the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) provides. The main [configuration array](https://github.com/mvc5/application/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolvable by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 
-###Demo Application
-Because the implmentations of `Request` and `Response` objects are dependencies of the system, the <a href="https://github.com/mvc5/application">mvc5/application</a> demonstrates its usage as a web application and uses the `Request` and `Response` objects provided by the [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation).
+###Demo
+The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However at this time, the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set; its content must allow any positive value and may be considered as the `model` for the `Response`.
 
 ###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
