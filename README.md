@@ -187,7 +187,7 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 // or 
 // (new App($config))->call('web');
 ```
-###Microframework Support
+###Web Application and Microframework Support
 ```php
 $app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
 
@@ -254,15 +254,15 @@ The [configuration](https://github.com/mvc5/application/blob/master/config/servi
 ##Routes
 A route can be configured as an `array` or as a `RouteDefinition`. If the configuration does not have a `regex` then it will be compiled before matching against the request's uri path. Each aspect of matching a route has a dedicated function, e.g. scheme, hostname, path, method, wildcard, and any other function can be configured to be called in the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
 
-The routing mechanism is based on [Ben Scholzen 'DASPRiD's Router prototype for Zend Framework 3 ](https://github.com/DASPRiD/Dash), however here currently at least, the `array` configuration is explicit and a different shorthand version is only available directly via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
+The routing mechanism is based on [Ben Scholzen 'DASPRiD's Router prototype for Zend Framework 3 ](https://github.com/DASPRiD/Dash), however here currently, the `array` configuration is explicit and a different shorthand version is only available directly via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
 
-In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, or it can specify its own the base path, e.g `/application`. Child routes, except for first level, will automatically have their name appended to their parent route e.g `application/default`. First level routes will not have the parent route prepended to its name, which makes its name simpler to use when specifying which route to create e.g `application/default`.
+In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/application`. Child routes, except for first level, will automatically have their parent name prepended to their name e.g `application/default`. First level routes will not have the parent route prepended as it keeps its name simpler to use when specifying which route to create e.g `application/default`.
 
 The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will created but the `Home` class can not depend on any constructor arguments, otherwise a `Service` configuration is required.
 
-Controllers configurations that are prefixed with an `@` will be called as plugin, so its `alias` configuration must resolve to a callable type. In the example below `@blog:create` is an `alias` to a `Blog Create Event` and is triggered as an event instead calling a single method.
+Controller configurations that are prefixed with an `@` will be called as plugin, so its `alias` configuration must resolve to a callable type. In the example below `@blog:create` is an `alias` to a `Blog Create Event` and is triggered as an event instead calling a single method.
 
-Constraints have named keys that match to a corresponding `regex` parameter, optional parameters are enclosed with the square brackets `[]`.
+Constraints have named keys that match the name of its corresponding `regex` parameter, optional parameters are enclosed with the square brackets `[]`.
 
 Route definitions implement the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface which enables each definition to have their own set of configuration values that could then be used by any function called during the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
 ```php
@@ -292,7 +292,7 @@ The route names are used by the url `Route\Generator`, e.g
 ```php
 echo $this->url('application/default', ['sort' => 'name', 'order' => 'desc']);
 ```
-Below is the route configured via the microframework interface.
+Below is the route configured via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
 ```php
 $app->route(['application/default', '/:sort[/:order]'], function(array $args = []) {
     return $this->call('blog:create');
