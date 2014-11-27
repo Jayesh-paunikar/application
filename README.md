@@ -194,6 +194,7 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 // (new App($config))->call('web');
 ```
 ###Web Application and Microframework Support
+A default [`Configuration`](https://github.com/mvc5/framework/blob/master/config/config.php) is provided with the minimum [configuration](https://github.com/mvc5/framework/blob/master/config) required to run a web application. At this time, all that is then needed are the `Request` and `Response` objects, template configuration and the routes to use. Currently routes must have a name so that they can be used to build urls in via the [`url plugin`](https://github.com/mvc5/framework/blob/master/config/alias.php#L18) in the view templates.
 ```php
 $app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
 
