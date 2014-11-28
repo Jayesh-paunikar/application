@@ -12,10 +12,10 @@ Welcome to an enhanced php 5.5 programming environment that provides inversion o
 * Configurable events
 * Calling methods using named arguments and plugin support
 
-All of the components require dependency injection and use [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) objects for consistency and ease of use. For example, the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) is a [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that manages its services via the standard configuration interface and has additional [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) methods that manage the underlying configurations of the services that the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) provides. The main [configuration array](https://github.com/mvc5/framework/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolvable by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
+All of the components require dependency injection and use [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) objects for consistency and ease of use. For example, the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) is a [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that manages its services via the standard configuration interface and has additional [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) methods that manage the underlying configurations of the services that it provides. The main [configuration array](https://github.com/mvc5/framework/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolvable by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 
 ###Demo
-The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects are used in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However at this time, the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set; its content must allow any positive value and may be considered as a `Response Model`.
+The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects are used in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However at this time, the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set. Its content must allow any positive value and may be considered as a `Response Model`.
 
 ###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
@@ -109,7 +109,7 @@ The callable `$callback` parameter can be used to provide any additional paramet
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
-Similar to `$args` to the functions being , adding `$event` will provide the current event.
+Similar to `$args`, adding `$event` will provide the current event.
 
 The `trigger()` method of the [`EventManager`](https://github.com/mvc5/framework/blob/master/src/Event/Manager/EventManager.php) accepts either the string name of the event, the event object itself or an `array` containing the event class name and its constructor arguments. In the example above `$controller` is a constructor argument for the [`Controller Dispatch Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Dispatch/Dispatch.php).
 
@@ -283,9 +283,9 @@ There is no convention on how dependencies should be injected, however arguments
   ['setRouteManager' => new Dependency('Route\Manager')]
 ),
 ```
-In the example above the `Route\Generator` is created with the `routes` configuration passed as a constructor argument, and then a call is made to the new object's `setRouteManager` to inject the `Route\Manager` which is a shared dependency.
+In the example above the `Route\Generator` is created with the `routes` configuration passed as a constructor argument, and then a call is made to the new object's `setRouteManager` to inject the `Route\Manager` as a shared dependency.
 
-Sometimes only the `setter methods` or `calls` need to be used, in which case a [`Hydrator`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Hydrator/Hydrator.php) configuration object can be used.
+Sometimes only the `setter methods` or `calls` need to be used, in which case a [`Hydrator`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Hydrator/Hydrator.php) configuration object is used.
 ```php
 'Controller\Manager' => new Hydrator(
     Framework\Controller\Manager\Manager::class,
@@ -315,7 +315,7 @@ A route can be configured as an `array` or as a `RouteDefinition`. If the config
 
 The routing mechanism is based on [Ben Scholzen 'DASPRiD's Router prototype for Zend Framework 3 ](https://github.com/DASPRiD/Dash), however here currently, the `array` configuration is explicit and a different shorthand version is only available directly via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
 
-In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/application`. Child routes, except for first level, will automatically have their parent name prepended to their name e.g `application/default`. First level routes will not have the parent route prepended as it keeps its name simpler to use when specifying which route to create e.g `application/default`.
+In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/home`. Child routes, except for first level, will automatically have their parent name prepended to their name e.g `application/dashboard`. First level routes will not have the parent route prepended as it keeps its name simpler to use when specifying which route to create e.g `application` instead of `home/application`.
 
 The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will created but the `Home` class can not depend on any constructor arguments, otherwise a `Service` configuration is required.
 
