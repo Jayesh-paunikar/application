@@ -254,15 +254,36 @@ Time per request:       31.667 [ms] (mean)
 Time per request:       3.167 [ms] (mean, across all concurrent requests)
 ```
 ##Dependency Injection
+The [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) implements the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface by extending the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php). The [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface provides access to existing services and the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) provides access to the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that contains the configuration values for the services that the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) provides.
+
+Typically the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) is the application's main [configuration object](https://github.com/mvc5/framework/blob/master/config/config.php).
+```php
+return new Config([
+  'alias' => new Config(include __DIR__ . '/alias.php'),
+  'events' => new Events(include __DIR__ . '/event.php'),
+  'services' => new Container(include __DIR__ . '/service.php'),
+  'templates' => new Config(include __DIR__ . '/templates.php')
+]);
+```
+This allows the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to use the [`param()`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php#L40) method to retrieve other configuration values, e.g `new Param('templates.home')`.
+
+When a service is called by the service manager's [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface, it will check to see if the service exists, and if it doesn't it will use its configuration to create a new service. Configuration values can also be actual values e.g `'Request' => new HttpRequest($_GET, $_POST, $_SERVER ...)`.
+
+They can also be strings that specify the FQCN of the class to instantiate, however since no dependencies are specified these classes cannot require any constructor arguments unless they are passed as arguments to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) when calling the service, i.e. via either the `create` or `get` methods e.g `$sm->get('HomeController', [new Dependency('HomeManager')])`.
 ```php
 'Route\Match\Wildcard' => Framework\Route\Match\Wildcard\Wildcard::class,
 ```
+There is no convention on how dependencies should be injected, however arguments passed to [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) will be used as constructor arguments. If no arguments are passed, the service can still be configured with constructor arguments via the [`Service`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Configuration.php) configuration.
 ```php
 'Route\Generator' => new Service(
   Framework\Route\Generator\Generator::class, 
-  [new Param('routes.definitions')]
+  [new Param('routes')]
+  ['setRouteManager' => new Dependency('Route\Manager')]
 ),
 ```
+In the example above the `Route\Generator` is created with the `routes` configuration passed as a constructor argument, and then a call is made to the new object's `setRouteManager` to inject the `Route\Manager` which is a shared dependency.
+
+Sometimes only the `setter methods` or `calls` need to be used, in which case a [`Hydrator`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Hydrator/Hydrator.php) configuration object can be used.
 ```php
 'Controller\Manager' => new Hydrator(
     Framework\Controller\Manager\Manager::class,
@@ -273,7 +294,20 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
     ]
 ),
 ```
-The [configuration](https://github.com/mvc5/application/blob/master/config/service.php) of the [`Service Container`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) is an array containing values, string names, `callable` types and configuration objects.
+A [`Service Configuration`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Configuration.php) can have parent configurations which allows either the parent constructor arguments to be used if none are provided, or the parent configuration may specify the `calls` to use. It is also possible for service configurations to merge their `calls` together.
+```php
+'Manager' => new Hydrator(null, [
+    'aliases'       => new Param('alias'),
+    'configuration' => new ConfigLink,
+    'events'        => new Param('events'),
+    'services'      => new Param('services'),
+]),
+```
+The above `Hyrdator` is used a parent configuration for all `Managers`.
+```php
+'Route\Manager' => new Manager(Framework\Route\Manager\Manager::class)
+```
+A [`Dependency`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Dependency/Dependency.php) configuration object is used to retrieve a shared service.
 ##Routes
 A route can be configured as an `array` or as a `RouteDefinition`. If the configuration does not have a `regex` then it will be compiled before matching against the request's uri path. Each aspect of matching a route has a dedicated function, e.g. scheme, hostname, path, method, wildcard, and any other function can be configured to be called in the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
 
