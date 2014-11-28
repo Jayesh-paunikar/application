@@ -226,7 +226,7 @@ $app->route('blog', function($sm, array $args = []) {
 //url: /blog/owner/web
 $app->route(
     [
-      blog/create', 
+      'blog/create', 
       '/:author[/:category]', 
       [
          'author'   => '[a-zA-Z0-9_-]*', 
@@ -315,7 +315,7 @@ A route can be configured as an `array` or as a `RouteDefinition`. If the config
 
 The routing mechanism is based on [Ben Scholzen 'DASPRiD's Router prototype for Zend Framework 3 ](https://github.com/DASPRiD/Dash), however here currently, the `array` configuration is explicit and a different shorthand version is only available directly via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
 
-In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/home`. Child routes, except for first level, will automatically have their parent name prepended to their name e.g `application/dashboard`. First level routes will not have the parent route prepended as it keeps its name simpler to use when specifying which route to create e.g `application` instead of `home/application`.
+In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/home`. Child routes, except for the first level, will automatically have their parent name prepended to their name e.g `application/dashboard`. First level routes will not have the parent route prepended as it keeps their name simpler to use when specifying which route to create e.g `application` instead of `home/application`.
 
 The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will created but the `Home` class can not depend on any constructor arguments, otherwise a `Service` configuration is required.
 
