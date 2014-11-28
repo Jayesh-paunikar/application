@@ -35,7 +35,7 @@ class HttpResponse
 
             throw new UnexpectedValueException($msg);
         }
-
+        throw new UnexpectedValueException(__FILE__);
         parent::send();
     }
 
