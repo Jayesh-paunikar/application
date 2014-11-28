@@ -13,10 +13,6 @@ return [
     ),
 
     'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
-    /*'Request'  => function($sm) {
-        var_dump($sm->call('time'));
-        return new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
-    },*/
 
     'Response' => Response\HttpResponse::class,
 
