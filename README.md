@@ -429,6 +429,35 @@ When the content of the [`Response`](https://github.com/mvc5/framework/blob/mast
         return $layout;
     }
 ```
+The [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) is then rendered via the [`View Render Event`](https://github.com/mvc5/framework/blob/master/src/View/Render/Render.php) which allows other renderers to be configured and used instead of the default [`View\Renderer`](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php).
+
+The default [`View\Renderer`](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) will bind the [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) to a `Closure` that will extract the view model's variables and then include the view model's template file. The scope of the template is the view model itself which gives the template access to any of the view model's private and protected variables and functions. 
+```php
+$render = Closure::bind(function() {
+        extract((array) $this->assigned());
+
+        ob_start();
+
+        try {
+
+            include $this->path();
+
+            return ob_get_clean();
+
+        } catch(Exception $exception) {
+
+            ob_get_clean();
+
+            throw $exception;
+        }
+
+
+    },
+    $model
+);
+
+return $render();
+```
 ###View Model Plugins
 The default [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) also supports [plugins](https://github.com/mvc5/framework/blob/master/config/alias.php) which require the [`ViewManager`](https://github.com/mvc5/framework/blob/master/src/View/Manager/ViewManager.php) to be injected prior to [rendering](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) it. And because they can be created by a controller, this may not of happened. To overcome this, the current [`ViewManager`](https://github.com/mvc5/framework/blob/master/src/View/Manager/ViewManager.php) will be injected if the [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) does not already have one.
 ```php
