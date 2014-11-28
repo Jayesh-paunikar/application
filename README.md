@@ -109,7 +109,9 @@ The callable `$callback` parameter can be used to provide any additional paramet
 ```php
 $this->trigger([Dispatch::CONTROLLER, $controller], $args, $this);
 ```
-Similar to `$args`, adding `$event` will provide the current event.
+Similar to `$args` to the functions being , adding `$event` will provide the current event.
+
+The `trigger()` method of the [`EventManager`](https://github.com/mvc5/framework/blob/master/src/Event/Manager/EventManager.php) accepts either the string name of the event, the event object itself or an `array` containing the event class name and its constructor arguments. In the example above `$controller` is a constructor argument for the [`Controller Dispatch Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Dispatch/Dispatch.php).
 
 ##Plugins and Aliases
 The parameter names of the additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to any positive value. If the value is a configuration object then it will be resolved and its value returned.
