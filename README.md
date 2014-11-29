@@ -75,7 +75,7 @@ boolean true
 ```
 The parameter `$args` can be used as a named argument that provides an array of the named arguments available to that method.
 
-To manage all of the parameters an optional callback can be added to call method, e.g
+To manage all of the parameters an optional callback can be added to the call method, e.g
 ```php
 $response = $web->call(
     'Controller.valid.add.response', 
