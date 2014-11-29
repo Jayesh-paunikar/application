@@ -3,6 +3,7 @@
  *
  */
 
+use Framework\Service\Config\Factory\Factory;
 use Framework\Service\Config\Hydrator\Hydrator;
 use Framework\Service\Config\Service\Service;
 
@@ -11,6 +12,8 @@ return [
         Home\Controller::class,
         ['setModel' => new Service('View\Model', ['home'])]
     ),
+
+    //'Home' => new Factory(Home\Factory::class),
 
     'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
