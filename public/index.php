@@ -36,8 +36,8 @@ $app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES,
 $app['Response'] = new Response\HttpResponse;
 
 //configuration via property access
-$app->templates['layout']      = '../view/layout/layout.phtml';
-$app->templates['home']        = '../view/home/index.phtml';
+//$app->templates['layout']      = '../view/layout/layout.phtml';
+//$app->templates['home']        = '../view/home/index.phtml';
 $app->templates['blog:create'] = '../view/blog/create.phtml';
 
 $app->route('home', function(array $args = []) {
@@ -53,20 +53,24 @@ $app->route('blog', function($sm, array $args = []) {
 });
 
 $app->route(
-    ['blog/create', '/:author[/:category]', ['author'   => '[a-zA-Z0-9_-]*', 'category' => '[a-zA-Z0-9_-]*']],
-    new ControllerAction([
-        function(array $args = []) {
-            return new Model(null, ['args' => $args]);
-        },
-        function(Model $model, $sm) {
-            $model['demo_time'] = $sm->call('time');
-            return $model;
-        },
-        function(Model $model) {
-            $model[$model::TEMPLATE] = 'blog:create';
-            return $model;
-        },
-]));
+    [
+        'blog/create',
+        '/:author[/:category]',
+        ['author' => '[a-zA-Z0-9_-]*', 'category' => '[a-zA-Z0-9_-]*'],
+        new ControllerAction([
+            function(array $args = []) {
+                return new Model(null, ['args' => $args]);
+            },
+            function(Model $model, $sm) {
+                $model['demo_time'] = $sm->call('time');
+                return $model;
+            },
+            function(Model $model) {
+                $model[$model::TEMPLATE] = 'blog:create';
+                return $model;
+            },
+        ])
+    ]);
 */
 /**
  *
