@@ -273,12 +273,12 @@ When a service is called by the service manager's [`Configuration`](https://gith
 
 They can also be strings that specify the FQCN of the class to instantiate, however since no dependencies are specified these classes cannot require any constructor arguments unless they are passed as arguments to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) when calling the service, i.e. via either the `create` or `get` methods e.g `$sm->get('HomeController', [new Dependency('HomeManager')])`.
 ```php
-'Route\Match\Wildcard' => Framework\Route\Match\Wildcard\Wildcard::class,
+'Route\Match\Wildcard' => Route\Match\Wildcard\Wildcard::class,
 ```
 There is no convention on how dependencies should be injected, however arguments passed to [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) will be used as constructor arguments. If no arguments are passed, the service can still be configured with constructor arguments via the [`Service`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Configuration.php) configuration.
 ```php
 'Route\Generator' => new Service(
-  Framework\Route\Generator\Generator::class, 
+  Route\Generator\Generator::class, 
   [new Param('routes')]
   ['setRouteManager' => new Dependency('Route\Manager')]
 ),
@@ -288,7 +288,7 @@ In the example above the `Route\Generator` is created with the `routes` configur
 Sometimes only the `setter methods` or `calls` need to be used, in which case a [`Hydrator`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Hydrator/Hydrator.php) configuration object is used.
 ```php
 'Controller\Manager' => new Hydrator(
-    Framework\Controller\Manager\Manager::class,
+    Controller\Manager\Manager::class,
     [
         'configuration' => new ConfigLink,
         'events'        => new Param('controllers'),
@@ -307,7 +307,7 @@ A [`Service Configuration`](https://github.com/mvc5/framework/blob/master/src/Se
 ```
 The above `Hyrdator` is used a parent configuration for all `Managers`.
 ```php
-'Route\Manager' => new Manager(Framework\Route\Manager\Manager::class)
+'Route\Manager' => new Manager(Route\Manager\Manager::class)
 ```
 A [`Dependency`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Dependency/Dependency.php) configuration object is used to retrieve a shared service.
 ##Routes
