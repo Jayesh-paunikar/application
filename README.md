@@ -1,4 +1,4 @@
-Welcome to an enhanced php 5.5 programming environment that provides inversion of control of the core behaviour of a web application or any function.
+Welcome to an enhanced php 5.5 programming environment that provides inversion of control a web application or any function.
 
 ### Core Behaviours
 * Configuration
@@ -231,11 +231,11 @@ $app->route(
       [
          'author'   => '[a-zA-Z0-9_-]*', 
          'category' => '[a-zA-Z0-9_-]*'
-      ]
-    ],
-    function(array $args = []) {
-        return new Model('blog:create', ['args' => $args]);
-    }
+      ],
+      function(array $args = []) {
+          return new Model('blog:create', ['args' => $args]);
+      }
+    ]
 );
 
 call_user_func($app);
@@ -487,7 +487,7 @@ interface Configuration
     function set($name, $config);
 }
 ```
-By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time only the *immutable* interface methods are of interest and the configuration interface simply provides a consistent way of instantiating its configuration.
+By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time only the *immutable* interface methods are of interest and the configuration interface provides a consistent way of instantiating its configuration.
 ```php
 interface Route
     extends Configuration
