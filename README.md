@@ -1,4 +1,4 @@
-Welcome to an enhanced php 5.5 programming environment that provides inversion of control a web application or any function.
+Welcome to an enhanced php 5.5 programming environment that provides inversion of control of a web application or any function.
 
 ### Core Behaviours
 * Configuration
