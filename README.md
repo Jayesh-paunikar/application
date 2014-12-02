@@ -380,7 +380,7 @@ Controllers can use a [configuration](https://github.com/mvc5/framework/blob/mas
 This allows the controller to choose the [view](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L44) method when a specific template is known, or the controller can use the [model](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L28) method and pass an array variables as the data for the view model.
 
 ```php
-use Framework\View\Model\Service\ViewModel;
+use Framework\View\ViewModel;
 
 class Controller
 {
