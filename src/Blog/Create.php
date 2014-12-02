@@ -4,7 +4,7 @@ namespace Blog;
 
 use Framework\Event\Base;
 use Framework\Event\Event;
-use Framework\View\Model\Service\ViewModel;
+use Framework\View\ViewModel;
 use Framework\Service\Resolver\Signal;
 
 class Create

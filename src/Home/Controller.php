@@ -3,7 +3,7 @@
 namespace Home;
 
 use Framework\View\Manager\ViewManager;
-use Framework\View\Model\Service\ViewModel as View;
+use Framework\View\ViewModel as View;
 use Framework\View\Model\ViewModel;
 use Framework\View\Model\Model;
 use Request\Request;

@@ -2,7 +2,7 @@
 
 namespace Blog\Controller;
 
-use Framework\View\Model\Service\ViewModel;
+use Framework\View\ViewModel;
 use Framework\View\Model\ViewModel as Model;
 use Request\Request;
 
