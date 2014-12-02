@@ -175,10 +175,10 @@ include __DIR__ . '/vendor/mvc5/framework/src/Response/Exception/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Exception/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Exception/Render.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Exception/Renderer.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Plugin.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Plugin/RoutePlugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/RouteService.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GenerateRoute.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GeneratorPlugin.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Plugin/Plugin.php';
 
 /**
  *
