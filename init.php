@@ -183,9 +183,9 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GeneratorPlugin.ph
 /**
  *
  */
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/Args.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/DefinitionBuilder.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Builder/Builder.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Args.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/DefinitionBuilder.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Builder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/RouteGenerator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Generator.php';
 include __DIR__ . '/src/Request/Request.php';
