@@ -5,7 +5,8 @@
     "require": {
         "php": ">=5.5.9",
         "symfony/http-foundation": "2.5.*",
-        "mvc5/framework": "@dev"
+        "mvc5/framework": "@dev",
+        "zendframework/zend-console": "~2.0"
     },
     "autoload": {
         "psr-0": {
