@@ -5,7 +5,7 @@ namespace Home;
 use Framework\View\Manager\ViewManager;
 use Framework\View\ViewModel as View;
 use Framework\View\Model\ViewModel;
-use Framework\View\Model\Model;
+//use Framework\View\Model\Model;
 use Request\Request;
 use Response\Response;
 
@@ -18,11 +18,12 @@ class Controller
     use View;
 
     /**
-     * @param ViewModel $model
+     * @param Model $model
      */
-    public function __construct(ViewModel $model = null)
+    public function __construct(Model $model)
     {
         $this->model = $model;
+        $model && !$model->path() && $model->template('home');
     }
 
     /**

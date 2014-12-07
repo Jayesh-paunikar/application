@@ -10,8 +10,10 @@ use Framework\Service\Config\Service\Service;
 return [
     'Home' => new Hydrator(
         Home\Controller::class,
-        ['setModel' => new Service('View\Model', ['home'])]
+        ['setModel' => new Service('Home\Model', ['home'])]
     ),
+
+    //'Home\Model' => new Service(Home\Model::class,['home']),
 
     //'Home' => new Factory(Home\Factory::class),
 

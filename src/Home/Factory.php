@@ -5,7 +5,6 @@ namespace Home;
 use Framework\Config\Configuration;
 use Framework\Service\Factory\Base;
 use Framework\View\Manager\ViewManager;
-use Framework\View\Model\Model;
 
 class Factory
     implements HomeFactory
@@ -22,9 +21,6 @@ class Factory
      */
     public function __invoke(Configuration $config, ViewManager $vm)
     {
-        $controller = new Controller;
-        $controller->setModel(new Model('home'));
-
-        return $controller;
+        return new Controller(new Model('home'));
     }
 }
