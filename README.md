@@ -320,7 +320,7 @@ When the name of a service configuration is a `FQCN` it must have a value other 
 ```php
 Home\Model::class => Home\Model::class //not allowed
 ```
-Service configurations are only required when an explicit configuration and in some cases will provide better runtime performance.
+Service configurations are only required when an explicit configuration and in some cases can provide better runtime performance.
 ##Routes
 A route can be configured as an `array` or as a `RouteDefinition`. If the configuration does not have a `regex` then it will be compiled before matching against the request's uri path. Each aspect of matching a route has a dedicated function, e.g. scheme, hostname, path, method, wildcard, and any other function can be configured to be called in the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
 
