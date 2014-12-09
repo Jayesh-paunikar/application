@@ -6,11 +6,11 @@
 return [
     'name'       => 'home', //a name is required for the url plugin used in view templates
     'route'      => '/',
-    'controller' => 'Home', //callable __invoke() method
+    'controller' => 'Home\Controller', //callable __invoke() method
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => '@Home.test', //call specific function
+            'controller' => '@Home\Controller.test', //call specific function
             'children' => [
                 'create' => [
                     'route'      => '/:author[/:category]',

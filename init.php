@@ -28,6 +28,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Signal.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Resolvable.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/Alias.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/Initializer.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Builder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Resolver.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ManageService.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Factory/Base.php';

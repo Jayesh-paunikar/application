@@ -18,9 +18,9 @@ class Controller
     use View;
 
     /**
-     * @param Model $model
+     * @param ViewModel $model
      */
-    public function __construct(Model $model)
+    public function __construct(ViewModel $model)
     {
         $this->model = $model;
         $model && !$model->path() && $model->template('home');
