@@ -5,7 +5,7 @@
     "require": {
         "php": ">=5.5.9",
         "symfony/http-foundation": "2.5.*",
-        "mvc5/framework": "@dev"
+        "mvc5/framework": "dev-master"
     },
     "autoload": {
         "psr-0": {
@@ -13,6 +13,6 @@
         }
     },
     "require-dev": {
-        "mvc5/tests": "@dev"
+        "mvc5/tests": "dev-master"
     }
 }
