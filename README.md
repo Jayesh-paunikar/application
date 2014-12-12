@@ -255,6 +255,24 @@ Requests per second:    315.78 [#/sec] (mean)
 Time per request:       31.667 [ms] (mean)
 Time per request:       3.167 [ms] (mean, across all concurrent requests)
 ```
+##Source Lines of Code
+```
+SLOC	Directory	SLOC-by-Language (Sorted)
+1020    Service         php=1020
+833     Route           php=833
+391     View            php=391
+264     Controller      php=264
+210     Mvc             php=210
+204     Response        php=204
+151     Event           php=151
+123     Application     php=123
+92      Config          php=92
+
+
+Totals grouped by language (dominant language first):
+php:           3288 (100.00%)
+```
+_Generated using [David A. Wheeler's 'SLOCCount'](http://www.dwheeler.com/sloccount)._
 ##Dependency Injection
 The [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) implements the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface by extending the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php). The [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface provides access to existing services and the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) provides access to the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that contains the configuration values for the services that the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) provides.
 
