@@ -1,4 +1,4 @@
-[![Build Status](http://img.shields.io/travis/mvc5/framework.svg)](https://travis-ci.org/mvc5/framework)
+[![Build Status](https://api.travis-ci.org/mvc5/application.svg)](https://travis-ci.org/mvc5/framework)
 [![Coverage](http://img.shields.io/codeclimate/coverage/github/mvc5/framework.svg)](https://codeclimate.com/github/mvc5/framework)
 [![Code Climate](http://img.shields.io/codeclimate/github/mvc5/framework.svg)](https://codeclimate.com/github/mvc5/framework)
 [![Latest Release](http://img.shields.io/packagist/v/mvc5/framework.svg)](https://packagist.org/packages/mvc5/framework)
