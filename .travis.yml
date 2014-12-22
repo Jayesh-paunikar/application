@@ -9,11 +9,6 @@ matrix:
     - php: 5.5
       env: DEPS=lowest
 
-addons:
-  code_climate:
-    repo_token:
-      secure: "J220c/UTW2jObeqHBTtjtbYBxJVVBVUau0WU5CxYY3QxCx3Mh3OJ3AfEAG6etgZia0HliQLXnSzBf2G/KEzOJNBO0SHKlh/0vfYpNAczVxz5WnL69lf40oe+f8M6BKJCXU9vqEZ6xtGo6SgpASntK1UMEgBCSG5/c5DfGJO2214="
-
 before_script:
   - composer selfupdate
   - if [ "$DEPS" = "lowest" ]; then composer update --prefer-lowest -n; else composer install -n; fi;
