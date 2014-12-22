@@ -1,3 +1,8 @@
+[![Build Status](http://img.shields.io/travis/mvc5/framework.svg)](https://travis-ci.org/mvc5/framework)
+[![Coverage](http://img.shields.io/codeclimate/coverage/github/mvc5/framework.svg)](https://codeclimate.com/github/mvc5/framework)
+[![Code Climate](http://img.shields.io/codeclimate/github/mvc5/framework.svg)](https://codeclimate.com/github/mvc5/framework)
+[![Latest Release](http://img.shields.io/packagist/v/mvc5/framework.svg)](https://packagist.org/packages/mvc5/framework)
+
 Welcome to an enhanced php 5.5 programming environment that provides inversion of control of a web application or any function.
 
 ### Core Behaviours
