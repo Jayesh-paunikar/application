@@ -14,7 +14,7 @@ before_script:
   - if [ "$DEPS" = "lowest" ]; then composer update --prefer-lowest -n; else composer install -n; fi;
 
 after_script:
-  - CODECLIMATE_REPO_TOKEN="5e341eef01e66bb0bc0cf50aaa69f38187312897c5801f225871d0a0b40dd03c" vendor/bin/test-reporter --coverage-report=build/logs/clover.xml --stdout > codeclimate.json
+  - CODECLIMATE_REPO_TOKEN="5e341eef01e66bb0bc0cf50aaa69f38187312897c5801f225871d0a0b40dd03c" vendor/bin/test-reporter --stdout > codeclimate.json
   - curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports
 
 script:
