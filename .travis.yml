@@ -28,6 +28,5 @@ script:
   - php -n public/index.php >/dev/null
   - phpunit --coverage-clover build/logs/clover.xml
 
-
 notifications:
   email: false
