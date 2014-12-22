@@ -9,12 +9,17 @@ matrix:
     - php: 5.5
       env: DEPS=lowest
 
+addons:
+  code_climate:
+    repo_token:
+      secure: "uSW2WWUJyvBvtsyqgWUxEPIRx6APpdhYqO/XWDtLAv7I2x9yrA723u80ZQAOQBIV4AU8jd0jXGH6AajUtye6ZBnxaRP2YFDLREbtP60fEgaHF6FmbyFOW5Zskzp+qwDOMy/Y4Yu71crLDAwDUzelLDkSvhxUqCiHZEJaLzXZhIg="
+
 before_script:
   - composer selfupdate
   - if [ "$DEPS" = "lowest" ]; then composer update --prefer-lowest -n; else composer install -n; fi;
 
 after_script:
-  - CODECLIMATE_REPO_TOKEN=5e341eef01e66bb0bc0cf50aaa69f38187312897c5801f225871d0a0b40dd03c vendor/bin/test-reporter --coverage-report=build/logs/clover.xml --stdout > codeclimate.json
+  - vendor/bin/test-reporter --coverage-report=build/logs/clover.xml --stdout > codeclimate.json
   - curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports
 
 script:
