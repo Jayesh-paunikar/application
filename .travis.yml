@@ -15,7 +15,7 @@ before_script:
 
 after_script:
   - CODECLIMATE_REPO_TOKEN="5e341eef01e66bb0bc0cf50aaa69f38187312897c5801f225871d0a0b40dd03c" vendor/bin/test-reporter --coverage-report build/logs/clover.xml --stdout > build/logs/codeclimate.json
-  - "curl -X POST -d @build/log/codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
+  - "curl -X POST -d @build/logs/codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
 
 script:
   - php -d opcache.enable=1 -d opcache.enable_cli=1 public/index.php >/dev/null
