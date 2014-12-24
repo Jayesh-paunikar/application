@@ -71,6 +71,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/ChildService.
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Child/Child.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/ServiceHydrator.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Hydrator/Hydrator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/ServiceFactory.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/Factory.php';
