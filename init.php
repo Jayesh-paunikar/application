@@ -83,6 +83,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceConfig/Servi
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Event.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Base.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/EventSignal.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/ViewModel.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Base.php';
