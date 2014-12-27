@@ -3,10 +3,9 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mvc5/framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mvc5/framework/?branch=master)  
 [![Build Status](https://api.travis-ci.org/mvc5/application.svg)](https://travis-ci.org/mvc5/framework)
 [![Test Coverage](https://codeclimate.com/github/mvc5/framework/badges/coverage.svg)](https://codeclimate.com/github/mvc5/framework)
-[![Code Climate](https://codeclimate.com/github/mvc5/framework/badges/gpa.svg)](https://codeclimate.com/github/mvc5/framework)
-
+[![Code Climate](https://codeclimate.com/github/mvc5/framework/badges/gpa.svg)](https://codeclimate.com/github/mvc5/framework) 
+   
 Welcome to an enhanced php 5.5 programming environment that provides inversion of control of a web application or any function.
-
 ### Core Behaviours
 * Configuration
 * Controller Dispatch
@@ -23,6 +22,9 @@ All of the components require dependency injection and use [`Configuration`](htt
 
 ###Demo
 The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects are used in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However at this time, the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set. Its content must allow any positive value and may be considered as a `Response Model`.
+
+###Maintainability
+![PHPMetrics Maintainability](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png)
 
 ###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
