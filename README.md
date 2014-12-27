@@ -24,7 +24,7 @@ All of the components require dependency injection and use [`Configuration`](htt
 The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects are used in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However at this time, the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set. Its content must allow any positive value and may be considered as a `Response Model`.
 
 ###Maintainability
-![PHPMetrics Maintainability](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png)
+![PHPMetrics Maintainability](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png) ![PHPMetrics Evaluation](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-evaluation.png)  ![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-eval-report.png)  
 
 ###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
