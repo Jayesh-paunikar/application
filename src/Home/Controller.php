@@ -60,12 +60,11 @@ class Controller
     /**
      * @param Response $response
      * @param Request $request
-     * @param $pathinfo
      * @param array $args
      * @return ViewModel
      */
-    public function __invoke(Response $response, Request $request, $pathinfo, array $args = [])
+    public function __invoke(Response $response, Request $request, array $args = [])
     {
-        return $this->model($args + ['args' => [__FUNCTION__, $pathinfo]]);
+        return $this->model($args + ['args' => [__FUNCTION__]]);
     }
 }
