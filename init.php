@@ -187,6 +187,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Plugin/Plugin.php';
  */
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/DefinitionBuilder.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Builder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/RouteGenerator.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Generator.php';
@@ -198,11 +199,11 @@ include __DIR__ . '/src/Response/HttpResponse.php';
 /**
  *
  */
-//include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Model.php';
-//include __DIR__ . '/src/Home/Home.php';
-//include __DIR__ . '/src/Home/Controller.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Model.php';
+include __DIR__ . '/src/Home/Home.php';
+include __DIR__ . '/src/Home/Controller.php';
 
 /**
  *
  */
-include __DIR__ . '/vendor/autoload.php';
+//include __DIR__ . '/vendor/autoload.php';
