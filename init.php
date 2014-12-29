@@ -190,6 +190,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/DefinitionBuilder.ph
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Builder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/RouteGenerator.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Compiler.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/Generator.php';
 include __DIR__ . '/src/Request/Request.php';
 include __DIR__ . '/src/Request/HttpRequest.php';
