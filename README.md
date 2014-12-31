@@ -4,9 +4,9 @@
 [![Build Status](https://api.travis-ci.org/mvc5/application.svg)](https://travis-ci.org/mvc5/framework)
 [![Test Coverage](https://codeclimate.com/github/mvc5/framework/badges/coverage.svg)](https://codeclimate.com/github/mvc5/framework)
 [![Code Climate](https://codeclimate.com/github/mvc5/framework/badges/gpa.svg)](https://codeclimate.com/github/mvc5/framework)  
-  
+   
 Welcome to an enhanced php 5.5 programming environment that provides inversion of control of a web application or any function.
-### Core Behaviours
+### Features
 * Configuration
 * Controller Dispatch
 * Route Matching
@@ -27,7 +27,7 @@ The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request
 _[View the interactive PhpMetrics report](http://mvc5.github.io/tests/maintainability/)_  
   
 ![PHPMetrics Maintainability](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png) ![PHPMetrics Evaluation](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-evaluation.png)  ![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-eval-report.png)  
-![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-custom.png) ![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-abstractness.png)  
+![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-custom.png) ![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-abstractness.png)
 
 ###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
