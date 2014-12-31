@@ -4,7 +4,6 @@
 [![Build Status](https://api.travis-ci.org/mvc5/application.svg)](https://travis-ci.org/mvc5/framework)
 [![Test Coverage](https://codeclimate.com/github/mvc5/framework/badges/coverage.svg)](https://codeclimate.com/github/mvc5/framework)
 [![Code Climate](https://codeclimate.com/github/mvc5/framework/badges/gpa.svg)](https://codeclimate.com/github/mvc5/framework)  
-[![Coverage Status](https://coveralls.io/repos/mvc5/framework/badge.png)](https://coveralls.io/r/mvc5/framework)  
   
 Welcome to an enhanced php 5.5 programming environment that provides inversion of control of a web application or any function.
 ### Core Behaviours
