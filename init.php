@@ -96,7 +96,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/RouteDispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/RouteManager.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/Manage.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Manager/ManageRoute.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Route/Dispatch.php';
@@ -122,7 +121,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/ManageControlle
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Controller/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Controller/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/ControllerManager.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/Manage.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Plugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ViewModel.php';
