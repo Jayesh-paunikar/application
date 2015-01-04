@@ -26,8 +26,8 @@ The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request
 ###Maintainability
 _[View the interactive PhpMetrics report](http://mvc5.github.io/tests/maintainability/)_  
   
-![PHPMetrics Maintainability](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png) ![PHPMetrics Evaluation](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-evaluation.png)  ![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-eval-report.png)  
-![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-custom.png) ![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-abstractness.png)
+[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png)](http://mvc5.github.io/tests/maintainability/)[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-evaluation.png)](http://mvc5.github.io/tests/maintainability/)  [![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-eval-report.png)](http://mvc5.github.io/tests/maintainability/)  
+[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-custom.png)](http://mvc5.github.io/tests/maintainability/)[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-abstractness.png)](http://mvc5.github.io/tests/maintainability/)
 
 ###Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
