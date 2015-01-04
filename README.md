@@ -6,30 +6,33 @@
 [![Code Climate](https://codeclimate.com/github/mvc5/framework/badges/gpa.svg)](https://codeclimate.com/github/mvc5/framework)  
    
 Welcome to an enhanced php 5.5 programming environment that provides inversion of control of a web application or any function.
-### Features
+##Features
 * Configuration
+* Maintainability
 * Controller Dispatch
 * Route Matching
 * Response
 * View
 * Exceptions
 * Dependency Injection
+* Constructor Autowiring
 * Plugins
-* Configurable events
+* Configurable events and custom behaviours
 * Calling methods using named arguments and plugin support
+* Controller Action - a Middleware like event.
 
-All of the components require dependency injection and use [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) objects for consistency and ease of use. For example, the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) is a [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that manages its services via the standard configuration interface and has additional [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) methods that manage the underlying configurations of the services that it provides. The main [configuration array](https://github.com/mvc5/framework/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolvable by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
+All of the components require dependency injection and use [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) objects for consistency and ease of use. For example, the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) is a [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that manages its services via the standard configuration interface, and has additional [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) methods that manage the underlying configurations of the services that it provides. The main [configuration array](https://github.com/mvc5/framework/blob/master/config/service.php) can contain values, string names, callables and configuration objects that are resolvable by the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php).
 
-###Demo
-The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects are used in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However at this time, the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set. Its content must allow any positive value and may be considered as a `Response Model`.
+##Demo
+The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects are used in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However, currently the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set. Its content must allow any positive value and may be considered as a `Response Model`.
 
-###Maintainability
+##Maintainability
 _[View the interactive PhpMetrics report](http://mvc5.github.io/tests/maintainability/)_  
   
 [![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png)](http://mvc5.github.io/tests/maintainability/)[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-evaluation.png)](http://mvc5.github.io/tests/maintainability/)  [![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-eval-report.png)](http://mvc5.github.io/tests/maintainability/)  
 [![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-custom.png)](http://mvc5.github.io/tests/maintainability/)[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-abstractness.png)](http://mvc5.github.io/tests/maintainability/)
 
-###Named Arguments and Plugins
+##Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
 ```php
 $web = new App(include __DIR__ . '/../config/web.php');
@@ -71,7 +74,7 @@ class Controller
     }
 }
 ```
-The output of the above is
+The output of the above is ...
 ```php
 boolean true
 
@@ -85,7 +88,7 @@ array (size=2)
 
 boolean true
 ```
-The parameter `$args` can be used as a named argument that provides an array of the named arguments available to that method.
+The parameter `$args` can be used as a `named argument` that provides an `array of the named arguments` available to that method.
 
 To manage all of the parameters an optional callback can be added to the call method, e.g
 ```php
@@ -126,7 +129,7 @@ Similar to `$args`, adding `$event` will provide the current event.
 The `trigger()` method of the [`EventManager`](https://github.com/mvc5/framework/blob/master/src/Event/Manager/EventManager.php) accepts either the string name of the event, the event object itself or an `array` containing the event class name and its constructor arguments. In the example above `$controller` is a constructor argument for the [`Controller Dispatch Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Dispatch/Dispatch.php).
 
 ##Plugins and Aliases
-The parameter names of the additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to any positive value. If the value is a configuration object then it will be resolved and its value returned.
+The parameter names of the additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the call separator `.` to any positive value. If the value is a configuration object, then it will be resolved and its value returned.
 Each plugin has a configuration specific to its own use and they are resolved each time they are used. This enables them to be used in various ways for different purposes, e.g to provide a value or to trigger an event or to call a particular service method.
 ```php
 return [
@@ -181,8 +184,7 @@ public function __invoke(Config $config, ViewManager $vm, array $args = [])
     var_dump($args);
 }
 ```
-Usage
---
+##Usage
 The <a href="https://github.com/mvc5/application">mvc5/application</a> demonstrates its usage as a web application.
 
 ```php
@@ -209,8 +211,8 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 // or 
 // (new App($config))->call('web');
 ```
-###Web Application and Microframework Support
-A default [`Configuration`](https://github.com/mvc5/framework/blob/master/config/config.php) is provided with the minimum [configuration](https://github.com/mvc5/framework/blob/master/config) required to run a web application. At this time, all that is then needed are the `Request` and `Response` objects, template configuration and the routes to use. Currently routes must have a name so that they can be used to build urls in the view templates when using the [`url plugin`](https://github.com/mvc5/framework/blob/master/config/alias.php#L18).
+##Web Application and Microframework Support
+A default [`Configuration`](https://github.com/mvc5/framework/blob/master/config/config.php) is provided with the minimum [configuration](https://github.com/mvc5/framework/blob/master/config) required to run a web application. Then, all that is required are the `Request` and `Response` objects, template configuration and the routes to use. Routes must have a name, so that they can be used to build urls in the view templates when using the [`url plugin`](https://github.com/mvc5/framework/blob/master/config/alias.php#L18).
 ```php
 $app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
 
@@ -288,7 +290,7 @@ php:           3288 (100.00%)
 ```
 _Generated using [David A. Wheeler's 'SLOCCount'](http://www.dwheeler.com/sloccount)._
 ##Dependency Injection
-The [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) implements the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface by extending the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php). The [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface provides access to existing services and the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) provides access to the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that contains the configuration values for the services that the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) provides.
+The [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) implements the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface by extending the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php). The [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface provides access to existing services, and the [`ServiceContainer`](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php) provides access to the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that contains the configuration values for the services that the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) provides.
 
 Typically the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) is the application's main [configuration object](https://github.com/mvc5/framework/blob/master/config/config.php).
 ```php
@@ -302,9 +304,9 @@ return new Config([
 ```
 This allows the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to use the [`param()`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php#L40) method to retrieve other configuration values, e.g `new Param('templates.home')`.
 
-When a service is called by the service manager's [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface, it will check to see if the service exists, and if it doesn't it will use its configuration to create a new service. Configuration values can also be actual values e.g `'Request' => new HttpRequest($_GET, $_POST, $_SERVER ...)`.
+When a service is called by the service manager's [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface, it will check if the service exists, and if it does not, it will use its configuration to create a new service. Configuration values can also be actual values e.g `'Request' => new HttpRequest($_GET, $_POST, $_SERVER ...)`.
 
-They can also be strings that specify the FQCN of the class to instantiate, however since no dependencies are specified these classes cannot require any constructor arguments unless they are passed as arguments to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) when calling the service, i.e. via either the `create` or `get` methods e.g `$sm->get('HomeController', [new Dependency('HomeManager')])`.
+They can also be strings that specify the `FQCN` of the class to instantiate. However, since no dependencies are specified these classes cannot require any constructor arguments unless they are passed as arguments to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) when calling the service, i.e. via either the `create` or `get` methods e.g `$sm->get('HomeController', [new Dependency('HomeManager')])`.
 ```php
 'Route\Match\Wildcard' => Route\Match\Wildcard\Wildcard::class,
 ```
@@ -316,9 +318,9 @@ There is no convention on how dependencies should be injected, however arguments
   ['setRouteManager' => new Dependency('Route\Manager')]
 ),
 ```
-In the example above the `Route\Generator` is created with the `routes` configuration passed as a constructor argument, and then a call is made to the new object's `setRouteManager` to inject the `Route\Manager` as a shared dependency.
+In the example above the `Route\Generator` is created with the `routes` configuration passed as a constructor argument, then a call is made to the new object's `setRouteManager` to inject the `Route\Manager` as a shared dependency.
 
-Sometimes only the `setter methods` or `calls` need to be used, in which case a [`Hydrator`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Hydrator/Hydrator.php) configuration object is used.
+Sometimes only the `setter methods` or `calls` are needed, in which case the [`Hydrator`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Hydrator/Hydrator.php) configuration object is used.
 ```php
 'Controller\Manager' => new Hydrator(
     Controller\Manager\Manager::class,
@@ -329,7 +331,7 @@ Sometimes only the `setter methods` or `calls` need to be used, in which case a 
     ]
 ),
 ```
-A [`Service Configuration`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Configuration.php) can have parent configurations which allows either the parent constructor arguments to be used if none are provided, or the parent configuration may specify the `calls` to use. It is also possible for service configurations to merge their `calls` together.
+A [`Service Configuration`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Configuration.php) can have parent configurations which allows either the parent constructor arguments to be used, if none are provided, or the parent configuration may specify the `calls` to use. It is also possible for service configurations to merge their `calls` together.
 ```php
 'Manager' => new Hydrator(null, [
     'aliases'       => new Param('alias'),
@@ -338,31 +340,33 @@ A [`Service Configuration`](https://github.com/mvc5/framework/blob/master/src/Se
     'services'      => new Param('services'),
 ]),
 ```
-The above `Hyrdator` is used a parent configuration for all `Managers`.
+The above `Hydrator` is used as a parent configuration for all `Managers`.
 ```php
 'Route\Manager' => new Manager(Route\Manager\Manager::class)
 ```
 A [`Dependency`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Dependency/Dependency.php) configuration object is used to retrieve a shared service.
 ##Constructor Autowiring
-When a [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) creates a class that does not have a service configuration, or no arguments were passed to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) or if the arguments passed are `named`, the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) will then attempt to determine the *required* dependencies of the class constructor by their type hint or parameter name. Service configurations can return any positive value.
+When a [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) creates a class that either
+* Does not have a service configuration, or 
+* No arguments were passed to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php), or 
+* If the arguments passed are `named`
+Then the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) will attempt to determine the *required* dependencies of the class constructor by their type hint or parameter name. Service configurations can return any positive value.
 ```php
 Home\Model::class => new Service(Home\Model::class,['home'])
 ```
-When the name of a service configuration is a `FQCN` it must have a value other than its string name otherwise a recursion will occur.
+When the name of a service configuration is a `FQCN` it must have a value other than its string name, otherwise a recursion will occur.
 ```php
 Home\Model::class => Home\Model::class //not allowed
 ```
-Service configurations are only required when an explicit configuration and in some cases can provide better runtime performance.
+Service configurations are only required when an explicit configuration is needed, and in some cases, can provide better runtime performance.
 ##Routes
-A route can be configured as an `array` or as a `RouteDefinition`. If the configuration does not have a `regex` then it will be compiled before matching against the request's uri path. Each aspect of matching a route has a dedicated function, e.g. scheme, hostname, path, method, wildcard, and any other function can be configured to be called in the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
+A route can be configured as an `array` or as a `RouteDefinition`. If the configuration does not have a `regex`, then it will be compiled before matching against the request uri path. Each aspect of matching a route has a dedicated function, e.g. scheme, hostname, path, method, wildcard, and any other function can be configured to be called in the [`Route Match Event`](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
 
-The routing mechanism is based on [Ben Scholzen 'DASPRiD's Router prototype for Zend Framework 3 ](https://github.com/DASPRiD/Dash), however here currently, the `array` configuration is explicit and a different shorthand version is only available directly via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
+In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route, which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/home`. Child routes, except for the first level, will automatically have their parent name prepended to their name e.g `application/dashboard`. First level routes will not have the parent route prepended as it keeps their name simpler to use when specifying which route to create e.g `application` instead of `home/application`.
 
-In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/home`. Child routes, except for the first level, will automatically have their parent name prepended to their name e.g `application/dashboard`. First level routes will not have the parent route prepended as it keeps their name simpler to use when specifying which route to create e.g `application` instead of `home/application`.
+The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below, `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will created but the `Home` class can not depend on any constructor arguments, otherwise a `Service` configuration is required.
 
-The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will created but the `Home` class can not depend on any constructor arguments, otherwise a `Service` configuration is required.
-
-Controller configurations that are prefixed with an `@` will be called as a plugin, so its `alias` configuration must resolve to a callable type. In the example below `@blog:create` is an `alias` to a `Blog Create Event` and is triggered as an event instead calling a single method.
+Controller configurations that are prefixed with an `@` will be called as a plugin, so its `alias` configuration must resolve to a callable type. In the example below, `@blog:create` is an `alias` to a `Blog Create Event` and is triggered as an event instead calling a single method.
 
 Constraints have named keys that match the name of its corresponding `regex` parameter, optional parameters are enclosed with the square brackets `[]`.
 
@@ -415,7 +419,7 @@ Events and listeners are <a href="https://github.com/mvc5/application/blob/maste
 ]
 ```
 ##Model View Controller
-Controllers can use a [configuration](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object as a [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) object that is rendered by the view using its specified template file name and an optional child model that is used by the [layout model](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php). For convenience, controllers can use an existing [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) that has methods for setting the model and returning it. If no model is injected then a new instance of a standard model will be created and returned. When a controller is invoked and returns a model, it is stored as the content of the response object and will be rendered prior to sending the response. The [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) has two methods
+Controllers can use a [configuration](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object as a [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) object that is rendered by the view using its specified template file name and an optional child model that is used by the [layout model](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php). For convenience, controllers can use an existing [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) that has methods for setting the model and returning it. If no model is injected, then a new instance of a standard model will be created and returned. When a controller is invoked and returns a model, it is stored as the content of the response object and will be rendered prior to sending the response. The [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) has two methods
 
 * [model](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L28) 
 * [view](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L44)
@@ -438,7 +442,7 @@ class Controller
 }
 ```
 ##Controller Action
-The [`ControllerAction`](https://github.com/mvc5/framework/blob/master/src/Service/Config/ControllerAction/ControllerAction.php) configuration is for an [`Action Controller Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) which accepts an array of functions that are called with named argument plugin support. If the response from the function is a [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) it will be stored and available to subsequent functions. If the function returns a [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) then the event is stopped and the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) is returned.
+The [`ControllerAction`](https://github.com/mvc5/framework/blob/master/src/Service/Config/ControllerAction/ControllerAction.php) configuration is for an [`Action Controller Event`](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) which accepts an array of functions that are called with named argument plugin support. If the response from the function is a [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php), it will be stored and available to subsequent functions. If the function returns a [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php), then the event is stopped and the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) is returned.
 ```php
 'controller' => new ControllerAction([
         function(array $args = []) {
@@ -454,8 +458,8 @@ The [`ControllerAction`](https://github.com/mvc5/framework/blob/master/src/Servi
         },
 ]),
 ```
-###Rendering View Models
-When the content of the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) is a [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) it is [rendered](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) prior to sending the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php). Additionally and [prior](https://github.com/mvc5/framework/blob/master/config/event.php#L19) to [rendering](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) the [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php), if a [`LayoutModel`](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php) is to be used, it will add the current [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) to itself as its content child model and the [`LayoutModel`](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php) is then set as the content of the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php).
+##Rendering View Models
+When the content of the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) is a [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php), it is [rendered](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) prior to sending the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php). Additionally and [prior](https://github.com/mvc5/framework/blob/master/config/event.php#L19) to [rendering](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) the [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php), if a [`LayoutModel`](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php) is to be used, it will add the current [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) to itself as its content child model and the [`LayoutModel`](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php) is then set as the content of the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php).
 ```php
     function __invoke($model = null, ViewModel $layout = null)
     {
@@ -501,7 +505,7 @@ $render = Closure::bind(function() {
 
 return $render();
 ```
-###View Model Plugins
+##View Model Plugins
 The default [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) also supports [plugins](https://github.com/mvc5/framework/blob/master/config/alias.php) which require the [`ViewManager`](https://github.com/mvc5/framework/blob/master/src/View/Manager/ViewManager.php) to be injected prior to [rendering](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) it. And because they can be created by a controller, this may not of happened. To overcome this, the current [`ViewManager`](https://github.com/mvc5/framework/blob/master/src/View/Manager/ViewManager.php) will be injected if the [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) does not already have one.
 ```php
 <?php
@@ -510,7 +514,7 @@ The default [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View
 
 echo $this->url('home');
 ```
-###Configuration and ArrayAccess
+##Configuration and ArrayAccess
 The [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface is used consistently throughout each component in order to provide a standard set of *concrete* configuration methods. Its [`ArrayAccess`](http://php.net/manual/en/class.arrayaccess.php) interface enables the [`ServiceManager`](/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to retrieve nested configuration values by making successive calls on the returned values. E.g
 ```php
 new Param('templates.error');
@@ -530,7 +534,7 @@ interface Configuration
     function set($name, $config);
 }
 ```
-By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time only the *immutable* interface methods are of interest and the configuration interface provides a consistent way of instantiating its configuration.
+By implementing the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface it allows components to only have to specify their *immutable* interface methods and allows the component to choose whether or not to extend the [`Configuration`](/mvc5/framework/blob/master/src/Config/Configuration.php) interface or to implement it separately. The idea is that most of the time, only the *immutable* interface methods are of interest and the configuration interface provides a consistent way of instantiating its configuration.
 ```php
 interface Route
     extends Configuration
