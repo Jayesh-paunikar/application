@@ -1,0 +1,14 @@
+default:
+    path:
+        directory: ./vendor/mvc5/framework/src
+        extensions: php
+        exclude:
+    logging:
+        report:
+            xml:    ./build/logs/phpmetrics.xml
+            html:   ./public/mvc5.html
+            csv:    ./build/logs/phpmetrics.csv
+        violations:
+            xml:    ./build/logs/violations.xml
+        chart:
+            bubbles: ./public/bubbles.svg
