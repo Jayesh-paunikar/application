@@ -116,7 +116,13 @@ class Event
   
   function __invoke(callable $listener, array $args = [], callable $callback = null)
   {
-      return $this->signal($listener, $this->args() + $args, $callback);
+      $response = $this->signal($listener, $this->args() + $args, $callback);
+
+      if ($response instanceof Response) {
+          $this->stop();
+      }
+
+      return $response;
   }
 }
 ```
@@ -133,18 +139,18 @@ The parameter names of the additional arguments can be aliases or service names.
 Each plugin has a configuration specific to its own use and they are resolved each time they are used. This enables them to be used in various ways for different purposes, e.g to provide a value or to trigger an event or to call a particular service method.
 ```php
 return [
-    'blog:create' => new Service('Blog\Create'),
-    'blog:valid'  => new Invoke('Blog\Controller.valid'),
-    'config'        => new Dependency('Config'),
-    'layout'        => new Dependency('Layout'),
-    'request'       => new Dependency('Request'),
-    'response'      => new Dependency('Response'),
-    'route:builder' => new Dependency('Route\Builder'),
-    'route:create'  => new Invoke('Route\Builder'),
-    'sm'            => new Dependency('Service\Manager'),
-    'url'           => new Dependency('Route\Plugin'),
-    'web'           => new Service('Mvc'),
-    'vm'            => new Dependency('View\Manager')
+  'blog:create' => new Service('Blog\Create'),
+  'blog:valid'  => new Invoke('Blog\Controller\Validate', ['model' => new Model('blog:create')]),
+  'config'       => new Dependency('Config'),
+  'layout'       => new Dependency('Layout'),
+  'request'      => new Dependency('Request'),
+  'response'     => new Dependency('Response'),
+  'route:add'    => new Dependency('Route\Add'),
+  'route:create' => new Dependency('Route\Create'),
+  'sm'           => new Dependency('Service\Manager'),
+  'url'          => new Dependency('Route\Plugin'),
+  'web'          => new Service('Mvc'),
+  'vm'           => new Dependency('View\Manager')
 ];
 ```
 The [`plugin`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L63) method is also used when calling an object.
@@ -196,13 +202,11 @@ use Framework\Service\Container\Container;
 use Framework\Event\Config\Config as Events;
 
 $config = new Config([
-    'alias' => [
-        'web' => 'Mvc',
-    ],
-    'events'      => new Events(include __DIR__ . '/event.php'),
-    'services'    => new Container(include __DIR__ . '/service.php'),
-    'routes'      => new RouteDefinition(include __DIR__ . '/route.php'),
-    'view'        => include __DIR__ . '/view.php'
+  'alias'     => include __DIR__ . '/alias.php',
+  'events'    => new Events(include __DIR__ . '/event.php'),
+  'services'  => new Container(include __DIR__ . '/service.php'),
+  'routes'    => new RouteDefinition(include __DIR__ . '/route.php'),
+  'templates' => new Config(include __DIR__ . '/templates.php')
 ]);
 ```
 ```php
@@ -274,19 +278,19 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
 ##Source Lines of Code
 ```
 SLOC	Directory	SLOC-by-Language (Sorted)
-1020    Service         php=1020
-833     Route           php=833
-391     View            php=391
-264     Controller      php=264
+1012    Service         php=1012
+870     Route           php=870
+378     View            php=378
+250     Controller      php=250
 210     Mvc             php=210
-204     Response        php=204
-151     Event           php=151
-123     Application     php=123
+198     Response        php=198
+154     Event           php=154
+122     Application     php=122
 92      Config          php=92
 
 
 Totals grouped by language (dominant language first):
-php:           3288 (100.00%)
+php:           3286 (100.00%)
 ```
 _Generated using [David A. Wheeler's 'SLOCCount'](http://www.dwheeler.com/sloccount)._
 ##Dependency Injection
@@ -295,9 +299,9 @@ The [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service
 Typically the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) is the application's main [configuration object](https://github.com/mvc5/framework/blob/master/config/config.php).
 ```php
 return new Config([
-  'alias' => new Config(include __DIR__ . '/alias.php'),
-  'events' => new Events(include __DIR__ . '/event.php'),
-  'services' => new Container(include __DIR__ . '/service.php'),
+  'alias'     => include __DIR__ . '/alias.php',
+  'events'    => new Events(include __DIR__ . '/event.php'),
+  'services'  => new Container(include __DIR__ . '/service.php'),
   'routes'    => new RouteDefinition(include __DIR__ . '/route.php'),
   'templates' => new Config(include __DIR__ . '/templates.php')
 ]);
@@ -314,8 +318,7 @@ There is no convention on how dependencies should be injected, however arguments
 ```php
 'Route\Generator' => new Service(
   Route\Generator\Generator::class, 
-  [new Param('routes')]
-  ['setRouteManager' => new Dependency('Route\Manager')]
+  [new Param('routes'), new Dependency('Route\Builder')]
 ),
 ```
 In the example above the `Route\Generator` is created with the `routes` configuration passed as a constructor argument, then a call is made to the new object's `setRouteManager` to inject the `Route\Manager` as a shared dependency.
@@ -325,8 +328,9 @@ Sometimes only the `setter methods` or `calls` are needed, in which case the [`H
 'Controller\Manager' => new Hydrator(
     Controller\Manager\Manager::class,
     [
+        'aliases'       => new Param('alias'),
         'configuration' => new ConfigLink,
-        'events'        => new Param('controllers'),
+        'events'        => new Param('events'),
         'services'      => new Param('services')
     ]
 ),
@@ -334,10 +338,10 @@ Sometimes only the `setter methods` or `calls` are needed, in which case the [`H
 A [`Service Configuration`](https://github.com/mvc5/framework/blob/master/src/Service/Config/Configuration.php) can have parent configurations which allows either the parent constructor arguments to be used, if none are provided, or the parent configuration may specify the `calls` to use. It is also possible for service configurations to merge their `calls` together.
 ```php
 'Manager' => new Hydrator(null, [
-    'aliases'       => new Param('alias'),
-    'configuration' => new ConfigLink,
-    'events'        => new Param('events'),
-    'services'      => new Param('services'),
+  'aliases'       => new Param('alias'),
+  'configuration' => new ConfigLink,
+  'events'        => new Param('events'),
+  'services'      => new Param('services'),
 ]),
 ```
 The above `Hydrator` is used as a parent configuration for all `Managers`.
@@ -384,6 +388,9 @@ return [
               'default' => [
                   'route'      => '/:sort[/:order]',
                   'controller' => '@blog:create', //call event (trigger)
+                  //'controller'  => function($model) { //named args
+                    //return $model;
+                  //},
                   'constraints' => [
                       'sort'  => '[a-zA-Z0-9_-]*',
                       'order' => '[a-zA-Z0-9_-]*'
@@ -407,16 +414,16 @@ $app->route(['application/default', '/:sort[/:order]'], function($sm, array $arg
 ##Event Configuration
 Events and listeners are <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a> and support various types of configuration that must resolve to being a `callable` type.
 ```php
-'Mvc' => [
-    ['Mvc\Route'],
-    ['Mvc\Dispatch'],
-    ['Mvc\Layout'],
-    ['Mvc\Render'],
-    [function($event, $vm) { //named args
-        var_dump(__FILE__, $event, $vm);
-    }],
-    ['Mvc\Response']
-]
+'Mvc' => [[
+  'Mvc\Route',
+  'Mvc\Controller',
+  'Mvc\Layout',
+  'Mvc\View',
+  function($event, $vm) { //named args
+    var_dump(__FILE__, $event, $vm);
+  },
+  'Mvc\Response'
+]]
 ```
 ##Model View Controller
 Controllers can use a [configuration](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object as a [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) object that is rendered by the view using its specified template file name and an optional child model that is used by the [layout model](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php). For convenience, controllers can use an existing [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) that has methods for setting the model and returning it. If no model is injected, then a new instance of a standard model will be created and returned. When a controller is invoked and returns a model, it is stored as the content of the response object and will be rendered prior to sending the response. The [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) has two methods
