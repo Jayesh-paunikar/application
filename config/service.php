@@ -23,6 +23,7 @@ return [
     'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
     'Response' => Response\HttpResponse::class,
+    'Response\Response' => 'Response',
 
     ViewModel::class => Model::class
 

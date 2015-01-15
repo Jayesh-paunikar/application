@@ -58,12 +58,12 @@ class Controller
     }
 
     /**
-     * @param Response $response
+     * @param Response $hint
      * @param Request $request
      * @param array $args
      * @return ViewModel
      */
-    public function __invoke(Response $response, Request $request, array $args = [])
+    public function __invoke(Response $hint, Request $request, array $args = [])
     {
         return $this->model($args + ['args' => [__FUNCTION__]]);
     }
