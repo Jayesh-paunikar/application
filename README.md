@@ -356,7 +356,8 @@ A [`Dependency`](https://github.com/mvc5/framework/blob/master/src/Service/Confi
 When a [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) creates a class that either
 * Does not have a service configuration, or 
 * No arguments were passed to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php), or 
-* If the arguments passed are `named`
+* If the arguments passed are `named`  
+  
 Then the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) will attempt to determine the *required* dependencies of the class constructor by their type hint or parameter name. Service configurations can return any positive value.
 ```php
 Home\Model::class => new Service(Home\Model::class,['home'])
@@ -371,7 +372,7 @@ A route can be configured as an `array` or as a `RouteDefinition`. If the config
 
 In order to create a url using the `Route\Plugin`, e.g a view helper plugin, the first route must have a name that can be referred to as the base route, which is typically the homepage for `/`, e.g `home`, or it can specify its own, e.g `/home`. Child routes, except for the first level, will automatically have their parent name prepended to their name e.g `application/dashboard`. First level routes will not have the parent route prepended as it keeps their name simpler to use when specifying which route to create e.g `application` instead of `home/application`.
 
-The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below, `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will created but the `Home` class can not depend on any constructor arguments, otherwise a `Service` configuration is required.
+The `controller` param must be a service configuration value (which includes real values) that must resolve to a callable type. In the example below, `@Home.test` will call the `test` method on a shared instance of `Home`. If no configuration for `Home` exists, a new instance will be created via [Constructor Autowiring](#Constructor Autowiring).
 
 Controller configurations that are prefixed with an `@` will be called as a plugin, so its `alias` configuration must resolve to a callable type. In the example below, `@blog:create` is an `alias` to a `Blog Create Event` and is triggered as an event instead calling a single method.
 
