@@ -187,6 +187,9 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Plugin/Plugin.php';
  */
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/DefinitionBuilder.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Params.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Regex.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Tokens.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/Builder.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Builder/CreateRoute.php';
