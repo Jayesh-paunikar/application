@@ -10,7 +10,7 @@ return [
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => '@Home\Controller.test', //call specific function
+            'controller' => '@Blog\Controller\Respond.respond', //call specific function
             'children' => [
                 'create' => [
                     'route'      => '/:author[/:category]',
