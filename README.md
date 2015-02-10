@@ -201,11 +201,10 @@ include __DIR__ . '/../vendor/autoload.php';
 ```php
 use Framework\Config\Config;
 use Framework\Service\Container\Container;
-use Framework\Event\Config\Config as Events;
 
 $config = new Config([
   'alias'     => include __DIR__ . '/alias.php',
-  'events'    => new Events(include __DIR__ . '/event.php'),
+  'events'    => new Config(include __DIR__ . '/event.php'),
   'services'  => new Container(include __DIR__ . '/service.php'),
   'routes'    => new RouteDefinition(include __DIR__ . '/route.php'),
   'templates' => new Config(include __DIR__ . '/templates.php')
@@ -241,7 +240,7 @@ Time per request:       3.167 [ms] (mean, across all concurrent requests)
 ```
 ##Source Lines of Code
 ```
-SLOC	Directory	SLOC-by-Language (Sorted)
+SLOC    Directory   SLOC-by-Language (Sorted)
 1014    Service         php=1014
 864     Route           php=864
 379     View            php=379
@@ -263,7 +262,7 @@ Typically the [`Configuration`](https://github.com/mvc5/framework/blob/master/sr
 ```php
 return new Config([
   'alias'     => include __DIR__ . '/alias.php',
-  'events'    => new Events(include __DIR__ . '/event.php'),
+  'events'    => new Config(include __DIR__ . '/event.php'),
   'services'  => new Container(include __DIR__ . '/service.php'),
   'routes'    => new RouteDefinition(include __DIR__ . '/route.php'),
   'templates' => new Config(include __DIR__ . '/templates.php')
