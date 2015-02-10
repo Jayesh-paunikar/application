@@ -2,9 +2,9 @@
 /**
  *
  */
-use Framework\Application\Web;
-use Framework\View\Model\Model;
-use Framework\Service\Config\ControllerAction\ControllerAction;
+use Framework\Application\App;
+use Framework\Application\Args;
+use Framework\Config\Config;
 
 /**
  *
@@ -26,56 +26,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-$app = new Web(include __DIR__ . '/../config/web.php');
-
-//demo micro framework
-/*$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
-
-//services via ArrayAccess
-$app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
-$app['Response'] = new Response\HttpResponse;
-
-//configuration via property access
-//$app->templates['layout']      = '../view/layout/layout.phtml';
-//$app->templates['home']        = '../view/home/index.phtml';
-$app->templates['blog:create'] = '../view/blog/create.phtml';
-
-$app->route('home', function(array $args = []) {
-    $args['app_demo'] = 'app:home';
-
-    return new Model('home', ['args' => $args]);
-});
-
-$app->route('blog', function($sm, array $args = []) {
-    $args['demo_time'] = $sm->call('time');
-
-    return new Model('home', ['args' => $args]);
-});
-
-$app->route(
-    [
-        'blog/create',
-        '/:author[/:category]',
-        ['author' => '[a-zA-Z0-9_-]*', 'category' => '[a-zA-Z0-9_-]*'],
-        new ControllerAction([
-            function(array $args = []) {
-                return new Model(null, ['args' => $args]);
-            },
-            function(Model $model, $sm) {
-                $model['demo_time'] = $sm->call('time');
-                return $model;
-            },
-            function(Model $model) {
-                $model[$model::TEMPLATE] = 'blog:create';
-                return $model;
-            },
-        ])
-    ]);
-*/
-/**
- *
- */
-call_user_func($app);
+(new App(new Config(include __DIR__ . '/../config/config.php')))->call(Args::WEB);
 
 /**
  *
