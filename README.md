@@ -148,7 +148,6 @@ return [
   'layout'       => new Dependency('Layout'),
   'request'      => new Dependency('Request'),
   'response'     => new Dependency('Response'),
-  'route:add'    => new Dependency('Route\Add'),
   'route:create' => new Dependency('Route\Create'),
   'sm'           => new Dependency('Service\Manager'),
   'url'          => new Dependency('Route\Plugin'),
@@ -218,48 +217,10 @@ call_user_func(new Web(include __DIR__ . '/../config/web.php'));
 // or 
 // (new App($config))->call('web');
 ```
-##Web Application and Microframework Support
+##Web Application
 A default [`Configuration`](https://github.com/mvc5/framework/blob/master/config/config.php) is provided with the minimum [configuration](https://github.com/mvc5/framework/blob/master/config) required to run a web application. Then, all that is required are the `Request` and `Response` objects, template configuration and the routes to use. Routes must have a name, so that they can be used to build urls in the view templates when using the [`url plugin`](https://github.com/mvc5/framework/blob/master/config/alias.php#L18).
 ```php
-$app = new Web(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
-
-//services via ArrayAccess
-$app['Request']  = new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
-$app['Response'] = new Response\HttpResponse;
-
-//configuration via property access
-$app->templates['layout']      = '../view/layout/layout.phtml';
-$app->templates['home']        = '../view/home/index.phtml';
-$app->templates['blog:create'] = '../view/blog/create.phtml';
-
-//url: /
-$app->route('home', function(array $args = []) {
-    $args['app_demo'] = 'app:home';
-
-    return new Model('home', ['args' => $args]);
-});
-
-//url: /blog
-$app->route('blog', function($sm, array $args = []) {
-    $args['demo_time'] = $sm->call('time');
-
-    return new Model('home', ['args' => $args]);
-});
-
-//url: /blog/owner/web
-$app->route(
-    [
-      'blog/create', 
-      '/:author[/:category]', 
-      [
-         'author'   => '[a-zA-Z0-9_-]*', 
-         'category' => '[a-zA-Z0-9_-]*'
-      ],
-      function(array $args = []) {
-          return new Model('blog:create', ['args' => $args]);
-      }
-    ]
-);
+$app = new App(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
 
 call_user_func($app);
 ```
