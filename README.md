@@ -370,16 +370,10 @@ The route names are used by the url `Route\Generator`, e.g
 ```php
 echo $this->url('application/default', ['sort' => 'name', 'order' => 'desc']);
 ```
-Below is the route configured via the [`Web Application`](https://github.com/mvc5/framework/blob/master/src/Application/WebApplication.php).
-```php
-$app->route(['application/default', '/:sort[/:order]'], function($sm, array $args = []) {
-    return $sm->call('blog:create');
-});
-```
 ##Event Configuration
 Events and listeners are <a href="https://github.com/mvc5/application/blob/master/config/event.php">configurable</a> and support various types of configuration that must resolve to being a `callable` type.
 ```php
-'Mvc' => [[
+'Mvc' => [
   'Mvc\Route',
   'Mvc\Controller',
   'Mvc\Layout',
@@ -388,7 +382,7 @@ Events and listeners are <a href="https://github.com/mvc5/application/blob/maste
     var_dump(__FILE__, $event, $vm);
   },
   'Mvc\Response'
-]]
+]
 ```
 ##Model View Controller
 Controllers can use a [configuration](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object as a [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) object that is rendered by the view using its specified template file name and an optional child model that is used by the [layout model](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php). For convenience, controllers can use an existing [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) that has methods for setting the model and returning it. If no model is injected, then a new instance of a standard model will be created and returned. When a controller is invoked and returns a model, it is stored as the content of the response object and will be rendered prior to sending the response. The [view model trait](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php) has two methods
