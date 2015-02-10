@@ -38,7 +38,7 @@ _[View the interactive PhpMetrics report](http://mvc5.github.io/tests/maintainab
 ##Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
 ```php
-$web = new App(include __DIR__ . '/../config/web.php');
+$web = new App(new Config(include __DIR__ . '/../config/config.php'));
 
 $response = $web->call(
     'Controller.valid.add.response', 
@@ -211,15 +211,12 @@ $config = new Config([
 ]);
 ```
 ```php
-call_user_func(new Web(include __DIR__ . '/../config/web.php'));
-
-// or 
-// (new App($config))->call('web');
+(new App(new Config(include __DIR__ . '/../config/config.php')))->call('web');
 ```
 ##Web Application
 A default [`Configuration`](https://github.com/mvc5/framework/blob/master/config/config.php) is provided with the minimum [configuration](https://github.com/mvc5/framework/blob/master/config) required to run a web application. Then, all that is required are the `Request` and `Response` objects, template configuration and the routes to use. Routes must have a name, so that they can be used to build urls in the view templates when using the [`url plugin`](https://github.com/mvc5/framework/blob/master/config/alias.php#L18).
 ```php
-$app = new App(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
+$app = new App(new Config(include __DIR__ . '/../vendor/mvc5/framework/config/config.php'));
 
 call_user_func($app);
 ```
