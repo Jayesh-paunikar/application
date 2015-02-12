@@ -26,7 +26,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-(new App(new Config(include __DIR__ . '/../config/config.php')))->call(Args::WEB);
+(new App(include __DIR__ . '/../config/config.php'))->call(Args::WEB);
 
 /**
  *
