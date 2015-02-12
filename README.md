@@ -204,10 +204,10 @@ use Framework\Service\Container\Container;
 
 $config = new Config([
   'alias'     => include __DIR__ . '/alias.php',
-  'events'    => new Config(include __DIR__ . '/event.php'),
+  'events'    => include __DIR__ . '/event.php',
   'services'  => new Container(include __DIR__ . '/service.php'),
-  'routes'    => new RouteDefinition(include __DIR__ . '/route.php'),
-  'templates' => new Config(include __DIR__ . '/templates.php')
+  'routes'    => include __DIR__ . '/route.php',
+  'templates' => include __DIR__ . '/templates.php'
 ]);
 ```
 ```php
@@ -259,10 +259,10 @@ Typically the [`Configuration`](https://github.com/mvc5/framework/blob/master/sr
 ```php
 return new Config([
   'alias'     => include __DIR__ . '/alias.php',
-  'events'    => new Config(include __DIR__ . '/event.php'),
+  'events'    => include __DIR__ . '/event.php',
   'services'  => new Container(include __DIR__ . '/service.php'),
-  'routes'    => new RouteDefinition(include __DIR__ . '/route.php'),
-  'templates' => new Config(include __DIR__ . '/templates.php')
+  'routes'    => include __DIR__ . '/route.php',
+  'templates' => include __DIR__ . '/templates.php'
 ]);
 ```
 This allows the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to use the [`param()`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php#L40) method to retrieve other configuration values, e.g `new Param('templates.home')`.
