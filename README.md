@@ -38,7 +38,7 @@ _[View the interactive PhpMetrics report](http://mvc5.github.io/tests/maintainab
 ##Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
 ```php
-$web = new App(new Config(include __DIR__ . '/../config/config.php'));
+$web = new App(include __DIR__ . '/../config/config.php');
 
 $response = $web->call(
     'Controller.valid.add.response', 
@@ -202,21 +202,21 @@ include __DIR__ . '/../vendor/autoload.php';
 use Framework\Config\Config;
 use Framework\Service\Container\Container;
 
-$config = new Config([
+$config = [
   'alias'     => include __DIR__ . '/alias.php',
   'events'    => include __DIR__ . '/event.php',
   'services'  => new Container(include __DIR__ . '/service.php'),
   'routes'    => include __DIR__ . '/route.php',
   'templates' => include __DIR__ . '/templates.php'
-]);
+];
 ```
 ```php
-(new App(new Config(include __DIR__ . '/../config/config.php')))->call('web');
+(new App(include __DIR__ . '/../config/config.php'))->call('web');
 ```
 ##Web Application
 A default [`Configuration`](https://github.com/mvc5/framework/blob/master/config/config.php) is provided with the minimum [configuration](https://github.com/mvc5/framework/blob/master/config) required to run a web application. Then, all that is required are the `Request` and `Response` objects, template configuration and the routes to use. Routes must have a name, so that they can be used to build urls in the view templates when using the [`url plugin`](https://github.com/mvc5/framework/blob/master/config/alias.php#L18).
 ```php
-$app = new App(new Config(include __DIR__ . '/../vendor/mvc5/framework/config/config.php'));
+$app = new App(include __DIR__ . '/../vendor/mvc5/framework/config/config.php');
 
 call_user_func($app);
 ```
@@ -257,13 +257,13 @@ The [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service
 
 Typically the [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) is the application's main [configuration object](https://github.com/mvc5/framework/blob/master/config/config.php).
 ```php
-return new Config([
+return [
   'alias'     => include __DIR__ . '/alias.php',
   'events'    => include __DIR__ . '/event.php',
   'services'  => new Container(include __DIR__ . '/service.php'),
   'routes'    => include __DIR__ . '/route.php',
   'templates' => include __DIR__ . '/templates.php'
-]);
+];
 ```
 This allows the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) to use the [`param()`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php#L40) method to retrieve other configuration values, e.g `new Param('templates.home')`.
 
