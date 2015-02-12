@@ -4,7 +4,6 @@
  */
 use Framework\Application\App;
 use Framework\Application\Args;
-use Framework\Config\Config;
 
 /**
  *
