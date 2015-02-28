@@ -1,0 +1,12 @@
+{
+  "timeout": 10,
+  "source": {
+    "directories": [
+      "vendor/mvc5/framework/src"
+    ]
+  },
+  "logs": {
+    "text": "build/logs/humbuglog.txt",
+    "json": "build/logs/humbuglog.json"
+  }
+}
