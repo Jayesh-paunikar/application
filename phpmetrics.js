@@ -3,7 +3,7 @@
 var page = require('webpage').create();
     page.viewportSize = { width:1280, height:800 };
 
-page.open('http://zf3playground/mvc5.html')
+page.open('http://localhost/mvc5.html')
     .then(function(){
 
         window.setTimeout(function() {
