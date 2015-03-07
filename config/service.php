@@ -3,11 +3,11 @@
  *
  */
 
-use Framework\Service\Config\Factory\Factory;
-use Framework\Service\Config\Hydrator\Hydrator;
-use Framework\Service\Config\Service\Service;
-use Framework\View\Model\Model;
-use Framework\View\Model\ViewModel;
+use Mvc5\Service\Config\Factory\Factory;
+use Mvc5\Service\Config\Hydrator\Hydrator;
+use Mvc5\Service\Config\Service\Service;
+use Mvc5\View\Model\Model;
+use Mvc5\View\Model\ViewModel;
 
 return [
     /*'Home' => new Service(

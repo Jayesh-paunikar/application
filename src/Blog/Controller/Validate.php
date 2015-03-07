@@ -2,8 +2,8 @@
 
 namespace Blog\Controller;
 
-use Framework\View\ViewModel;
-use Framework\View\Model\ViewModel as Model;
+use Mvc5\View\ViewModel;
+use Mvc5\View\Model\ViewModel as Model;
 use Request\Request;
 
 class Validate

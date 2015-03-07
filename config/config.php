@@ -3,7 +3,7 @@
  *
  */
 
-use Framework\Service\Container\Container;
+use Mvc5\Service\Container\Container;
 
 return [
     'alias'     => include __DIR__ . '/alias.php',

@@ -2,7 +2,7 @@
 
 namespace Blog\Controller;
 
-use Framework\View\Model\ViewModel;
+use Mvc5\View\Model\ViewModel;
 
 class Add
 {

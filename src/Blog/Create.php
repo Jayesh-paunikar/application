@@ -2,10 +2,10 @@
 
 namespace Blog;
 
-use Framework\Event\Base;
-use Framework\Event\Event;
-use Framework\View\ViewModel;
-use Framework\Service\Resolver\Signal;
+use Mvc5\Event\Base;
+use Mvc5\Event\Event;
+use Mvc5\View\ViewModel;
+use Mvc5\Service\Resolver\Signal;
 
 class Create
     implements Creator, Event

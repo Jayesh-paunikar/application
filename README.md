@@ -199,8 +199,8 @@ The <a href="https://github.com/mvc5/application">mvc5/application</a> demonstra
 include __DIR__ . '/../vendor/autoload.php';
 ```
 ```php
-use Framework\Config\Config;
-use Framework\Service\Container\Container;
+use Mvc5\Config\Config;
+use Mvc5\Service\Container\Container;
 
 $config = [
   'alias'     => include __DIR__ . '/alias.php',
@@ -388,7 +388,7 @@ Controllers can use a [configuration](https://github.com/mvc5/framework/blob/mas
 This allows the controller to choose the [view](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L44) method when a specific template is known, or the controller can use the [model](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L28) method and pass an array variables as the data for the view model.
 
 ```php
-use Framework\View\ViewModel;
+use Mvc5\View\ViewModel;
 
 class Controller
 {
@@ -471,7 +471,7 @@ The default [`ViewModel`](https://github.com/mvc5/framework/blob/master/src/View
 ```php
 <?php
 
-/** @var Framework\View\Model\ViewModel $this */
+/** @var Mvc5\View\Model\ViewModel $this */
 
 echo $this->url('home');
 ```

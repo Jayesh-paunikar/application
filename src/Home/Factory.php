@@ -2,9 +2,9 @@
 
 namespace Home;
 
-use Framework\Config\Configuration;
-use Framework\Service\Factory\Base;
-use Framework\View\Manager\ViewManager;
+use Mvc5\Config\Configuration;
+use Mvc5\Service\Factory\Base;
+use Mvc5\View\Manager\ViewManager;
 
 class Factory
     implements HomeFactory

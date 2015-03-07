@@ -2,7 +2,7 @@
 
 namespace Response;
 
-use Framework\Response\Response as Base;
+use Mvc5\Response\Response as Base;
 
 interface Response
     extends Base

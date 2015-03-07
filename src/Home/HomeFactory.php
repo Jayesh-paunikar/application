@@ -2,8 +2,8 @@
 
 namespace Home;
 
-use Framework\Config\Configuration;
-use Framework\View\Manager\ViewManager;
+use Mvc5\Config\Configuration;
+use Mvc5\View\Manager\ViewManager;
 
 interface HomeFactory
 {

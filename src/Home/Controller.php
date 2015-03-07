@@ -2,8 +2,8 @@
 
 namespace Home;
 
-use Framework\View\ViewModel as View;
-use Framework\View\Model\ViewModel;
+use Mvc5\View\ViewModel as View;
+use Mvc5\View\Model\ViewModel;
 use Request\Request;
 use Response\Response;
 

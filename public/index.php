@@ -2,8 +2,8 @@
 /**
  *
  */
-use Framework\Application\App;
-use Framework\Application\Args;
+use Mvc5\Application\App;
+use Mvc5\Application\Args;
 
 /**
  *

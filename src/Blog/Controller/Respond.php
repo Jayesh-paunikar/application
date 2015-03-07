@@ -2,8 +2,8 @@
 
 namespace Blog\Controller;
 
-use Framework\View\Model\Model;
-use Framework\View\Model\ViewModel;
+use Mvc5\View\Model\Model;
+use Mvc5\View\Model\ViewModel;
 use Response\Response;
 
 class Respond
