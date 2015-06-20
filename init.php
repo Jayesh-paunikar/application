@@ -85,6 +85,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Mvc.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Route.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Router/RouteDispatch.php';
