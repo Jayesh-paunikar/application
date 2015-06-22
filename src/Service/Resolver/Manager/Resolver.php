@@ -6,11 +6,12 @@
 namespace Service\Resolver\Manager;
 
 use Service\Config\Manager\ServiceManager;
+use Mvc5\Service\Provider\ServiceProvider;
 use Mvc5\Service\Resolver\Resolvable;
 use Mvc5\Service\Resolver\Provider;
 
 class Resolver
-    implements Manager
+    implements Manager, ServiceProvider
 {
     /**
      *
