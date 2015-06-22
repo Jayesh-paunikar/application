@@ -5,9 +5,13 @@
 
 use Mvc5\Service\Config\Factory\Factory;
 use Mvc5\Service\Config\Hydrator\Hydrator;
+use Mvc5\Service\Config\ServiceManagerLink\ServiceManagerLink;
 use Mvc5\Service\Config\Service\Service;
+use Mvc5\View\Manager\Manager as ViewManager;
 use Mvc5\View\Model\Model;
 use Mvc5\View\Model\ViewModel;
+use Service\Config\Manager\Manager as ServiceManager;
+use Service\Resolver\Manager\Resolver as ManagerResolver;
 
 return [
     /*'Home' => new Service(
@@ -25,6 +29,13 @@ return [
     'Response' => Response\HttpResponse::class,
     'Response\Response' => 'Response',
 
-    ViewModel::class => Model::class
+    'Service\Resolver\Manager' => new Hydrator(
+        ManagerResolver::class,
+        ['provider' => new ServiceManagerLink]
+    ),
+
+    ViewModel::class => Model::class,
+
+    'View\Manager' => new ServiceManager(ViewManager::class)
 
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/service.php';
