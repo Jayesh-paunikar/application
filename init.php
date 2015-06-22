@@ -16,6 +16,7 @@ include __DIR__ . '/vendor/symfony/http-foundation/Symfony/Component/HttpFoundat
  */
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Configuration.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Container/ServiceContainer.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Provider/ServiceProvider.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Manager/ServiceManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Event/Manager/EventManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Application/Args.php';
