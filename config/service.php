@@ -7,6 +7,7 @@ use Mvc5\Service\Config\Factory\Factory;
 use Mvc5\Service\Config\Hydrator\Hydrator;
 use Mvc5\Service\Config\ServiceManagerLink\ServiceManagerLink;
 use Mvc5\Service\Config\Service\Service;
+use Mvc5\Service\Config\ServiceProvider\ServiceProvider;
 use Mvc5\View\Manager\Manager as ViewManager;
 use Mvc5\View\Model\Model;
 use Mvc5\View\Model\ViewModel;
@@ -29,10 +30,7 @@ return [
     'Response' => Response\HttpResponse::class,
     'Response\Response' => 'Response',
 
-    'Service\Resolver\Manager' => new Hydrator(
-        ManagerResolver::class,
-        ['provider' => new ServiceManagerLink]
-    ),
+    'Service\Resolver\Manager' => new ServiceProvider(ManagerResolver::class),
 
     ViewModel::class => Model::class,
 
