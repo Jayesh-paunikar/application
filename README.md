@@ -7,7 +7,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6a19e4e3-e771-46e3-9f10-fe1c06837f43/big.png)](https://insight.sensiolabs.com/projects/6a19e4e3-e771-46e3-9f10-fe1c06837f43)  
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mvc5/framework?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)  
   
-Welcome to an enhanced php 5.5 programming environment that provides inversion of control of a web application or any function.
+Welcome to an enhanced php programming environment that provides inversion of control of a web application or any function.
   
 ##Features
 * Configuration
