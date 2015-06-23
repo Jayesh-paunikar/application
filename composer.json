@@ -1,6 +1,6 @@
 {
     "name": "mvc5/application",
-    "description": "Event Driven PHP MVC Application",
+    "description": "A PHP web application with dependency injection, events, and named arguments ",
     "license": "MIT",
     "require": {
         "php": ">=5.5.9",
