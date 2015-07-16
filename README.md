@@ -31,10 +31,10 @@ All of the components require dependency injection and use [`Configuration`](htt
 The [symfony/HttpFoundation](https://github.com/symfony/HttpFoundation) `Request` and `Response` objects are used in the <a href="https://github.com/mvc5/application">mvc5/application</a>. Dependency injection shows that components do not require any knowledge of the `Request` object. However, currently the `Response` object must implement the [`Response`](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) interface so that its status and content can be set. Its content must allow any positive value and may be considered as a `Response Model`.
 
 ##Maintainability
-_[View the interactive PhpMetrics report](http://mvc5.github.io/framework/phpmetrics/)_  
+_[View the interactive PhpMetrics report](http://mvc5.github.io/tests/maintainability/)_  
   
-[![](http://mvc5.github.io/framework/phpmetrics/images/maintenability.png)](http://mvc5.github.io/framework/phpmetrics/)[![](http://mvc5.github.io/framework/phpmetrics/images/evaluation.png)](http://mvc5.github.io/framework/phpmetrics/)  [![](http://mvc5.github.io/framework/phpmetrics/images/eval-report.png)](http://mvc5.github.io/framework/phpmetrics/)  
-[![](http://mvc5.github.io/framework/phpmetrics/images/custom.png)](http://mvc5.github.io/framework/phpmetrics/)[![](http://mvc5.github.io/framework/phpmetrics/images/abstractness.png)](http://mvc5.github.io/framework/phpmetrics/)
+[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-maintenability.png)](http://mvc5.github.io/tests/maintainability/)[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-evaluation.png)](http://mvc5.github.io/tests/maintainability/)  [![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-eval-report.png)](http://mvc5.github.io/tests/maintainability/)  
+[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-custom.png)](http://mvc5.github.io/tests/maintainability/)[![](https://raw.githubusercontent.com/mvc5/tests/master/public/images/phpmetric-abstractness.png)](http://mvc5.github.io/tests/maintainability/)
 
 ##Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
@@ -395,12 +395,42 @@ class Controller
 {
     use ViewModel;
 
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
     public function __invoke()
     {
         return $this->model(['message' => 'Hello World']);
         // or
         return $this->view('home', ['message' => 'Hello World']);
     }
+}
+```
+####Autowiring View Models
+In the above controller class, a `Model` can be automatically injected via [Constructor Autowiring](#Constructor Autowiring). And the name of the `Model` template can be assigned to it using a constant called `TEMPLATE_NAME`. This allows the controller to have one less responsibility so that it only has to pass the template parameters to the `Model` via the `model` method. E.g
+```
+namespace Home;
+
+use Mvc5\View\Model\Base;
+use Mvc5\View\Model\Plugin;
+use Mvc5\View\Model\ViewModel;
+use Mvc5\View\ViewPlugin;
+
+class Model
+    implements Plugin, ViewModel
+{
+    /**
+     *
+     */
+    use Base;
+    use ViewPlugin;
+
+    /**
+     *
+     */
+    const TEMPLATE_NAME = 'home';
 }
 ```
 ##Controller Action
