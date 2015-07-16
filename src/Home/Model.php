@@ -15,4 +15,9 @@ class Model
      */
     use Base;
     use ViewPlugin;
+
+    /**
+     *
+     */
+    const TEMPLATE_NAME = 'home';
 }

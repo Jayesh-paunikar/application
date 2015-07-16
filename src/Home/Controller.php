@@ -3,7 +3,6 @@
 namespace Home;
 
 use Mvc5\View\ViewModel as View;
-use Mvc5\View\Model\ViewModel;
 use Request\Request;
 use Response\Response;
 
@@ -16,19 +15,18 @@ class Controller
     use View;
 
     /**
-     * @param ViewModel $model
+     * @param Model $model
      */
-    public function __construct(ViewModel $model)
+    public function __construct(Model $model)
     {
         $this->model = $model;
-        $model && !$model->path() && $model->template('home');
     }
 
     /**
      * @param Response $hint
      * @param Request $request
      * @param array $args
-     * @return ViewModel
+     * @return Model
      */
     public function __invoke(Response $hint, Request $request, array $args = [])
     {
