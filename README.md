@@ -270,7 +270,7 @@ This allows the [`ServiceManager`](https://github.com/mvc5/framework/blob/master
 
 When a service is called by the service manager's [`Configuration`](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) interface, it will check if the service exists, and if it does not, it will use its configuration to create a new service. Configuration values can also be actual values e.g `'Request' => new HttpRequest($_GET, $_POST, $_SERVER ...)`.
 
-They can also be strings that specify the `FQCN` of the class to instantiate. However, since no dependencies are specified these classes cannot require any constructor arguments unless they are passed as arguments to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) when calling the service, i.e. via either the `create` or `get` methods e.g `$sm->get('HomeController', [new Dependency('HomeManager')])`.
+They can also be strings that specify the `FQCN` of the class to instantiate and their dependencies can be automatically injected via [Constructor Autowiring](#Constructor Autowiring). Constructor arguments can also be passed as arguments to the [`ServiceManager`](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) when calling the service via the `create` or `get` method, e.g `$sm->get('HomeController', [new Dependency('HomeManager')])`.
 ```php
 'Route\Match\Wildcard' => Route\Match\Wildcard\Wildcard::class,
 ```
