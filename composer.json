@@ -8,7 +8,7 @@
         "mvc5/framework": "dev-master"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "": "./src"
         }
     },
