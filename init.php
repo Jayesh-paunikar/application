@@ -73,6 +73,8 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/ServiceFact
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Factory/Factory.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/ServiceManager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/Manager.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceProvider/Provider.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceProvider/ServiceProvider.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Definition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/RouteDefinition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceConfig/ServiceConfiguration.php';
@@ -178,6 +180,11 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Plugin/RoutePlugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/RouteService.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Generator/GenerateRoute.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Plugin/Plugin.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Event/Creator.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Event/Create.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Event/Args.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Event/Dispatcher.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Service/Resolver/Event/Dispatch.php';
 
 /**
  *
@@ -203,8 +210,8 @@ include __DIR__ . '/src/Response/HttpResponse.php';
  *
  */
 //include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Model.php';
-//include __DIR__ . '/src/Home/Home.php';
 //include __DIR__ . '/src/Home/Controller.php';
+//include __DIR__ . '/src/Home/Model.php';
 
 /**
  *

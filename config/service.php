@@ -15,6 +15,8 @@ use Service\Config\Manager\Manager as ServiceManager;
 use Service\Resolver\Manager\Resolver as ManagerResolver;
 
 return [
+    'Blog' => Blog\Controller::class,
+
     /*'Home' => new Service(
         Home\Controller::class,[]
         //[new Service(Home\Model::class,['home'])],
@@ -34,6 +36,6 @@ return [
 
     ViewModel::class => Model::class,
 
-    'View\Manager' => new ServiceManager(ViewManager::class)
+    //'View\Manager' => new ServiceManager(ViewManager::class)
 
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/service.php';

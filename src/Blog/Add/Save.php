@@ -1,10 +1,10 @@
 <?php
 
-namespace Blog\Controller;
+namespace Blog\Add;
 
 use Mvc5\View\Model\ViewModel;
 
-class Add
+class Save
 {
     /**
      * @param ViewModel $model

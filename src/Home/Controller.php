@@ -7,7 +7,6 @@ use Request\Request;
 use Response\Response;
 
 class Controller
-    implements Home
 {
     /**
      *
@@ -30,6 +29,6 @@ class Controller
      */
     public function __invoke(Response $hint, Request $request, array $args = [])
     {
-        return $this->model($args + ['args' => [__FUNCTION__]]);
+        return $this->model(['args' => [__FUNCTION__]] + $args);
     }
 }

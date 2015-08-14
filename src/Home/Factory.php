@@ -7,7 +7,6 @@ use Mvc5\Service\Factory\Base;
 use Mvc5\View\Manager\ViewManager;
 
 class Factory
-    implements HomeFactory
 {
     /**
      *

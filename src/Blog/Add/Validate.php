@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Controller;
+namespace Blog\Add;
 
 use Mvc5\View\ViewModel;
 use Mvc5\View\Model\ViewModel as Model;

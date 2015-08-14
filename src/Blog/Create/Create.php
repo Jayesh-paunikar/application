@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog;
+namespace Blog\Create;
 
 use Mvc5\Event\Base;
 use Mvc5\Event\Event;

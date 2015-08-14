@@ -4,14 +4,18 @@
  */
 
 return [
-    'name'       => 'home', //a name is required for the url plugin used in view templates
+    'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
-    'controller' => 'Home\Controller', //callable __invoke() method
+    'controller' => 'Home\Controller', //callable
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => '@Blog\Controller\Respond.respond', //call specific function
+            'controller' => '@Blog.test', //specific method
             'children' => [
+                'remove' => [
+                    'route' => '/remove',
+                    'controller' => '@blog:remove'
+                ],
                 'create' => [
                     'route'      => '/:author[/:category]',
                     'defaults'   => [
@@ -19,7 +23,10 @@ return [
                         'category' => 'web'
                     ],
                     'wildcard'   => false,
-                    'controller' => '@blog:create',
+                    'controller' => '@blog:create', //call event
+                    //'controller'  => function($request) { //named args
+                        //var_dump($request->getPathInfo());
+                    //},
                     'constraints' => [
                         'author'   => '[a-zA-Z0-9_-]*',
                         'category' => '[a-zA-Z0-9_-]*'
