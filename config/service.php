@@ -8,6 +8,7 @@ use Mvc5\Service\Config\Hydrator\Hydrator;
 use Mvc5\Service\Config\ServiceManagerLink\ServiceManagerLink;
 use Mvc5\Service\Config\Service\Service;
 use Mvc5\Service\Config\ServiceProvider\ServiceProvider;
+use Mvc5\Service\Config\Param\Param;
 use Mvc5\View\Manager\Manager as ViewManager;
 use Mvc5\View\Model\Model;
 use Mvc5\View\Model\ViewModel;
@@ -15,7 +16,8 @@ use Service\Config\Manager\Manager as ServiceManager;
 use Service\Resolver\Manager\Resolver as ManagerResolver;
 
 return [
-    'Blog' => Blog\Controller::class,
+    //'Blog' => Blog\Controller::class,
+    'Blog' => new Service(Blog\Controller::class, ['template' => new Param('templates.blog')]),
 
     /*'Home' => new Service(
         Home\Controller::class,[]

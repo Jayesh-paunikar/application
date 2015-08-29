@@ -9,9 +9,19 @@ class Controller
      */
     protected $model;
 
-    public function __construct(Model $model)
+    /**
+     * @var string
+     */
+    protected $template;
+
+    /**
+     * @param Model $model
+     * @param $template
+     */
+    public function __construct(Model $model, $template)
     {
-        $this->model = $model;
+        $this->model    = $model;
+        $this->template = $template;
     }
 
     /**
@@ -19,6 +29,8 @@ class Controller
      */
     public function test()
     {
+        $this->model->template($this->template);
+
         return $this->model;
     }
 }
