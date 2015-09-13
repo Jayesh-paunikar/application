@@ -120,6 +120,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/ManageControlle
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Controller/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Controller/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/ControllerManager.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Controller/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/Plugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Model/ViewModel.php';
@@ -147,6 +148,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Layout/Renderer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/View/Render.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/RenderView.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/ViewManager.php';
+include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/View/Renderer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/View/Render/Args.php';
@@ -163,6 +165,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ManageResponse.ph
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/Dispatch.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc/Response/Dispatcher.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/ResponseManager.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Manager/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Dispatch/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Dispatch/DispatchResponse.php';

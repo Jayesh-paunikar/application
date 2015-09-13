@@ -19,15 +19,15 @@ return [
     //'Blog' => Blog\Controller::class,
     'Blog' => new Service(Blog\Controller::class, ['template' => new Param('templates.blog')]),
 
-    /*'Home' => new Service(
-        Home\Controller::class,[]
-        //[new Service(Home\Model::class,['home'])],
-        //['setModel' => new Service('Home\Model', ['home'])]
+    /*'Home\Controller' => new Service(
+        Home\Controller::class,
+        [new Service(Home\Model::class, ['home'])],
+        ['setModel' => new Service('Home\Model', ['home'])]
     ),*/
 
-    //'Home\Model' => new Service(Home\Model::class,['home']),
+    //'Home\Model' => new Service(Home\Model::class, ['home']),
 
-    //'Home' => new Factory(Home\Factory::class),
+    //'Home\Controller' => new Factory(Home\Factory::class),
 
     'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
