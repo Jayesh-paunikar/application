@@ -76,6 +76,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/Manager/Manager.php
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceProvider/Provider.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceProvider/ServiceProvider.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Definition.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Base.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/RouteDefinition.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceConfig/ServiceConfiguration.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config/ServiceConfig/ServiceConfig.php';
