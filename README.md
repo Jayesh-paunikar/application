@@ -210,7 +210,7 @@ $route->set(Route::PATH, '/home');
 ```
 
 ## Routes
-A [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php) [definiton](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) is a [configuration](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that can also be [configured](https://github.com/mvc5/application/blob/master/config/route.php) as an array, and contains the properties required to [match](https://github.com/mvc5/framework/blob/master/config/event.php#L30) a [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php). Before [matching](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php), if the [definiton](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) does not have a [regex](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php#L56), it will be [compiled](https://github.com/mvc5/framework/blob/master/src/Route/Builder/Base.php#L87) against the [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php)'s request uri [path](https://github.com/mvc5/framework/blob/master/src/Route/Route.php#L51). Each aspect of [matching](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php) a [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php) has a dedicated function, e.g. [scheme](https://github.com/mvc5/framework/blob/master/src/Route/Match/Scheme/Scheme.php), [hostname](https://github.com/mvc5/framework/blob/master/src/Route/Match/Hostname/Hostname.php), [path](https://github.com/mvc5/framework/blob/master/src/Route/Match/Path/Path.php), [method](https://github.com/mvc5/framework/blob/master/src/Route/Match/Method/Method.php), [wildcard](https://github.com/mvc5/framework/blob/master/src/Route/Match/Wildcard/Wildcard.php), and any other function can be [configured](https://github.com/mvc5/application/blob/master/config/route.php) for the [route match event](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
+A [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php) [definiton](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) is a [configuration](https://github.com/mvc5/framework/blob/master/src/Config/Configuration.php) object that can also be [configured](https://github.com/mvc5/application/blob/master/config/route.php) as an array, and contains the properties required to [match](https://github.com/mvc5/framework/blob/master/config/event.php#L30) a [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php). Before [matching](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php), if the [definiton](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) does not have a [regex](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php#L56), it will be [compiled](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Build/Base.php#L83) against the [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php)'s request uri [path](https://github.com/mvc5/framework/blob/master/src/Route/Route.php#L51). Each aspect of [matching](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php) a [route](https://github.com/mvc5/framework/blob/master/src/Route/Route.php) has a dedicated function, e.g. [scheme](https://github.com/mvc5/framework/blob/master/src/Route/Match/Scheme/Scheme.php), [hostname](https://github.com/mvc5/framework/blob/master/src/Route/Match/Hostname/Hostname.php), [path](https://github.com/mvc5/framework/blob/master/src/Route/Match/Path/Path.php), [method](https://github.com/mvc5/framework/blob/master/src/Route/Match/Method/Method.php), [wildcard](https://github.com/mvc5/framework/blob/master/src/Route/Match/Wildcard/Wildcard.php), and any other function can be [configured](https://github.com/mvc5/application/blob/master/config/route.php) for the [route match event](https://github.com/mvc5/framework/blob/master/src/Route/Match/Match.php).
 
 In order to [build](https://github.com/mvc5/framework/blob/master/src/Route/Generator/Generator.php#L47) a url using the [route plugin](https://github.com/mvc5/framework/blob/master/src/Route/Plugin/Plugin.php), e.g. as a [view helper plugin](https://github.com/mvc5/framework/blob/master/src/View/ViewPlugin.php), the [base route](https://github.com/mvc5/application/blob/master/config/route.php#L7) must have a name, which is typically the homepage for /, e.g [home](https://github.com/mvc5/application/blob/master/config/route.php#L7), or it can specify its own, e.g /application. [Child](https://github.com/mvc5/application/blob/master/config/route.php#L10) routes except for the first level, will automatically have their parent name [prepended](https://github.com/mvc5/framework/blob/master/src/Route/Router/Router.php#L61) to their name, e.g blog/create. First level routes will not have the [base route](https://github.com/mvc5/application/blob/master/config/route.php#L7) prepended as it keeps their name simpler when [specifying](https://github.com/mvc5/application/blob/master/view/blog/create.phtml#L2) which [route definition](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) to [build](https://github.com/mvc5/framework/blob/master/src/Route/Generator/Generator.php#L47), e.g. blog instead of home/blog.
 
@@ -222,7 +222,7 @@ Constraints have named keys that match their corresponding [regex](https://githu
 
 Custom [definitons](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) can also be configured by adding its [class](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php#L21) name to the array, or the configuration itself can be a [definiton](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) object.   
 
-The [call](https://github.com/mvc5/framework/blob/master/src/Route/Manager/Manager.php#L32) to create a new route [definition](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) uses the alias [route:create](https://github.com/mvc5/framework/blob/master/config/alias.php#L15) so that if necessary, further customizations can be made by changing its [service configuration](https://github.com/mvc5/framework/blob/master/config/service.php#L100).  
+The [call](https://github.com/mvc5/framework/blob/master/src/Route/Manager/Manager.php#L32) to create a new route [definition](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php) uses the alias [route:definition](https://github.com/mvc5/framework/blob/master/config/alias.php#L15) so that if necessary, further customizations can be made by changing its [service configuration](https://github.com/mvc5/framework/blob/master/config/service.php#L100).  
 
 ```php
 return [
@@ -449,10 +449,10 @@ When a class is [created](https://github.com/mvc5/framework/blob/master/src/Serv
         ['setViewManager' => new Dependency('View\Manager')]
     ),    
     'Request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
-    'Route\Builder'   => Route\Builder\Builder::class,
+    'Route\Definition' => Route\Definition\Route\Route::class,
     'Route\Generator' => new Service(
         Route\Generator\Generator::class,
-        [new Param('routes'), new Dependency('Route\Builder')]
+        [new Param('routes'), new Dependency('Route\Definition')]
     )        
 ];
 ```
@@ -600,16 +600,16 @@ Each plugin has a configuration specific to its own use and they are resolved ea
 
 ```php
 return [
-    'blog:create'  => new Service('Blog\Create'),
-    'config'       => new Dependency('Config'),
-    'layout'       => new Dependency('Layout'),
-    'request'      => new Dependency('Request'),
-    'response'     => new Dependency('Response'),
-    'route:create' => new Dependency('Route\Create'),
-    'sm'           => new Dependency('Service\Manager'),
-    'url'          => new Dependency('Route\Plugin'),
-    'web'          => new Service('Mvc'),
-    'vm'           => new Dependency('View\Manager')
+    'blog:create'      => new Service('Blog\Create'),
+    'config'           => new Dependency('Config'),
+    'layout'           => new Dependency('Layout'),
+    'request'          => new Dependency('Request'),
+    'response'         => new Dependency('Response'),
+    'route:definition' => new Dependency('Route\Definition'),
+    'sm'               => new Dependency('Service\Manager'),
+    'url'              => new Dependency('Route\Plugin'),
+    'web'              => new Service('Mvc'),
+    'vm'               => new Dependency('View\Manager')
 ];
 ```
 
