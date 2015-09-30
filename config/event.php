@@ -27,7 +27,8 @@ return [
     ],
 
     'Service\Provider' => [
-        'Service\Resolver\Manager'
+        'Service\Resolver\Manager',
+        'Service\DefaultResolver' //throws exception
     ],
 
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/event.php';
