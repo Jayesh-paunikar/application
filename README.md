@@ -87,12 +87,10 @@ include __DIR__ . '/../vendor/autoload.php';
 ```
 
 ```php
-use Mvc5\Service\Container\Container;
-
 $config = [
     'alias'     => include __DIR__ . '/alias.php',
     'events'    => include __DIR__ . '/event.php',
-    'services'  => new Container(include __DIR__ . '/service.php'),
+    'services'  => include __DIR__ . '/service.php',
     'routes'    => include __DIR__ . '/route.php',
     'templates' => include __DIR__ . '/templates.php'
 ];
@@ -110,7 +108,7 @@ new App(include __DIR__ . '/../vendor/mvc5/framework/config/config.php')->call('
 ```
 
 ## Console Application
-A simple [console application](https://github.com/mvc5/application/blob/master/src/Console/Example.php) can be created by passing the [command line arguments](http://php.net/manual/en/reserved.variables.argv.php) to the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) [call](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L63) method. E.g
+A simple [console application](https://github.com/mvc5/application/blob/master/src/Console/Example.php) can be created by passing the [command line arguments](http://php.net/manual/en/reserved.variables.argv.php) to the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) [call](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L63) method.
 
 ```php
 ./app.php 'Console\Example' Monday January
@@ -122,7 +120,7 @@ include './init.php';
 (new App('./config/config.php'))->call($argv[1], array_slice($argv, 2));
 ```
 
-The first argument is the name of the function and the remaining arguments are its parameters. E.g.
+The first argument is the name of the function and the remaining arguments are its parameters.
 
 ```php
 namespace Console;
@@ -146,7 +144,7 @@ class Example
 }
 ```
 
-Read more about <a href="#dependency-injection">dependency injection</a> and <a href="#constructor-autowiring">constructor autowiring</a> on how the dependencies of a function can be resolved. Note, that it is also possible to create a console application similar to a [web application](#web-application) with [routes](#routes) and controllers.
+Read more about <a href="#dependency-injection">dependency injection</a> and <a href="#constructor-autowiring">constructor autowiring</a> for how the dependencies of a function can be resolved. Note, that it is also possible to create a console application similar to a [web application](#web-application) with [routes](#routes) and controllers.
 
 ## Environment Aware Configurations
 Development configurations can override production values using [array_merge](http://php.net/manual/en/function.array-merge.php) since each [configuration](https://github.com/mvc5/application/blob/master/config/config.php) file returns an array of values. E.g
@@ -216,7 +214,7 @@ In order to [build](https://github.com/mvc5/framework/blob/master/src/Route/Gene
 
 The [controller](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php#L26) param must be a service configuration value (which includes real values) that must [resolve](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L186) to a [callable](http://php.net/manual/en/language.types.callable.php) type. If no [service configuration](https://github.com/mvc5/application/blob/master/config/service.php) for the controller exists, but its class does, a new instance will be created with [constructor autowiring](#constructor-autowiring).
 
-Controller configurations that are prefixed with an [@](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Args.php#L18) will be [called](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L63), so they must [resolve](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L186) to a callable type or be the name of an event. In the example below, [@Blog.test](https://github.com/mvc5/application/blob/master/config/route.php#L13) will call the [test](https://github.com/mvc5/application/tree/master/src/Blog/Controller.php) method on a shared instance of the [Blog](https://github.com/mvc5/application/tree/master/src/Blog/Controller.php) controller. [@blog.remove](https://github.com/mvc5/application/blob/master/config/route.php#L15) will call the [blog:remove](https://github.com/mvc5/application/blob/master/config/event.php#L13) event. And [@blog:create](https://github.com/mvc5/application/blob/master/config/alias.php#L9) is an [alias](https://github.com/mvc5/application/blob/master/config/alias.php#L9) to a [blog create](https://github.com/mvc5/application/blob/master/src/Blog/Create.php) event.
+Controller configurations that are prefixed with an [@](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Args.php#L18) will be [called](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L63), so they must [resolve](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L186) to a callable type or be the name of an event. In the example below, [@Blog.test](https://github.com/mvc5/application/blob/master/config/route.php#L13) will call the [test](https://github.com/mvc5/application/tree/master/src/Blog/Controller.php) method on an instance of the [Blog](https://github.com/mvc5/application/tree/master/src/Blog/Controller.php) controller. [@blog.remove](https://github.com/mvc5/application/blob/master/config/route.php#L15) will call the [blog:remove](https://github.com/mvc5/application/blob/master/config/event.php#L13) event. And [@blog:create](https://github.com/mvc5/application/blob/master/config/alias.php#L9) is an [alias](https://github.com/mvc5/application/blob/master/config/alias.php#L9) to a [blog create](https://github.com/mvc5/application/blob/master/src/Blog/Create.php) event.
 
 Constraints have named keys that match their corresponding [regex](https://github.com/mvc5/framework/blob/master/src/Route/Definition/Definition.php#L56) parameter and optional parameters are enclosed with square brackets `[]`. This implementation is from the [DASPRiD/Dash](https://github.com/DASPRiD/Dash) router project.
 
@@ -287,25 +285,6 @@ class Controller
 ```
 
 The [view model trait](https://github.com/mvc5/framework/blob/master/src/View/ViewModel.php) has two methods, [model](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L28) and [view](https://github.com/mvc5/framework/blob/master/src/View/Model/Service/ViewModel.php#L44) that allows the controller to choose which one to use depending on whether the name of the template is specified. Both methods accept an array of variables as the data for the [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php).
-
-## Controller Action
-The [controller action](https://github.com/mvc5/framework/blob/master/src/Service/Config/ControllerAction/ControllerAction.php) service configuration is for an [action controller event](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) which accepts an array of functions that are called with [named argument plugin](#named-arguments-and-plugins) support. If the response from the function is a [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php), it will be <a href="https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php#L50">stored</a> and become available to the remaining functions. If the function returns a [response](https://github.com/mvc5/framework/blob/master/src/Response/Response.php), then the event is <a href="https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php#L52">stopped</a> and the [response](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) is returned.
-
-```php
-'controller' => new ControllerAction([
-    function(array $args = []) {
-        return new Model(null, ['args' => $args]);
-    },
-    function(Model $model) {
-        $model['__CONTROLLER__'] = __FUNCTION__;
-        return $model;
-    },
-    function(Model $model) {
-        $model[$model::TEMPLATE] = 'home';
-        return $model;
-    },
-]),
-```
 
 ## Rendering View Models
 When the content of the [response](https://github.com/mvc5/framework/blob/master/src/Response/Response.php) is a [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php), it is [rendered](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) prior to [sending](https://github.com/mvc5/framework/blob/master/src/Response/Send/Sender.php) the [response](https://github.com/mvc5/framework/blob/master/src/Response/Response.php). Additionally, and [prior](https://github.com/mvc5/framework/blob/master/config/event.php#L19) to [rendering](https://github.com/mvc5/framework/blob/master/src/View/Renderer/RenderView.php) the [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php), if a [layout model](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php) is to be used, it will [add](https://github.com/mvc5/framework/blob/master/src/Mvc/Layout/Renderer.php#L25) the current [view model](https://github.com/mvc5/framework/blob/master/src/View/Model/ViewModel.php) to itself as its child content and the [layout model](https://github.com/mvc5/framework/blob/master/src/View/Layout/LayoutModel.php) is then set as the content of the [response](https://github.com/mvc5/framework/blob/master/src/Response/Response.php).
@@ -380,9 +359,9 @@ function dispatch(callable $controller, array $args = [])
 }
 ```
 
-For example, rather than directly invoking the controller, the [dispatch](https://github.com/mvc5/framework/blob/master/src/Controller/Manager/Manager.php#L47) method triggers the [controller dispatch](https://github.com/mvc5/framework/blob/master/src/Controller/Dispatch/Dispatch.php) event and returns a result. This allows additional functions to be [configured](https://github.com/mvc5/framework/blob/master/config/event.php#L7) so that they can be invoked before and after [calling](https://github.com/mvc5/framework/blob/master/src/Controller/Dispatch/Dispatcher.php) the controller. In the above, the first parameter of the trigger method is a service configuration array containing the event class name and its named constructor arguments. This parameter can be a string, i.e the name of the event, an array (or a [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php)) service configuration, or an event object.   
+For example, rather than directly invoking the controller, the [dispatch](https://github.com/mvc5/framework/blob/master/src/Controller/Manager/Manager.php#L47) method triggers the [controller dispatch](https://github.com/mvc5/framework/blob/master/src/Controller/Dispatch/Dispatch.php) event and returns a result. This allows additional functions to be [configured](https://github.com/mvc5/framework/blob/master/config/event.php#L7) so that they can be invoked before and after [calling](https://github.com/mvc5/framework/blob/master/src/Controller/Dispatch/Dispatcher.php) the controller. In the above, the first parameter of the [trigger](https://github.com/mvc5/framework/blob/master/src/Event/Manager/ManageEvent.php#L53) method is a service configuration array containing the event class name and its named constructor arguments. This parameter can be a string, i.e the name of the event, an array (or a [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php)) service configuration, or an event object.   
 
-When the first parameter of the trigger method is a string that does not have a service configuration, then the result of the last function called will be returned as the result for that event. This causes the event to be a list of functions whose iteration cannot be stopped and its result cannot be controlled from outside of the functions being called. In order to allow the event to be [stopped](https://github.com/mvc5/framework/blob/master/src/Event/Event.php#L23) and for better inversion of control, an event class should be used.
+When the first parameter of the [trigger](https://github.com/mvc5/framework/blob/master/src/Event/Manager/ManageEvent.php#L53) method is a string that does not have a service configuration, then the result of the last function called will be returned as the result for that event. This causes the event to be a list of functions whose iteration cannot be stopped and its result cannot be controlled from outside of the functions being called. In order to allow the event to be [stopped](https://github.com/mvc5/framework/blob/master/src/Event/Event.php#L23) and for better inversion of control, an event class should be used.
 
 ```php
 class Dispatch
@@ -429,7 +408,7 @@ Events are <a href="https://github.com/mvc5/application/blob/master/config/event
 ]),
 ```
 
-The event class itself can be [traversable](http://php.net/manual/en/class.traversable.php) and contain its own configuration. See the [action controller](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) event as an [example](#controller-action). 
+The event class itself can be [traversable](http://php.net/manual/en/class.traversable.php) and contain its own configuration. See the [action controller](https://github.com/mvc5/framework/blob/master/src/Controller/Action/Action.php) event as an [example](#controlleractionhttpsgithubcommvc5frameworkblobmastersrcserviceconfigcontrolleractioncontrolleractionphp). 
 
 ## Dependency Injection
 When a class is [created](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L29) and it can not be [autowired](#constructor-autowiring), then a service configuration is required. Different types of configurations can be used depending on the requirements of the class. These configurations can be either a string, an array, an anonymous function, a [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php) type or a real value. An [array](https://github.com/mvc5/framework/blob/master/config/service.php) is used for the configuration of a [service container](https://github.com/mvc5/framework/blob/master/src/Service/Container/Container.php).
@@ -454,7 +433,7 @@ When a class is [created](https://github.com/mvc5/framework/blob/master/src/Serv
 ];
 ```
 
-A string configuration is used to map a short name or an interface to a class name. Because it is a string configuration, the class either has no dependencies or it can be [autowired](#constructor-autowiring). An array configuration is used when there are required dependencies and its configuration can be further reduced by using array key names for the arguments that can not be [autowired](#constructor-autowiring). An anonymous function is used when the class instantiation requires custom logic and various [plugins](https://github.com/mvc5/framework/blob/master/config/alias.php) are available as [named arguments](#named-arguments-and-plugins).
+A string configuration is used to map a class name, or a short name, or an interface name to a fully qualified class name, or another configuration name. Because it is a string configuration, the class either has no dependencies or it can be [autowired](#constructor-autowiring). An array configuration is used when there are required dependencies and its configuration can be further reduced by using array key names for the arguments that can not be [autowired](#constructor-autowiring). An anonymous function is used when the class instantiation requires custom logic and various [plugins](https://github.com/mvc5/framework/blob/master/config/alias.php) are available as [named arguments](#named-arguments-and-plugins).
 
 However, when the dependencies of a class require their own dependencies, then the depth of the dependency graph increases. In this case, a class object can also be created using a resolvable service configuration instead of using an anonymous function, factory or service provider method. This provides inversion of control and is a configuration domain specific language. Each configuration must implement the [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php) type interface so that the system can distinguish them from other objects and invoke their associated function. These configurations can be used by each other and chained together to form a composite set of [resolvable service configurations](#resolvable-service-configurations).
 
@@ -467,9 +446,9 @@ Home\Model::class => Home\Model::class //not allowed
 ## Constructor Autowiring
 When the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) [creates](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L29) a class that either
 
-* Does not have a service configuration
-* No arguments are passed to the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php), or
-* If the arguments passed are <a href="#named-arguments-and-plugins">named</a>,
+* does not have a service configuration
+* or no arguments are passed to the [create](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L29) method of the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php),
+* or if the arguments passed are <a href="#named-arguments-and-plugins">named</a>,
 
 then the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) will attempt to determine the required dependencies of the class constructor by their type hint.
 
@@ -510,11 +489,13 @@ A [calls](https://github.com/mvc5/framework/blob/master/src/Service/Config/Calls
 
 ### [Child](https://github.com/mvc5/framework/blob/master/src/Service/Config/Child/Child.php)
 ```php
-'Factory'    => new Service(null, [new ServiceManagerLink]),
-'My\Service' => new Child(My\Service::class, 'Factory'),
+'Controller'      => new Service(null, [new ServiceManagerLink]),
+'IndexController' => new Child(IndexController::class, 'Controller'),
 ```
 
 A [child](https://github.com/mvc5/framework/blob/master/src/Service/Config/Child/Child.php) configuration is [used](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L346) to extend a parent configuration. The first parameter is the name of the class to create and the second parameter is the name of the parent configuration to use.
+
+Custom child configurations can also be created. This allows another [config](#confighttpsgithubcommvc5frameworkblobmastersrcserviceconfigconfigphp) configuration, such as a [service](#servicehttpsgithubcommvc5frameworkblobmastersrcserviceconfigserviceservicephp) configuration, to be used without having to specify the name of its parent configuration. Examples are the [controller](#controllerhttpsgithubcommvc5frameworkblobmastersrcserviceconfigcontrollercontrollerphp), [factory](#factoryhttpsgithubcommvc5frameworkblobmastersrcserviceconfigfactoryfactoryphp), [form](#formhttpsgithubcommvc5frameworkblobmastersrcserviceconfigformformphp) and [manager](#managerhttpsgithubcommvc5frameworkblobmastersrcserviceconfigmanagermanagerphp) configurations. 
 
 ### [Config](https://github.com/mvc5/framework/blob/master/src/Service/Config/Config.php)
 ```php
@@ -530,7 +511,7 @@ A [config](https://github.com/mvc5/framework/blob/master/src/Service/Config/Conf
 
 ### [ConfigLink](https://github.com/mvc5/framework/blob/master/src/Service/Config/ConfigLink/ConfigLink.php)
 ```php
-'My\Service' => new Service(My\Service::class, 'config' => new ConfigLink)
+'My\Service' => new Service(My\Service::class, ['config' => new ConfigLink])
 ```
  
 The [config link](https://github.com/mvc5/framework/blob/master/src/Service/Config/ConfigLink/ConfigLink.php) configuration is [used](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L370) to provide the main configuration array or object. 
@@ -691,21 +672,26 @@ A [service manager link](https://github.com/mvc5/framework/blob/master/src/Servi
 'Service\Resolver\Manager' => new ServiceProvider(ManagerResolver::class)
 ```
 
-A [service provider](https://github.com/mvc5/framework/blob/master/src/Service/Config/ServiceProvider/ServiceProvider.php) configuration is similar to a [service](#servicehttpsgithubcommvc5frameworkblobmastersrcserviceconfigserviceservicephp) configuration object. It adds a call to a method named [provider](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Provider.php#L77) which is used to set the current service manager for the service provider class to use.  
+A [service provider](https://github.com/mvc5/framework/blob/master/src/Service/Config/ServiceProvider/ServiceProvider.php) configuration is similar to a [service](#servicehttpsgithubcommvc5frameworkblobmastersrcserviceconfigserviceservicephp) configuration object. It adds a call to a method named [provider](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Provider.php#L77) which is used to set the current service manager for the service provider class to use. It's purpose is to return a callable function that when invoked will inspect the configuration passed to it and returns it if it can not or resolves it by returning a new instance of the class object.  
 
 ## Custom Service Providers
-[Custom](https://github.com/mvc5/application/blob/master/src/Service/Config/Manager/Manager.php) service configurations and [providers](https://github.com/mvc5/application/blob/master/src/Service/Resolver/Manager/Resolver.php) can also be created. These configurations must be [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php) and their respective service provider must be a callable function that has been added to the [service provider](https://github.com/mvc5/framework/blob/master/config/event.php#L45) event; it can optionally implement the [service provider](https://github.com/mvc5/framework/blob/master/src/Service/Provider/ServiceProvider.php) interface. The [service provider](https://github.com/mvc5/framework/blob/master/config/event.php#L45) event is [invoked](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L393) after it has been determined that the configuration is not one of the [default](https://github.com/mvc5/framework/tree/master/src/Service/Config) [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php) types. 
+[Custom](https://github.com/mvc5/application/blob/master/src/Service/Config/Manager/Manager.php) service configurations and [providers](https://github.com/mvc5/application/blob/master/src/Service/Resolver/Manager/Resolver.php), or [resolvers](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L332), can also be created. These configurations must be [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php) and their respective service [provider](https://github.com/mvc5/application/blob/master/src/Service/Resolver/Manager/Resolver.php), or [resolver](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L332), must be a [callable](http://php.net/manual/en/language.types.callable.php) function that has been added to the [service provider](https://github.com/mvc5/framework/blob/master/config/event.php#L45) event.
 
-For example, in the service configuration below, the view manager uses a custom [service manager configuration](https://github.com/mvc5/application/blob/master/src/Service/Config/Manager/Manager.php) 
+When the system resolves a configuration that is not one of the default [resolvable service configurations](#resolvable-service-configurations), the [service provider](https://github.com/mvc5/framework/blob/master/config/event.php#L45) event is [invoked](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L393) so that the configuration can be resolved by a [custom service provider](https://github.com/mvc5/application/blob/master/src/Service/Resolver/Manager/Resolver.php). If the configuration can not be resolved, the [default resolver](https://github.com/mvc5/framework/blob/master/src/Service/Provider/Resolver.php#L11) will throw an exception.  
+
+For example, in the service configuration below, the view manager uses a custom [manager](https://github.com/mvc5/application/blob/master/src/Service/Config/Manager/Manager.php) configuration 
 
 ```php
+use Mvc5\Service\Config\ServiceProvider\ServiceProvider;
+use Service\Config\Manager\Manager as ServiceManager;
+
 return [
     'Service\Resolver\Manager' => new ServiceProvider(ManagerResolver::class),
     'View\Manager'             => new ServiceManager(ViewManager::class)
 ];
 ```
 
-and has a corresponding [service provider](https://github.com/mvc5/application/blob/master/src/Service/Resolver/Manager/Resolver.php) function that is configured as the [service resolver manager](https://github.com/mvc5/application/blob/master/src/Service/Resolver/Manager/Resolver.php) for the [service provider](https://github.com/mvc5/framework/blob/master/config/event.php#L45) event.
+and its corresponding [service provider](https://github.com/mvc5/application/blob/master/src/Service/Resolver/Manager/Resolver.php) function is added to configuration of the [service provider event](https://github.com/mvc5/framework/blob/master/config/event.php#L45).
 
 ```php
 return [
@@ -715,8 +701,6 @@ return [
     ],
 ]
 ```
-
-If the custom service configuration can not be resolved, the [default resolver](https://github.com/mvc5/framework/blob/master/src/Service/Provider/Resolver.php#L11) will throw an exception.
 
 ## Named Arguments and Plugins
 This contrived example demonstrates named arguments and plugins.
@@ -732,7 +716,7 @@ $response = $web->call(
 var_dump($response instanceof Response);
 ```
 
-The application is instantiated and a call is made to the valid method of the controller class with its parameters resolved from either the array of arguments explicitly passed to the [call](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L58) method or by the [call](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L58) method retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
+The application is instantiated and a [call](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L63) is made to the valid method of the controller class with its parameters resolved from either the array of arguments explicitly passed to the [call](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L58) method or by the [call](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L58) method retrieving a plugin with the same name as the parameter. Methods can be chained together and each will have their parameters resolved similarly.
 
 ```php
 class Controller
@@ -792,8 +776,8 @@ $response = $web->call(
 ```
 
 ## Plugins and Aliases
-The parameter names of the additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the [call separator](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Args.php#L23) `.` to any positive value. If the value is a [service configuration](https://github.com/mvc5/framework/blob/master/src/Service/Config/Configuration.php) object, then it will be resolved and its value returned.
-Each plugin has a configuration specific to its own use and they are resolved each time they are used. This enables them to be used in various ways for different purposes, e.g to provide a value, or to trigger an event, or to call a particular service method.
+The parameter names of the additional arguments can be aliases or service names. An alias maps a string of varying characters excluding the [call separator](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Args.php#L23) `.` to any positive value. If the value is [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php), it will be resolved and its result returned.
+Each plugin has a configuration specific to its own use and they are [resolved](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L333) each time they are used. This allows them to be used in various ways for different purposes, e.g to provide a value, or to trigger an event, or to call a particular service method.
 
 ```php
 return [
