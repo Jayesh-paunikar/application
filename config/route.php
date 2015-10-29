@@ -10,11 +10,11 @@ return [
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => '@Blog.test', //specific method
+            'controller' => '@Blog-Controller.test', //specific method
             'children' => [
                 'remove' => [
                     'route' => '/remove',
-                    'controller' => '@blog:remove'
+                    'controller' => '@blog:remove' //call event
                 ],
                 'create' => [
                     'route'      => '/:author[/:category]',
@@ -25,7 +25,7 @@ return [
                     'wildcard'   => false,
                     'controller' => '@blog:create', //call event
                     //'controller'  => function($request) { //named args
-                        //var_dump($request->getPathInfo());
+                    //var_dump($request->getPathInfo());
                     //},
                     'constraints' => [
                         'author'   => '[a-zA-Z0-9_-]*',

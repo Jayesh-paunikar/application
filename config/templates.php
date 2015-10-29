@@ -4,7 +4,7 @@
  */
 
 return [
-    'blog'            => __DIR__ . '/../view/blog/index.phtml',
+    //'blog'            => __DIR__ . '/../view/blog/index.phtml',
     'blog:create'     => __DIR__ . '/../view/blog/create.phtml',
     'error/exception' => __DIR__ . '/../vendor/mvc5/framework/view/exception.phtml',
     'error/404'       => __DIR__ . '/../view/error/404.phtml',

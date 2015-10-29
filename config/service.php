@@ -3,6 +3,8 @@
  *
  */
 
+use Mvc5\Application\App;
+use Mvc5\Config\Config;
 use Mvc5\Service\Config\Factory\Factory;
 use Mvc5\Service\Config\Hydrator\Hydrator;
 use Mvc5\Service\Config\ServiceManagerLink\ServiceManagerLink;
@@ -17,7 +19,21 @@ use Service\Resolver\Manager\Resolver as ManagerResolver;
 
 return [
     //'Blog' => Blog\Controller::class,
-    'Blog' => new Service(Blog\Controller::class, ['template' => new Param('templates.blog')]),
+    //'Blog' => new Service(Blog\Controller::class, ['template' => new Param('templates.blog')]),
+    'Blog2' => new Config([
+        'Create' => new Service(Blog\Create\Create::class),
+    ]),
+    'Blog' => new App([
+        'alias'  => [],
+        'events' => [],
+        'services' => [
+            'Controller' => new Service(Blog\Controller::class, ['template' => new Param('templates.blog')]),
+            'Service\Container' => []
+        ],
+        'templates' => [
+            'blog' => __DIR__ . '/../view/blog/index.phtml',
+        ]
+    ]),
 
     /*'Home\Controller' => new Service(
         Home\Controller::class,
