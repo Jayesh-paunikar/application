@@ -7,14 +7,15 @@ return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
     'controller' => 'Home\Controller', //callable
+    //'controller' => 'Blog2->Home',
     'children' => [
         'blog' => [
             'route'      => 'blog',
-            'controller' => '@Blog.test', //specific method
+            'controller' => '@Blog->Controller.test', //specific method
             'children' => [
                 'remove' => [
                     'route' => '/remove',
-                    'controller' => '@blog:remove'
+                    'controller' => '@blog:remove' //call event
                 ],
                 'create' => [
                     'route'      => '/:author[/:category]',

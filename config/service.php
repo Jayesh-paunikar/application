@@ -3,8 +3,12 @@
  *
  */
 
+use Mvc5\Application\App;
+use Mvc5\Config\Config;
+use Mvc5\Service\Config\Dependency\Dependency;
 use Mvc5\Service\Config\Factory\Factory;
 use Mvc5\Service\Config\Hydrator\Hydrator;
+use Mvc5\Service\Config\ServiceConfig\ServiceConfig;
 use Mvc5\Service\Config\ServiceManagerLink\ServiceManagerLink;
 use Mvc5\Service\Config\Service\Service;
 use Mvc5\Service\Config\ServiceProvider\ServiceProvider;
@@ -17,7 +21,34 @@ use Service\Resolver\Manager\Resolver as ManagerResolver;
 
 return [
     //'Blog' => Blog\Controller::class,
-    'Blog' => new Service(Blog\Controller::class, ['template' => new Param('templates.blog')]),
+    //'Blog' => new Service(Blog\Controller::class, ['template' => new Param('templates.blog')]),
+    'Blog2' => new Config([
+        'Create' => new Service(Blog\Create\Create::class),
+        'Home'   => 'Blog2->Home2',
+        'Home2'  => 'Home\Controller'
+    ]),
+    'Blog' => new Service(
+        App::class,
+        [
+            'config' => [
+                'alias'  => [],
+                'events' => [],
+                'services' => new Config([
+                    'Controller2' => [Blog\Controller::class, 'template' => new Param('templates.blog')],
+                    'Controller' => 'Controller2', //locally resolved
+                    'Service\Container' => [], //new Config, //local container
+                ]),
+                'templates' => [
+                    'blog' => __DIR__ . '/../view/blog/index.phtml',
+                ]
+            ]
+        ],
+        [
+            //share existing container
+            'container' => new Dependency('Service\Container'),
+            ['configure', ['Service\Container', new Dependency('Service\Container')]]
+        ]
+    ),
 
     /*'Home\Controller' => new Service(
         Home\Controller::class,
