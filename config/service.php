@@ -49,7 +49,7 @@ return [
         [
             //share existing container
             'container' => new Dependency('Service\Container'),
-            ['$service', 'configure', 'name' => 'Service\Container', 'config' => new Dependency('Service\Container')]
+            ['configure', 'Service\Container', new Dependency('Service\Container')]
         ]
     ),
 
