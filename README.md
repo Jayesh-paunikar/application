@@ -443,6 +443,9 @@ When the name of a service configuration is a <a href="https://en.wikipedia.org/
 Home\Model::class => Home\Model::class //not allowed
 ```
 
+## Service Container
+The [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) can access sub containers via the [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php) interface and allows services and other sub containers to be grouped together. See the [service](https://github.com/mvc5/application/blob/master/config/service.php) configuration in the [demo application](https://github.com/mvc5/application) for examples of how they can be configured. Values from these containers can be accessed using the arrow notation [Blog->Home](https://github.com/mvc5/application/blob/master/config/route.php#L10). A container can be either an array or an [ArrayAccess](http://php.net/manual/en/class.arrayaccess.php) object and can contain any type of value, except for null. If the value is [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php), it will be resolved by its closest parent [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php). If the container is either a [Container\Config](https://github.com/mvc5/framework/blob/master/src/Service/Container/Config.php) or a [ServiceContainer](https://github.com/mvc5/framework/blob/master/src/Service/Container/ServiceContainer.php), all of its values are considered to be service configurations and are resolved accordingly. This includes strings, arrays, and anonymous functions. If necessary, the [ServiceConfig](#serviceconfighttpsgithubcommvc5frameworkblobmastersrcserviceconfigserviceconfigserviceconfigphp) configuration can be used to retrieve their configuration value without resolving it.
+
 ## Constructor Autowiring
 When the [service manager](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ServiceManager.php) [creates](https://github.com/mvc5/framework/blob/master/src/Service/Manager/ManageService.php#L29) a class that either
 
@@ -590,7 +593,7 @@ When the array key is a string, it is [used](https://github.com/mvc5/framework/b
 ```php
 'Route\Exception\Route'  => new Hydrator(
     Route\Exception\Config::class,
-    [['set', ['controller', 'Route\Exception\Manager\Controller']], ['set', ['name', 'exception']]]
+    [['set', 'controller', 'Route\Exception\Manager\Controller'], ['set', 'name', 'exception']]
 ),
 ```
 
@@ -599,9 +602,27 @@ Alternatively, any invokable service configuration can be [used](https://github.
 ```php
 'Route\Exception\Route'  => new Hydrator(
     Route\Exception\Config::class,
-    [new Call('Response.setStatusCode', [500])]
+    [new Call('response.setStatus', [500])]
 ),
 ```
+
+When an array configuration is used, the current object is passed to the called methods with the named argument _item_. This can be changed by adding a value to the beginning of the array configuration with the name of the parameter to use.
+
+```php
+'Service'  => new Hydrator(
+    \ArrayObject::class,
+    ['$current', new Service, 'index' => 'foo', 'bar' => 'baz']
+),
+
+class Service
+{
+    function __invoke($index, $current, $bar)
+    {
+        return $current[$index] = $bar; //i.e $current['foo'] = 'baz'
+    }
+}
+```
+
 
 ### [Invokable](https://github.com/mvc5/framework/blob/master/src/Service/Config/Invokable/Invokable.php)
 ```php
@@ -653,12 +674,12 @@ A [param](https://github.com/mvc5/framework/blob/master/src/Service/Config/Param
 ```
 A [service](https://github.com/mvc5/framework/blob/master/src/Service/Config/Service/Service.php) configuration is [used](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L350) to instantiate a class object.  Its constructor requires a [resolvable](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolvable.php) configuration name and optionally, the arguments for the class constructor and a set of calls to invoke. See the [hydrator](#hydratorhttpsgithubcommvc5frameworkblobmastersrcserviceconfighydratorhydratorphp) configuration for details on how to specify the calls to invoke.  
 
-### [ServiceConfiguration](https://github.com/mvc5/framework/blob/master/src/Service/Config/ServiceConfig/ServiceConfig.php)
+### [ServiceConfig](https://github.com/mvc5/framework/blob/master/src/Service/Config/ServiceConfig/ServiceConfig.php)
 ```php
-new ServiceConfiguration('Controller\Dispatcher')
+new ServiceConfig('Controller\Dispatcher')
 ```
 
-A [service configuration](https://github.com/mvc5/framework/blob/master/src/Service/Config/ServiceConfig/ServiceConfig.php) is [used](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L382) to return another service configuration value without resolving it.
+A [service config](https://github.com/mvc5/framework/blob/master/src/Service/Config/ServiceConfig/ServiceConfig.php) is [used](https://github.com/mvc5/framework/blob/master/src/Service/Resolver/Resolver.php#L382) to return another service configuration value without resolving it.
 
 ### [ServiceManagerLink](https://github.com/mvc5/framework/blob/master/src/Service/Config/ServiceManagerLink/ServiceManagerLink.php)
 ```php
