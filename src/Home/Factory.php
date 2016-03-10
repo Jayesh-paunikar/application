@@ -1,24 +1,31 @@
 <?php
+/**
+ *
+ */
 
 namespace Home;
 
-use Mvc5\Service\Factory\Base;
-use Mvc5\View\Manager\ViewManager;
+use Mvc5\Plugin;
+use Mvc5\Service;
 
 class Factory
+    implements Service
 {
     /**
      *
      */
-    use Base;
+    use Plugin;
 
     /**
      * @param array $config
-     * @param ViewManager $vm
      * @return Controller
      */
-    public function __invoke(array $config, ViewManager $vm)
+    public function __invoke(array $config)
     {
-        return new Controller(new Model('home'));
+        /** @var Model $model */
+
+        $model = $this->plugin(Model::class, ['home']);
+
+        return new Controller($model);
     }
 }

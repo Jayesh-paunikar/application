@@ -1,21 +1,19 @@
 <?php
+/**
+ *
+ */
 
 namespace Blog\Add;
-
-use Mvc5\View\Model\ViewModel;
 
 class Save
 {
     /**
-     * @param ViewModel $model
+     * @param Model $model
      * @return mixed|void
      */
-    public function __invoke(ViewModel $model = null)
+    public function __invoke(Model $model)
     {
-        $args   = $model['args'];
-        $args[] = __CLASS__;
-
-        $model->set('args', $args);
+        $model->vars(['args' =>  array_merge([__CLASS__], $model['args'])]);
 
         return $model;
     }

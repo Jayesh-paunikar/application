@@ -3,10 +3,10 @@
  *
  */
 
-namespace Blog;
+namespace Blog\Add;
 
-use Mvc5\Model\Plugin;
 use Mvc5\Model\ViewModel;
+use Mvc5\Model\Plugin;
 
 class Model
     implements ViewModel
@@ -19,5 +19,5 @@ class Model
     /**
      *
      */
-    const TEMPLATE_NAME = 'blog';
+    const TEMPLATE_NAME = 'blog:create';
 }

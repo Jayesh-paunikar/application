@@ -2,8 +2,9 @@
 /**
  *
  */
-use Mvc5\Application\App;
-use Mvc5\Application\Args;
+//declare(strict_types = 1);
+
+use Mvc5\Web;
 
 /**
  *
@@ -25,7 +26,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-(new App(include __DIR__ . '/../config/config.php'))->call(Args::WEB);
+call_user_func(new Web(include __DIR__ . '/../config/config.php'));
 
 /**
  *

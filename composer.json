@@ -1,11 +1,11 @@
 {
     "name": "mvc5/application",
-    "description": "A PHP web application with dependency injection, events, and named arguments ",
+    "description": "A PHP 5.6 programming environment with named arguments.",
     "license": "MIT",
     "require": {
-        "php": ">=5.5.9",
+        "php": "^5.6",
         "symfony/http-foundation": "2.5.*",
-        "mvc5/framework": "dev-master"
+        "mvc5/framework": "9.*"
     },
     "autoload": {
         "psr-4": {
@@ -13,7 +13,7 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "4.8.*",
-        "mvc5/tests": "dev-master"
+        "phpunit/phpunit": "5.1.*",
+        "mvc5/tests": "4.*"
     }
 }

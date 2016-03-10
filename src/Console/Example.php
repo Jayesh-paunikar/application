@@ -1,21 +1,31 @@
 <?php
+/**
+ *
+ */
 
 namespace Console;
 
-use Mvc5\View\Model\ViewModel;
+use Home\Model;
 
 class Example
 {
     /**
-     * @var ViewModel
+     * @var Model
      */
     protected $model;
 
-    public function __construct(ViewModel $model)
+    /**
+     * @param Model $model
+     */
+    public function __construct(Model $model)
     {
         $this->model = $model;
     }
 
+    /**
+     * @param $day
+     * @param $month
+     */
     public function __invoke($day, $month)
     {
         var_dump($this->model);

@@ -4,31 +4,33 @@
  */
 
 return [
-    'blog:create' => (object) [
+    'blog:add' => (object) [
         Blog\Add\Validate::class,
         Blog\Add\Save::class,
         Blog\Add\Respond::class
     ],
-
     'blog:remove' => [
         function() {
-            ob_start();
+            return $model = '<h1>Validate</h1>';
+        },
+        function($model) {
+            return $model . '<h1>Remove</h1>';
+        },
+        function($layout, $model = null) {
+            $model .= '<h1>Respond</h1>';
 
-            echo '<h1>Validate</h1>';
-        },
-        function() {
-            echo '<h1>Remove</h1>';
-        },
-        function($layout) {
-            echo '<h1>Respond</h1>';
-            $layout->child(ob_get_clean());
+            $layout->model($model);
+
             return $layout;
         }
     ],
 
-    'Service\Provider' => [
-        'Service\Resolver\Manager',
-        'Service\DefaultResolver' //throws exception
+    'service\resolver' => [
+        function() {
+            return null;
+        },
+        'service\provider',
+        'resolver\exception'
     ],
 
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/event.php';

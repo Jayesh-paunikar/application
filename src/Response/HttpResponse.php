@@ -1,4 +1,7 @@
 <?php
+/**
+ *
+ */
 
 namespace Response;
 
@@ -29,7 +32,7 @@ class HttpResponse
                             && !is_callable(array($this->content, '__toString'))) {
 
             $msg = sprintf(
-                'The Response content must be a string or object implementing __toString(), "%s" given.',
+                'The response content must be a string or object implementing __toString(), "%s" given.',
                 gettype($this->content)
             );
 

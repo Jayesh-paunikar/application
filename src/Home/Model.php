@@ -1,23 +1,36 @@
 <?php
+/**
+ *
+ */
 
 namespace Home;
 
-use Mvc5\View\Model\Base;
-use Mvc5\View\Model\Plugin;
-use Mvc5\View\Model\ViewModel;
-use Mvc5\View\ViewPlugin;
+use Mvc5\Model\ViewModel;
+use Mvc5\Model\Plugin;
 
 class Model
-    implements Plugin, ViewModel
+    implements ViewModel
 {
     /**
      *
      */
-    use Base;
-    use ViewPlugin;
+    use Plugin;
 
     /**
      *
      */
     const TEMPLATE_NAME = 'home';
+
+    /**
+     * @var string
+     */
+    private $blogTitle = 'Blog';
+
+    /**
+     * @return string
+     */
+    private function blogTitle()
+    {
+        return $this->blogTitle;
+    }
 }

@@ -1,5 +1,5 @@
 <div class="jumbotron">
-    <h1><a href="<?= $this->url('blog') ?>">Blog</a></h1>
+    <h1><a href="<?= $this->url('blog') ?>"><?= $this->blogTitle() ?></a></h1>
     <p class="lead">Demo web application page.</p>
     <pre><?= __FILE__; ?></pre>
     <p>
@@ -9,7 +9,10 @@
 </div>
 <?php
 
+//$this->authenticated(); //example has shared dependency config
+//var_dump($this->authenticated()); //retrieves shared dependency
+var_dump($this->test);
 if (isset($args)) {
     echo '<h4>Variables</h4>';
-    var_dump($this->assigned());
+    //var_dump($this->vars());
 }

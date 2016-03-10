@@ -4,7 +4,7 @@
  *
  */
 
-use Mvc5\Application\App;
+use Mvc5\App;
 
 /**
  *
