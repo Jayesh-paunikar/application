@@ -20,26 +20,14 @@
     <![endif]-->
 </head>
 <body>
-<!-- Fixed navbar -->
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?= $this->url('home') ?>">Mvc5 Playground</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/blog">Demo Blog</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</div>
+<?php
 
+    echo $this->render('navbar', ['blog_link' => '/blog']);
+    //echo $this->render(__DIR__ . '/navbar.phtml', ['blog_link' => '/blog']);
+    //echo $this->render(new Mvc5\Model('navbar', ['blog_link' => '/blog']));
+    //echo $this->render(new Mvc5\Model('navbar', ['blog_link' => '/b']), ['blog_link' => '/blog']);
+
+?>
 <div class="container" style="margin-top:55px">
     <div class="row">
         <div class="col-md-12">
