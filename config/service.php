@@ -10,7 +10,6 @@ use Mvc5\Container;
 use Mvc5\Model;
 use Mvc5\Model\ViewModel;
 use Mvc5\Plugin\Args;
-use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Config as ConfigLink;
 use Mvc5\Plugin\Copy;
 use Mvc5\Plugin\Dependency;
@@ -69,13 +68,6 @@ return [
 
     //'Home\Controller' => Home\Controller::class,
     //'Home\Controller' => new Plugin('blog->home'),
-
-    'render'                 => new Dependency('render\template'),
-    'render\template'        => new Plugin(
-        View\Template\Render::class, [new Dependency('view\renderer'), new Plug('view\model\generator')]
-    ),
-    'escape'               => new Invoke('@htmlspecialchars', [ENT_COMPAT, 'UTF-8', false]),
-    'view\model\generator' => new Invokable(new Plugin(Mvc5\Model::class)),
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
