@@ -3,6 +3,8 @@
  *
  */
 
+use Mvc5\Plugin\Call;
+
 return [
     'blog:add' => (object) [
         Blog\Add\Validate::class,
@@ -24,6 +26,16 @@ return [
             return $layout;
         }
     ],
+
+    /*'blog:remove' => new Call(function($event, $response, $args) {
+        yield function($layout, $model = null) {
+            $model .= '<h1>Blog\Remove</h1>';
+
+            $layout->model($model);
+
+            return $layout;
+        };
+    }),*/
 
     'service\resolver' => [
         function() {
