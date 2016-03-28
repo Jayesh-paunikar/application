@@ -1,11 +1,13 @@
 {
     "name": "mvc5/application",
     "description": "A PHP 5.6 programming environment with named arguments.",
+    "homepage": "https://github.com/mvc5/application",
     "license": "MIT",
     "require": {
         "php": "^5.6",
         "symfony/http-foundation": "2.5.*",
-        "mvc5/framework": "9.*"
+        "mvc5/framework": "9.*",
+        "slim/http": "^0.1"
     },
     "autoload": {
         "psr-4": {

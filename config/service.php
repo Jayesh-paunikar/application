@@ -10,6 +10,7 @@ use Mvc5\Container;
 use Mvc5\Model;
 use Mvc5\Model\ViewModel;
 use Mvc5\Plugin\Args;
+use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Config as ConfigLink;
 use Mvc5\Plugin\Copy;
 use Mvc5\Plugin\Dependency;
@@ -18,6 +19,7 @@ use Mvc5\Plugin\FileInclude;
 use Mvc5\Plugin\Hydrator;
 use Mvc5\Plugin\Invoke;
 use Mvc5\Plugin\Invokable;
+use Mvc5\Plugin\Link;
 use Mvc5\Plugin\Manager;
 use Mvc5\Plugin\Plugin;
 use Mvc5\Plugin\Service;
@@ -26,6 +28,9 @@ use Mvc5\Plugin\Plug;
 use Plugin\Controller;
 use Plugin\Route;
 use Service\Provider;
+use Plugin\Mvc;
+use Plugin\PsrRequest;
+use Plugin\PsrRoute;
 
 return [
     //'blog:create' => new Plugin('Blog\Create\Create'),
@@ -77,7 +82,43 @@ return [
 
     'Response\Response' => 'response',
 
-    'route' => new Route(Mvc5\Route\Config::class),
+    'route' => new Route,
+
+    /**
+     * PSR-7
+     *
+     * For "compliance" use Response\Psr\Compliant\Response, Mvc\Event\Model and Mvc\Response.
+     *
+     * For "compatibility" use Response\Psr\Compatible\Response, Mvc\Event\ResponseModel.
+     *
+     * Read the event config for further information on error and exception handling.
+     */
+    /*
+    'request'      => new PsrRequest,
+    'route'        => new PsrRoute,
+
+    //compliance
+    'mvc'          => new Mvc,
+    'mvc\response' => \Mvc\Response::class,
+    'response'     => Response\Psr\Compliant\Response::class,
+
+    //compatibility
+    //'response'     => Response\Psr\Compatible\Response::class,
+    //'mvc'          => new Mvc(\Mvc\Event\ResponseModel::class),
+    */
+
+    /**
+     * The PSR-7 Middleware demo requires the *\Middleware controllers to be uncommented in the route config and
+     * the 'web' event config must be changed to use 'middleware' instead of 'mvc'.
+     */
+    /*
+    'middleware'            => new Service(Middleware\App::class, [new Param('middleware')]),
+    'middleware\controller' => new Service(Middleware\Controller::class),
+    'middleware\layout'     => [Middleware\Layout::class, new Plugin('layout')],
+    'middleware\renderer'   => new Service(Middleware\Renderer::class),
+    'middleware\router'     => [Middleware\Router::class, new Invoke('route\dispatch')],
+    'response\send'         => Response\Psr\Send::class,
+    */
 
     ViewModel::class => Model::class,
 

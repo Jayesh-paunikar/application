@@ -11,6 +11,7 @@ return [
         'home' => Home\Controller::class,
         'controller2' => [Blog\Controller::class, 'template' => new Param('templates.blog')],
         'controller' => 'controller2', //locally resolved
+        'middleware' => [Blog\Middleware::class, 'template' => new Param('templates.blog')],
         'container' => [], //new Config, //local container
     ]),
     'templates' => [
