@@ -34,7 +34,7 @@ class Route
                     'scheme'   => new Call('request.getScheme')
             ])],
             Arg::CALLS => $calls,
-            Arg::NAME  => $name ?? RouteConfig::class
+            Arg::NAME  => $name ?: RouteConfig::class
         ];
     }
 }

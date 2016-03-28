@@ -34,7 +34,7 @@ class PsrRoute
                 'scheme'   => new Call('request.getUri.getScheme')
             ])],
             Arg::CALLS => $calls,
-            Arg::NAME  => $name ?? RouteConfig::class
+            Arg::NAME  => $name ?: RouteConfig::class
         ];
     }
 }
