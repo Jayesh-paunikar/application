@@ -22,6 +22,6 @@ class Mvc
      */
     public function __construct($name = null, array $args = [], array $calls = [], $param = Arg::ITEM)
     {
-        parent::__construct($name ?? Model::class, ['mvc', new Link], [new Dependency(Arg::ROUTE)], $param);
+        parent::__construct($name ?: Model::class, ['mvc', new Link], [new Dependency(Arg::ROUTE)], $param);
     }
 }
