@@ -112,7 +112,7 @@ return [
      * the 'web' event config must be changed to use 'middleware' instead of 'mvc'.
      */
     /*
-    'middleware'            => new Service(Middleware\App::class, [new Param('middleware')]),
+    'middleware'            => new Service(Mvc5\Middleware::class, [new Param('middleware')]),
     'middleware\controller' => new Service(Middleware\Controller::class),
     'middleware\layout'     => [Middleware\Layout::class, new Plugin('layout')],
     'middleware\renderer'   => new Service(Middleware\Renderer::class),
