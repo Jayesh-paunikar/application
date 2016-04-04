@@ -17,12 +17,14 @@ return [
             'route'      => 'blog',
             'controller' => 'blog->controller.test', //specific method
             //'controller' => 'blog->middleware',
+            //'hostname' => 'localhost', // "//localhost/blog" (when no scheme specified, inc parent)
+            //'port' => '8080', // "http://localhost:8080/blog"
             'children' => [
                 'remove' => [
                     'route' => '/remove',
                     'method' => ['GET', 'POST'],
-                    //'scheme' => ['https'],
-                    //'hostname' => ['localhost'],
+                    //'scheme' => 'https',
+                    //'hostname' => 'localhost',
                     //'controller' => 'blog:remove', //call event
                     'action' => [
                         'GET' => 'blog:remove',
