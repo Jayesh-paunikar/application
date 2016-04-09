@@ -8,6 +8,7 @@ namespace Home;
 use Mvc5\View\Model as ViewModel;
 use Request\Request;
 use Response\Response;
+use Server\Server;
 
 class Controller
 {
@@ -35,11 +36,11 @@ class Controller
     /**
      * @param Response $response
      * @param Request $request
-     * @param array $args
+     * @param Server $server
      * @return Model
      */
-    public function __invoke(Response $response, Request $request, array $args = [])
+    public function __invoke(Response $response, Request $request, Server $server)
     {
-        return $this->model(['args' => [__FUNCTION__]] + $args);
+        return $this->model(['server' => $server]);
     }
 }

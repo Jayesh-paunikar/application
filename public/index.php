@@ -26,7 +26,7 @@ include __DIR__ . '/../init.php';
 /**
  *
  */
-call_user_func(new Web(include __DIR__ . '/../config/config.php'));
+call_user_func(new Web(include __DIR__ . '/../config/config.php', null, true));
 
 /**
  *

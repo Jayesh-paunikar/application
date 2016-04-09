@@ -3,6 +3,9 @@
  *
  */
 
+use Mvc5\Layout;
+use Mvc5\Url\Plugin as Url;
+
 return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
@@ -29,7 +32,7 @@ return [
                     'action' => [
                         'GET' => 'blog:remove',
                         //'GET' => 'Blog\Remove\Middleware',
-                        'POST' => function($layout, $url) {
+                        'POST' => function(Layout $layout, Url $url) {
                             return new Response\RedirectResponse($url(), 201);
 
                             //$layout->model('<h1>Success</h1>');

@@ -25,6 +25,9 @@ use Mvc5\Plugin\Plugin;
 use Mvc5\Plugin\Service;
 use Mvc5\Plugin\Param;
 use Mvc5\Plugin\Plug;
+use Mvc5\Plugin\Plugins;
+use Mvc5\Plugin\Provider as Scope;
+use Mvc5\Plugin\Value;
 use Plugin\Controller;
 use Plugin\Route;
 use Service\Provider;
@@ -43,19 +46,16 @@ return [
         'home'   => 'blog3->home2',
     ]),
     'blog3' => new Config([
-        'home2'  => new Plugin('Home\Controller')
+        'home2' => new Plugin('Home\Controller')
     ]),
-    'blog' => new Plugin(
-        App::class,
-        [
-            'config' => new FileInclude(__DIR__ . '/blog.php')
-        ],
-        [
-            //share existing container
-            'container' => new Dependency('container'),
-            ['configure', 'container', new Dependency('container')]
-        ]
-    ),
+
+    /**
+     * - Class name
+     * - Configuration
+     * - [optional] Fallback provider for plugins not in the blog App, e.g named arguments.
+     * - [optional] Enables blog App as the scope ($this) for anonymous factory methods within the blog App
+     */
+    'blog' => [App::class, new FileInclude(__DIR__ . '/blog.php'), new Link, true],
 
     /*'home\controller' => new Plugin(
         Home\Controller::class
@@ -67,12 +67,18 @@ return [
 
     //'Home\Controller' => new Factory(Home\Factory::class),
 
-    'Home\Controller' => new Controller(Home\Controller::class),
+    //'Home\Controller' => new Controller(Home\Controller::class), //custom plugin
     //'Home\Controller' => new Copy(new Controller(Home\Controller::class)),
     //'home\controller' => new Plugin(Home\Controller::class),
 
     //'Home\Controller' => Home\Controller::class,
     //'Home\Controller' => new Plugin('blog->home'),
+
+    'message' => new Value('Demo web application.'), //string value
+    'Home\Controller' => function($message, Request\Request $request) {
+        $model = $this->plugin(Home\Model::class, ['home', ['message' => $message]]);
+        return new Home\Controller($model);
+    },
 
     'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
 
@@ -83,6 +89,15 @@ return [
     'Response\Response' => 'response',
 
     'route' => new Route,
+
+    /**
+     * A demo scoped plugin provider for $_SERVER. Uses a config object to return values from the plugin container.
+     * The Scope Provider plugin sets the config object as the scope for the anonymous functions in the plugin container.
+     */
+    'server'                     => new Dependency('server\config'),
+    'server\config'              => new Scope(
+        Server\Config::class, new Plugins(new FileInclude(__DIR__.'/server.php'), new Link)
+    ),
 
     /**
      * PSR-7
