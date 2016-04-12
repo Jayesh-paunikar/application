@@ -9,6 +9,7 @@ use Mvc5\Arg;
 use Mvc5\View\Model as ViewModel;
 use Request\Psr\Request;
 use Response\Psr\Response;
+use Server\Server;
 
 class Middleware
 {
@@ -18,11 +19,18 @@ class Middleware
     use ViewModel;
 
     /**
-     * @param Model $model
+     * @var
      */
-    public function __construct(Model $model)
+    protected $server;
+
+    /**
+     * @param Model $model
+     * @param Server $server
+     */
+    public function __construct(Model $model, Server $server)
     {
-        $this->model = $model;
+        $this->model  = $model;
+        $this->server = $server;
     }
 
     /**
@@ -33,7 +41,7 @@ class Middleware
      */
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        $request = $request->withAttribute(Arg::MODEL, $this->model(['args' => [__FUNCTION__]]));
+        $request = $request->withAttribute(Arg::MODEL, $this->model(['server' => $this->server]));
 
         return $next($request, $response);
     }
