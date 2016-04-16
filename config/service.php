@@ -4,11 +4,11 @@
  */
 
 use Mvc5\Arg;
-use Mvc5\App;
 use Mvc5\Config;
 use Mvc5\Container;
 use Mvc5\Model;
 use Mvc5\Model\ViewModel;
+use Mvc5\Plugin\App;
 use Mvc5\Plugin\Args;
 use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Config as ConfigLink;
@@ -55,7 +55,7 @@ return [
      * - [optional] Fallback provider for plugins not in the blog App, e.g named arguments.
      * - [optional] Enables blog App as the scope ($this) for anonymous factory methods within the blog App
      */
-    'blog' => [App::class, new FileInclude(__DIR__ . '/blog.php'), new Link, true],
+    'blog' => new App(new FileInclude(__DIR__ . '/blog.php')),
 
     /*'home\controller' => new Plugin(
         Home\Controller::class
@@ -94,10 +94,8 @@ return [
      * A demo scoped plugin provider for $_SERVER. Uses a config object to return values from the plugin container.
      * The Scope Provider plugin sets the config object as the scope for the anonymous functions in the plugin container.
      */
-    'server'                     => new Dependency('server\config'),
-    'server\config'              => new Scope(
-        Server\Config::class, new Plugins(new FileInclude(__DIR__.'/server.php'), new Link)
-    ),
+    'server'        => new Dependency('server\config'),
+    'server\config' => new Scope(Server\Config::class, new App(new FileInclude(__DIR__.'/server.php'))),
 
     /**
      * PSR-7
