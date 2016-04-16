@@ -88,8 +88,8 @@ return [
      * A demo scoped plugin provider for $_SERVER. Uses a config object to return values from the plugin container.
      * The Scope Provider plugin sets the config object as the scope for the anonymous functions in the plugin container.
      */
-    'server'        => new Dependency('server\config'),
-    'server\config' => new Scope(Server\Config::class, new App(new FileInclude(__DIR__.'/server.php'))),
+    'server'        => new Copy(new Dependency('server\config')),
+    'server\config' => new Scope(Server\Config::class, new FileInclude(__DIR__.'/server.php')),
 
     /**
      * PSR-7
