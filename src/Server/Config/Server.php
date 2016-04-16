@@ -5,10 +5,7 @@
 
 namespace Server\Config;
 
-use Mvc5\Arg;
 use Mvc5\Config\Config;
-use Mvc5\Request\Headers;
-use Mvc5\Request\Uri;
 
 trait Server
 {

@@ -49,12 +49,6 @@ return [
         'home2' => new Plugin('Home\Controller')
     ]),
 
-    /**
-     * - Class name
-     * - Configuration
-     * - [optional] Fallback provider for plugins not in the blog App, e.g named arguments.
-     * - [optional] Enables blog App as the scope ($this) for anonymous factory methods within the blog App
-     */
     'blog' => new App(new FileInclude(__DIR__ . '/blog.php')),
 
     /*'home\controller' => new Plugin(
@@ -135,16 +129,5 @@ return [
     ViewModel::class => Model::class,
 
     'service\provider' => new Manager(Provider::class),
-
-    //test false but not null container value
-
-    /*'user\authenticated' => function() {
-        var_dump(__FILE__);
-        return false;
-    },*/
-
-    //'user\authenticated' => false,
-
-    //'authenticated' => new Invokable(new Dependency('user\authenticated'))
 
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/service.php';
