@@ -48,6 +48,6 @@ trait Server
 
         $this->config = clone $this->config;
 
-        $this->config->scope($this->config);
+        $this->config->scope($this);
     }
 }
