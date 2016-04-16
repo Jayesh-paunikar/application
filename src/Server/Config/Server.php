@@ -42,6 +42,7 @@ trait Server
 
         if (!$this->config instanceof Scope) {
             $this->config = clone $this->config;
+            return;
         }
 
         $this->config->scope(true);
