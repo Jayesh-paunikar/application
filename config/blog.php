@@ -4,7 +4,6 @@
  */
 
 use Mvc5\Plugin\Param;
-use Request\Request;
 
 return [
     'services' => [
@@ -18,7 +17,6 @@ return [
 
         //'controller' => 'controller2', //locally resolved
         'controller' => 'Home\Controller2', //locally resolved
-        'middleware' => [Blog\Middleware::class, 'template' => new Param('templates.blog')],
     ],
     'templates' => [
         'blog' => __DIR__ . '/../view/blog/index.phtml',
