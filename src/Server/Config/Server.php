@@ -5,14 +5,14 @@
 
 namespace Server\Config;
 
-use Mvc5\Service\Config\Scope;
+use Mvc5\Config\Config;
 
 trait Server
 {
     /**
      *
      */
-    use Scope;
+    use Config;
 
     /**
      * @return string
