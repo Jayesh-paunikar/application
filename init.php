@@ -20,6 +20,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Signal.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Resolvable.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Exception.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/ArrayAccess.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Config/PropertyAccess.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Config/Configuration.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Service/Config.php';
