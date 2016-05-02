@@ -84,48 +84,6 @@ return [
 
     'route' => new Route,
 
-    /**
-     * A demo scoped plugin provider for $_SERVER. Uses a config object to return values from the plugin container.
-     * The Scope Provider plugin sets the config object as the scope for the anonymous functions in the plugin container.
-     */
-    'server'        => new Copy(new Dependency('server\config')),
-    'server\config' => new Scope(Server\Config::class, new FileInclude(__DIR__.'/server.php')),
-
-    /**
-     * PSR-7
-     *
-     * For "compliance" use Response\Psr\Compliant\Response, Mvc\Event\Model and Mvc\Response.
-     *
-     * For "compatibility" use Response\Psr\Compatible\Response, Mvc\Event\ResponseModel.
-     *
-     * Read the event config for further information on error and exception handling.
-     */
-    /*
-    'request'      => new PsrRequest,
-    'route'        => new PsrRoute,
-
-    //compliance
-    'mvc'          => new Mvc,
-    'mvc\response' => \Mvc\Response::class,
-    'response'     => Response\Psr\Compliant\Response::class,
-
-    //compatibility
-    //'response'     => Response\Psr\Compatible\Response::class,
-    //'mvc'          => new Mvc(\Mvc\Event\ResponseModel::class),
-    */
-
-    /**
-     * The PSR-7 Middleware demo requires the *\Middleware controllers to be uncommented in the route config and
-     * the 'web' event config must be changed to use 'middleware' instead of 'mvc'.
-     */
-    /*
-    'middleware\controller' => new Service(Middleware\Controller::class),
-    'middleware\layout'     => [Middleware\Layout::class, new Plugin('layout')],
-    'middleware\renderer'   => new Service(Middleware\Renderer::class),
-    'middleware\router'     => [Middleware\Router::class, new Invoke('route\dispatch')],
-    'response\send'         => Response\Psr\Send::class,
-    */
-
     ViewModel::class => Model::class,
 
     'service\provider' => new Manager(Provider::class),

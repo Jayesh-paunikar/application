@@ -191,16 +191,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Middleware.php';
 /**
  *
  */
-include __DIR__ . '/src/Request/Request.php';
-include __DIR__ . '/src/Request/HttpRequest.php';
-include __DIR__ . '/src/Response/Response.php';
-include __DIR__ . '/src/Response/Base.php';
-include __DIR__ . '/src/Response/HttpResponse.php';
-include __DIR__ . '/src/Response/RedirectResponse.php';
-
-/**
- *
- */
 /*include __DIR__ . '/src/Blog/Model.php';
 include __DIR__ . '/src/Blog/Controller.php';
 include __DIR__ . '/src/Blog/Add/Validate.php';
@@ -214,10 +204,7 @@ include __DIR__ . '/src/Plugin/Gem/Controller.php';
 include __DIR__ . '/src/Plugin/Gem/Route.php';
 include __DIR__ . '/src/Plugin/Controller.php';
 include __DIR__ . '/src/Plugin/Route.php';
-include __DIR__ . '/src/Service/Provider.php';
-include __DIR__ . '/src/Server/Config/Server.php';
-include __DIR__ . '/src/Server/Server.php';
-include __DIR__ . '/src/Server/Config.php';*/
+include __DIR__ . '/src/Service/Provider.php';*/
 
 /**
  *
