@@ -150,6 +150,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Copy.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Controller.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Dependency.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Plugin/End.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Factory.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/FileInclude.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Filter.php';
