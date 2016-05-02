@@ -21,7 +21,7 @@ class Layout
     /**
      * @param LayoutModel $layout
      */
-    public function __construct(LayoutModel $layout)
+    function __construct(LayoutModel $layout)
     {
         $this->layout = $layout;
     }
@@ -32,7 +32,7 @@ class Layout
      * @param callable $next
      * @return mixed
      */
-    public function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         $model = $request->getAttribute(Arg::MODEL);
 

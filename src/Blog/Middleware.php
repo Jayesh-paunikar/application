@@ -25,7 +25,7 @@ class Middleware
      * @param Model $model
      * @param $template
      */
-    public function __construct(Model $model, $template)
+    function __construct(Model $model, $template)
     {
         $this->model    = $model;
         $this->template = $template;
@@ -37,7 +37,7 @@ class Middleware
      * @param callable $next
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         $this->model->template($this->template);
 

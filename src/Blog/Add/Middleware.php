@@ -20,7 +20,7 @@ class Middleware
     /**
      * @param Model $model
      */
-    public function __construct(Model $model)
+    function __construct(Model $model)
     {
         $this->model = $model;
     }
@@ -31,7 +31,7 @@ class Middleware
      * @param callable $next
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         $request = $request->withAttribute(Arg::MODEL, $this->model(['args' => [__FUNCTION__]]));
 

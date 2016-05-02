@@ -14,7 +14,7 @@ class Respond
      * @param Model $model
      * @return Model
      */
-    public function __invoke(Response $response, Model $model = null)
+    function __invoke(Response $response, Model $model = null)
     {
         $model->vars(['args' =>  array_merge([__CLASS__], $model['args'])]);
 

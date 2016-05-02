@@ -23,7 +23,7 @@ class Controller
      * @param callable $next
      * @return callable|mixed|null|object
      */
-    public function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         $controller = $request->getAttribute(Arg::ROUTE)->controller();
 

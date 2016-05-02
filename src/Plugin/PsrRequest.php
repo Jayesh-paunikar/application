@@ -14,7 +14,7 @@ class PsrRequest
     /**
      *
      */
-    public function __construct()
+    function __construct()
     {
         parent::__construct(
             '@Request\Psr\HttpRequest::createFromEnvironment', [new Plugin('Slim\Http\Environment', [$_SERVER])]

@@ -19,7 +19,7 @@ class Response
      * @param int $status
      * @param HeadersInterface|null $headers
      */
-    public function __construct($status = 200, HeadersInterface $headers = null)
+    function __construct($status = 200, HeadersInterface $headers = null)
     {
         $this->status  = $this->filterStatus($status);
         $this->headers = $headers ? $headers : new Headers();
@@ -29,7 +29,7 @@ class Response
      * @param mixed $content
      * @return self
      */
-    public function setContent($content)
+    function setContent($content)
     {
         $clone = clone $this;
         $clone->body = $content;
@@ -40,7 +40,7 @@ class Response
     /**
      *
      */
-    public function __clone()
+    function __clone()
     {
         $this->headers = clone $this->headers;
 

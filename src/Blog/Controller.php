@@ -21,7 +21,7 @@ class Controller
      * @param Model $model
      * @param $template
      */
-    public function __construct(Model $model, $template)
+    function __construct(Model $model, $template)
     {
         $this->model    = $model;
         $this->template = $template;
@@ -30,7 +30,7 @@ class Controller
     /**
      * @return Model
      */
-    public function test()
+    function test()
     {
         $this->model->template($this->template);
 

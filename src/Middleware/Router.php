@@ -27,7 +27,7 @@ class Router
     /**
      * @param callable
      */
-    public function __construct(callable $router)
+    function __construct(callable $router)
     {
         $this->router = $router;
     }
@@ -38,7 +38,7 @@ class Router
      * @param callable $next
      * @return mixed
      */
-    public function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         $result = $this->signal($this->router);
 

@@ -16,7 +16,7 @@ class Send
      * @license https://github.com/slimphp/Slim/blob/3.x/LICENSE.md (MIT License)
      * @return void
      */
-    public function __invoke(Response $response)
+    function __invoke(Response $response)
     {
         // Send response
         if (!headers_sent()) {

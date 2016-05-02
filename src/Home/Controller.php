@@ -20,7 +20,7 @@ class Controller
     /**
      * @param Model $model
      */
-    public function __construct(Model $model)
+    function __construct(Model $model)
     {
         $this->model = $model;
     }
@@ -28,7 +28,7 @@ class Controller
     /**
      * @param Model $model
      */
-    public static function test(Model $model)
+    static function test(Model $model)
     {
         var_dump($model);exit;
     }
@@ -39,7 +39,7 @@ class Controller
      * @param Server $server
      * @return Model
      */
-    public function __invoke(Response $response, Request $request, Server $server)
+    function __invoke(Response $response, Request $request, Server $server)
     {
         return $this->model(['server' => $server]);
     }

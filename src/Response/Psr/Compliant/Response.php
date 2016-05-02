@@ -18,7 +18,7 @@ class Response
     /**
      * @return mixed
      */
-    public function content()
+    function content()
     {
         return $this->getBody();
     }
@@ -26,7 +26,7 @@ class Response
     /**
      *
      */
-    public function send()
+    function send()
     {
         (new Send)->__invoke($this);
     }
@@ -35,7 +35,7 @@ class Response
      * @param mixed $content
      * @return self
      */
-    public function setContent($content)
+    function setContent($content)
     {
         if (!$content instanceof StreamInterface) {
             $stream = new RequestBody;
@@ -51,7 +51,7 @@ class Response
      * @param string $reasonPhrase
      * @return self
      */
-    public function setStatus($code, $reasonPhrase = '')
+    function setStatus($code, $reasonPhrase = '')
     {
         return $this->withStatus((int) $code, $reasonPhrase = '');
     }
@@ -59,7 +59,7 @@ class Response
     /**
      * @return int
      */
-    public function status()
+    function status()
     {
         return $this->getStatusCode();
     }

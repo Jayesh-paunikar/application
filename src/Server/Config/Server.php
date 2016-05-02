@@ -17,7 +17,7 @@ trait Server
     /**
      * @return string
      */
-    public function documentRoot()
+    function documentRoot()
     {
         return $this['DOCUMENT_ROOT'];
     }
@@ -25,7 +25,7 @@ trait Server
     /**
      * @return array
      */
-    public function uri()
+    function uri()
     {
         return $this['PHP_URI'];
     }

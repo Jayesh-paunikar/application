@@ -20,7 +20,7 @@ class Middleware
     /**
      * @param ViewLayout $layout
      */
-    public function __construct(ViewLayout $layout)
+    function __construct(ViewLayout $layout)
     {
         $this->layout = $layout;
     }
@@ -31,7 +31,7 @@ class Middleware
      * @param callable $next
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, callable $next)
+    function __invoke(Request $request, Response $response, callable $next)
     {
         $this->layout->model('<h1>Demo Middleware Action</h1>');
 

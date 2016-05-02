@@ -13,7 +13,7 @@ trait Base
     /**
      * @return mixed
      */
-    public function content()
+    function content()
     {
         /** @var HttpFoundationResponse $this */
 
@@ -23,7 +23,7 @@ trait Base
     /**
      * @return void
      */
-    public function send()
+    function send()
     {
         /** @var HttpFoundationResponse $this */
 
@@ -48,7 +48,7 @@ trait Base
      * @param mixed $content
      * @return self
      */
-    public function setContent($content)
+    function setContent($content)
     {
         /** @var HttpFoundationResponse $this */
 
@@ -62,7 +62,7 @@ trait Base
      * @param string $text
      * @return self
      */
-    public function setStatus($code, $text = '')
+    function setStatus($code, $text = '')
     {
         /** @var HttpFoundationResponse $this */
 
@@ -72,7 +72,7 @@ trait Base
     /**
      * @return int
      */
-    public function status()
+    function status()
     {
         /** @var HttpFoundationResponse $this */
 

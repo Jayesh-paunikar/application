@@ -20,7 +20,7 @@ class Factory
      * @param array $config
      * @return Controller
      */
-    public function __invoke(array $config)
+    function __invoke(array $config)
     {
         /** @var Model $model */
 

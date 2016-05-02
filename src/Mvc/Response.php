@@ -17,7 +17,7 @@ class Response
      * @param mixed $model
      * @return Mvc5Response
      */
-    public function __invoke(Mvc5Response $response, $model = null)
+    function __invoke(Mvc5Response $response, $model = null)
     {
         return null !== $model ? $response->setContent($model) : $response;
     }
