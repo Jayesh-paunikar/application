@@ -179,7 +179,6 @@ include __DIR__ . '/vendor/mvc5/framework/src/Model.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Template.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Mvc.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Middleware.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Plugins.php';
 
 /**
  *
