@@ -5,7 +5,7 @@
 
 namespace Blog\Add;
 
-use Request\Request;
+use Request;
 
 class Validate
 {

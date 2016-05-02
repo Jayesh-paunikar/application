@@ -11,9 +11,11 @@ use Mvc5\Model\ViewModel;
 use Mvc5\Plugin\App;
 use Mvc5\Plugin\Args;
 use Mvc5\Plugin\Call;
+use Mvc5\Plugin\Calls;
 use Mvc5\Plugin\Config as ConfigLink;
 use Mvc5\Plugin\Copy;
 use Mvc5\Plugin\Dependency;
+use Mvc5\Plugin\End;
 use Mvc5\Plugin\Factory;
 use Mvc5\Plugin\FileInclude;
 use Mvc5\Plugin\Hydrator;
@@ -29,18 +31,9 @@ use Mvc5\Plugin\Plugins;
 use Mvc5\Plugin\Provider as Scope;
 use Mvc5\Plugin\Value;
 use Plugin\Controller;
-use Plugin\Route;
 use Service\Provider;
-use Plugin\Mvc;
-use Plugin\PsrRequest;
-use Plugin\PsrRoute;
 
 return [
-    //'blog:create' => new Plugin('Blog\Create\Create'),
-    //'blog:create' => new Plugin('blog2->create'),
-
-    //'blog' => blog\controller::class,
-    //'blog' => new Service(blog\controller::class, ['template' => new Param('templates.blog')]),
     'blog2' => new Container([
         'add' => ['event\model', 'event' => 'blog:add'],
         'home'   => 'blog3->home2',
@@ -50,6 +43,42 @@ return [
     ]),
 
     'blog' => new App(new FileInclude(__DIR__ . '/blog.php')),
+
+    'message' => new Value('Demo web application.'), //string value
+    'Home\Controller' => function($message, Request $request, $response, $cookies) {
+        $model = $this->plugin(Home\Model::class, ['home', ['message' => $message]]);
+        return new Home\Controller($model);
+    },
+
+    'request' => new Scope(
+        Request\Config::class,
+        new Plugins(
+            new FileInclude(__DIR__ . '/request.php'),
+            new Plugins([
+                'cookies' => new Plugin(Invoke::class, [new Link, ['cookies']]),
+                'session'  => new Plugin(Invoke::class, [new Link, ['session']]),
+            ], null)
+        ),
+        new Symfony\Component\HttpFoundation\ApacheRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER)
+    ),
+
+    'cookies' => new Dependency('cookies', [Mvc5\Cookie\Config::class, new Mvc5\Cookie\Sender, $_COOKIE]),
+
+    'response' => Response\Config::class,
+
+    'session' => new Dependency('session', new End(
+        new Call('@session_start'), new Plugin(Session\Container::class, [new Plugin(Session\Config::class)])
+    )),
+
+    ViewModel::class => Model::class,
+
+    'service\provider' => new Manager(Provider::class),
+
+    //'blog:create' => new Plugin('Blog\Create\Create'),
+    //'blog:create' => new Plugin('blog2->create'),
+
+    //'blog' => blog\controller::class,
+    //'blog' => new Service(blog\controller::class, ['template' => new Param('templates.blog')]),
 
     /*'home\controller' => new Plugin(
         Home\Controller::class
@@ -67,25 +96,5 @@ return [
 
     //'Home\Controller' => Home\Controller::class,
     //'Home\Controller' => new Plugin('blog->home'),
-
-    'message' => new Value('Demo web application.'), //string value
-    'Home\Controller' => function($message, Request\Request $request) {
-        $model = $this->plugin(Home\Model::class, ['home', ['message' => $message]]);
-        return new Home\Controller($model);
-    },
-
-    'request' => new Request\HttpRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER),
-
-    'response' => Response\HttpResponse::class,
-    //'http\response' => new Plugin(Response\HttpResponse::class),
-    //'response'      => new Plug('http\response'),
-
-    'Response\Response' => 'response',
-
-    'route' => new Route,
-
-    ViewModel::class => Model::class,
-
-    'service\provider' => new Manager(Provider::class),
 
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/service.php';

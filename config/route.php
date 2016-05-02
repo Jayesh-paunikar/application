@@ -3,14 +3,13 @@
  *
  */
 
-use Mvc5\Layout;
+use Mvc5\Response\Redirect;
 use Mvc5\Url\Plugin as Url;
 
 return [
     'name'       => 'home', //for the url plugin in view templates
     'route'      => '/',
     'controller' => 'Home\Controller', //callable
-    //'controller' => 'Home\Middleware',
     //'method' => 'POST',
     //'controller' => '@Home\Controller.test', //callable
     //'controller' => 'home\controller', //callable
@@ -19,7 +18,6 @@ return [
         'blog' => [
             'route'      => 'blog',
             'controller' => 'blog->controller.test', //specific method
-            //'controller' => 'blog->middleware',
             //'hostname' => 'localhost', // "//localhost/blog" (when no scheme specified, inc parent)
             //'port' => '8080', // "http://localhost:8080/blog"
             'children' => [
@@ -31,13 +29,9 @@ return [
                     //'controller' => 'blog:remove', //call event
                     'action' => [
                         'GET' => 'blog:remove',
-                        //'GET' => 'Blog\Remove\Middleware',
-                        'POST' => function(Layout $layout, Url $url) {
-                            return new Response\RedirectResponse($url(), 201);
-
-                            //$layout->model('<h1>Success</h1>');
-
-                            //return $layout;
+                        'POST' => function(Session $session, Url $url) {
+                            $session['success_message'] = 'Success';
+                            return new Redirect($url());
                         }
                     ]
                 ],
@@ -49,7 +43,6 @@ return [
                     ],
                     'wildcard'   => true,
                     'controller' => 'blog:add', //call event
-                    //'controller' => 'Blog\Add\Middleware',
                     //'controller' => 'blog2->add',
                     //'controller'  => function($request) { //named args
                         //var_dump($request->getPathInfo());

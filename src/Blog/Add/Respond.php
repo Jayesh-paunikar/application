@@ -5,7 +5,7 @@
 
 namespace Blog\Add;
 
-use Response\Response;
+use Response;
 
 class Respond
 {

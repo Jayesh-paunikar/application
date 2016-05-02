@@ -6,9 +6,8 @@
 namespace Home;
 
 use Mvc5\View\Model as ViewModel;
-use Request\Request;
-use Response\Response;
-use Server\Server;
+use Request;
+use Response;
 
 class Controller
 {
@@ -26,21 +25,12 @@ class Controller
     }
 
     /**
-     * @param Model $model
-     */
-    static function test(Model $model)
-    {
-        var_dump($model);exit;
-    }
-
-    /**
-     * @param Response $response
      * @param Request $request
-     * @param Server $server
+     * @param Response $response
      * @return Model
      */
-    function __invoke(Response $response, Request $request, Server $server)
+    function __invoke(Request $request, Response $response)
     {
-        return $this->model(['server' => $server]);
+        return $this->model(['request' => $request]);
     }
 }
