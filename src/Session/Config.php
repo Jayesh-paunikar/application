@@ -37,7 +37,7 @@ class Config
      */
     function get($name)
     {
-        return $_SESSION[$name] ?? null;
+        return isset($_SESSION[$name]) ? $_SESSION[$name] : null;
     }
 
     /**
