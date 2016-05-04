@@ -28,7 +28,6 @@ use Mvc5\Plugin\Service;
 use Mvc5\Plugin\Param;
 use Mvc5\Plugin\Plug;
 use Mvc5\Plugin\Plugins;
-use Mvc5\Plugin\Provider as Scope;
 use Mvc5\Plugin\Value;
 use Plugin\Controller;
 use Service\Provider;
