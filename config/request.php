@@ -30,6 +30,9 @@ return [
     'method' => new Dependency('method', function() {
         return $this->http->getMethod();
     }),
+    'server' => function() {
+        return $this->http->server->all();
+    },
     'stream' => function() {
         return $this->http->getContent(true);
     },
@@ -43,6 +46,9 @@ return [
             'path'   => urldecode($this->http->getPathInfo()),
             'query'  => $this->http->getQueryString(),
         ];
+    }),
+    'user_agent' => new Dependency('user_agent', function() {
+        return $this->http->server->get('HTTP_USER_AGENT');
     }),
     'version' => new Dependency('version', function() {
         return substr($this->http->server->get('SERVER_PROTOCOL'), strlen('HTTP/'));
