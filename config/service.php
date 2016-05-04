@@ -50,13 +50,13 @@ return [
         return new Home\Controller($model);
     },
 
-    'request' => new Scope(
+    'request\config' => new Scope(
         Request\Config::class,
         new Plugins(
             new FileInclude(__DIR__ . '/request.php'),
             new Plugins([
                 'cookies' => new Plugin(Invoke::class, [new Link, ['cookies']]),
-                'session'  => new Plugin(Invoke::class, [new Link, ['session']]),
+                'session' => new Plugin(Invoke::class, [new Link, ['session']]),
             ], null)
         ),
         new Symfony\Component\HttpFoundation\ApacheRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER)
