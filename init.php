@@ -192,7 +192,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Manager.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Plugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/App.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Plugins.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Provider.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Scope.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Model.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Param.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Plug.php';
