@@ -50,25 +50,19 @@ return [
         return new Home\Controller($model);
     },
 
-    'request\config' => new Scope(
-        Request\Config::class,
-        new Plugins(
-            new FileInclude(__DIR__ . '/request.php'),
-            new Plugins([
-                'cookies' => new Plugin(Invoke::class, [new Link, ['cookies']]),
-                'session' => new Plugin(Invoke::class, [new Link, ['session']]),
-            ], null)
-        ),
-        new Symfony\Component\HttpFoundation\ApacheRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER)
+    'request\config' => new \Plugin\Request(
+        new FileInclude(__DIR__ . '/request.php'),
+        [
+            'cookies' => new Plugin(Invoke::class, [new Link, ['cookies']]),
+            'session' => new Plugin(Invoke::class, [new Link, ['session']]),
+        ]
     ),
 
-    'cookies' => new Dependency('cookies', [Mvc5\Cookie\Config::class, new Mvc5\Cookie\Sender, $_COOKIE]),
+    'cookies' => new \Plugin\Cookie,
 
     'response' => Response\Config::class,
 
-    'session' => new Dependency('session', new End(
-        new Call('@session_start'), new Plugin(Session\Container::class, [new Plugin(Session\Config::class)])
-    )),
+    'session' => new \Plugin\Session,
 
     ViewModel::class => Model::class,
 
