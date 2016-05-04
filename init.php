@@ -72,6 +72,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Response/Error/MethodNotAllowed.ph
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Error/NotFound.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Headers.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Headers/Config.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Response/Prepare/Prepare.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Response.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Response/Controller.php';
