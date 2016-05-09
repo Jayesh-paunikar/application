@@ -99,4 +99,25 @@ class Config
     {
         return null !== $this->key();
     }
+
+    /**
+     * @param string $name
+     * @param mixed $config
+     * @return self
+     * @throws \Exception
+     */
+    function with($name, $config)
+    {
+        throw new \Exception('Session can not be cloned');
+    }
+
+    /**
+     * @param string $name
+     * @return self
+     * @throws \Exception
+     */
+    function without($name)
+    {
+        throw new \Exception('Session can not be cloned');
+    }
 }
