@@ -24,6 +24,9 @@ return [
     'data' => new Dependency('data', function() {
         return $this->http->request->all();
     }),
+    'files' => new Dependency('files', function() {
+        return $this->http->files->all();
+    }),
     'headers' => new Dependency('headers', function() {
         return getallheaders(); //$this->http->headers->all();
     }),
