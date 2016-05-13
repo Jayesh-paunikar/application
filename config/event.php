@@ -5,6 +5,7 @@
 
 use Mvc5\Model\Layout;
 use Mvc5\Plugin\Call;
+use Session\Session;
 
 return [
     'blog:add' => (object) [

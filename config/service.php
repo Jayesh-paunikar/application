@@ -57,7 +57,7 @@ return [
         ]
     ),
 
-    'cookies' => new \Plugin\Cookie,
+    'cookies' => new \Plugin\Cookies,
 
     'response' => Response\Config::class,
 

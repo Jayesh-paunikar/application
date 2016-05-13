@@ -10,7 +10,7 @@ use Mvc5\Plugin\Call;
 use Mvc5\Plugin\Dependency;
 use Mvc5\Plugin\Plugin;
 use Session\Config as SessionConfig;
-use Session\Container as SessionContainer;
+use Session\Container\Config as SessionContainer;
 
 class Session
     extends Dependency
