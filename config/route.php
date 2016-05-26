@@ -30,9 +30,9 @@ return [
                     //'controller' => 'blog:remove', //call event
                     'action' => [
                         'GET' => 'blog:remove',
-                        'POST' => function(Session $session, Url $url) {
+                        'POST' => function(Request $request, Session $session, Url $url, callable $next = null) {
                             $session['success_message'] = 'Success';
-                            return new Redirect($url());
+                            return !$next ? new Redirect($url()) : $next($request, new Redirect($url()));
                         }
                     ]
                 ],

@@ -24,6 +24,12 @@ return [
     'data' => new Dependency('data', function() {
         return $this->http->request->all();
     }),
+    'error' => function() {
+        return null;
+    },
+    'exception' => function() {
+        return null;
+    },
     'files' => new Dependency('files', function() {
         return $this->http->files->all();
     }),

@@ -49,7 +49,7 @@ return [
         return new Home\Controller($model);
     },
 
-    'request\config' => new \Plugin\Request(
+    'request' => new \Plugin\Request(
         new FileInclude(__DIR__ . '/request.php'),
         [
             'cookies' => new Plugin(Invoke::class, [new Link, ['cookies']]),
@@ -59,13 +59,18 @@ return [
 
     'cookies' => new \Plugin\Cookies,
 
-    'response' => Response\Config::class,
+    'response' => new Plugin(Response\Config::class),
 
     'session' => new \Plugin\Session,
+
+    //middleware demo
+    'web' => 'web\middleware',
 
     ViewModel::class => Model::class,
 
     'service\provider' => new Manager(Provider::class),
+
+    'sm' => new Link,
 
     //'blog:create' => new Plugin('Blog\Create\Create'),
     //'blog:create' => new Plugin('blog2->create'),

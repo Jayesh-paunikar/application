@@ -8,11 +8,11 @@ use Mvc5\Plugin\Call;
 use Session\Session;
 
 return [
-    'blog:add' => (object) [
+    'blog:add' => new Mvc5\Object([
         Blog\Add\Validate::class,
         Blog\Add\Save::class,
         Blog\Add\Respond::class
-    ],
+    ]),
     'blog:remove' => [
         function() {
             return $model = '<h1>Validate</h1>';
@@ -52,12 +52,6 @@ return [
         },
         'service\provider',
         'resolver\exception'
-    ],
-
-    'web' => [
-        'mvc',
-        'response\prepare',
-        'response\send'
     ],
 
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/event.php';
