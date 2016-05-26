@@ -50,4 +50,13 @@ trait Container
     {
         $this->container->destroy($cookie);
     }
+
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    function &get($name)
+    {
+        return $this->config->get($name);
+    }
 }
