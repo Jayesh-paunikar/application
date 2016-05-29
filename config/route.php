@@ -36,6 +36,10 @@ return [
                         }
                     ]
                 ],
+                'status' => [
+                    'route'      => '/status',
+                    'controller' => 'Blog\Status'
+                ],
                 'create' => [
                     'route'      => '/:author[/:category]',
                     'defaults'   => [

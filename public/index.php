@@ -31,6 +31,13 @@ call_user_func(new Web(include __DIR__ . '/../config/config.php', null, true));
 /**
  *
  */
+if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
+    return;
+}
+
+/**
+ *
+ */
 $totalMemory = number_format(memory_get_usage() / 1048576, 3);
 $memoryStart = number_format($memoryUsage / 1048576, 3);
 $memoryUsed = number_format((memory_get_usage() - $memoryUsage) / 1048576, 3);

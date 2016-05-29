@@ -7,11 +7,36 @@
     <h1><a href="<?= $this->url('blog') ?>"><?= $this->blogTitle() ?></a></h1>
     <p class="lead"><?= $this['message'] ?: 'Demo web application page.'; ?></p>
     <pre><?= __FILE__; ?></pre>
+    <div id="ajax-result"></div>
     <p>
-        <a class="btn btn-lg btn-success" href="<?= $this->url('blog/create', ['author' => 'owner', 'category' => 'oop']) ?>" role="button">Create Blog Action</a>
-        <a style="margin-left:10px;" class="btn btn-lg btn-success" href="<?= $this->url('blog/remove') ?>" role="button">Remove Blog Action</a>
+        <a class="btn btn-lg btn-primary" href="<?= $this->url('blog/create', ['author' => 'owner', 'category' => 'oop']) ?>" role="button">Create Blog Action</a>
+        <a style="margin-left:10px;" class="btn btn-lg btn-primary" href="<?= $this->url('blog/remove') ?>" role="button">Remove Blog Action</a>
+        <a style="margin-left:10px;" class="btn btn-success btn-lg" href="#" role="button" id="ajax-action" onclick="return ajaxAction();">Version Info</a>
     </p>
 </div>
+<script type="text/javascript">
+function ajaxAction() {
+    $('#ajax-result').empty();
+    $.getJSON('/blog/status', [], function(data) {
+        var $div = $('#ajax-result');
+
+        $div.addClass('alert alert-success');
+
+        $div.append('<h4>Version Information</h4>');
+
+        var items = [];
+        $.each(data, function( key, val ) {
+            items.push('<li>' + key + ': ' + val + '</li>');
+        });
+
+        $('<ul/>', {
+            html: items.join('')
+        }).appendTo($div);
+    });
+
+    return false;
+}
+</script>
 <?php
 
 var_dump($this['request']->uri());
