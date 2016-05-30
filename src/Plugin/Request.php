@@ -5,6 +5,10 @@
 
 namespace Plugin;
 
+use Mvc5\App;
+use Mvc5\Arg;
+use Mvc5\Plugin\Args;
+use Mvc5\Plugin\Plugin;
 use Mvc5\Plugin\Plugins;
 use Mvc5\Plugin\Scope;
 use Mvc5\Resolvable;
@@ -22,7 +26,7 @@ class Request
     {
         parent::__construct(
             RequestConfig::class,
-            new Plugins($plugins, new Plugins($extra, null)),
+            new Plugin(App::class, [new Args([Arg::SERVICES => $plugins]), new Plugins($extra, null), true, true]),
             new ApacheRequest($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER)
         );
     }
