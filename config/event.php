@@ -8,7 +8,7 @@ use Mvc5\Plugin\Call;
 use Session\Session;
 
 return [
-    'blog:add' => new Mvc5\Object([
+    'blog:add' => new Mvc5\Immutable([
         Blog\Add\Validate::class,
         Blog\Add\Save::class,
         Blog\Add\Respond::class
