@@ -6,11 +6,12 @@
 namespace Blog;
 
 use Mvc5\Response\Json;
+use Mvc5\Response\Response;
 
 class Status
 {
     /**
-     * @return Model
+     * @return Response
      */
     function __invoke()
     {

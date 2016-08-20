@@ -5,7 +5,8 @@
 
 namespace Home;
 
-use Mvc5\View\Model as ViewModel;
+use Mvc5\Model\ViewModel;
+use Mvc5\View\Model as _ViewModel;
 use Request;
 use Response;
 
@@ -14,7 +15,7 @@ class Controller
     /**
      *
      */
-    use ViewModel;
+    use _ViewModel;
 
     /**
      * @param Model $model
@@ -27,7 +28,7 @@ class Controller
     /**
      * @param Request $request
      * @param Response $response
-     * @return Model
+     * @return ViewModel
      */
     function __invoke(Request $request, Response $response)
     {
