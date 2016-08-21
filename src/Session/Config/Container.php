@@ -5,8 +5,8 @@
 
 namespace Session\Config;
 
+use Mvc5\Config\Overload;
 use Mvc5\Model\Config;
-use Mvc5\Model\Config\Model;
 use Session\Session as _Session;
 
 trait Container
@@ -14,7 +14,7 @@ trait Container
     /**
      *
      */
-    use Model;
+    use Overload;
 
     /**
      * @var _Session
