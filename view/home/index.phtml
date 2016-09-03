@@ -39,4 +39,4 @@ function ajaxAction() {
 </script>
 <?php
 
-var_dump($this['request']->uri());
+echo $this->render('home/extra', ['uri' => $this['request']->uri()]);
