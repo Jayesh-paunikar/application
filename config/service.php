@@ -57,11 +57,7 @@ return [
         ]
     ),
 
-    'cookies' => new \Plugin\Cookies,
-
     'response' => new Plugin(Response\Config::class),
-
-    'session' => new \Plugin\Session,
 
     //middleware demo
     //'web' => 'web\middleware',

@@ -5,7 +5,7 @@
 
 use Mvc5\Model\Layout;
 use Mvc5\Plugin\Call;
-use Session\Session;
+use Mvc5\Session\Session;
 
 return [
     'blog:add' => new Mvc5\Immutable([

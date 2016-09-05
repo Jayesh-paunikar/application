@@ -5,7 +5,7 @@
 
 use Mvc5\Response\Redirect;
 use Mvc5\Url\Plugin as Url;
-use Session\Session;
+use Mvc5\Session\Session;
 
 return [
     'name'       => 'home', //for the url plugin in view templates
