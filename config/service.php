@@ -44,7 +44,7 @@ return [
     'blog' => new App(new FileInclude(__DIR__ . '/blog.php')),
 
     'message' => new Value('Demo web application.'), //string value
-    'Home\Controller' => function($message, Request $request, $response, $cookies) {
+    'Home\Controller' => function($message, Request $request, $response, $cookie) {
         $model = $this->plugin(Home\Model::class, ['home', ['message' => $message]]);
         return new Home\Controller($model);
     },
@@ -56,6 +56,8 @@ return [
             'session' => new Plugin(Invoke::class, [new Link, ['session']]),
         ]
     ),
+
+    //'cookies' => new Dependency('cookie'),
 
     'response' => new Plugin(Response\Config::class),
 

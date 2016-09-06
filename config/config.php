@@ -4,6 +4,7 @@
  */
 
 return [
+    'cookie'     => include __DIR__ . '/cookie.php',
     'events'     => include __DIR__ . '/event.php',
     'middleware' => include __DIR__ . '/middleware.php',
     'routes'     => include __DIR__ . '/route.php',
