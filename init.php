@@ -155,6 +155,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Session/Session.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Session/Config.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Session/SessionContainer.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Session/Container.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Session/Model.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Config/Args.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Config/Plugin.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Plugin/Config/Child.php';
