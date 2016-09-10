@@ -57,9 +57,7 @@ return [
         ]
     ),
 
-    //'cookies' => new Dependency('cookie'),
-
-    'response' => new Plugin(Response\Config::class),
+    'response' => [Response\Config::class, 'config' => new Args(['cookies' => new Plugin('cookie\container')])],
 
     //middleware demo
     //'web' => 'web\middleware',
