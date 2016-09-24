@@ -52,7 +52,7 @@ return [
     'uri' => new Dependency('uri', function() {
         return [
             'scheme' => $this->http->getScheme(),
-            'host'   => $this->http->getHttpHost(),
+            'host'   => $this->http->getHost(),
             'port'   => $this->http->getPort(),
             'user'   => $this->http->getUser(),
             'pass'   => $this->http->getPassword(),
