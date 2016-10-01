@@ -2,13 +2,12 @@
 /**
  *
  */
-
-namespace Blog;
+namespace Status;
 
 use Mvc5\Response\Json;
 use Mvc5\Response\Response;
 
-class Status
+class Controller
 {
     /**
      * @return Response

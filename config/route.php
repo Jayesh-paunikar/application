@@ -4,8 +4,8 @@
  */
 
 use Mvc5\Response\Redirect;
-use Mvc5\Url\Plugin as Url;
 use Mvc5\Session\Session;
+use Mvc5\Url\Plugin as Url;
 
 return [
     'name'       => 'home', //for the url plugin in view templates
@@ -36,10 +36,6 @@ return [
                         }
                     ]
                 ],
-                'status' => [
-                    'route'      => '/status',
-                    'controller' => 'Blog\Status'
-                ],
                 'create' => [
                     'route'      => '/:author[/:category]',
                     'defaults'   => [
@@ -58,6 +54,13 @@ return [
                     ]
                 ]
             ],
+        ],
+        'app' => [
+            'options'     => ['prefix' => '', 'suffix' => '\Controller', 'split' => '\\', 'separators' => ['-' => '\\', '_' => '_']],
+            'route'       => ':controller[/:action]',
+            'constraints' => ['controller' => '[a-zA-Z0-9_-]+', 'action' => '[a-zA-Z0-9_-]+'],
+            'paramMap'    => ['param1' => 'controller', 'param2' => 'action'],
+            'wildcard'   => true,
         ]
     ]
 ];

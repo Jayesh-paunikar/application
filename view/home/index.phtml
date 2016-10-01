@@ -11,13 +11,14 @@
     <p>
         <a class="btn btn-lg btn-primary" href="<?= $this->url('blog/create', ['author' => 'owner', 'category' => 'oop']) ?>" role="button">Create Blog Action</a>
         <a style="margin-left:10px;" class="btn btn-lg btn-primary" href="<?= $this->url('blog/remove') ?>" role="button">Remove Blog Action</a>
-        <a style="margin-left:10px;" class="btn btn-success btn-lg" href="#" role="button" id="ajax-action" onclick="return ajaxAction();">Version Info</a>
+        <a style="margin-left:10px;" class="btn btn-success btn-lg" href="#" role="button" onclick="return ajaxAction();">Version Info</a>
+        <a style="margin-left:10px;" class="btn btn-success btn-lg" href="#" role="button" onclick="return ajaxHtmlAction();">About</a>
     </p>
 </div>
 <script type="text/javascript">
 function ajaxAction() {
     $('#ajax-result').empty();
-    $.getJSON('/blog/status', [], function(data) {
+    $.getJSON('<?php echo $this->url('app', ['controller' => 'status']); ?>', [], function(data) {
         var $div = $('#ajax-result');
 
         $div.addClass('alert alert-success');
@@ -32,6 +33,18 @@ function ajaxAction() {
         $('<ul/>', {
             html: items.join('')
         }).appendTo($div);
+    });
+
+    return false;
+}
+function ajaxHtmlAction() {
+    $('#ajax-result').empty();
+    $.get('<?php echo $this->url('app', ['controller' => 'about']); ?>', [], function(data) {
+        var $div = $('#ajax-result');
+
+        $div.addClass('alert alert-success');
+
+        $div.append('<p>'+data+'</p>');
     });
 
     return false;
