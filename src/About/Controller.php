@@ -4,15 +4,17 @@
  */
 namespace About;
 
-use Mvc5\Arg;
-use Mvc5\Response\Emitter\Callback;
 use Response;
 
 class Controller
 {
+    /**
+     * @param Response $response
+     * @return Response
+     */
     function __invoke(Response $response)
     {
-        $response[Arg::BODY] = new Callback(function() {
+        $response->body(function() {
             echo 'Mvc5 Demo Application';
         });
 
