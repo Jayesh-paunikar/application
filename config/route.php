@@ -56,7 +56,6 @@ return [
             ],
         ],
         'app' => [
-            'options'     => ['prefix' => '', 'suffix' => '\Controller', 'split' => '\\', 'separators' => ['-' => '\\', '_' => '_']],
             'route'       => ':controller[/:action]',
             'constraints' => ['controller' => '[a-zA-Z0-9_-]+', 'action' => '[a-zA-Z0-9_-]+'],
             'paramMap'    => ['param1' => 'controller', 'param2' => 'action'],
