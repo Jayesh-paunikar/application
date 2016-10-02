@@ -33,6 +33,8 @@ use Plugin\Controller;
 use Service\Provider;
 
 return [
+    'About\Controller' => new Plugin(About\Controller::class, ['Mvc5 Demo Application']),
+
     'blog2' => new Container([
         'add' => ['event\model', 'event' => 'blog:add'],
         'home'   => 'blog3->home2',
