@@ -58,8 +58,7 @@ return [
         'app' => [
             'route'       => ':controller[/:action]',
             'constraints' => ['controller' => '[a-zA-Z0-9_-]+', 'action' => '[a-zA-Z0-9_-]+'],
-            'paramMap'    => ['param1' => 'controller', 'param2' => 'action'],
-            'wildcard'   => true,
+            'wildcard'    => true,
         ]
     ]
 ];
