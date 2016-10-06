@@ -37,7 +37,7 @@ return [
                     ]
                 ],
                 'create' => [
-                    'route'      => '/:author[/:category]',
+                    'route'      => '/:author[/:category[/:wildcard]]',
                     'defaults'   => [
                         'author'   => 'owner',
                         'category' => 'web'
@@ -49,16 +49,19 @@ return [
                         //var_dump($request->getPathInfo());
                     //},
                     'constraints' => [
-                        'author'   => '[a-zA-Z0-9_-]*',
-                        'category' => '[a-zA-Z0-9_-]*'
+                        'author'   => '[a-zA-Z0-9_-]+',
+                        'category' => '[a-zA-Z0-9_-]+',
+                        'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'
                     ]
                 ]
             ],
         ],
         'app' => [
-            'route'       => ':controller[/:action]',
-            'constraints' => ['controller' => '[a-zA-Z0-9_-]+', 'action' => '[a-zA-Z0-9_-]+'],
-            'wildcard'    => true,
+            'options'     => ['separators' => ['_' => '_', '-' => '\\']],
+            'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
+            'name'        => 'app',
+            'route'       => ':controller[/:action[/:wildcard]]',
+            'wildcard'    => true
         ]
     ]
 ];
