@@ -4,8 +4,6 @@
  */
 namespace About;
 
-use Response;
-
 class Controller
 {
     /**
@@ -22,15 +20,12 @@ class Controller
     }
 
     /**
-     * @param Response $response
-     * @return Response
+     * @return \Closure
      */
-    function __invoke(Response $response)
+    function __invoke()
     {
-        $response->body(function() {
+        return function() {
             echo $this->message;
-        });
-
-        return $response;
+        };
     }
 }
