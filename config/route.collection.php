@@ -4,11 +4,12 @@
  */
 
 use Mvc5\Response\Redirect;
+use Mvc5\Route\Config as Route;
 use Mvc5\Session\Session;
 use Mvc5\Url\Plugin as Url;
 
 return [
-    'home' => [
+    'home' => new Route([
         'route' => '/:home',
         'controller' => 'Home\\Controller',
         'constraints' => ['home' => '$'],
@@ -16,7 +17,7 @@ return [
         'tokens' => [['literal', '/'], ['param', 'home', null]],
         'regex'  => '/(?P<param1>$)',
         'map'    => ['param1' => 'home']
-    ],
+    ]),
     'blog' => [
         'route'      => '/blog',
         'controller' => 'blog->controller.test', //specific method
