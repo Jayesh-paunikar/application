@@ -93,4 +93,7 @@ return [
     //'Home\Controller' => Home\Controller::class,
     //'Home\Controller' => new Plugin('blog->home'),
 
+    //'route\dispatch'  => new Service(Mvc5\Route\Dispatch\Collection::class, [new Param('routes')]),
+    //'url\generator'   => [Mvc5\Url\Collection::class, new Param('routes')],
+
 ] + include __DIR__ . '/../vendor/mvc5/framework/config/service.php';
