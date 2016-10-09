@@ -58,8 +58,8 @@ return [
         ],
         'app' => [
             'options'     => ['separators' => ['_' => '_', '-' => '\\']],
+            //'regex' => '(?P<controller>[a-zA-Z][a-zA-Z0-9]+)(?:/(?P<action>[a-zA-Z0-9_-]+)(?:/(?P<wildcard>[a-zA-Z0-9/]+[a-zA-Z0-9]$))?)?',
             'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
-            'name'        => 'app',
             'route'       => ':controller[/:action[/:wildcard]]',
             'wildcard'    => true
         ]
