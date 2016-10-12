@@ -124,7 +124,7 @@ include __DIR__ . '/vendor/mvc5/framework/src/Route/Config/Route.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Config/Request.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Dash.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Assemble.php';
-include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Params.php';
+include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Constraint.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Regex.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Tokens.php';
 include __DIR__ . '/vendor/mvc5/framework/src/Route/Definition/Build.php';
