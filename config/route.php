@@ -37,7 +37,7 @@ return [
                     ]
                 ],
                 'create' => [
-                    'route'      => '/:author[/:category[/:wildcard]]',
+                    'route'      => '/{author}[/{category}[/{wildcard}]]',
                     'defaults'   => [
                         'author'   => 'owner',
                         'category' => 'web'
@@ -58,9 +58,13 @@ return [
         ],
         'app' => [
             'options'     => ['separators' => ['_' => '_', '-' => '\\']],
-            //'regex' => '(?P<controller>[a-zA-Z][a-zA-Z0-9]+)(?:/(?P<action>[a-zA-Z0-9_-]+)(?:/(?P<wildcard>[a-zA-Z0-9/]+[a-zA-Z0-9]$))?)?',
-            'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
-            'route'       => ':controller[/:action[/:wildcard]]',
+            //'regex' => '/(?P<controller>[a-zA-Z][a-zA-Z0-9]+)(?:/(?P<action>[a-zA-Z0-9_-]+)(?:/(?P<wildcard>[a-zA-Z0-9/]+[a-zA-Z0-9]$))?)?',
+
+            'route'       => '{controller:[a-zA-Z][a-zA-Z0-9]+}[/{action:[a-zA-Z0-9_-]+}[/{wildcard:[a-zA-Z0-9/]+[a-zA-Z0-9]$}]]',
+
+            //'route'       => '/{controller}[/{action}[/{wildcard}]]',
+            //'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
+
             'wildcard'    => true
         ]
     ]

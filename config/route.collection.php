@@ -10,13 +10,11 @@ use Mvc5\Url\Plugin as Url;
 
 return [
     'home' => new Route([
-        'route' => '/:home',
+        'route' => '/{:$}',
         'controller' => 'Home\\Controller',
-        'constraints' => ['home' => '$'],
         //var_export to create a cache (Definition/Build.php)
-        'tokens' => [['literal', '/'], ['param', 'home', null]],
-        'regex'  => '/(?P<param1>$)',
-        'map'    => ['param1' => 'home']
+        'tokens' => [['literal','/'],['param','','$']],
+        'regex' => '/$'
     ]),
     'blog' => [
         'route'      => '/blog',
@@ -39,10 +37,15 @@ return [
                 ]
             ],
             'create' => [
-                'route'      => '/:author[/:category[/:wildcard]]',
+                'route'      => '/{author}[/{category}[/{wildcard}]]',
+
+                //'route'      => '/:author[/:category[/:wildcard]]',
+
+
                 'defaults'   => [
                     'author'   => 'owner',
-                    'category' => 'web'
+                    'category' => 'web',
+                    'limit' => 10
                 ],
                 'wildcard'   => true,
                 'controller' => 'blog:add', //call event
@@ -51,18 +54,25 @@ return [
                 //var_dump($request->getPathInfo());
                 //},
                 'constraints' => [
-                    'author'   => 'owner',
+                    'author'   => '[a-zA-Z_-]+',
                     'category' => '[a-zA-Z_-]+',
                     'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'
-                ]
+                ],
+                'map' => [
+                    'author' => '__author'
+                ],
             ]
         ],
     ],
     'app' => [
         'options'     => ['separators' => ['_' => '_', '-' => '\\']],
         //'regex' => '/(?P<controller>[a-zA-Z][a-zA-Z0-9]+)(?:/(?P<action>[a-zA-Z0-9_-]+)(?:/(?P<wildcard>[a-zA-Z0-9/]+[a-zA-Z0-9]$))?)?',
-        'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
-        'route'       => '/:controller[/:action[/:wildcard]]',
+
+        'route'       => '/{controller:[a-zA-Z][a-zA-Z0-9]+}[/{action:[a-zA-Z0-9_-]+}[/{wildcard:[a-zA-Z0-9/]+[a-zA-Z0-9]$}]]',
+
+        //'route'       => '/{controller}[/{action}[/{wildcard}]]',
+        //'constraints' => ['controller' => '[a-zA-Z][a-zA-Z0-9]+', 'action' => '[a-zA-Z0-9_-]+', 'wildcard' => '[a-zA-Z0-9/]+[a-zA-Z0-9]$'],
+
         'wildcard'    => true
     ],
 ];
